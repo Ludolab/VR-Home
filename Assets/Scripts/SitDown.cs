@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SitDown : MonoBehaviour {
 
@@ -11,12 +12,24 @@ public class SitDown : MonoBehaviour {
     private Transform camTransform;
     private bool sittingInProgress = false;
     private Renderer[] childRenderers;
+    private List<GameObject> toReactivate;
 
     private void Awake()
     {
         camTransform = Camera.main.transform;
 
         //Deactivate everything else except gameObject and [CameraRig], add it to a list to reactivate
+        toReactivate = new List<GameObject>();
+        Scene scene = SceneManager.GetActiveScene();
+        GameObject[] rootObjects = scene.GetRootGameObjects(); //UnityEngine.Object.FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in rootObjects)
+        {
+            if (obj.activeSelf && obj != gameObject && obj.name != "[CameraRig]")
+            {
+                obj.SetActive(false);
+                toReactivate.Add(obj);
+            }
+        }
 
         //Activate dark walls
         int childCount = gameObject.transform.childCount;
@@ -27,14 +40,9 @@ public class SitDown : MonoBehaviour {
             child.SetActive(true);
             childRenderers[i] = child.GetComponent<Renderer>();
         }
-        /*childRenderers = gameObject.transform.GetComponentsInChildren<Renderer>();
-        foreach(Renderer rend in childRenderers)
-        {
-            rend.gameObject.SetActive(true);
-        }*/
     }
     
-    private void Update ()
+    private void Update()
     {
         if (!sittingInProgress && IsSitting())
         {
@@ -70,9 +78,15 @@ public class SitDown : MonoBehaviour {
 
     private IEnumerator FadeIn()
     {
-        //Reactivate everything, make it transparent
+        foreach (GameObject obj in toReactivate)
+        {
+            obj.SetActive(true);
+            //make it completely transparent
+            //TODO: only if it has renderer (light doesnt)
+            SetTransparency(obj.GetComponent<Renderer>(), 0);
+        }
+
         //Fade everything in
-        //Fade dark walls out
         for (float t = 0; t < FADE_IN_TIME; t += Time.deltaTime)
         {
             SetEverythingTransparency(t / FADE_IN_TIME);
@@ -85,12 +99,23 @@ public class SitDown : MonoBehaviour {
     private void SetEverythingTransparency(float transparency)
     {
         //set everything (with a renderer)'s color alpha to transparency
+        foreach (GameObject obj in toReactivate)
+        {
+            //TODO: only if it has renderer (light doesnt)
+            SetTransparency(obj.GetComponent<Renderer>(), transparency);
+        }
 
+        //Fade dark walls out
         float inverseTransparency = 1 - transparency;
         foreach (Renderer rend in childRenderers)
         {
-            Color oldCol = rend.material.color;
-            rend.material.color = new Color(oldCol.r, oldCol.g, oldCol.b, inverseTransparency);
+            SetTransparency(rend, inverseTransparency);
         }
+    }
+
+    private void SetTransparency(Renderer rend, float transparency)
+    {
+        Color oldCol = rend.material.color;
+        rend.material.color = new Color(oldCol.r, oldCol.g, oldCol.b, transparency);
     }
 }

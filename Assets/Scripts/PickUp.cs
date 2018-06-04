@@ -20,7 +20,7 @@ public class PickUp : MonoBehaviour {
     private Shader oldShader;
     private Renderer rend;
 
-    private void Awake()
+    private void Start()
     {
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controller1 = manager.left.GetComponent<SteamVR_TrackedObject>();
