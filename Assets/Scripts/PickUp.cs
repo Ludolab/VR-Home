@@ -114,8 +114,11 @@ public class PickUp : MonoBehaviour {
 
     private void EnableHighlight()
     {
-        rend.material.shader = highlightShader;
-        SetColor(hoverColor);
+        if (holder == null)
+        {
+            rend.material.shader = highlightShader;
+            SetColor(hoverColor);
+        }
     }
 
     private void DisableHighlight()
