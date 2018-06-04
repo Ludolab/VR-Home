@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour {
 
+    public Shader highlightShader;
+
     private SteamVR_TrackedObject controller1;
 	private SteamVR_TrackedObject controller2;
 
@@ -13,13 +15,17 @@ public class PickUp : MonoBehaviour {
 	private SteamVR_TrackedObject holder = null;
 
 	private Rigidbody rb;
+    private Shader oldShader;
+    private Renderer renderer;
 
-	private void Awake()
+    private void Awake()
 	{
 		SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
 		controller1 = manager.left.GetComponent<SteamVR_TrackedObject>();
 		controller2 = manager.right.GetComponent<SteamVR_TrackedObject>();
 		rb = GetComponent<Rigidbody>();
+        renderer = GetComponent<Renderer>();
+        oldShader = renderer.material.shader;
     }
 
     private void Update()
@@ -53,9 +59,9 @@ public class PickUp : MonoBehaviour {
 		{
 			holder = controller;
 			gameObject.transform.parent = controller.gameObject.transform;
-			//rb.enabled = false;
-			rb.useGravity = false;
-		}
+            //rb.useGravity = false;
+            rb.isKinematic = true;
+        }
 	}
 
 	private void Release(SteamVR_TrackedObject controller)
@@ -64,9 +70,9 @@ public class PickUp : MonoBehaviour {
 		{
 			holder = null;
 			gameObject.transform.parent = null;
-			//rb.enabled = true;
-			rb.useGravity = true;
-		}
+            //rb.useGravity = true;
+            rb.isKinematic = false;
+        }
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -74,13 +80,13 @@ public class PickUp : MonoBehaviour {
         if (other.gameObject == controller1.gameObject)
         {
             controller1Inside = true;
-            //TODO: highlight
+            EnableHighlight();
         }
 		if (other.gameObject == controller2.gameObject)
 		{
 			controller2Inside = true;
-			//TODO: highlight
-		}
+            EnableHighlight();
+        }
 	}
 
     private void OnTriggerExit(Collider other)
@@ -88,12 +94,22 @@ public class PickUp : MonoBehaviour {
 		if (other.gameObject == controller1.gameObject)
 		{
 			controller1Inside = false;
-			//TODO: unhighlight
-		}
+            DisableHighlight();
+        }
 		if (other.gameObject == controller2.gameObject)
 		{
 			controller2Inside = false;
-			//TODO: unhighlight
-		}
+            DisableHighlight();
+        }
 	}
+
+    private void EnableHighlight()
+    {
+        renderer.material.shader = highlightShader;
+    }
+
+    private void DisableHighlight()
+    {
+        renderer.material.shader = oldShader;
+    }
 }
