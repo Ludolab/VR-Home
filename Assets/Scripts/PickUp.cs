@@ -125,6 +125,6 @@ public class PickUp : MonoBehaviour {
 
     private void SetColor(Color color)
     {
-        rend.material.SetColor("Outline Color", color);
+        rend.material.SetColor("_OutlineColor", color);
     }
 }
