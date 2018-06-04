@@ -1,3 +1,5 @@
+// Modified from https://github.com/Shrimpey/Outlined-Diffuse-Shader-Fixed
+
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "Outlined/Custom" {
