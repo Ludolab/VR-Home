@@ -43,17 +43,24 @@ public class PickUp : MonoBehaviour {
     
     private void CheckController(SteamVR_TrackedObject controller, bool inside)
     {
-        SteamVR_Controller.Device input = GetInput(controller);
-        if (input.GetHairTriggerDown())
+        try
         {
-            if (inside)
+            SteamVR_Controller.Device input = GetInput(controller);
+            if (input.GetHairTriggerDown())
             {
-                Grab(controller);
+                if (inside)
+                {
+                    Grab(controller);
+                }
+            }
+            if (input.GetHairTriggerUp())
+            {
+                Release(controller);
             }
         }
-        if (input.GetHairTriggerUp())
+        catch(System.IndexOutOfRangeException)
         {
-            Release(controller);
+            //can't talk to controller, don't do anything
         }
     }
     
