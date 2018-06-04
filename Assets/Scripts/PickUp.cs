@@ -16,7 +16,7 @@ public class PickUp : MonoBehaviour {
 
 	private Rigidbody rb;
     private Shader oldShader;
-    private Renderer renderer;
+    private Renderer rend;
 
     private void Awake()
 	{
@@ -24,8 +24,13 @@ public class PickUp : MonoBehaviour {
 		controller1 = manager.left.GetComponent<SteamVR_TrackedObject>();
 		controller2 = manager.right.GetComponent<SteamVR_TrackedObject>();
 		rb = GetComponent<Rigidbody>();
-        renderer = GetComponent<Renderer>();
-        oldShader = renderer.material.shader;
+        rend = GetComponent<Renderer>();
+        oldShader = rend.material.shader;
+    }
+
+    private SteamVR_Controller.Device GetInput(SteamVR_TrackedObject controller)
+    {
+        return SteamVR_Controller.Input((int)controller.index);
     }
 
     private void Update()
@@ -33,22 +38,19 @@ public class PickUp : MonoBehaviour {
         CheckController(controller1, controller1Inside);
         CheckController(controller2, controller2Inside);
     }
-
+    
     private void CheckController(SteamVR_TrackedObject controller, bool inside)
     {
-        var ipt = SteamVR_Controller.Input((int)controller.index);
-        if (ipt.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+        SteamVR_Controller.Device input = GetInput(controller);
+        if (input.GetHairTriggerDown())
         {
-            print("PRESSED " + (int)controller.index);
 			if (inside)
 			{
-				print("PICKUP");
 				Grab(controller);
 			}
         }
-        if (ipt.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
+        if (input.GetHairTriggerUp())
         {
-            print("RELEASED " + (int)controller.index);
 			Release(controller);
         }
     }
@@ -59,7 +61,6 @@ public class PickUp : MonoBehaviour {
 		{
 			holder = controller;
 			gameObject.transform.parent = controller.gameObject.transform;
-            //rb.useGravity = false;
             rb.isKinematic = true;
         }
 	}
@@ -70,8 +71,10 @@ public class PickUp : MonoBehaviour {
 		{
 			holder = null;
 			gameObject.transform.parent = null;
-            //rb.useGravity = true;
             rb.isKinematic = false;
+            SteamVR_Controller.Device input = GetInput(controller);
+            rb.velocity = input.velocity;
+            rb.angularVelocity = input.angularVelocity;
         }
 	}
 
@@ -105,11 +108,11 @@ public class PickUp : MonoBehaviour {
 
     private void EnableHighlight()
     {
-        renderer.material.shader = highlightShader;
+        rend.material.shader = highlightShader;
     }
 
     private void DisableHighlight()
     {
-        renderer.material.shader = oldShader;
+        rend.material.shader = oldShader;
     }
 }
