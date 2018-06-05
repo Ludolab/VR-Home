@@ -44,7 +44,7 @@ public class SitDown : MonoBehaviour {
 
     private bool ShouldDeactivate(GameObject obj)
     {
-        //Should this object be hidden in the startup sequence?
+        //Returns whether this object should be hidden in the startup sequence
         return obj.activeSelf &&
                obj != gameObject &&
                obj.name != "[CameraRig]" &&
@@ -98,7 +98,16 @@ public class SitDown : MonoBehaviour {
             }*/
         }
 
-        //Fade everything in
+        //Disable instructions right away
+        foreach (Renderer rend in childRenderers)
+        {
+            if (rend.gameObject.GetComponent<TextMesh>() != null)
+            {
+                rend.gameObject.SetActive(false);
+            }
+        }
+
+       //Fade everything in
         for (float t = 0; t < FADE_IN_TIME; t += Time.deltaTime)
         {
             SetEverythingTransparency(t / FADE_IN_TIME);
