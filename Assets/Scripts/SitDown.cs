@@ -82,8 +82,11 @@ public class SitDown : MonoBehaviour {
         {
             obj.SetActive(true);
             //make it completely transparent
-            //TODO: only if it has renderer (light doesnt)
-            SetTransparency(obj.GetComponent<Renderer>(), 0);
+            Renderer rend = obj.GetComponent<Renderer>();
+            if (rend != null)
+            {
+                SetTransparency(rend, 0);
+            }
         }
 
         //Fade everything in
@@ -101,8 +104,11 @@ public class SitDown : MonoBehaviour {
         //set everything (with a renderer)'s color alpha to transparency
         foreach (GameObject obj in toReactivate)
         {
-            //TODO: only if it has renderer (light doesnt)
-            SetTransparency(obj.GetComponent<Renderer>(), transparency);
+            Renderer rend = obj.GetComponent<Renderer>();
+            if (rend != null)
+            {
+                SetTransparency(obj.GetComponent<Renderer>(), transparency);
+            }
         }
 
         //Fade dark walls out
