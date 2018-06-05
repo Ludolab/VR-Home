@@ -20,8 +20,11 @@ public class PickUp : MonoBehaviour {
     private Shader oldShader;
     private Renderer rend;
 
+    private Vector3 startPos;
+
     private void Start()
     {
+        startPos = gameObject.transform.position;
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controller1 = manager.left.GetComponent<SteamVR_TrackedObject>();
         controller2 = manager.right.GetComponent<SteamVR_TrackedObject>();
@@ -56,6 +59,11 @@ public class PickUp : MonoBehaviour {
             if (input.GetHairTriggerUp())
             {
                 Release(controller);
+            }
+
+            if (input.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
+            {
+                gameObject.transform.position = startPos;
             }
         }
         catch(System.IndexOutOfRangeException)
