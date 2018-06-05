@@ -7,7 +7,7 @@ public class SitDown : MonoBehaviour {
 
     private const float SIT_TIME = 1.0f; //time required in sitting position before overlay disappears, in seconds
     private const float SIT_HEIGHT = 1.0f; //maximum y-position above floor that counts as sitting, in meters
-    private const float FADE_IN_TIME = 2.0f; //time to fade everything in after sitting
+    private const float FADE_IN_TIME = 6.0f; //time to fade everything in after sitting
 
     private Transform camTransform;
     private bool sittingInProgress = false;
@@ -24,7 +24,7 @@ public class SitDown : MonoBehaviour {
         GameObject[] rootObjects = scene.GetRootGameObjects(); //UnityEngine.Object.FindObjectsOfType<GameObject>();
         foreach (GameObject obj in rootObjects)
         {
-            if (obj.activeSelf && obj != gameObject && obj.name != "[CameraRig]")
+            if (ShouldDeactivate(obj))
             {
                 obj.SetActive(false);
                 toReactivate.Add(obj);
@@ -40,6 +40,15 @@ public class SitDown : MonoBehaviour {
             child.SetActive(true);
             childRenderers[i] = child.GetComponent<Renderer>();
         }
+    }
+
+    private bool ShouldDeactivate(GameObject obj)
+    {
+        //Should this object be hidden in the startup sequence?
+        return obj.activeSelf &&
+               obj != gameObject &&
+               obj.name != "[CameraRig]" &&
+               obj.GetComponent<Light>() == null;
     }
     
     private void Update()
@@ -81,12 +90,12 @@ public class SitDown : MonoBehaviour {
         foreach (GameObject obj in toReactivate)
         {
             obj.SetActive(true);
-            //make it completely transparent
+            /*//make it completely transparent
             Renderer rend = obj.GetComponent<Renderer>();
             if (rend != null)
             {
                 SetTransparency(rend, 0);
-            }
+            }*/
         }
 
         //Fade everything in
@@ -101,7 +110,7 @@ public class SitDown : MonoBehaviour {
 
     private void SetEverythingTransparency(float transparency)
     {
-        //set everything (with a renderer)'s color alpha to transparency
+        /*//set everything (with a renderer)'s color alpha to transparency
         foreach (GameObject obj in toReactivate)
         {
             Renderer rend = obj.GetComponent<Renderer>();
@@ -109,7 +118,7 @@ public class SitDown : MonoBehaviour {
             {
                 SetTransparency(obj.GetComponent<Renderer>(), transparency);
             }
-        }
+        }*/
 
         //Fade dark walls out
         float inverseTransparency = 1 - transparency;
