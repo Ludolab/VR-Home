@@ -7,7 +7,7 @@ public class SitDown : MonoBehaviour {
 
     private const float SIT_TIME = 1.0f; //time required in sitting position before overlay disappears, in seconds
     private const float SIT_HEIGHT = 1.0f; //maximum y-position above floor that counts as sitting, in meters
-    private const float FADE_IN_TIME = 6.0f; //time to fade everything in after sitting
+    private const float FADE_IN_TIME = 4.0f; //time to fade everything in after sitting
 
     private Transform camTransform;
     private bool sittingInProgress = false;
@@ -101,9 +101,11 @@ public class SitDown : MonoBehaviour {
         //Disable instructions right away
         foreach (Renderer rend in childRenderers)
         {
-            if (rend.gameObject.GetComponent<TextMesh>() != null)
+            TextMesh textMesh = rend.gameObject.GetComponent<TextMesh>();
+            if (textMesh != null)
             {
-                rend.gameObject.SetActive(false);
+                //rend.gameObject.SetActive(false);
+                textMesh.text = "Thank you.";
             }
         }
 
