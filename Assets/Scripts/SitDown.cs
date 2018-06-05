@@ -98,13 +98,12 @@ public class SitDown : MonoBehaviour {
             }*/
         }
 
-        //Disable instructions right away
+        //Change instruction text
         foreach (Renderer rend in childRenderers)
         {
             TextMesh textMesh = rend.gameObject.GetComponent<TextMesh>();
             if (textMesh != null)
             {
-                //rend.gameObject.SetActive(false);
                 textMesh.text = "Thank you.";
             }
         }
