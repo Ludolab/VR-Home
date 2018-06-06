@@ -15,6 +15,7 @@ public class SitDown : MonoBehaviour {
 
     private Transform camTransform;
     private bool sittingInProgress = false;
+    private bool isQuitting = false;
     private Renderer[] childRenderers;
     private List<GameObject> toReactivate;
     private bool done = false; //fade-in completed, user is sitting
@@ -64,8 +65,9 @@ public class SitDown : MonoBehaviour {
             StartCoroutine(WaitSitting());
         }
 
-        if (done && !IsSitting())
+        if (done && !isQuitting && !IsSitting())
         {
+            isQuitting = true;
             StartCoroutine(FadeOut());
         }
     }
@@ -158,6 +160,11 @@ public class SitDown : MonoBehaviour {
 
         for (float t = 0; t < FADE_OUT_TIME; t += Time.deltaTime)
         {
+            if (IsSitting())
+            {
+                isQuitting = false;
+                yield break;
+            }
             SetEverythingTransparency(1 - (t / FADE_OUT_TIME));
             yield return new WaitForEndOfFrame();
         }
