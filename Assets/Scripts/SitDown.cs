@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SitDown : MonoBehaviour {
 
+    public GameObject start;
+
     private const float SIT_TIME = 1.0f; //time required in sitting position before overlay disappears, in seconds
     private const float SIT_HEIGHT = 1.0f; //maximum y-position above floor that counts as sitting, in meters
     private const float FADE_IN_TIME = 4.0f; //time to fade everything in after sitting
@@ -14,7 +16,7 @@ public class SitDown : MonoBehaviour {
     private Renderer[] childRenderers;
     private List<GameObject> toReactivate;
 
-    private void Awake()
+	private void Awake()
     {
         camTransform = Camera.main.transform;
 
@@ -27,11 +29,10 @@ public class SitDown : MonoBehaviour {
             if (ShouldDeactivate(obj))
             {
                 obj.SetActive(false);
-                toReactivate.Add(obj);
+                if(obj.name != "[PreEnterMenu]" && obj != start) toReactivate.Add(obj);
             }
         }
 
-        //Activate dark walls
         int childCount = gameObject.transform.childCount;
         childRenderers = new Renderer[childCount];
         for (int i = 0; i < childCount; i++)
