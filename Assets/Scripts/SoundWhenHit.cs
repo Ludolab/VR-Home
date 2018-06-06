@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundWhenHit : MonoBehaviour {
 
-    private const float SOUND_SCALE = 0.25f;
+    private const float SOUND_SCALE = 0.1f;
 
     private AudioSource audioSrc;
     private float originalVolume;
