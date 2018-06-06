@@ -26,6 +26,7 @@ public class SitDown : MonoBehaviour {
         {
             if (ShouldDeactivate(obj))
             {
+                print("Deactivating " + obj);
                 obj.SetActive(false);
                 toReactivate.Add(obj);
             }
@@ -43,10 +44,12 @@ public class SitDown : MonoBehaviour {
 
     private bool ShouldDeactivate(GameObject obj)
     {
+        //TODO: shouldnt include controllers
         //Returns whether this object should be hidden in the startup sequence
         return obj.activeSelf &&
                obj != gameObject &&
                obj.name != "[CameraRig]" &&
+               obj.name != "[SteamVR]" &&
                obj.GetComponent<Light>() == null;
     }
     

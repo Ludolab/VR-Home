@@ -60,16 +60,11 @@ public class MouseCamera : MonoBehaviour {
 
     private void Update()
     {
-        //TODO: Turn camera with mouse movement side/side
-        //TODO: Turn camera up/down with mouse movement up/down (min -90, max 90)
         float horizTurn = mouseSensitivity * Input.GetAxis("Mouse X");
         float vertTurn = mouseSensitivity * -Input.GetAxis("Mouse Y");
         horizRotation += horizTurn;
         vertRotation += vertTurn;
         vertRotation = Mathf.Clamp(vertRotation, MIN_VERT_ROTATION, MAX_VERT_ROTATION);
-        /*Vector3 rotation = new Vector3(vertTurn, horizTurn, 0);
-        gameObject.transform.Rotate(rotation, Space.Self);
-        print(transform.eulerAngles);*/
         transform.eulerAngles = new Vector3(vertRotation, horizRotation, 0);
     }
 }
