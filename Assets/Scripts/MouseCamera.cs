@@ -8,19 +8,27 @@ public class MouseCamera : MonoBehaviour {
 
     private const float MIN_VERT_ROTATION = -90;
     private const float MAX_VERT_ROTATION = 90;
+    private const float CAMERA_CHECK_TIME = 0.5f;
+
     private Camera cam;
     private float horizRotation = 0;
     private float vertRotation = 0;
 
     private void Start()
     {
+        StartCoroutine(CameraCheck());
+	}
+	
+    private IEnumerator CameraCheck()
+    {
+        yield return new WaitForSeconds(CAMERA_CHECK_TIME);
         cam = gameObject.GetComponent<Camera>();
 		if (VRFailed())
         {
             TakeControl();
         }
-	}
-	
+    }
+
     private bool VRFailed()
     {
         //TODO: does this work if enabled?
