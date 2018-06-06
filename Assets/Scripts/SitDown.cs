@@ -5,14 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class SitDown : MonoBehaviour {
 
+    public string menuScene;
+
     private const float SIT_TIME = 1.0f; //time required in sitting position before overlay disappears, in seconds
     private const float SIT_HEIGHT = 1.0f; //maximum y-position above floor that counts as sitting, in meters
     private const float FADE_IN_TIME = 4.0f; //time to fade everything in after sitting
+    private const float FADE_OUT_TIME = 4.0f; //time to fade everything out after standing
+    private const float FADE_OUT_HOLD_TIME = 2.0f; //time after fadeout completes to load menu
 
     private Transform camTransform;
     private bool sittingInProgress = false;
     private Renderer[] childRenderers;
     private List<GameObject> toReactivate;
+    private bool done = false; //fade-in completed, user is sitting
 
 	private void Awake()
     {
@@ -26,7 +31,6 @@ public class SitDown : MonoBehaviour {
         {
             if (ShouldDeactivate(obj))
             {
-                print("Deactivating " + obj);
                 obj.SetActive(false);
                 toReactivate.Add(obj);
             }
@@ -44,7 +48,6 @@ public class SitDown : MonoBehaviour {
 
     private bool ShouldDeactivate(GameObject obj)
     {
-        //TODO: shouldnt include controllers
         //Returns whether this object should be hidden in the startup sequence
         return obj.activeSelf &&
                obj != gameObject &&
@@ -55,10 +58,15 @@ public class SitDown : MonoBehaviour {
     
     private void Update()
     {
-        if (!sittingInProgress && IsSitting())
+        if (!done && !sittingInProgress && IsSitting())
         {
             sittingInProgress = true;
             StartCoroutine(WaitSitting());
+        }
+
+        if (done && !IsSitting())
+        {
+            StartCoroutine(FadeOut());
         }
     }
 
@@ -78,12 +86,6 @@ public class SitDown : MonoBehaviour {
             }
             yield return new WaitForEndOfFrame();
         }
-        Complete();
-    }
-
-    private void Complete()
-    {
-        print("Sitting complete");
         StartCoroutine(FadeIn());
     }
 
@@ -100,15 +102,7 @@ public class SitDown : MonoBehaviour {
             }*/
         }
 
-        //Change instruction text
-        foreach (Renderer rend in childRenderers)
-        {
-            TextMesh textMesh = rend.gameObject.GetComponent<TextMesh>();
-            if (textMesh != null)
-            {
-                textMesh.text = "Thank you.";
-            }
-        }
+        SetText("Thank you.");
 
        //Fade everything in
         for (float t = 0; t < FADE_IN_TIME; t += Time.deltaTime)
@@ -117,7 +111,19 @@ public class SitDown : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         SetEverythingTransparency(1);
-        Destroy(gameObject);
+        done = true;
+    }
+
+    private void SetText(string text)
+    {
+        foreach (Renderer rend in childRenderers)
+        {
+            TextMesh textMesh = rend.gameObject.GetComponent<TextMesh>();
+            if (textMesh != null)
+            {
+                textMesh.text = text;
+            }
+        }
     }
 
     private void SetEverythingTransparency(float transparency)
@@ -144,5 +150,24 @@ public class SitDown : MonoBehaviour {
     {
         Color oldCol = rend.material.color;
         rend.material.color = new Color(oldCol.r, oldCol.g, oldCol.b, transparency);
+    }
+
+    private IEnumerator FadeOut()
+    {
+        SetText("Meditation complete.");
+
+        for (float t = 0; t < FADE_OUT_TIME; t += Time.deltaTime)
+        {
+            SetEverythingTransparency(1 - (t / FADE_OUT_TIME));
+            yield return new WaitForEndOfFrame();
+        }
+        foreach (GameObject obj in toReactivate)
+        {
+            obj.SetActive(false);
+        }
+
+        yield return new WaitForSeconds(FADE_OUT_HOLD_TIME);
+
+        SceneManager.LoadScene(menuScene);
     }
 }

@@ -18,7 +18,6 @@ public class SoundWhenHit : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         audioSrc.volume = collision.relativeVelocity.magnitude * SOUND_SCALE * originalVolume;
-        print(gameObject + " BONK " + audioSrc.volume);
         audioSrc.Play();
     }
 }
