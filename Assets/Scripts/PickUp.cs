@@ -160,6 +160,10 @@ public class PickUp : MonoBehaviour {
 
     private void Reset()
     {
+        if (holder != null)
+        {
+            Release(holder);
+        }
         gameObject.transform.position = startPos;
         rb.velocity = Vector3.zero;
     }
