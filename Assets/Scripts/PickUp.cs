@@ -109,6 +109,12 @@ public class PickUp : MonoBehaviour {
             controller2Inside = true;
             EnableHighlight();
         }
+
+        Bowl bowl = other.gameObject.GetComponent<Bowl>();
+        if (bowl != null)
+        {
+            bowl.AddObject();
+        }
     }
 
     private void OnTriggerExit(Collider other)
