@@ -28,14 +28,18 @@ public class MouseCamera : MonoBehaviour {
         {
             TakeControl();
         }
+        else
+        {
+            print("its fine");
+        }
     }
 
     private bool VRFailed()
     {
         //TODO: does this work if enabled?
         //GameObject camObj = Camera.main.gameObject;
-        SteamVR_TrackedObject camScript = eyeCam.GetComponent<SteamVR_TrackedObject>();
-        return camScript == null;
+        SteamVR_Camera camScript = eyeCam.GetComponent<SteamVR_Camera>();
+        return !camScript.enabled;
     }
 
     private void TakeControl()
