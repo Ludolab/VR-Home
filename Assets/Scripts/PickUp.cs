@@ -131,6 +131,12 @@ public class PickUp : MonoBehaviour {
         {
             DisableHighlight();
         }
+
+        Bowl bowl = other.gameObject.GetComponent<Bowl>();
+        if (bowl != null)
+        {
+            bowl.RemoveObject();
+        }
     }
 
     private void EnableHighlight()
