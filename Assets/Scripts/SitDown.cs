@@ -163,6 +163,7 @@ public class SitDown : MonoBehaviour {
             if (IsSitting())
             {
                 isQuitting = false;
+                SetEverythingTransparency(1);
                 yield break;
             }
             SetEverythingTransparency(1 - (t / FADE_OUT_TIME));
