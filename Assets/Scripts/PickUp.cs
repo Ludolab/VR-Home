@@ -63,7 +63,7 @@ public class PickUp : MonoBehaviour {
 
             if (input.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
             {
-                gameObject.transform.position = startPos;
+                Reset();
             }
         }
         catch(System.IndexOutOfRangeException)
@@ -156,5 +156,11 @@ public class PickUp : MonoBehaviour {
     private void SetColor(Color color)
     {
         rend.material.SetColor("_OutlineColor", color);
+    }
+
+    private void Reset()
+    {
+        gameObject.transform.position = startPos;
+        rb.velocity = Vector3.zero;
     }
 }
