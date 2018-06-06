@@ -30,7 +30,7 @@ public class MouseCamera : MonoBehaviour {
         }
         else
         {
-            print("its fine");
+            NoOverride();
         }
     }
 
@@ -50,6 +50,12 @@ public class MouseCamera : MonoBehaviour {
         {
             Camera.main.enabled = false;
         }
+    }
+
+    private void NoOverride()
+    {
+        print("VR detected- no override necessary");
+        Destroy(gameObject);
     }
 
     private void Update()
