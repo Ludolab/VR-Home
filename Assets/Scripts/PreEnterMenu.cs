@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PreEnterMenu : MonoBehaviour {
 
-    public GameObject enterSequence; //ritual for entry to enter room.
-    public GameObject room; //room to be generated; could be extended to a list of possible environments/rooms.
-    public GameObject start; //space the menu first is created in.
     public Button okButton;
+    public string nextScene; //
 
 	private void Start()
     {
@@ -16,8 +15,7 @@ public class PreEnterMenu : MonoBehaviour {
 	}
 
     private void OnClick() {
-        room.SetActive(true); //or Instantiate(room);
-        enterSequence.GetComponent<SitDown>().start = start;
-        enterSequence.SetActive(true); //or Instantiate(enterSequence);
+        SceneManager.LoadScene(nextScene);
+        //TODO: add integration that will load the scene with a timer on the sound, based on drop-down menu.
     }
 }
