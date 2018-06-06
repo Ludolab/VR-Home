@@ -36,7 +36,6 @@ public class MouseCamera : MonoBehaviour {
 
     private bool VRFailed()
     {
-        //TODO: does this work if enabled?
         //GameObject camObj = Camera.main.gameObject;
         SteamVR_Camera camScript = eyeCam.GetComponent<SteamVR_Camera>();
         return !camScript.enabled;

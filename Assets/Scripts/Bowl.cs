@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bowl : MonoBehaviour {
+public abstract class Bowl : MonoBehaviour {
 
-    private int numObjects = 0;
-
-    private void Start()
-    {
-        
-    }
+    protected int numObjects = 0;
 
     public void AddObject()
     {
         numObjects++;
         print("Objects: " + numObjects);
+        Refresh();
     }
 
     public void RemoveObject()
     {
         numObjects--;
         print("Objects: " + numObjects);
+        Refresh();
     }
+
+    protected abstract void Refresh();
 }

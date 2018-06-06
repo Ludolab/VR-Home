@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -110,11 +111,7 @@ public class PickUp : MonoBehaviour {
             EnableHighlight();
         }
 
-        Bowl bowl = other.gameObject.GetComponent<Bowl>();
-        if (bowl != null)
-        {
-            bowl.AddObject();
-        }
+        ActionIfBowl(other, b => b.AddObject());
     }
 
     private void OnTriggerExit(Collider other)
@@ -132,10 +129,19 @@ public class PickUp : MonoBehaviour {
             DisableHighlight();
         }
 
-        Bowl bowl = other.gameObject.GetComponent<Bowl>();
-        if (bowl != null)
+        ActionIfBowl(other, b => b.RemoveObject());
+    }
+
+    private void ActionIfBowl(Collider other, Action<Bowl> action)
+    {
+        Transform parent = other.gameObject.transform.parent;
+        if (parent != null)
         {
-            bowl.RemoveObject();
+            Bowl bowl = parent.gameObject.GetComponent<Bowl>();
+            if (bowl != null)
+            {
+                action(bowl);
+            }
         }
     }
 
