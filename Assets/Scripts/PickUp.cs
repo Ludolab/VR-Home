@@ -61,7 +61,7 @@ public class PickUp : MonoBehaviour {
                 Release(controller);
             }
 
-            if (input.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
+            if (input.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
             {
                 gameObject.transform.position = startPos;
             }
