@@ -41,6 +41,11 @@ public class VRUIInput : MonoBehaviour
             button.Select();
             Debug.Log("HandlePointerIn", e.target.gameObject);
         }
+        var toggle = e.target.GetComponent<Toggle>();
+        if (toggle != null)
+        {
+            toggle.Select();
+        }
     }
 
     private void HandlePointerOut(object sender, PointerEventArgs e)
@@ -51,6 +56,11 @@ public class VRUIInput : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(null);
             Debug.Log("HandlePointerOut", e.target.gameObject);
+        }
+        var toggle = e.target.GetComponent<Toggle>();
+        if (toggle != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 }
