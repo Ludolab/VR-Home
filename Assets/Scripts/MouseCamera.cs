@@ -5,10 +5,11 @@ using UnityEngine;
 public class MouseCamera : MonoBehaviour {
 
     public float mouseSensitivity = 4.0f;
+    public GameObject eyeCam;
 
     private const float MIN_VERT_ROTATION = -90;
     private const float MAX_VERT_ROTATION = 90;
-    private const float CAMERA_CHECK_TIME = 0.5f;
+    private const float CAMERA_CHECK_TIME = 0.1f;
 
     private Camera cam;
     private float horizRotation = 0;
@@ -32,8 +33,8 @@ public class MouseCamera : MonoBehaviour {
     private bool VRFailed()
     {
         //TODO: does this work if enabled?
-        GameObject camObj = Camera.main.gameObject;
-        SteamVR_TrackedObject camScript = camObj.GetComponent<SteamVR_TrackedObject>();
+        //GameObject camObj = Camera.main.gameObject;
+        SteamVR_TrackedObject camScript = eyeCam.GetComponent<SteamVR_TrackedObject>();
         return camScript == null;
     }
 
