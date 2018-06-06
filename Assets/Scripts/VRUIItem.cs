@@ -3,6 +3,7 @@
 [RequireComponent(typeof(RectTransform))]
 public class VRUIItem : MonoBehaviour
 {
+
     private BoxCollider boxCollider;
     private RectTransform rectTransform;
 
@@ -16,6 +17,7 @@ public class VRUIItem : MonoBehaviour
         ValidateCollider();
     }
 
+    //Generates a BoxCollider to element on attachment of script.
     private void ValidateCollider()
     {
         rectTransform = GetComponent<RectTransform>();

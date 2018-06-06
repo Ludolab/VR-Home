@@ -25,6 +25,7 @@ public class VRUIInput : MonoBehaviour
         trackedController.TriggerClicked += HandleTriggerClicked;
     }
 
+    //Perform action when an object is selected by a laser and trigger is clicked.
     private void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
         if (EventSystem.current.currentSelectedGameObject != null)
@@ -35,12 +36,13 @@ public class VRUIInput : MonoBehaviour
 
     private void HandlePointerIn(object sender, PointerEventArgs e)
     {
+        //Perform button select.
         var button = e.target.GetComponent<Button>();
         if (button != null)
         {
             button.Select();
-            Debug.Log("HandlePointerIn", e.target.gameObject);
         }
+        //Alternatively, perform toggle select.
         var toggle = e.target.GetComponent<Toggle>();
         if (toggle != null)
         {
@@ -48,14 +50,13 @@ public class VRUIInput : MonoBehaviour
         }
     }
 
+    //Deselect object when laser leaves collider range.
     private void HandlePointerOut(object sender, PointerEventArgs e)
     {
-
         var button = e.target.GetComponent<Button>();
         if (button != null)
         {
             EventSystem.current.SetSelectedGameObject(null);
-            Debug.Log("HandlePointerOut", e.target.gameObject);
         }
         var toggle = e.target.GetComponent<Toggle>();
         if (toggle != null)
