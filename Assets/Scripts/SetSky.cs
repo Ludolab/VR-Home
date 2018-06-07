@@ -8,13 +8,12 @@ public class SetSky : MonoBehaviour {
     private float percentThroughDay;
     public Material dayToSunset;
     public Material sunsetToNight;
-    public GameObject sun;
+    public Light sun;
 
 	// Use this for initialization
     void Start () {
         percentThroughDay = 0f; // will be set based on actual time
-        RenderSettings.skybox = dayToSunset;
-        dayToSunset.SetFloat("_Blend", (percentThroughDay / 50));
+        applyChanges();
 	}
 	
 	// Update is called once per frame
@@ -41,22 +40,30 @@ public class SetSky : MonoBehaviour {
         }
 	}
 
-    private void applyChanges() {
+    public void applyChanges() {
+        float angleLateral = (percentThroughDay / 2) - 40;
         if (percentThroughDay > 50)
+        // After Sunset    
         {
+            float percentThroughEvening = (percentThroughDay - 50) / 50;
             RenderSettings.skybox = sunsetToNight;
-            sunsetToNight.SetFloat("_Blend", (percentThroughDay - 50) / 50);
-            float angleVertical = (((percentThroughDay - 50) / 50)*-30)+10;
-            float angleLateral = (percentThroughDay/2) - 30;
+            sunsetToNight.SetFloat("_Blend", percentThroughEvening);
+            float angleVertical = Mathf.Lerp(10, -20, percentThroughEvening);
             sun.transform.rotation = Quaternion.Euler(angleVertical, angleLateral, angleVertical);
+            sun.intensity = Mathf.Lerp(1.5f, 0, percentThroughEvening);
+            sun.color = new Color(1, 0.8108f, 0.3820f, 1);
         }
         else
+        // Before Sunset    
         {
+            float percentThroughMorning = percentThroughDay / 50;    
             RenderSettings.skybox = dayToSunset;
-            dayToSunset.SetFloat("_Blend", (percentThroughDay / 50));
-            float angleVertical = (((percentThroughDay) / 50) * -40) + 50;
-            float angleLateral = (percentThroughDay/2) - 30;
+            dayToSunset.SetFloat("_Blend", percentThroughMorning);
+            float angleVertical = Mathf.Lerp(50, 10, percentThroughMorning);
             sun.transform.rotation = Quaternion.Euler(angleVertical, angleLateral, angleVertical);
+            sun.intensity = 1.5f;
+            sun.color = Color.Lerp(new Color(1, 0.9568f, 0.8392f, 1), new Color(1, 0.8108f, 0.3820f, 1), percentThroughMorning);
         }
     }
+
 }
