@@ -4,3 +4,4 @@
 - Outline shader by Luke Kabat: https://github.com/Shrimpey/Outlined-Diffuse-Shader-Fixed
 - Thud sound by OtisJames: https://freesound.org/people/OtisJames/sounds/215162/
 - Gong sound by InspectorJ: https://freesound.org/people/InspectorJ/sounds/411090/
+- SteamVR laser-pointer UI by Jason Weimann: https://unity3d.college/2017/06/17/steamvr-laser-pointer-menus/
