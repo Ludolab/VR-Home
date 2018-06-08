@@ -17,6 +17,7 @@ public class Slide : PickUp {
     private void Start()
 	{
         isHeld = false;
+        gameObject.transform.position = minPoint;
 	}
 
 	private void Update()
