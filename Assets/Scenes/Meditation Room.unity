@@ -174,11 +174,11 @@ Prefab:
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1225807829}
+      objectReference: {fileID: 1519654007}
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 656338139}
+      objectReference: {fileID: 671578118}
     - target: {fileID: 65477879768848686, guid: 4d293c8e162f3874b982baadd71153d2,
         type: 2}
       propertyPath: m_Size.x
@@ -442,7 +442,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300018, guid: 91fefbefb277a4742be4de210ca95793, type: 3}
---- !u!21 &656338139
+--- !u!21 &671578118
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 1079136038}
   - component: {fileID: 1079136042}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Slider Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f69c06b5020d489788af92ab36c4b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightShader: {fileID: 0}
+  highlightShader: {fileID: 4800000, guid: 93b6444a31715fd45ab2910e18103d4a, type: 3}
   heldColor: {r: 0.121395506, g: 0.8301887, b: 0.22882329, a: 0}
   hoverColor: {r: 0.8784314, g: 0.79755384, b: 0.16078433, a: 0}
   minPoint: {x: 1, y: 0.5, z: 0.5}
@@ -1315,7 +1315,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f37ead56299c0e469c8deca9ff4b7f1, type: 2}
   m_IsPrefabParent: 0
---- !u!43 &1225807829
+--- !u!43 &1519654007
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
