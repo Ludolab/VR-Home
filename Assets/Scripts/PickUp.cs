@@ -116,6 +116,7 @@ public class PickUp : MonoBehaviour
             SteamVR_Controller.Device input = GetInput(controllerIndex);
             rb.velocity = input.velocity;
             rb.angularVelocity = input.angularVelocity;
+            input.TriggerHapticPulse(2000);
             SetGrabbable(controllerIndex);
         }
     }
