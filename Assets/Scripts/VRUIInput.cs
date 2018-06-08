@@ -5,6 +5,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(SteamVR_LaserPointer))]
 public class VRUIInput : MonoBehaviour
 {
+    public Color highlightColor; //Color to make selected text bold to.
+
     private SteamVR_LaserPointer laserPointer;
     private SteamVR_TrackedController trackedController;
 
@@ -47,7 +49,8 @@ public class VRUIInput : MonoBehaviour
         if (toggle != null)
         {
             toggle.Select();
-            e.target.gameObject.GetComponentInChildren<Text>().gameObject.AddComponent<Outline>();
+            Outline highlight = e.target.gameObject.GetComponentInChildren<Text>().gameObject.AddComponent<Outline>();
+            highlight.effectColor = highlightColor;
         }
     }
 
