@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SetSky : MonoBehaviour {
 
+    private float oldPercentThroughDay;
     public float percentThroughDay;
     public Material dayToSunset;
     public Material sunsetToNight;
@@ -12,12 +13,14 @@ public class SetSky : MonoBehaviour {
 
 	// Use this for initialization
     void Start () {
+        oldPercentThroughDay = 0;
         percentThroughDay = 0f; // will be set based on actual time
         applyChanges();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        /* MANUAL TIME SHIFT: FOR DEBUGGING */
         if (Input.GetKeyDown("right"))
         {
             percentThroughDay += 1f;
@@ -25,8 +28,7 @@ public class SetSky : MonoBehaviour {
             {
                 percentThroughDay = 100;
             }
-            Debug.Log("percentThroughDay is " + percentThroughDay);
-            applyChanges();
+            //Debug.Log("percentThroughDay is " + percentThroughDay);
         }
         if (Input.GetKeyDown("left"))
         {
@@ -35,9 +37,9 @@ public class SetSky : MonoBehaviour {
             {
                 percentThroughDay = 0;
             }
-            Debug.Log("percentThroughDay is " + percentThroughDay);
-            applyChanges();
+            //Debug.Log("percentThroughDay is " + percentThroughDay);
         }
+        applyChanges();
 	}
 
     public void applyChanges() {
