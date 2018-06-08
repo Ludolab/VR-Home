@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00002704715, g: 0.000041602976, b: 0.07382047, a: 0.5}
+  m_IndirectSpecularColor: {r: 0.000027146163, g: 0.00008975249, b: 0.002244655, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -713,7 +713,7 @@ MonoBehaviour:
   sunsetToNight: {fileID: 2100000, guid: 1200bd0efde1742e29c7c8ed5f408d00, type: 2}
   daylightColor: {r: 1, g: 0.9568, b: 0.8392, a: 1}
   sunsetColor: {r: 1, g: 0.9682, b: 0.6462, a: 1}
-  nightColor: {r: 0.946, g: 0.929, b: 1, a: 1}
+  nightColor: {r: 0.92941177, g: 0.97884256, b: 1, a: 1}
   sun: {fileID: 812399955}
   ambientLight: {fileID: 1201376413}
 --- !u!1 &822580650
