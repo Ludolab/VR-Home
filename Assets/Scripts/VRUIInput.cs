@@ -64,7 +64,7 @@ public class VRUIInput : MonoBehaviour
         Toggle toggle = e.target.GetComponent<Toggle>();
         if (toggle != null)
         {
-            e.target.gameObject.GetComponentInChildren<Text>().fontStyle = highlightType; //De-styles text.
+            e.target.gameObject.GetComponentInChildren<Text>().fontStyle = FontStyle.Normal; //De-styles text.
             EventSystem.current.SetSelectedGameObject(null);
         }
     }
