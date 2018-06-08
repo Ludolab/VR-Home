@@ -5,21 +5,20 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    private const int NO_HOLDER = -1;
+    private const int NUM_CONTROLLERS = 2;
 
-    //TODO: make this work for two controllers- make controller-specific stuff arrays of len 2
-    private static GameObject grabbableObject = null;
+    private static GameObject[] grabbableObjects = new GameObject[NUM_CONTROLLERS];
 
     public Shader highlightShader;
     public Color heldColor;
     public Color hoverColor;
 
-    private SteamVR_TrackedObject controller1;
-    private SteamVR_TrackedObject controller2;
+    private SteamVR_TrackedObject[] controllers = new SteamVR_TrackedObject[NUM_CONTROLLERS];
 
-    private bool controller1Inside = false;
-    private bool controller2Inside = false;
+    private bool[] controllersInside = new bool[NUM_CONTROLLERS];
 
-    private SteamVR_TrackedObject holder = null;
+    private int holder = NO_HOLDER;
 
     private Rigidbody rb;
     private Shader oldShader;
@@ -31,39 +30,42 @@ public class PickUp : MonoBehaviour
     {
         startPos = gameObject.transform.position;
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
-        controller1 = manager.left.GetComponent<SteamVR_TrackedObject>();
-        controller2 = manager.right.GetComponent<SteamVR_TrackedObject>();
+        controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
+        controllers[1] = manager.right.GetComponent<SteamVR_TrackedObject>();
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
         oldShader = rend.material.shader;
     }
 
-    private SteamVR_Controller.Device GetInput(SteamVR_TrackedObject controller)
+    private SteamVR_Controller.Device GetInput(int controllerIndex)
     {
+        SteamVR_TrackedObject controller = controllers[controllerIndex];
         return SteamVR_Controller.Input((int)controller.index);
     }
 
     private void Update()
     {
-        CheckController(controller1, controller1Inside);
-        CheckController(controller2, controller2Inside);
+        for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
+        {
+            CheckController(controllerIndex);
+        }
     }
 
-    private void CheckController(SteamVR_TrackedObject controller, bool inside)
+    private void CheckController(int controllerIndex)
     {
         try
         {
-            SteamVR_Controller.Device input = GetInput(controller);
+            SteamVR_Controller.Device input = GetInput(controllerIndex);
             if (input.GetHairTriggerDown())
             {
-                if (inside)
+                if (controllersInside[controllerIndex])
                 {
-                    Grab(controller);
+                    Grab(controllerIndex);
                 }
             }
             if (input.GetHairTriggerUp())
             {
-                Release(controller);
+                Release(controllerIndex);
             }
 
             if (input.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
@@ -77,34 +79,42 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    private bool CanGrab()
+    private bool CanGrab(int controllerIndex)
     {
-        return grabbableObject == gameObject && holder == null;
+        return grabbableObjects[controllerIndex] == gameObject && holder == NO_HOLDER;
     }
 
-    private void Grab(SteamVR_TrackedObject controller)
+    private void Grab(int controllerIndex)
     {
-        if (CanGrab())
+        if (CanGrab(controllerIndex))
         {
-            holder = controller;
+            SteamVR_TrackedObject controller = controllers[controllerIndex];
+            holder = controllerIndex;
             gameObject.transform.parent = controller.gameObject.transform;
             rb.isKinematic = true;
             SetColor(heldColor);
+
+            //clear the other controller's grabbable object if it was this
+            int otherControllerIndex = 1 - controllerIndex;
+            if (grabbableObjects[otherControllerIndex] == gameObject)
+            {
+                grabbableObjects[otherControllerIndex] = null;
+            }
         }
     }
 
-    private void Release(SteamVR_TrackedObject controller)
+    private void Release(int controllerIndex)
     {
-        if (holder == controller)
+        if (holder == controllerIndex)
         {
-            grabbableObject = null;
-            holder = null;
+            grabbableObjects[controllerIndex] = null;
+            holder = NO_HOLDER;
             gameObject.transform.parent = null;
             rb.isKinematic = false;
-            SteamVR_Controller.Device input = GetInput(controller);
+            SteamVR_Controller.Device input = GetInput(controllerIndex);
             rb.velocity = input.velocity;
             rb.angularVelocity = input.angularVelocity;
-            SetGrabbable();
+            SetGrabbable(controllerIndex);
         }
     }
 
@@ -115,31 +125,25 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == controller1.gameObject)
+        for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
         {
-            controller1Inside = true;
-            SetGrabbable();
-        }
-        if (other.gameObject == controller2.gameObject)
-        {
-            controller2Inside = true;
-            SetGrabbable();
+            if (other.gameObject == controllers[controllerIndex].gameObject)
+            {
+                controllersInside[controllerIndex] = true;
+                SetGrabbable(controllerIndex);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == controller1.gameObject)
+        for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
         {
-            controller1Inside = false;
-        }
-        if (other.gameObject == controller2.gameObject)
-        {
-            controller2Inside = false;
-        }
-        if (!controller1Inside && !controller2Inside)
-        {
-            SetNotGrabbable();
+            if (other.gameObject == controllers[controllerIndex].gameObject)
+            {
+                controllersInside[controllerIndex] = false;
+            }
+            SetNotGrabbable(controllerIndex);
         }
 
         ActionIfBowl(other, b => b.RemoveObject());
@@ -158,28 +162,39 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    private void SetGrabbable()
+    private void SetGrabbable(int controllerIndex)
     {
-        if (grabbableObject == null)
+        if (grabbableObjects[controllerIndex] == null)
         {
-            grabbableObject = gameObject;
+            grabbableObjects[controllerIndex] = gameObject;
         }
 
-        if (CanGrab())
+        if (CanGrab(controllerIndex))
         {
             rend.material.shader = highlightShader;
             SetColor(hoverColor);
         }
     }
 
-    private void SetNotGrabbable()
+    private void SetNotGrabbable(int controllerIndex)
     {
-        if (grabbableObject == gameObject)
+        if (grabbableObjects[controllerIndex] == gameObject)
         {
-            grabbableObject = null;
+            grabbableObjects[controllerIndex] = null;
         }
 
-        rend.material.shader = oldShader;
+        bool noneInside = true;
+        for (int ci = 0; ci < NUM_CONTROLLERS; ci++)
+        {
+            if (controllersInside[ci])
+            {
+                noneInside = false;
+            }
+        }
+        if (noneInside)
+        {
+            rend.material.shader = oldShader;
+        }
     }
 
     private void SetColor(Color color)
@@ -189,7 +204,7 @@ public class PickUp : MonoBehaviour
 
     private void Reset()
     {
-        if (holder != null)
+        if (holder != NO_HOLDER)
         {
             Release(holder);
         }
