@@ -122,9 +122,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4474906879197446}
   - component: {fileID: 33505228236969576}
+  - component: {fileID: 64788826629384120}
   - component: {fileID: 183887829046880702}
   - component: {fileID: 137678075986711530}
-  - component: {fileID: 64788826629384120}
   m_Layer: 0
   m_Name: Meditation_SideClothR
   m_TagString: Untagged
@@ -987,7 +987,7 @@ SkinnedMeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1559200076212776}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -1024,8 +1024,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.0000000055879354, y: 0.000000014901161, z: -0.000000014901161}
-    m_Extent: {x: 0.13171953, y: 0.10679708, z: 5.465932e-17}
+    m_Center: {x: -0.0000000055879354, y: 0, z: -0.000000014901161}
+    m_Extent: {x: 0.19757928, y: 0.14239612, z: 7.815748e-17}
   m_DirtyAABB: 0
 --- !u!137 &137678075986711530
 SkinnedMeshRenderer:
@@ -1034,7 +1034,7 @@ SkinnedMeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363650688562536}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -1071,8 +1071,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.0000000055879354, y: 0.000000014901161, z: -0.000000014901161}
-    m_Extent: {x: 0.12893267, y: 0.10679708, z: 0}
+    m_Center: {x: 0.0000000055879354, y: 0, z: -0.000000014901161}
+    m_Extent: {x: 0.19339898, y: 0.14239612, z: 0}
   m_DirtyAABB: 0
 --- !u!183 &183563423659146694
 Cloth:
@@ -1594,14 +1594,14 @@ Cloth:
     collisionSphereDistance: 3.4028235e+38
   - maxDistance: 0
     collisionSphereDistance: 3.4028235e+38
-  - maxDistance: 3.4028235e+38
-    collisionSphereDistance: 3.4028235e+38
-  - maxDistance: 3.4028235e+38
-    collisionSphereDistance: 3.4028235e+38
-  - maxDistance: 3.4028235e+38
-    collisionSphereDistance: 3.4028235e+38
-  - maxDistance: 3.4028235e+38
-    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0
+    collisionSphereDistance: 0
+  - maxDistance: 0
+    collisionSphereDistance: 0
+  - maxDistance: 0
+    collisionSphereDistance: 0
+  - maxDistance: 0
+    collisionSphereDistance: 0
   - maxDistance: 3.4028235e+38
     collisionSphereDistance: 3.4028235e+38
   - maxDistance: 3.4028235e+38
@@ -1610,8 +1610,8 @@ Cloth:
     collisionSphereDistance: 3.4028235e+38
   - maxDistance: 0
     collisionSphereDistance: 3.4028235e+38
-  - maxDistance: 3.4028235e+38
-    collisionSphereDistance: 3.4028235e+38
+  - maxDistance: 0
+    collisionSphereDistance: 0
   - maxDistance: 0
     collisionSphereDistance: 3.4028235e+38
   - maxDistance: 0
