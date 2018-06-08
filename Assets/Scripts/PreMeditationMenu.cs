@@ -13,6 +13,8 @@ public class PreMeditationMenu : MonoBehaviour
     public string nextScene;
 
     private float WELCOME_LOAD_TIME = 2f;
+    private bool timeSet = false; //Make sure time only gets set once.
+    private bool environSet = false; //Make sure environment only gets set once.
 
     private void Start()
     {
@@ -31,17 +33,26 @@ public class PreMeditationMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(WELCOME_LOAD_TIME);
 
-        this.gameObject.transform.Find("Welcome").gameObject.SetActive(false);
-        this.gameObject.transform.Find("Time").gameObject.SetActive(true);
+        StartCoroutine(fade(this.gameObject.transform.Find("Welcome").gameObject, this.gameObject.transform.Find("Time").gameObject, false));
     }
 
 	private void Update()
 	{
         // Check if the user has selected a time, and then store that for room generation.
-        if (timeSelect.AnyTogglesOn()) setTime();
+        if (timeSelect.AnyTogglesOn() && !timeSet)
+        {
+            setTime();
+            StartCoroutine(fade(this.gameObject.transform.Find("Time").gameObject, this.gameObject.transform.Find("Environment").gameObject, false));
+        }
 
         // Check if the user has selected an environment, and then store that for room generation.
-        if (environSelect.AnyTogglesOn()) setEnvironment();
+        if (environSelect.AnyTogglesOn() && !environSet)
+        {
+            setEnvironment();
+
+            StartCoroutine(fade(this.gameObject.transform.Find("Environment").gameObject, new GameObject(), true));
+
+        }
 	}
 
     private void setTime()
@@ -62,20 +73,78 @@ public class PreMeditationMenu : MonoBehaviour
                 MUserSettings.setTime(-1f); //Use negative value to indicate infinite time.
                 break;
         }
-
-        this.gameObject.transform.Find("Time").gameObject.SetActive(false);
-        this.gameObject.transform.Find("Environment").gameObject.SetActive(true);
+        timeSet = true;
     }
 
     private void setEnvironment()
     {
         //Set-up, to potentially add different environments user can choose from.
         MUserSettings.setEnviron(environSelect.ActiveToggles().FirstOrDefault().name);
+        environSet = false;
+    }
 
-        this.gameObject.transform.Find("Environment").gameObject.SetActive(false);
+    //Returns all the MeshRenderers under an object and its children.
+    private List<Text> getChildText (Transform parent, List<Text> list) {
+        foreach(Transform child in parent) {
+            if (child == null) continue; //No more children to recurse on so break.
 
-        //Move into the room, since set-up is complete.
-        SceneManager.LoadScene(nextScene);
+            Text text = child.GetComponent<Text>();
+            if (text != null) list.Add(text);
+            getChildText(child, list);
+        }
+        return list;
+    }
+
+    // Could later attempt to generalize this code to work for all UI elements, not just text.
+    private IEnumerator fade(GameObject toFadeOut, GameObject toFadeIn, bool endScene)
+    {
+        // Get all elements under the object to fade out that have text.
+        List<Text> allOutText = getChildText(toFadeOut.transform, new List<Text>());
+        Text outParentText = toFadeOut.GetComponent<Text>();
+        if (outParentText != null) allOutText.Add(outParentText);
+        int allOTCount = allOutText.Count;
+
+        // Fadeout elements.
+        for (int i = 0; i < 20; i++) {
+            yield return new WaitForSeconds(0.07f);
+            for (int j = 0; j < allOTCount; j++) {
+                Color color = allOutText[j].color;
+                allOutText[j].color = new Color(color.r, color.g, color.b, color.a - 0.05f);
+            }
+        }
+
+        // Disable first object.
+        toFadeOut.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Get all elements under the object to fade in that have text.
+        List<Text> allInText = getChildText(toFadeIn.transform, new List<Text>());
+        Text inParentText = toFadeIn.GetComponent<Text>();
+        if (inParentText != null) allInText.Add(inParentText);
+        int allITCount = allInText.Count;
+
+        // Set all text elements to transparent first.
+        for (int j = 0; j < allITCount; j++)
+        {
+            Color color = allInText[j].color;
+            allInText[j].color = new Color(color.r, color.g, color.b, 0f);
+        }
+        // Reactivate the object to fade in.
+        toFadeIn.SetActive(true);
+
+        // Fadein elements.
+        for (int i = 0; i < 20; i++)
+        {
+            yield return new WaitForSeconds(0.07f);
+            for (int j = 0; j < allITCount; j++)
+            {
+                Color color = allInText[j].color;
+                allInText[j].color = new Color(color.r, color.g, color.b, color.a + 0.05f);
+            }
+        }
+
+        if(endScene) SceneManager.LoadScene(nextScene); //Move into the next room when indicated.
     }
 
 }
