@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SitDown : MonoBehaviour {
 
     public string menuScene;
+    public GameObject[] audioToFade;
 
     private const float SIT_TIME = 1.0f; //time required in sitting position before overlay disappears, in seconds
     private const float SIT_HEIGHT = 1.0f; //maximum y-position above floor that counts as sitting, in meters
@@ -63,6 +64,7 @@ public class SitDown : MonoBehaviour {
         {
             sittingInProgress = true;
             StartCoroutine(WaitSitting());
+            addAudioTimer();
         }
 
         if (done && !isQuitting && !IsSitting())
@@ -177,5 +179,19 @@ public class SitDown : MonoBehaviour {
         yield return new WaitForSeconds(FADE_OUT_HOLD_TIME);
 
         SceneManager.LoadScene(menuScene);
+    }
+
+    private void addAudioTimer() {
+        int time = MUserSettings.getTime();
+        if(time > 0) {
+            foreach (GameObject audSource in audioToFade)
+            {
+                if (audSource.GetComponent<AudioSource>() != null)
+                {
+                    SoundTimer timer = audSource.AddComponent<SoundTimer>();
+                    timer.time = time;
+                }
+            }
+        }
     }
 }

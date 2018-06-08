@@ -50,7 +50,7 @@ public class PreMeditationMenu : MonoBehaviour
         {
             setEnvironment();
 
-            StartCoroutine(fade(this.gameObject.transform.Find("Environment").gameObject, new GameObject(), true));
+            StartCoroutine(fade(this.gameObject.transform.Find("Environment").gameObject, null, true));
 
         }
 	}
@@ -61,16 +61,16 @@ public class PreMeditationMenu : MonoBehaviour
         switch (timeActive)
         {
             case "5":
-                MUserSettings.setTime(300f);
+                MUserSettings.setTime(300);
                 break;
             case "10":
-                MUserSettings.setTime(600f);
+                MUserSettings.setTime(600);
                 break;
             case "20":
-                MUserSettings.setTime(1200f);
+                MUserSettings.setTime(1200);
                 break;
             case "inf":
-                MUserSettings.setTime(-1f); //Use negative value to indicate infinite time.
+                MUserSettings.setTime(-1); //Use negative value to indicate infinite time.
                 break;
         }
         timeSet = true;
@@ -98,49 +98,57 @@ public class PreMeditationMenu : MonoBehaviour
     // Could later attempt to generalize this code to work for all UI elements, not just text.
     private IEnumerator fade(GameObject toFadeOut, GameObject toFadeIn, bool endScene)
     {
-        // Get all elements under the object to fade out that have text.
-        List<Text> allOutText = getChildText(toFadeOut.transform, new List<Text>());
-        Text outParentText = toFadeOut.GetComponent<Text>();
-        if (outParentText != null) allOutText.Add(outParentText);
-        int allOTCount = allOutText.Count;
+        if (toFadeOut != null)
+        {
+            // Get all elements under the object to fade out that have text.
+            List<Text> allOutText = getChildText(toFadeOut.transform, new List<Text>());
+            Text outParentText = toFadeOut.GetComponent<Text>();
+            if (outParentText != null) allOutText.Add(outParentText);
+            int allOTCount = allOutText.Count;
 
-        // Fadeout elements.
-        for (int i = 0; i < 20; i++) {
-            yield return new WaitForSeconds(0.07f);
-            for (int j = 0; j < allOTCount; j++) {
-                Color color = allOutText[j].color;
-                allOutText[j].color = new Color(color.r, color.g, color.b, color.a - 0.05f);
+            // Fadeout elements.
+            for (int i = 0; i < 20; i++)
+            {
+                yield return new WaitForSeconds(0.07f);
+                for (int j = 0; j < allOTCount; j++)
+                {
+                    Color color = allOutText[j].color;
+                    allOutText[j].color = new Color(color.r, color.g, color.b, color.a - 0.05f);
+                }
             }
-        }
 
-        // Disable first object.
-        toFadeOut.SetActive(false);
+            // Disable first object.
+            toFadeOut.SetActive(false);
+        }
 
         yield return new WaitForSeconds(0.5f);
 
-        // Get all elements under the object to fade in that have text.
-        List<Text> allInText = getChildText(toFadeIn.transform, new List<Text>());
-        Text inParentText = toFadeIn.GetComponent<Text>();
-        if (inParentText != null) allInText.Add(inParentText);
-        int allITCount = allInText.Count;
-
-        // Set all text elements to transparent first.
-        for (int j = 0; j < allITCount; j++)
+        if (toFadeIn != null)
         {
-            Color color = allInText[j].color;
-            allInText[j].color = new Color(color.r, color.g, color.b, 0f);
-        }
-        // Reactivate the object to fade in.
-        toFadeIn.SetActive(true);
+            // Get all elements under the object to fade in that have text.
+            List<Text> allInText = getChildText(toFadeIn.transform, new List<Text>());
+            Text inParentText = toFadeIn.GetComponent<Text>();
+            if (inParentText != null) allInText.Add(inParentText);
+            int allITCount = allInText.Count;
 
-        // Fadein elements.
-        for (int i = 0; i < 20; i++)
-        {
-            yield return new WaitForSeconds(0.07f);
+            // Set all text elements to transparent first.
             for (int j = 0; j < allITCount; j++)
             {
                 Color color = allInText[j].color;
-                allInText[j].color = new Color(color.r, color.g, color.b, color.a + 0.05f);
+                allInText[j].color = new Color(color.r, color.g, color.b, 0f);
+            }
+            // Reactivate the object to fade in.
+            toFadeIn.SetActive(true);
+
+            // Fadein elements.
+            for (int i = 0; i < 20; i++)
+            {
+                yield return new WaitForSeconds(0.07f);
+                for (int j = 0; j < allITCount; j++)
+                {
+                    Color color = allInText[j].color;
+                    allInText[j].color = new Color(color.r, color.g, color.b, color.a + 0.05f);
+                }
             }
         }
 
