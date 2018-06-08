@@ -17,7 +17,7 @@ Properties {
 }
 
 SubShader {
-    Tags { "Queue" = "Background" }
+    Tags { "Queue" = "Background"}
     Cull Off
     Fog { Mode Off }
     Lighting Off

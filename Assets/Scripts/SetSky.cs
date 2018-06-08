@@ -5,18 +5,17 @@ using UnityEngine;
 
 public class SetSky : MonoBehaviour {
 
-    private float oldPercentThroughDay;
     public float percentThroughDay;
     public Material dayToSunset;
     public Material sunsetToNight;
-    public Color daylightColor = new Color(1, 0.9568f, 0.8392f, 1);
-    public Color sunsetColor = new Color(1, 0.9682f, 0.6462f, 1);
-    public Color nightColor = new Color(0.946f, 0.929f, 1, 1);
+    public Color daylightColor = Color.white; //new Color(1, 0.9568f, 0.8392f, 1);
+    public Color sunsetColor = Color.red;//new Color(1, 0.9682f, 0.6462f, 1);
+    public Color nightColor = Color.blue;//new Color(0.946f, 0.929f, 1, 1);
     public Light sun;
+    public Light ambientLight;
 
 	// Use this for initialization
     void Start () {
-        oldPercentThroughDay = 0;
         percentThroughDay = 0f; // starts with daylight
         applyChanges();
 	}
@@ -57,8 +56,8 @@ public class SetSky : MonoBehaviour {
             sun.transform.rotation = Quaternion.Euler(angleVertical, angleLateral, angleVertical);
             sun.intensity = Mathf.Lerp(1.5f, 0, percentThroughEvening);
             sun.color = sunsetColor;
-            RenderSettings.ambientLight = Color.Lerp(sunsetColor, nightColor, percentThroughEvening);
-            RenderSettings.ambientIntensity = Mathf.Lerp(sun.intensity/2, 0.2f, percentThroughEvening);
+            ambientLight.color = Color.Lerp(sunsetColor, nightColor, percentThroughEvening);
+            ambientLight.intensity = Mathf.Lerp(sun.intensity/2, 0.2f, percentThroughEvening);
         }
         else
         // Before Sunset    
@@ -71,8 +70,8 @@ public class SetSky : MonoBehaviour {
             sun.intensity = 1.5f;
             Color lightColor = Color.Lerp(daylightColor, sunsetColor, percentThroughMorning);
             sun.color = lightColor;
-            RenderSettings.ambientLight = lightColor;
-            RenderSettings.ambientIntensity = sun.intensity/2;
+            ambientLight.color = lightColor;
+            ambientLight.intensity = sun.intensity/2;
         }
     }
 
