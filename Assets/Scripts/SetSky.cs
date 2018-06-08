@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SetSky : MonoBehaviour {
 
-    private float percentThroughDay;
+    public float percentThroughDay;
     public Material dayToSunset;
     public Material sunsetToNight;
     public Light sun;
