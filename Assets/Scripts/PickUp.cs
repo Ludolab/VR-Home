@@ -93,6 +93,8 @@ public class PickUp : MonoBehaviour
             gameObject.transform.parent = controller.gameObject.transform;
             rb.isKinematic = true;
             SetColor(heldColor);
+            SteamVR_Controller.Device input = GetInput(controllerIndex);
+            input.TriggerHapticPulse();
 
             //clear the other controller's grabbable object if it was this
             int otherControllerIndex = 1 - controllerIndex;
