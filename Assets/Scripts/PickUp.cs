@@ -94,7 +94,7 @@ public class PickUp : MonoBehaviour
             rb.isKinematic = true;
             SetColor(heldColor);
             SteamVR_Controller.Device input = GetInput(controllerIndex);
-            input.TriggerHapticPulse(2000);
+            Rumble(input);
 
             //clear the other controller's grabbable object if it was this
             int otherControllerIndex = 1 - controllerIndex;
@@ -116,7 +116,7 @@ public class PickUp : MonoBehaviour
             SteamVR_Controller.Device input = GetInput(controllerIndex);
             rb.velocity = input.velocity;
             rb.angularVelocity = input.angularVelocity;
-            input.TriggerHapticPulse(2000);
+            Rumble(input);
             SetGrabbable(controllerIndex);
         }
     }
@@ -213,5 +213,10 @@ public class PickUp : MonoBehaviour
         }
         gameObject.transform.position = startPos;
         rb.velocity = Vector3.zero;
+    }
+
+    private void Rumble(SteamVR_Controller.Device input)
+    {
+        input.TriggerHapticPulse(1200);
     }
 }
