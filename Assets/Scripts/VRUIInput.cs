@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(SteamVR_LaserPointer))]
 public class VRUIInput : MonoBehaviour
 {
-    public Color highlightColor; //Color to make selected text bold to.
+    public FontStyle highlightType; //Set what type of highlighting to use on hovered text.
 
     private SteamVR_LaserPointer laserPointer;
     private SteamVR_TrackedController trackedController;
@@ -49,8 +49,7 @@ public class VRUIInput : MonoBehaviour
         if (toggle != null)
         {
             toggle.Select();
-            Outline highlight = e.target.gameObject.GetComponentInChildren<Text>().gameObject.AddComponent<Outline>();
-            highlight.effectColor = highlightColor;
+            e.target.gameObject.GetComponentInChildren<Text>().fontStyle = highlightType; //Styles text when hovered over.
         }
     }
 
@@ -65,8 +64,7 @@ public class VRUIInput : MonoBehaviour
         Toggle toggle = e.target.GetComponent<Toggle>();
         if (toggle != null)
         {
-            Outline highlight = e.target.gameObject.GetComponentInChildren<Text>().gameObject.GetComponent<Outline>();
-            if(highlight != null) Destroy(highlight);
+            e.target.gameObject.GetComponentInChildren<Text>().fontStyle = FontStyle.Normal; //De-styles text.
             EventSystem.current.SetSelectedGameObject(null);
         }
     }
