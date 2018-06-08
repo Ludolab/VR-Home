@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour {
+public class PickUp : MonoBehaviour
+{
 
-    private static bool heldObject = false;
+    //TODO: make this work for two controllers- make controller-specific stuff arrays of len 2
+    private static GameObject grabbableObject = null;
 
     public Shader highlightShader;
     public Color heldColor;
@@ -46,7 +48,7 @@ public class PickUp : MonoBehaviour {
         CheckController(controller1, controller1Inside);
         CheckController(controller2, controller2Inside);
     }
-    
+
     private void CheckController(SteamVR_TrackedObject controller, bool inside)
     {
         try
@@ -69,17 +71,21 @@ public class PickUp : MonoBehaviour {
                 Reset();
             }
         }
-        catch(System.IndexOutOfRangeException)
+        catch (IndexOutOfRangeException)
         {
             //can't talk to controller, don't do anything
         }
     }
-    
+
+    private bool CanGrab()
+    {
+        return grabbableObject == gameObject && holder == null;
+    }
+
     private void Grab(SteamVR_TrackedObject controller)
     {
-        if (heldObject == false && holder == null)
+        if (CanGrab())
         {
-            heldObject = true;
             holder = controller;
             gameObject.transform.parent = controller.gameObject.transform;
             rb.isKinematic = true;
@@ -91,31 +97,34 @@ public class PickUp : MonoBehaviour {
     {
         if (holder == controller)
         {
-            heldObject = false;
+            grabbableObject = null;
             holder = null;
             gameObject.transform.parent = null;
             rb.isKinematic = false;
             SteamVR_Controller.Device input = GetInput(controller);
             rb.velocity = input.velocity;
             rb.angularVelocity = input.angularVelocity;
-            EnableHighlight();
+            SetGrabbable();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        ActionIfBowl(other, b => b.AddObject());
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         if (other.gameObject == controller1.gameObject)
         {
             controller1Inside = true;
-            EnableHighlight();
+            SetGrabbable();
         }
         if (other.gameObject == controller2.gameObject)
         {
             controller2Inside = true;
-            EnableHighlight();
+            SetGrabbable();
         }
-
-        ActionIfBowl(other, b => b.AddObject());
     }
 
     private void OnTriggerExit(Collider other)
@@ -130,7 +139,7 @@ public class PickUp : MonoBehaviour {
         }
         if (!controller1Inside && !controller2Inside)
         {
-            DisableHighlight();
+            SetNotGrabbable();
         }
 
         ActionIfBowl(other, b => b.RemoveObject());
@@ -149,17 +158,27 @@ public class PickUp : MonoBehaviour {
         }
     }
 
-    private void EnableHighlight()
+    private void SetGrabbable()
     {
-        if (holder == null)
+        if (grabbableObject == null)
+        {
+            grabbableObject = gameObject;
+        }
+
+        if (CanGrab())
         {
             rend.material.shader = highlightShader;
             SetColor(hoverColor);
         }
     }
 
-    private void DisableHighlight()
+    private void SetNotGrabbable()
     {
+        if (grabbableObject == gameObject)
+        {
+            grabbableObject = null;
+        }
+
         rend.material.shader = oldShader;
     }
 
