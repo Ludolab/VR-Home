@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Attach to a game object with an audio source to have its audio fade out after a certain amount of time.
-public class SoundTimer : MonoBehaviour {
+public class SoundTimer : MonoBehaviour
+{
 
     public int time; //in seconds.
 
     private int timeLeft;
-    private AudioSource audio;
+    private AudioSource[] audio;
     private bool startFade;
-    private float FADE_SPEED = 0.5f;
 
-	void Start () {
-        audio = this.GetComponent<AudioSource>();
+    void Start()
+    {
+        audio = this.GetComponents<AudioSource>();
         timeLeft = time;
         StartCoroutine(Countdown());
-	}
+    }
 
     private IEnumerator Countdown()
     {
-        while(timeLeft > 0) {
+        while (timeLeft > 0)
+        {
             yield return new WaitForSeconds(1.0f);
             timeLeft--;
         }
@@ -31,12 +33,19 @@ public class SoundTimer : MonoBehaviour {
     private IEnumerator Fade()
     {
         //TODO: prevent user from being able to adjust volume at this point.
-        while(audio != null && audio.volume > 0) {
-            yield return new WaitForSeconds(0.01f);
-            audio.volume -= 0.01f * FADE_SPEED;
+        for (int i = 0; i < 100; i++)
+        {
+            yield return new WaitForSeconds(0.02f);
+            foreach (AudioSource sound in audio)
+            {
+                if (sound.volume > 0) sound.volume -= 0.01f;
+            }
         }
-        //Remove audio component since no more sound will be playing for the rest of the time.
-        if(audio != null) Destroy(audio);
+        //Remove audio components since no more sound will be playing for the rest of the time.
+        foreach (AudioSource sound in audio)
+        {
+            Destroy(sound);
+        }
     }
 
 }
