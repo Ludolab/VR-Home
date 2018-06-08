@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33926701571402220}
   - component: {fileID: 23697413502414970}
   - component: {fileID: 114047231970839450}
-  - component: {fileID: 114429270915530374}
   - component: {fileID: 114181733032956574}
   m_Layer: 4
   m_Name: Water
@@ -57,6 +56,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 9054356db51893742b5a6c4fafd49165, type: 2}
   m_StaticBatchInfo:
@@ -106,7 +106,6 @@ MonoBehaviour:
   refractLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  runWhenNotPlaying: 0
 --- !u!114 &114181733032956574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,14 +123,3 @@ MonoBehaviour:
   displacementMultiplier: 0.4
   sizeMultiplier: 0.2
   runUpdate: 1
---- !u!114 &114429270915530374
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1672970675222848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a6c62f7c9e85eb4a9db56aaeb067e90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
