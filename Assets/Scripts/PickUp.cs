@@ -101,7 +101,7 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    protected void AttachToController(SteamVR_TrackedObject controller)
+    protected virtual void AttachToController(SteamVR_TrackedObject controller)
     {
         gameObject.transform.parent = controller.gameObject.transform;
         rb.isKinematic = true;
@@ -120,7 +120,7 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    protected void ReleaseFromController(SteamVR_TrackedObject controller)
+    protected virtual void ReleaseFromController(SteamVR_TrackedObject controller)
     {
         gameObject.transform.parent = null;
         rb.isKinematic = false;
