@@ -9,12 +9,15 @@ public class SetSky : MonoBehaviour {
     public float percentThroughDay;
     public Material dayToSunset;
     public Material sunsetToNight;
+    public Color daylightColor = new Color(1, 0.9568f, 0.8392f, 1);
+    public Color sunsetColor = new Color(1, 0.9682f, 0.6462f, 1);
+    public Color nightColor = new Color(0.946f, 0.929f, 1, 1);
     public Light sun;
 
 	// Use this for initialization
     void Start () {
         oldPercentThroughDay = 0;
-        percentThroughDay = 0f; // will be set based on actual time
+        percentThroughDay = 0f; // starts with daylight
         applyChanges();
 	}
 	
@@ -53,7 +56,9 @@ public class SetSky : MonoBehaviour {
             float angleVertical = Mathf.Lerp(10, -20, percentThroughEvening);
             sun.transform.rotation = Quaternion.Euler(angleVertical, angleLateral, angleVertical);
             sun.intensity = Mathf.Lerp(1.5f, 0, percentThroughEvening);
-            sun.color = new Color(1, 0.9682f, 0.6462f, 1);
+            sun.color = sunsetColor;
+            RenderSettings.ambientLight = Color.Lerp(sunsetColor, nightColor, percentThroughEvening);
+            RenderSettings.ambientIntensity = Mathf.Lerp(sun.intensity/2, 0.2f, percentThroughEvening);
         }
         else
         // Before Sunset    
@@ -64,7 +69,10 @@ public class SetSky : MonoBehaviour {
             float angleVertical = Mathf.Lerp(50, 10, percentThroughMorning);
             sun.transform.rotation = Quaternion.Euler(angleVertical, angleLateral, angleVertical);
             sun.intensity = 1.5f;
-            sun.color = Color.Lerp(new Color(1, 0.9568f, 0.8392f, 1), new Color(1, 0.9682f, 0.6462f, 1), percentThroughMorning);
+            Color lightColor = Color.Lerp(daylightColor, sunsetColor, percentThroughMorning);
+            sun.color = lightColor;
+            RenderSettings.ambientLight = lightColor;
+            RenderSettings.ambientIntensity = sun.intensity/2;
         }
     }
 
