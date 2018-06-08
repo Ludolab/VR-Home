@@ -16,6 +16,7 @@ public class PreMeditationMenu : MonoBehaviour
 
     private void Start()
     {
+
         StartCoroutine(Welcome());
     }
 
@@ -29,48 +30,45 @@ public class PreMeditationMenu : MonoBehaviour
 
 	private void Update()
 	{
-        if (timeSelect.IsActive()) setTime();
-        if (environSelect.IsActive()) setEnvironment();
+        // Check if the user has selected a time, and then store that for room generation.
+        if (timeSelect.AnyTogglesOn()) setTime();
+
+        // Check if the user has selected an environment, and then store that for room generation.
+        if (environSelect.AnyTogglesOn()) setEnvironment();
 	}
 
     private void setTime()
     {
-        if (timeSelect.AnyTogglesOn())
+        string timeActive = timeSelect.ActiveToggles().FirstOrDefault().name;
+        switch (timeActive)
         {
-            string timeActive = timeSelect.ActiveToggles().FirstOrDefault().name;
-            switch (timeActive)
-            {
-                case "5":
-                    MUserSettings.setTime(300f);
-                    break;
-                case "10":
-                    MUserSettings.setTime(600f);
-                    break;
-                case "20":
-                    MUserSettings.setTime(1200f);
-                    break;
-                case "inf":
-                    MUserSettings.setTime(-1f); //Use negative value to indicate infinite time.
-                    break;
-            }
-
-            this.gameObject.transform.Find("Time").gameObject.SetActive(false);
-            this.gameObject.transform.Find("Environment").gameObject.SetActive(true);
+            case "5":
+                MUserSettings.setTime(300f);
+                break;
+            case "10":
+                MUserSettings.setTime(600f);
+                break;
+            case "20":
+                MUserSettings.setTime(1200f);
+                break;
+            case "inf":
+                MUserSettings.setTime(-1f); //Use negative value to indicate infinite time.
+                break;
         }
+
+        this.gameObject.transform.Find("Time").gameObject.SetActive(false);
+        this.gameObject.transform.Find("Environment").gameObject.SetActive(true);
     }
 
     private void setEnvironment()
     {
-        if (environSelect.AnyTogglesOn())
-        {
-            //Set-up, to potentially add different environments user can choose from.
-            MUserSettings.setEnviron(environSelect.ActiveToggles().FirstOrDefault().name);
+        //Set-up, to potentially add different environments user can choose from.
+        MUserSettings.setEnviron(environSelect.ActiveToggles().FirstOrDefault().name);
 
-            this.gameObject.transform.Find("Environment").gameObject.SetActive(false);
+        this.gameObject.transform.Find("Environment").gameObject.SetActive(false);
 
-            //Move into the room, since set-up is complete.
-            SceneManager.LoadScene(nextScene);
-        }
+        //Move into the room, since set-up is complete.
+        SceneManager.LoadScene(nextScene);
     }
 
 }

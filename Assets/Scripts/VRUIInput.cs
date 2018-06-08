@@ -37,30 +37,33 @@ public class VRUIInput : MonoBehaviour
     private void HandlePointerIn(object sender, PointerEventArgs e)
     {
         //Perform button select.
-        var button = e.target.GetComponent<Button>();
+        Button button = e.target.GetComponent<Button>();
         if (button != null)
         {
             button.Select();
         }
         //Alternatively, perform toggle select.
-        var toggle = e.target.GetComponent<Toggle>();
+        Toggle toggle = e.target.GetComponent<Toggle>();
         if (toggle != null)
         {
             toggle.Select();
+            e.target.gameObject.GetComponentInChildren<Text>().gameObject.AddComponent<Outline>();
         }
     }
 
     //Deselect object when laser leaves collider range.
     private void HandlePointerOut(object sender, PointerEventArgs e)
     {
-        var button = e.target.GetComponent<Button>();
+        Button button = e.target.GetComponent<Button>();
         if (button != null)
         {
             EventSystem.current.SetSelectedGameObject(null);
         }
-        var toggle = e.target.GetComponent<Toggle>();
+        Toggle toggle = e.target.GetComponent<Toggle>();
         if (toggle != null)
         {
+            Outline highlight = e.target.gameObject.GetComponentInChildren<Text>().gameObject.GetComponent<Outline>();
+            if(highlight != null) Destroy(highlight);
             EventSystem.current.SetSelectedGameObject(null);
         }
     }
