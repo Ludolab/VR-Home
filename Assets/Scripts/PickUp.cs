@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour {
 
+    private static bool heldObject = false;
+
     public Shader highlightShader;
     public Color heldColor;
     public Color hoverColor;
@@ -75,8 +77,9 @@ public class PickUp : MonoBehaviour {
     
     private void Grab(SteamVR_TrackedObject controller)
     {
-        if (holder == null)
+        if (heldObject == false && holder == null)
         {
+            heldObject = true;
             holder = controller;
             gameObject.transform.parent = controller.gameObject.transform;
             rb.isKinematic = true;
@@ -88,6 +91,7 @@ public class PickUp : MonoBehaviour {
     {
         if (holder == controller)
         {
+            heldObject = false;
             holder = null;
             gameObject.transform.parent = null;
             rb.isKinematic = false;
