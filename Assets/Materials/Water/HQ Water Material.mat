@@ -47,7 +47,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ReflectiveColor:
-        m_Texture: {fileID: 2800000, guid: ab97f9ab7c2ce724ebc9446060a819a4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 07173679675c6469cb946677fd7018d6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ReflectiveColorCube:
@@ -80,7 +80,7 @@ Material:
     - _Tessellation: 1
     - _TessellationEdgeLength: 5
     - _TessellationUniform: 64
-    - _WaveScale: 0.15
+    - _WaveScale: 0.025
     m_Colors:
     - WaveSpeed: {r: 4, g: 1, b: -2, a: -0.2}
     - _BumpMap_ST: {r: 1, g: 1, b: 0, a: 0}
