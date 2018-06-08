@@ -58,7 +58,7 @@ public class PickUp : MonoBehaviour
             SteamVR_Controller.Device input = GetInput(controllerIndex);
             if (input.GetHairTriggerDown())
             {
-                if (controllersInside[controllerIndex])
+                if (CanGrab(controllerIndex))
                 {
                     Grab(controllerIndex);
                 }
@@ -81,28 +81,30 @@ public class PickUp : MonoBehaviour
 
     private bool CanGrab(int controllerIndex)
     {
-        return grabbableObjects[controllerIndex] == gameObject && holder == NO_HOLDER;
+        return controllersInside[controllerIndex] && grabbableObjects[controllerIndex] == gameObject && holder == NO_HOLDER;
     }
 
     private void Grab(int controllerIndex)
     {
-        if (CanGrab(controllerIndex))
-        {
-            SteamVR_TrackedObject controller = controllers[controllerIndex];
-            holder = controllerIndex;
-            gameObject.transform.parent = controller.gameObject.transform;
-            rb.isKinematic = true;
-            SetColor(heldColor);
-            SteamVR_Controller.Device input = GetInput(controllerIndex);
-            Rumble(input);
+        SteamVR_TrackedObject controller = controllers[controllerIndex];
+        holder = controllerIndex;
+        AttachToController(controller);
+        SetColor(heldColor);
+        SteamVR_Controller.Device input = GetInput(controllerIndex);
+        Rumble(input);
 
-            //clear the other controller's grabbable object if it was this
-            int otherControllerIndex = 1 - controllerIndex;
-            if (grabbableObjects[otherControllerIndex] == gameObject)
-            {
-                grabbableObjects[otherControllerIndex] = null;
-            }
+        //clear the other controller's grabbable object if it was this
+        int otherControllerIndex = 1 - controllerIndex;
+        if (grabbableObjects[otherControllerIndex] == gameObject)
+        {
+            grabbableObjects[otherControllerIndex] = null;
         }
+    }
+
+    protected void AttachToController(SteamVR_TrackedObject controller)
+    {
+        gameObject.transform.parent = controller.gameObject.transform;
+        rb.isKinematic = true;
     }
 
     private void Release(int controllerIndex)
@@ -111,14 +113,19 @@ public class PickUp : MonoBehaviour
         {
             grabbableObjects[controllerIndex] = null;
             holder = NO_HOLDER;
-            gameObject.transform.parent = null;
-            rb.isKinematic = false;
             SteamVR_Controller.Device input = GetInput(controllerIndex);
-            rb.velocity = input.velocity;
-            rb.angularVelocity = input.angularVelocity;
             Rumble(input);
             SetGrabbable(controllerIndex);
         }
+    }
+
+    protected void ReleaseFromController(SteamVR_TrackedObject controller)
+    {
+        gameObject.transform.parent = null;
+        rb.isKinematic = false;
+        SteamVR_Controller.Device input = SteamVR_Controller.Input((int)controller.index);
+        rb.velocity = input.velocity;
+        rb.angularVelocity = input.angularVelocity;
     }
 
     private void OnTriggerEnter(Collider other)
