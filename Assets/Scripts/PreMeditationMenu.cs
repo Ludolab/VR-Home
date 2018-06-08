@@ -16,7 +16,14 @@ public class PreMeditationMenu : MonoBehaviour
 
     private void Start()
     {
+        // Make sure the scene starts with only the "Welcome" text and menu backdrop.
+        foreach(Transform child in transform) {
+            child.gameObject.SetActive(false);
+        }
+        transform.Find("Background").gameObject.SetActive(true);
+        transform.Find("Welcome").gameObject.SetActive(true);
 
+        // Start option-select sequence.
         StartCoroutine(Welcome());
     }
 
