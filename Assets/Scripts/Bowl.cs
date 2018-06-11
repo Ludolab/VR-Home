@@ -9,7 +9,7 @@ public abstract class Bowl : MonoBehaviour {
     public int maxObjects;
 
     protected int numObjects = 0;
-
+    
     public void AddObject()
     {
         numObjects++;
