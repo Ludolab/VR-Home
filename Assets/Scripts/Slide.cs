@@ -25,7 +25,7 @@ public class Slide : PickUp
         base.Start();
         skyScript = Sun.GetComponent<SetSky>();
         isHeld = false;
-        gameObject.transform.position = minPoint;
+        gameObject.transform.localPosition = minPoint;
     }
 
     protected override void Update()
@@ -33,17 +33,17 @@ public class Slide : PickUp
         base.Update();
         if (isHeld)
         {
-            gameObject.transform.position = getClosestPointOnLine(getFollowedPoint());
+            gameObject.transform.localPosition = getClosestPointOnLine(getFollowedPoint());
         }
         float totalDist = Vector3.Distance(minPoint, maxPoint);
-        float partialDist = Vector3.Distance(minPoint, gameObject.transform.position);
+        float partialDist = Vector3.Distance(minPoint, gameObject.transform.localPosition);
         skyScript.percentThroughDay = (partialDist / totalDist) * 100;
     }
 
     protected override void AttachToController(SteamVR_TrackedObject controller)
     {
         controllerHolder = controller;
-        offset = gameObject.transform.position - controller.transform.position;
+        offset = gameObject.transform.localPosition - controller.transform.position;
         initialRotation = controller.transform.rotation;
         isHeld = true;
     }
