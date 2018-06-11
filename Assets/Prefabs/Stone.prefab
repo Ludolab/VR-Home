@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114684530491091904}
   - component: {fileID: 114578898718547748}
   - component: {fileID: 82462162419411072}
-  - component: {fileID: 135835618640995474}
+  - component: {fileID: 64932867154503020}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -103,6 +103,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &64932867154503020
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457291573430428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 7cfd2837da571ef44a315639178b9abb, type: 3}
 --- !u!82 &82462162419411072
 AudioSource:
   m_ObjectHideFlags: 1
@@ -223,15 +237,3 @@ MonoBehaviour:
   highlightShader: {fileID: 4800000, guid: 93b6444a31715fd45ab2910e18103d4a, type: 3}
   heldColor: {r: 0.00030612946, g: 0, b: 1, a: 0.6745098}
   hoverColor: {r: 0.10196076, g: 0.84459853, b: 0.9254902, a: 0.6745098}
---- !u!135 &135835618640995474
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1457291573430428}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.0054527475
-  m_Center: {x: 0.00028224196, y: 0.000015974278, z: -0.0005220694}
