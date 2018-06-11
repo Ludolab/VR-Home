@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class SoundBowl : Bowl {
 
+    private float adjustFactor;
+
     private AudioSource[] audioSrcs;
     private float globalVolume;
     private float[] maxVolumes;
 
     private void Start()
     {
+        adjustFactor = Mathf.Log(10, 4);
+        print(adjustFactor);
+
         audioSrcs = GetComponents<AudioSource>();
         int len = audioSrcs.Length;
         maxVolumes = new float[len];
@@ -31,8 +36,7 @@ public class SoundBowl : Bowl {
         int len = audioSrcs.Length;
         for (int i = 0; i < len; i++)
         {
-            float linearVol = maxVolumes[i] * globalVolume;
-            float adjustedVol = Mathf.Pow(linearVol, Mathf.Log(10, 4));
+            float adjustedVol = Mathf.Pow(globalVolume, adjustFactor) * maxVolumes[i];
             audioSrcs[i].volume = adjustedVol;
         }
     }
