@@ -156,7 +156,10 @@ public class PickUp : MonoBehaviour
             {
                 controllersInside[controllerIndex] = false;
             }
-            SetNotGrabbable(controllerIndex);
+            if (holder != controllerIndex)
+            {
+                SetNotGrabbable(controllerIndex);
+            }
         }
 
         ActionIfBowl(other, b => b.RemoveObject());
