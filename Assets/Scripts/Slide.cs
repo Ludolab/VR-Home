@@ -16,12 +16,14 @@ public class Slide : PickUp {
 
     private void Start()
 	{
+        base.Start();
         isHeld = false;
         gameObject.transform.position = minPoint;
 	}
 
 	private void Update()
 	{
+        base.Update();
         if (isHeld) {
             gameObject.transform.position = getClosestPointOnLine(getFollowedPoint());
         }
