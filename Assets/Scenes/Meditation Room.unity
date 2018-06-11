@@ -174,40 +174,25 @@ Prefab:
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1483176257}
+      objectReference: {fileID: 1590221954}
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1396917168}
+      objectReference: {fileID: 2046562670}
     - target: {fileID: 65477879768848686, guid: 4d293c8e162f3874b982baadd71153d2,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 65477879768848686, guid: 4d293c8e162f3874b982baadd71153d2,
         type: 2}
       propertyPath: m_Size.y
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 65477879768848686, guid: 4d293c8e162f3874b982baadd71153d2,
         type: 2}
       propertyPath: m_Size.z
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 65173491423502064, guid: 4d293c8e162f3874b982baadd71153d2,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 65173491423502064, guid: 4d293c8e162f3874b982baadd71153d2,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 65173491423502064, guid: 4d293c8e162f3874b982baadd71153d2,
-        type: 2}
-      propertyPath: m_Size.z
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
@@ -858,7 +843,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4717425556337630, guid: c0803c3e521c2a144b0bc7eeec17c827, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 4717425556337630, guid: c0803c3e521c2a144b0bc7eeec17c827, type: 2}
       propertyPath: m_LocalPosition.z
@@ -896,7 +881,7 @@ Prefab:
     - target: {fileID: 137601018378289978, guid: c0803c3e521c2a144b0bc7eeec17c827,
         type: 2}
       propertyPath: m_AABB.m_Center.y
-      value: 0.000000014901161
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 137601018378289978, guid: c0803c3e521c2a144b0bc7eeec17c827,
         type: 2}
@@ -911,7 +896,7 @@ Prefab:
     - target: {fileID: 137678075986711530, guid: c0803c3e521c2a144b0bc7eeec17c827,
         type: 2}
       propertyPath: m_AABB.m_Center.y
-      value: 0.000000014901161
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 137678075986711530, guid: c0803c3e521c2a144b0bc7eeec17c827,
         type: 2}
@@ -1299,40 +1284,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f37ead56299c0e469c8deca9ff4b7f1, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &1396917168
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!43 &1483176257
+--- !u!43 &1590221954
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1663,3 +1615,36 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300020, guid: 91fefbefb277a4742be4de210ca95793, type: 3}
+--- !u!21 &2046562670
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
