@@ -5,6 +5,11 @@ using UnityEngine;
 public class Slide : PickUp
 {
 
+
+    public GameObject Sun;
+
+    private SetSky skyScript;
+
     public Vector3 minPoint;
     public Vector3 maxPoint;
 
@@ -18,6 +23,7 @@ public class Slide : PickUp
     protected override void Start()
     {
         base.Start();
+        skyScript = Sun.GetComponent<SetSky>();
         isHeld = false;
         gameObject.transform.position = minPoint;
     }
@@ -29,6 +35,9 @@ public class Slide : PickUp
         {
             gameObject.transform.position = getClosestPointOnLine(getFollowedPoint());
         }
+        float totalDist = Vector3.Distance(minPoint, maxPoint);
+        float partialDist = Vector3.Distance(minPoint, gameObject.transform.position);
+        skyScript.percentThroughDay = (partialDist / totalDist) * 100;
     }
 
     protected override void AttachToController(SteamVR_TrackedObject controller)
@@ -57,6 +66,10 @@ public class Slide : PickUp
             {
                 closest = minPoint;
             }
+            if (closest.x > maxPoint.x)
+            {
+                closest = maxPoint;
+            }
             return closest;
         }
         else if (maxPoint.x < minPoint.x)
@@ -64,6 +77,10 @@ public class Slide : PickUp
             if (closest.x < maxPoint.x)
             {
                 closest = maxPoint;
+            }
+            if (closest.x > minPoint.x)
+            {
+                closest = minPoint;
             }
             return closest;
         }
@@ -74,6 +91,10 @@ public class Slide : PickUp
             {
                 closest = minPoint;
             }
+            if (closest.y > maxPoint.y)
+            {
+                closest = maxPoint;
+            }
             return closest;
         }
         else if (maxPoint.y < minPoint.y)
@@ -81,6 +102,10 @@ public class Slide : PickUp
             if (closest.y < maxPoint.y)
             {
                 closest = maxPoint;
+            }
+            if (closest.y > minPoint.y)
+            {
+                closest = minPoint;
             }
             return closest;
         }
@@ -91,6 +116,10 @@ public class Slide : PickUp
             {
                 closest = minPoint;
             }
+            if (closest.z > maxPoint.z)
+            {
+                closest = maxPoint;
+            }
             return closest;
         }
         else if (maxPoint.z < minPoint.z)
@@ -98,6 +127,10 @@ public class Slide : PickUp
             if (closest.z < maxPoint.z)
             {
                 closest = maxPoint;
+            }
+            if (closest.z > minPoint.z)
+            {
+                closest = minPoint;
             }
             return closest;
         }
