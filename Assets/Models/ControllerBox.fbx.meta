@@ -33,7 +33,17 @@ ModelImporter:
     4300004: CB_Sand
     4300006: CB_Slider
     4300008: CB_SliderKey
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Candle_Wax
+    second: {fileID: 2800000, guid: 7e167f35088001f44b1609f4786bc956, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Controller_Sand
+    second: {fileID: 2800000, guid: 3fd0aeb2ffff49d44b5e44a1734c6c75, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
