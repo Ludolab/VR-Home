@@ -4,20 +4,34 @@ using UnityEngine;
 
 public class SoundBowl : Bowl {
 
-    private AudioSource audioSrc;
+    private AudioSource[] audioSrcs;
+    private float globalVolume;
+    private float[] maxVolumes;
 
     private void Start()
     {
-        audioSrc = gameObject.GetComponent<AudioSource>();
+        audioSrcs = GetComponents<AudioSource>();
+        int len = audioSrcs.Length;
+        maxVolumes = new float[len];
+        for (int i = 0; i < len; i++)
+        {
+            maxVolumes[i] = audioSrcs[i].volume;
+            audioSrcs[i].volume = 0;
+        }
     }
 
     protected override float GetValue()
     {
-        return audioSrc.volume;
+        return globalVolume;
     }
 
     protected override void SetValue(float newValue)
     {
-        audioSrc.volume = newValue;
+        globalVolume = newValue;
+        int len = audioSrcs.Length;
+        for (int i = 0; i < len; i++)
+        {
+            audioSrcs[i].volume = maxVolumes[i] * globalVolume;
+        }
     }
 }
