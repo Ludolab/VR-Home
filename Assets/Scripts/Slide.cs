@@ -15,7 +15,7 @@ public class Slide : PickUp
     private Vector3 offset;
     private Quaternion initialRotation;
 
-    private new void Start()
+    protected override void Start()
     {
         Debug.Log("Slider is starting.");
         base.Start();
@@ -23,7 +23,7 @@ public class Slide : PickUp
         gameObject.transform.position = minPoint;
     }
 
-    private new void Update()
+    protected override void Update()
     {
         base.Update();
         if (isHeld)
