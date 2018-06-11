@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slide : PickUp {
+public class Slide : PickUp
+{
 
     public Vector3 minPoint;
     public Vector3 maxPoint;
@@ -14,29 +15,32 @@ public class Slide : PickUp {
     private Vector3 offset;
     private Quaternion initialRotation;
 
-    private void Start()
-	{
+    private new void Start()
+    {
         base.Start();
         isHeld = false;
         gameObject.transform.position = minPoint;
-	}
+    }
 
-	private void Update()
-	{
+    private new void Update()
+    {
         base.Update();
-        if (isHeld) {
+        if (isHeld)
+        {
             gameObject.transform.position = getClosestPointOnLine(getFollowedPoint());
         }
-	}
+    }
 
-    protected override void AttachToController(SteamVR_TrackedObject controller){
+    protected override void AttachToController(SteamVR_TrackedObject controller)
+    {
         holder = controller;
         offset = gameObject.transform.position - controller.transform.position;
         initialRotation = controller.transform.rotation;
         isHeld = true;
     }
 
-    protected override void ReleaseFromController(SteamVR_TrackedObject controller){
+    protected override void ReleaseFromController(SteamVR_TrackedObject controller)
+    {
         isHeld = false;
     }
 
@@ -97,12 +101,14 @@ public class Slide : PickUp {
             }
             return closest;
         }
-        else {
+        else
+        {
             return minPoint;
         }
     }
 
-    private Vector3 getFollowedPoint(){
+    private Vector3 getFollowedPoint()
+    {
         Quaternion currentRotation = holder.transform.rotation;
         Quaternion rotationDifference = Quaternion.Inverse(initialRotation) * currentRotation;
         Vector3 newOffset = rotationDifference * offset;
