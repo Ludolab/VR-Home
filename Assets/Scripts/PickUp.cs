@@ -86,7 +86,6 @@ public class PickUp : MonoBehaviour
 
     private void Grab(int controllerIndex)
     {
-        Debug.Log("PickUp is Grabbing.");
         SteamVR_TrackedObject controller = controllers[controllerIndex];
         holder = controllerIndex;
         AttachToController(controller);
@@ -132,7 +131,6 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("PickUp has detected a collision.");
         ActionIfBowl(other, b => b.AddObject());
     }
 
