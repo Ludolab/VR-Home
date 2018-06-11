@@ -10,8 +10,11 @@ public class Slide : PickUp
 
     private SetSky skyScript;
 
-    public Vector3 minPoint;
-    public Vector3 maxPoint;
+    public Vector3 minPoint; //in local coordinates
+    public Vector3 maxPoint; //in local coordinates
+
+    private Vector3 minPointGlobal;
+    private Vector3 maxPointGlobal;
 
     private bool isHeld;
 
@@ -26,6 +29,8 @@ public class Slide : PickUp
         skyScript = Sun.GetComponent<SetSky>();
         isHeld = false;
         gameObject.transform.localPosition = minPoint;
+        minPointGlobal = gameObject.transform.TransformPoint(minPoint);
+        maxPointGlobal = gameObject.transform.TransformPoint(maxPoint);
     }
 
     protected override void Update()
@@ -33,17 +38,17 @@ public class Slide : PickUp
         base.Update();
         if (isHeld)
         {
-            gameObject.transform.localPosition = getClosestPointOnLine(getFollowedPoint());
+            gameObject.transform.position = getClosestPointOnLine(getFollowedPoint()); //in global coordinates
         }
         float totalDist = Vector3.Distance(minPoint, maxPoint);
-        float partialDist = Vector3.Distance(minPoint, gameObject.transform.localPosition);
+        float partialDist = Vector3.Distance(minPoint, gameObject.transform.localPosition); //in local coordinates
         skyScript.percentThroughDay = (partialDist / totalDist) * 100;
     }
 
     protected override void AttachToController(SteamVR_TrackedObject controller)
     {
         controllerHolder = controller;
-        offset = gameObject.transform.localPosition - controller.transform.position;
+        offset = gameObject.transform.position - controller.transform.position; //in global coordinates
         initialRotation = controller.transform.rotation;
         isHeld = true;
     }
@@ -55,88 +60,88 @@ public class Slide : PickUp
 
     private Vector3 getClosestPointOnLine(Vector3 trackingPoint)
     {
-        Vector3 line = minPoint - maxPoint;
+        Vector3 line = minPointGlobal - maxPointGlobal;
         line.Normalize();//this needs to be a unit vector
-        Vector3 v = trackingPoint - minPoint;
+        Vector3 v = trackingPoint - minPointGlobal;
         float d = Vector3.Dot(v, line);
-        Vector3 closest = minPoint + (line * d);
-        if (minPoint.x < maxPoint.x)
+        Vector3 closest = minPointGlobal + (line * d);
+        if (minPointGlobal.x < maxPointGlobal.x)
         {
-            if (closest.x < minPoint.x)
+            if (closest.x < minPointGlobal.x)
             {
-                closest = minPoint;
+                closest = minPointGlobal;
             }
-            if (closest.x > maxPoint.x)
+            if (closest.x > maxPointGlobal.x)
             {
-                closest = maxPoint;
+                closest = maxPointGlobal;
             }
             return closest;
         }
-        else if (maxPoint.x < minPoint.x)
+        else if (maxPointGlobal.x < minPointGlobal.x)
         {
-            if (closest.x < maxPoint.x)
+            if (closest.x < maxPointGlobal.x)
             {
-                closest = maxPoint;
+                closest = maxPointGlobal;
             }
-            if (closest.x > minPoint.x)
+            if (closest.x > minPointGlobal.x)
             {
-                closest = minPoint;
+                closest = minPointGlobal;
             }
             return closest;
         }
         // Anything below this only apples if the points have the same x-coordinate
-        else if (minPoint.y < maxPoint.y)
+        else if (minPointGlobal.y < maxPointGlobal.y)
         {
-            if (closest.y < minPoint.y)
+            if (closest.y < minPointGlobal.y)
             {
-                closest = minPoint;
+                closest = minPointGlobal;
             }
-            if (closest.y > maxPoint.y)
+            if (closest.y > maxPointGlobal.y)
             {
-                closest = maxPoint;
+                closest = maxPointGlobal;
             }
             return closest;
         }
-        else if (maxPoint.y < minPoint.y)
+        else if (maxPointGlobal.y < minPointGlobal.y)
         {
-            if (closest.y < maxPoint.y)
+            if (closest.y < maxPointGlobal.y)
             {
-                closest = maxPoint;
+                closest = maxPointGlobal;
             }
-            if (closest.y > minPoint.y)
+            if (closest.y > minPointGlobal.y)
             {
-                closest = minPoint;
+                closest = minPointGlobal;
             }
             return closest;
         }
         // Anything below this only apples if the points have the same x-coordinate AND the same y-coordinate
-        else if (minPoint.z < maxPoint.z)
+        else if (minPointGlobal.z < maxPointGlobal.z)
         {
-            if (closest.z < minPoint.z)
+            if (closest.z < minPointGlobal.z)
             {
-                closest = minPoint;
+                closest = minPointGlobal;
             }
-            if (closest.z > maxPoint.z)
+            if (closest.z > maxPointGlobal.z)
             {
-                closest = maxPoint;
+                closest = maxPointGlobal;
             }
             return closest;
         }
-        else if (maxPoint.z < minPoint.z)
+        else if (maxPointGlobal.z < minPointGlobal.z)
         {
-            if (closest.z < maxPoint.z)
+            if (closest.z < maxPointGlobal.z)
             {
-                closest = maxPoint;
+                closest = maxPointGlobal;
             }
-            if (closest.z > minPoint.z)
+            if (closest.z > minPointGlobal.z)
             {
-                closest = minPoint;
+                closest = minPointGlobal;
             }
             return closest;
         }
         else
         {
-            return minPoint;
+            return minPointGlobal;
         }
     }
 
