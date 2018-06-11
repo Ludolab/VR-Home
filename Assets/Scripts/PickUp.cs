@@ -118,7 +118,15 @@ public class PickUp : MonoBehaviour
             ReleaseFromController(controllers[controllerIndex]);
             SteamVR_Controller.Device input = GetInput(controllerIndex);
             Rumble(input);
-            SetGrabbable(controllerIndex);
+
+            if (controllersInside[controllerIndex])
+            {
+                SetGrabbable(controllerIndex);
+            }
+            else
+            {
+                SetNotGrabbable(controllerIndex);
+            }
         }
     }
 
