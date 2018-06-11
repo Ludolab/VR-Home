@@ -26,7 +26,7 @@ public class PickUp : MonoBehaviour
 
     private Vector3 startPos;
 
-    private void Start()
+    protected void Start()
     {
         startPos = gameObject.transform.position;
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
@@ -43,7 +43,7 @@ public class PickUp : MonoBehaviour
         return SteamVR_Controller.Input((int)controller.index);
     }
 
-    private void Update()
+    protected void Update()
     {
         for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
         {
