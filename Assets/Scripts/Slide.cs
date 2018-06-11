@@ -17,7 +17,6 @@ public class Slide : PickUp
 
     protected override void Start()
     {
-        Debug.Log("Slider is starting.");
         base.Start();
         isHeld = false;
         gameObject.transform.position = minPoint;
@@ -28,14 +27,12 @@ public class Slide : PickUp
         base.Update();
         if (isHeld)
         {
-            Debug.Log("Object is held.");
             gameObject.transform.position = getClosestPointOnLine(getFollowedPoint());
         }
     }
 
     protected override void AttachToController(SteamVR_TrackedObject controller)
     {
-        Debug.Log("Attaching to Controller.");
         controllerHolder = controller;
         offset = gameObject.transform.position - controller.transform.position;
         initialRotation = controller.transform.rotation;
@@ -44,7 +41,6 @@ public class Slide : PickUp
 
     protected override void ReleaseFromController(SteamVR_TrackedObject controller)
     {
-        Debug.Log("Releasing.");
         isHeld = false;
     }
 
