@@ -10,13 +10,14 @@ public class Slide : PickUp
 
     private bool isHeld;
 
-    private SteamVR_TrackedObject holder;
+    private SteamVR_TrackedObject controllerHolder;
 
     private Vector3 offset;
     private Quaternion initialRotation;
 
     private new void Start()
     {
+        Debug.Log("Slider is starting.");
         base.Start();
         isHeld = false;
         gameObject.transform.position = minPoint;
@@ -35,7 +36,7 @@ public class Slide : PickUp
     protected override void AttachToController(SteamVR_TrackedObject controller)
     {
         Debug.Log("Attaching to Controller.");
-        holder = controller;
+        controllerHolder = controller;
         offset = gameObject.transform.position - controller.transform.position;
         initialRotation = controller.transform.rotation;
         isHeld = true;
@@ -112,9 +113,9 @@ public class Slide : PickUp
 
     private Vector3 getFollowedPoint()
     {
-        Quaternion currentRotation = holder.transform.rotation;
+        Quaternion currentRotation = controllerHolder.transform.rotation;
         Quaternion rotationDifference = Quaternion.Inverse(initialRotation) * currentRotation;
         Vector3 newOffset = rotationDifference * offset;
-        return (holder.transform.position + newOffset);
+        return (controllerHolder.transform.position + newOffset);
     }
 }
