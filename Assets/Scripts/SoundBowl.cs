@@ -31,7 +31,9 @@ public class SoundBowl : Bowl {
         int len = audioSrcs.Length;
         for (int i = 0; i < len; i++)
         {
-            audioSrcs[i].volume = maxVolumes[i] * globalVolume;
+            float linearVol = maxVolumes[i] * globalVolume;
+            float adjustedVol = Mathf.Pow(linearVol, Mathf.Log(10, 4));
+            audioSrcs[i].volume = adjustedVol;
         }
     }
 }
