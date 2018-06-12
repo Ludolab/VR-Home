@@ -7,14 +7,17 @@ public class VRUIPointerVisual : SteamVR_LaserPointer {
     public LineRenderer visual;
 
     private LineRenderer pointerVisual;
+    private float origWidth;
 
 	// Use this for initialization
 	void Start () {
         pointerVisual = Instantiate(visual);
         pointerVisual.transform.parent = holder.transform;
         pointerVisual.transform.localScale = new Vector3(thickness, thickness, 100f);
-        pointerVisual.transform.localPosition = new Vector3(0f, 0f, 0.01f);
+        pointerVisual.transform.localPosition = new Vector3(0f, 0f, 0f);
         pointerVisual.transform.localRotation = Quaternion.identity;
+
+        origWidth = pointerVisual.widthMultiplier;
 	}
 	
 	// Update is called once per frame
@@ -30,10 +33,12 @@ public class VRUIPointerVisual : SteamVR_LaserPointer {
         if (controller != null && controller.triggerPressed)
         {
             pointerVisual.transform.localScale = new Vector3(thickness * 2f, thickness * 2f, dist);
+            pointerVisual.widthMultiplier = origWidth * 2f;
         }
         else
         {
             pointerVisual.transform.localScale = new Vector3(thickness, thickness, dist);
+            pointerVisual.widthMultiplier = origWidth;
         }
 	}
 }

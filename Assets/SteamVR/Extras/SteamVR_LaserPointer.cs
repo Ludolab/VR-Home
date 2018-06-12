@@ -40,7 +40,6 @@ public class SteamVR_LaserPointer : MonoBehaviour
 		holder.transform.localRotation = Quaternion.identity;
 
         pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        Destroy(pointer.GetComponent<MeshRenderer>());
         pointer.transform.parent = holder.transform;
         pointer.transform.localScale = new Vector3(thickness, thickness, 100f);
         pointer.transform.localPosition = new Vector3(0f, 0f, 50f);
@@ -133,7 +132,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
 
         if (controller != null && controller.triggerPressed)
         {
-            pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
+            pointer.transform.localScale = new Vector3(thickness * 2f, thickness * 2f, dist);
         }
         else
         {
