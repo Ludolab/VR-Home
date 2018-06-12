@@ -7,7 +7,7 @@ public class CandleFlicker : MonoBehaviour {
     public float flickerProbability;
     public float minIntensity;
     public float maxIntensity;
-    float transitionTime = 0.5f;
+    float transitionTime = 0.35f;
     public Light flameLight;
 
 	// Use this for initialization
