@@ -54,7 +54,7 @@ public class SitDown : MonoBehaviour {
     private bool ShouldDeactivate(GameObject obj)
     {
         //Returns whether this object should be hidden in the startup sequence
-        return obj.activeSelf &&
+        return //obj.activeSelf &&
                obj != gameObject &&
                obj.name != "[CameraRig]" &&
                obj.name != "[SteamVR]";
