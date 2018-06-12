@@ -13,7 +13,7 @@ public class VRUIPointerVisual : SteamVR_LaserPointer {
         pointerVisual = Instantiate(visual);
         pointerVisual.transform.parent = holder.transform;
         pointerVisual.transform.localScale = new Vector3(thickness, thickness, 100f);
-        pointerVisual.transform.localPosition = new Vector3(0f, 0f, 50f);
+        pointerVisual.transform.localPosition = new Vector3(0f, 0f, 0f);
         pointerVisual.transform.localRotation = Quaternion.identity;
 	}
 	
@@ -35,6 +35,5 @@ public class VRUIPointerVisual : SteamVR_LaserPointer {
         {
             pointerVisual.transform.localScale = new Vector3(thickness, thickness, dist);
         }
-        pointerVisual.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
 	}
 }
