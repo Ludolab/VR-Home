@@ -7,3 +7,4 @@
 - SteamVR laser-pointer UI by Jason Weimann: https://unity3d.college/2017/06/17/steamvr-laser-pointer-menus/
 - Skyboxes modified from assets by Wello Soft: https://assetstore.unity.com/packages/2d/textures-materials/sky/10-skyboxes-pack-day-night-32236
 - Skybox Fading Shader by Aras Pranckevicius: http://wiki.unity3d.com/index.php?title=SkyboxBlended
+- Letter spacing script by Andrew Pavlovich: https://bitbucket.org/AcornGame/adjustable-character-spacing/downloads/
