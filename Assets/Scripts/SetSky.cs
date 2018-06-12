@@ -57,7 +57,7 @@ public class SetSky : MonoBehaviour {
             sun.intensity = Mathf.Lerp(1.5f, 0, percentThroughEvening);
             sun.color = sunsetColor;
             bounceLight.color = Color.Lerp(sunsetColor, nightColor, percentThroughEvening);
-            bounceLight.intensity = Mathf.Lerp(sun.intensity/2, 0.1f, percentThroughEvening);
+            bounceLight.intensity = Mathf.Lerp(sun.intensity/2, 0.0f, percentThroughEvening);
         }
         else
         // Before Sunset    
