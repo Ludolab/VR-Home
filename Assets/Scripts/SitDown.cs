@@ -20,10 +20,13 @@ public class SitDown : MonoBehaviour {
     private Renderer[] childRenderers;
     private List<GameObject> toReactivate;
     private bool done = false; //fade-in completed, user is sitting
+    private GameObject startLight; //starting light attached to this game object
 
 	private void Awake()
     {
         camTransform = Camera.main.transform;
+
+        startLight = transform.Find("Start Light").gameObject;
 
         //Deactivate everything else except gameObject and [CameraRig], add it to a list to reactivate
         toReactivate = new List<GameObject>();
@@ -39,12 +42,12 @@ public class SitDown : MonoBehaviour {
         }
 
         int childCount = gameObject.transform.childCount;
-        childRenderers = new Renderer[childCount];
+        childRenderers = new Renderer[childCount - 1]; //Minus one for the light.
         for (int i = 0; i < childCount; i++)
         {
             GameObject child = gameObject.transform.GetChild(i).gameObject;
             child.SetActive(true);
-            childRenderers[i] = child.GetComponent<Renderer>();
+            if(child != startLight) childRenderers[i] = child.GetComponent<Renderer>();
         }
     }
 
@@ -54,8 +57,7 @@ public class SitDown : MonoBehaviour {
         return obj.activeSelf &&
                obj != gameObject &&
                obj.name != "[CameraRig]" &&
-               obj.name != "[SteamVR]" &&
-               obj.GetComponent<Light>() == null;
+               obj.name != "[SteamVR]";
     }
     
     private void Update()
@@ -95,6 +97,8 @@ public class SitDown : MonoBehaviour {
 
     private IEnumerator FadeIn()
     {
+        startLight.SetActive(false);
+
         foreach (GameObject obj in toReactivate)
         {
             obj.SetActive(true);
