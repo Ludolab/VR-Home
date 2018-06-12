@@ -25,6 +25,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
     public Transform reference;
     public event PointerEventHandler PointerIn;
     public event PointerEventHandler PointerOut;
+    public Material material;
 
     Transform previousContact = null;
 
@@ -42,7 +43,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
         pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
         pointer.transform.parent = holder.transform;
         pointer.transform.localScale = new Vector3(thickness, thickness, 100f);
-        pointer.transform.localPosition = new Vector3(0f, 0f, 50f);
+        pointer.transform.localPosition = new Vector3(0f, 0f, 100f);
 		pointer.transform.localRotation = Quaternion.identity;
 		BoxCollider collider = pointer.GetComponent<BoxCollider>();
         if (addRigidBody)
@@ -61,9 +62,8 @@ public class SteamVR_LaserPointer : MonoBehaviour
                 Object.Destroy(collider);
             }
         }
-        Material newMaterial = new Material(Shader.Find("Fade"));
-        newMaterial.SetColor("_Color", color);
-        pointer.GetComponent<MeshRenderer>().material = newMaterial;
+        material.SetColor("_Color", color);
+        pointer.GetComponent<MeshRenderer>().material = material;
 	}
 
     public virtual void OnPointerIn(PointerEventArgs e)
