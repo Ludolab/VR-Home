@@ -7,6 +7,7 @@ public class CandleFlicker : MonoBehaviour {
     public float flickerProbability;
     public float minIntensity;
     public float maxIntensity;
+    float transitionTime = 0.5f;
     public Light flameLight;
 
 	// Use this for initialization
@@ -20,7 +21,17 @@ public class CandleFlicker : MonoBehaviour {
     {
         float liklihood = Random.Range(1, 100);
         if (liklihood < flickerProbability){
-            flameLight.intensity = Random.Range(minIntensity, maxIntensity);
+            StartCoroutine(LightShift(Random.Range(minIntensity, maxIntensity)));
+        }
+    }
+
+    private IEnumerator LightShift(float newValue)
+    {
+        float oldValue = flameLight.intensity;
+        for (float t = 0; t < transitionTime; t += Time.deltaTime)
+        {
+            flameLight.intensity = Mathf.Lerp(oldValue, newValue, t / transitionTime);
+            yield return new WaitForEndOfFrame();
         }
     }
 }
