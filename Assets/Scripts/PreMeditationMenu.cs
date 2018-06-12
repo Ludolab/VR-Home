@@ -98,6 +98,19 @@ public class PreMeditationMenu : MonoBehaviour
     // Could later attempt to generalize this code to work for all UI elements, not just text.
     private IEnumerator fade(GameObject toFadeOut, GameObject toFadeIn, bool endScene)
     {
+        Image infNorm = null;
+        Image infIta = null;
+
+        if(toFadeOut.gameObject.name == "Time") {
+            infNorm = toFadeOut.transform.Find("inf").transform.Find("normal").GetComponent<Image>();
+            infIta = toFadeOut.transform.Find("inf").transform.Find("italics").GetComponent<Image>();
+        }
+
+        if(toFadeIn.gameObject.name == "Time") {
+            infNorm = toFadeIn.transform.Find("inf").transform.Find("normal").GetComponent<Image>();
+            infIta = toFadeIn.transform.Find("inf").transform.Find("italics").GetComponent<Image>();
+        }
+
         if (toFadeOut != null)
         {
             // Get all elements under the object to fade out that have text.
@@ -110,6 +123,12 @@ public class PreMeditationMenu : MonoBehaviour
             for (int i = 0; i < 20; i++)
             {
                 yield return new WaitForSeconds(0.07f);
+                //Special case on infinity symbol.
+                if(toFadeOut.gameObject.name == "Time") {
+                    Color color = infNorm.color;
+                    infNorm.color = new Color(color.r, color.g, color.b, color.a - 0.05f);
+                    infIta.color = new Color(color.r, color.g, color.b, color.a - 0.05f);
+                }
                 for (int j = 0; j < allOTCount; j++)
                 {
                     Color color = allOutText[j].color;
@@ -137,6 +156,13 @@ public class PreMeditationMenu : MonoBehaviour
                 Color color = allInText[j].color;
                 allInText[j].color = new Color(color.r, color.g, color.b, 0f);
             }
+            //Special case on infinity symbol.
+            if (toFadeIn.gameObject.name == "Time")
+            {
+                Color color = infNorm.color;
+                infNorm.color = new Color(color.r, color.g, color.b, 0f);
+                infIta.color = new Color(color.r, color.g, color.b, 0f);
+            }
             // Reactivate the object to fade in.
             toFadeIn.SetActive(true);
 
@@ -144,6 +170,13 @@ public class PreMeditationMenu : MonoBehaviour
             for (int i = 0; i < 20; i++)
             {
                 yield return new WaitForSeconds(0.07f);
+                //Special case on infinity symbol.
+                if (toFadeIn.gameObject.name == "Time")
+                {
+                    Color color = infNorm.color;
+                    infNorm.color = new Color(color.r, color.g, color.b, color.a + 0.05f);
+                    infIta.color = new Color(color.r, color.g, color.b, color.a + 0.05f);
+                }
                 for (int j = 0; j < allITCount; j++)
                 {
                     Color color = allInText[j].color;
