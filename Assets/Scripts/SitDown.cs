@@ -119,6 +119,11 @@ public class SitDown : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         SetEverythingTransparency(1);
+
+        foreach (Renderer rend in childRenderers)
+        {
+            rend.gameObject.SetActive(false);
+        }
         done = true;
     }
 
@@ -162,7 +167,11 @@ public class SitDown : MonoBehaviour {
 
     private IEnumerator FadeOut()
     {
-        SetText("Meditation complete.");
+        foreach (Renderer rend in childRenderers)
+        {
+            rend.gameObject.SetActive(true);
+        }
+        SetText("MEDITATION COMPLETE.");
 
         for (float t = 0; t < FADE_OUT_TIME; t += Time.deltaTime)
         {

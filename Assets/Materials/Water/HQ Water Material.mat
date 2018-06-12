@@ -73,16 +73,16 @@ Material:
     - _Glossiness: 0
     - _MaxDist: 0.1
     - _MinDist: 0.1
-    - _ReflDistort: 1.5
+    - _ReflDistort: 0.35
     - _ReflectionBias: 4
-    - _RefrDistort: 1.5
+    - _RefrDistort: 0
     - _TessFactor: 1
     - _Tessellation: 1
     - _TessellationEdgeLength: 5
     - _TessellationUniform: 64
-    - _WaveScale: 0.3
+    - _WaveScale: 0.045
     m_Colors:
-    - WaveSpeed: {r: 0.3, g: 0.3, b: 0.3, a: 0.3}
+    - WaveSpeed: {r: -6, g: 6, b: 6, a: 0.3}
     - _BumpMap_ST: {r: 1, g: 1, b: 0, a: 0}
     - _Fresnel_ST: {r: 1, g: 1, b: 0, a: 0}
     - _HorizonColor: {r: 1, g: 1, b: 1, a: 1}
