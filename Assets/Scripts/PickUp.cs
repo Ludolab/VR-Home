@@ -70,7 +70,7 @@ public class PickUp : MonoBehaviour
                 Release(controllerIndex);
             }
 
-            if (input.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+            if (input.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
             {
                 Reset();
             }
@@ -145,7 +145,7 @@ public class PickUp : MonoBehaviour
 
         if (other.gameObject.CompareTag("SplashZone"))
         {
-            Instantiate(splashPrefab, transform.position, Quaternion.identity);
+            GameObject splash = Instantiate(splashPrefab, transform.position, Quaternion.identity);
             Respawn(); //TODO: maybe not right away?
         }
     }
