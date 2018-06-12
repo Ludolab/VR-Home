@@ -13,6 +13,8 @@ public class PickUp : MonoBehaviour
     public Shader highlightShader;
     public Color heldColor;
     public Color hoverColor;
+    public GameObject splashPrefab;
+    public Transform respawnPoint;
 
     private SteamVR_TrackedObject[] controllers = new SteamVR_TrackedObject[NUM_CONTROLLERS];
 
@@ -142,6 +144,12 @@ public class PickUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ActionIfBowl(other, b => b.AddObject());
+
+        if (other.gameObject.CompareTag("SplashZone"))
+        {
+            Instantiate(splashPrefab);
+            Respawn();
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -239,5 +247,15 @@ public class PickUp : MonoBehaviour
     private void Rumble(SteamVR_Controller.Device input)
     {
         input.TriggerHapticPulse(1200);
+    }
+
+    private void Respawn()
+    {
+        if (holder != NO_HOLDER)
+        {
+            Release(holder);
+        }
+        gameObject.transform.position = respawnPoint.position;
+        rb.velocity = Vector3.zero;
     }
 }
