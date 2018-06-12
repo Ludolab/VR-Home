@@ -110,7 +110,7 @@ public class SitDown : MonoBehaviour {
             }*/
         }
 
-        SetText("Thank you.");
+        SetText("THANK YOU.");
 
        //Fade everything in
         for (float t = 0; t < FADE_IN_TIME; t += Time.deltaTime)
