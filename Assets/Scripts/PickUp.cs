@@ -75,7 +75,7 @@ public class PickUp : MonoBehaviour
                 Release(controllerIndex);
             }
 
-            if (input.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
+            if (input.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
             {
                 Reset();
             }
