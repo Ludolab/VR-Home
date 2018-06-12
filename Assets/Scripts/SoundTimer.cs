@@ -41,10 +41,10 @@ public class SoundTimer : MonoBehaviour
                 if (sound.volume > 0) sound.volume -= 0.01f;
             }
         }
-        //Remove audio components since no more sound will be playing for the rest of the time.
+        //Stops audio components.
         foreach (AudioSource sound in audio)
         {
-            Destroy(sound);
+            sound.Stop();
         }
     }
 
