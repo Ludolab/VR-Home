@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightShader: {fileID: 4800000, guid: 93b6444a31715fd45ab2910e18103d4a, type: 3}
   heldColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+  hoverColor: {r: 1, g: 1, b: 1, a: 0.29803923}
   splashPrefab: {fileID: 0}
   respawnPoint: {fileID: 0}
   Sun: {fileID: 812399954}
@@ -5572,7 +5572,7 @@ MonoBehaviour:
   dayToSunset: {fileID: 2100000, guid: 648825fd44a0b41de9e1b4c4e3e74322, type: 2}
   sunsetToNight: {fileID: 2100000, guid: 1200bd0efde1742e29c7c8ed5f408d00, type: 2}
   daylightColor: {r: 1, g: 0.9568, b: 0.8392, a: 1}
-  sunsetColor: {r: 1, g: 0.81282353, b: 0.6839622, a: 1}
+  sunsetColor: {r: 1, g: 0.583508, b: 0.2971698, a: 1}
   nightColor: {r: 0.92941177, g: 0.97884256, b: 1, a: 1}
   sun: {fileID: 812399955}
   bounceLight: {fileID: 180538764}
@@ -5634,13 +5634,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 822580650}
-  m_LocalRotation: {x: 0.39362538, y: 0.82265794, z: -0.2272597, w: 0.34153482}
+  m_LocalRotation: {x: 0.15313476, y: 0.7470862, z: -0.34150633, w: -0.54935}
   m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 40, y: 150, z: 40}
+  m_LocalEulerAnglesHint: {x: 20, y: 260, z: 40}
 --- !u!1001 &1174092085
 Prefab:
   m_ObjectHideFlags: 0
