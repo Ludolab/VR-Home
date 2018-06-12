@@ -118,12 +118,8 @@ public class SitDown : MonoBehaviour {
             SetEverythingTransparency(t / FADE_IN_TIME);
             yield return new WaitForEndOfFrame();
         }
-        SetEverythingTransparency(1);
 
-        foreach (Renderer rend in childRenderers)
-        {
-            rend.gameObject.SetActive(false);
-        }
+        ClearWalls();
         done = true;
     }
 
@@ -178,7 +174,7 @@ public class SitDown : MonoBehaviour {
             if (IsSitting())
             {
                 isQuitting = false;
-                SetEverythingTransparency(1);
+                ClearWalls();
                 yield break;
             }
             SetEverythingTransparency(1 - (t / FADE_OUT_TIME));
@@ -192,6 +188,16 @@ public class SitDown : MonoBehaviour {
         yield return new WaitForSeconds(FADE_OUT_HOLD_TIME);
 
         SceneManager.LoadScene(menuScene);
+    }
+
+    private void ClearWalls()
+    {
+        SetEverythingTransparency(1);
+
+        foreach (Renderer rend in childRenderers)
+        {
+            rend.gameObject.SetActive(false);
+        }
     }
 
     private void addAudioTimer() {
