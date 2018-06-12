@@ -38,6 +38,15 @@ public class Slide : PickUp
         float totalDist = Vector3.Distance(minPoint, maxPoint);
         float partialDist = Vector3.Distance(minPoint, gameObject.transform.position);
         skyScript.percentThroughDay = (partialDist / totalDist) * 100;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            gameObject.transform.position = maxPoint;
+        }
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            gameObject.transform.position = minPoint;
+        }
     }
 
     protected override void AttachToController(SteamVR_TrackedObject controller)

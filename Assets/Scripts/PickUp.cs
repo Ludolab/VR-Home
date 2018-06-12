@@ -51,6 +51,11 @@ public class PickUp : MonoBehaviour
         {
             CheckController(controllerIndex);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && GetComponent<Slide>() == null)
+        {
+            transform.position = new Vector3(3, 0, 0);
+        }
     }
 
     private void CheckController(int controllerIndex)
