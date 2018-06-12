@@ -90,7 +90,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7cfd2837da571ef44a315639178b9abb, type: 3}
+  - {fileID: 2100000, guid: 12393d9c65ff0a844805794526bcf979, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd0a491e767fd844b76787598f93c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallingStone: {fileID: 1137117672697440}
 --- !u!198 &198991409786535550
 ParticleSystem:
   m_ObjectHideFlags: 1
