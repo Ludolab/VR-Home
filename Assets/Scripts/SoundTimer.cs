@@ -35,7 +35,7 @@ public class SoundTimer : MonoBehaviour
         //TODO: prevent user from being able to adjust volume at this point.
         for (int i = 0; i < 100; i++)
         {
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.4f);
             foreach (AudioSource sound in audio)
             {
                 if (sound.volume > 0) sound.volume -= 0.01f;
