@@ -53,7 +53,7 @@ public class VRUIInput : MonoBehaviour
             //Special casing on infinity symbol visual.
             if(toggle.gameObject.name == "inf") {
                 toggle.gameObject.transform.Find("normal").gameObject.SetActive(false);
-                toggle.gameObject.transform.Find("italics").gameObject.SetActive(true);
+                toggle.gameObject.transform.Find("highlight").gameObject.SetActive(true);
             } else {
                 e.target.gameObject.GetComponentInChildren<Text>().gameObject.GetComponent<Outline>().enabled = true; //Highlights text when hovered over.
             }
@@ -74,7 +74,7 @@ public class VRUIInput : MonoBehaviour
             //Special casing on infinity symbol visual.
             if (toggle.gameObject.name == "inf")
             {
-                toggle.gameObject.transform.Find("italics").gameObject.SetActive(false);
+                toggle.gameObject.transform.Find("highlight").gameObject.SetActive(false);
                 toggle.gameObject.transform.Find("normal").gameObject.SetActive(true);
             } else {
                 e.target.gameObject.GetComponentInChildren<Text>().gameObject.GetComponent<Outline>().enabled = false; //Highlights text when hovered over.
