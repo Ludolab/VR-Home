@@ -111,10 +111,8 @@ public class PickUp : MonoBehaviour
 
     private void Release(int controllerIndex)
     {
-        print("release");
         if (holder == controllerIndex)
         {
-            print("release2");
             grabbableObjects[controllerIndex] = null;
             holder = NO_HOLDER;
             ReleaseFromController(controllers[controllerIndex]);

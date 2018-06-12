@@ -50,7 +50,6 @@ public class Slide : PickUp
 
     protected override void ReleaseFromController(SteamVR_TrackedObject controller)
     {
-        print("release3");
         isHeld = false;
     }
 
