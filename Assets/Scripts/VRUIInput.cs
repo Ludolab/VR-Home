@@ -50,11 +50,12 @@ public class VRUIInput : MonoBehaviour
         {
             toggle.Select();
 
-            e.target.gameObject.GetComponentInChildren<Text>().fontStyle = highlightType; //Styles text when hovered over.
             //Special casing on infinity symbol visual.
             if(toggle.gameObject.name == "inf") {
                 toggle.gameObject.transform.Find("normal").gameObject.SetActive(false);
                 toggle.gameObject.transform.Find("italics").gameObject.SetActive(true);
+            } else {
+                e.target.gameObject.GetComponentInChildren<Text>().fontStyle = highlightType; //Styles text when hovered over.
             }
         }
     }
@@ -70,12 +71,13 @@ public class VRUIInput : MonoBehaviour
         Toggle toggle = e.target.GetComponent<Toggle>();
         if (toggle != null)
         {
-            e.target.gameObject.GetComponentInChildren<Text>().fontStyle = FontStyle.Normal; //De-styles text.
             //Special casing on infinity symbol visual.
             if (toggle.gameObject.name == "inf")
             {
                 toggle.gameObject.transform.Find("italics").gameObject.SetActive(false);
                 toggle.gameObject.transform.Find("normal").gameObject.SetActive(true);
+            } else {
+                e.target.gameObject.GetComponentInChildren<Text>().fontStyle = FontStyle.Normal; //De-styles text.
             }
 
             EventSystem.current.SetSelectedGameObject(null);
