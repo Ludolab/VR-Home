@@ -103,12 +103,12 @@ public class PreMeditationMenu : MonoBehaviour
 
         if(toFadeOut != null && toFadeOut.gameObject.name == "Time") {
             infNorm = toFadeOut.transform.Find("inf").transform.Find("normal").GetComponent<Image>();
-            infIta = toFadeOut.transform.Find("inf").transform.Find("italics").GetComponent<Image>();
+            infIta = toFadeOut.transform.Find("inf").transform.Find("highlight").GetComponent<Image>();
         }
 
         if(toFadeIn != null && toFadeIn.gameObject.name == "Time") {
             infNorm = toFadeIn.transform.Find("inf").transform.Find("normal").GetComponent<Image>();
-            infIta = toFadeIn.transform.Find("inf").transform.Find("italics").GetComponent<Image>();
+            infIta = toFadeIn.transform.Find("inf").transform.Find("highlight").GetComponent<Image>();
         }
 
         if (toFadeOut != null)
