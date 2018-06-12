@@ -55,7 +55,6 @@ public class VRUIInput : MonoBehaviour
             if(toggle.gameObject.name == "inf") {
                 toggle.gameObject.transform.Find("normal").gameObject.SetActive(false);
                 toggle.gameObject.transform.Find("italics").gameObject.SetActive(true);
-                Debug.Log("Recognized infinity");
             }
         }
     }
@@ -77,7 +76,6 @@ public class VRUIInput : MonoBehaviour
             {
                 toggle.gameObject.transform.Find("italics").gameObject.SetActive(false);
                 toggle.gameObject.transform.Find("normal").gameObject.SetActive(true);
-                Debug.Log("Recognized infinity");
             }
 
             EventSystem.current.SetSelectedGameObject(null);
