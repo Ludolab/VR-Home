@@ -10,7 +10,6 @@ public class SoundTimer : MonoBehaviour
 
     private int timeLeft;
     private AudioSource[] audio;
-    private bool startFade;
 
     void Start()
     {

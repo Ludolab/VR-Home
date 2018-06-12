@@ -7,6 +7,7 @@ public class SitDown : MonoBehaviour {
 
     public string menuScene;
     public GameObject[] audioToFade;
+    public ExitText exitText;
 
     private const float SIT_TIME = 1.0f; //time required in sitting position before overlay disappears, in seconds
     private const float SIT_HEIGHT = 1.0f; //maximum y-position above floor that counts as sitting, in meters
@@ -66,6 +67,7 @@ public class SitDown : MonoBehaviour {
         {
             sittingInProgress = true;
             StartCoroutine(WaitSitting());
+            exitText.setStartTimer(true);
             addAudioTimer();
         }
 
@@ -167,7 +169,7 @@ public class SitDown : MonoBehaviour {
         {
             rend.gameObject.SetActive(true);
         }
-        SetText("MEDITATION COMPLETE.");
+        SetText("NOW EXITING.");
 
         for (float t = 0; t < FADE_OUT_TIME; t += Time.deltaTime)
         {
