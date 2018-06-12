@@ -45,7 +45,7 @@ public class SetSky : MonoBehaviour {
 	}
 
     public void applyChanges() {
-        float angleLateral = (percentThroughDay / 2) - 40;
+        float angleLateral = (percentThroughDay / 2) + 220;
         if (percentThroughDay > 50)
         // After Sunset    
         {
