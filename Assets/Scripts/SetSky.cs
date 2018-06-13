@@ -52,7 +52,7 @@ public class SetSky : MonoBehaviour {
             float percentThroughEvening = (percentThroughDay - 50) / 50;
             RenderSettings.skybox = sunsetToNight;
             sunsetToNight.SetFloat("_Blend", percentThroughEvening);
-            float angleVertical = Mathf.Lerp(10, -20, percentThroughEvening);
+            float angleVertical = Mathf.Lerp(20, -5, percentThroughEvening);
             sun.transform.rotation = Quaternion.Euler(angleVertical, angleLateral, angleVertical);
             sun.intensity = Mathf.Lerp(1.5f, 0, percentThroughEvening);
             sun.color = sunsetColor;
@@ -65,7 +65,7 @@ public class SetSky : MonoBehaviour {
             float percentThroughMorning = percentThroughDay / 50;    
             RenderSettings.skybox = dayToSunset;
             dayToSunset.SetFloat("_Blend", percentThroughMorning);
-            float angleVertical = Mathf.Lerp(50, 10, percentThroughMorning);
+            float angleVertical = Mathf.Lerp(60, 20, percentThroughMorning);
             sun.transform.rotation = Quaternion.Euler(angleVertical, angleLateral, angleVertical);
             sun.intensity = 1.5f;
             Color lightColor = Color.Lerp(daylightColor, sunsetColor, percentThroughMorning);
