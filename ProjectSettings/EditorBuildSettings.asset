@@ -6,12 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MeditationMenu.unity
-    guid: f9cedfeda3d064f9d98582e601be0217
-  - enabled: 1
-    path: Assets/Scenes/TestScene.unity
-    guid: d1936a730dabcce458b9bb82053c271a
-  - enabled: 1
-    path: Assets/Scenes/Meditation Room.unity
+    path: Assets/Scenes/Meditation Room/Meditation Room.unity
     guid: d14fe897807bd442aa7968821d48c165
+  - enabled: 1
+    path: Assets/Scenes/Meditation Room/MeditationMenu.unity
+    guid: f9cedfeda3d064f9d98582e601be0217
   m_configObjects: {}
