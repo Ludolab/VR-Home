@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class MUserSettings
 {
-    private static int time; //in seconds.
+    private static int time = -1; //in seconds.
     private static string environ = "ocean";
 
     public static int getTime() {
