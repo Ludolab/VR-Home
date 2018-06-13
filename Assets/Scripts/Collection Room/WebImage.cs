@@ -34,7 +34,6 @@ public class WebImage : MonoBehaviour
         float height = originalScale.y;
 
         float aspect = (float)texture.width / texture.height;
-        print(aspect);
         if (aspect > 1)
         {
             height /= aspect;
