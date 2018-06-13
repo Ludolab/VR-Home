@@ -10,7 +10,7 @@ public class ExitText : MonoBehaviour {
 	private void Start()
     {
         timeLeft = MUserSettings.getTime();
-        if (timeLeft < 0) Destroy(this);
+        if (timeLeft < 0) Destroy(this.gameObject);
     }
 
 	void Update () {

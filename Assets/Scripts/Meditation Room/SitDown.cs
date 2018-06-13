@@ -209,7 +209,7 @@ public class SitDown : MonoBehaviour {
 
     private void addAudioTimer() {
         int time = MUserSettings.getTime();
-        if(time > 0) {
+        if(time >= 0) {
             foreach (GameObject audSource in audioToFade)
             {
                 if (audSource.GetComponent<AudioSource>() != null)
