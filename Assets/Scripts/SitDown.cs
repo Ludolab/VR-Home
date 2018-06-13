@@ -189,7 +189,7 @@ public class SitDown : MonoBehaviour {
 
         yield return new WaitForSeconds(FADE_OUT_HOLD_TIME);
 
-        SceneManager.LoadScene(menuScene);
+        ReturnToMenu();
     }
 
     private void ClearWalls()
@@ -200,6 +200,11 @@ public class SitDown : MonoBehaviour {
         {
             rend.gameObject.SetActive(false);
         }
+    }
+
+    private void ReturnToMenu()
+    {
+        SceneManager.LoadScene(menuScene);
     }
 
     private void addAudioTimer() {
