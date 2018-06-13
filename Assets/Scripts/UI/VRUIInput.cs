@@ -5,8 +5,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(SteamVR_LaserPointer))]
 public class VRUIInput : MonoBehaviour
 {
-    public Color highlightColor; //Set what color of highlighting to use on hovered text.
-
     private SteamVR_LaserPointer laserPointer;
     private SteamVR_TrackedController trackedController;
 
@@ -55,7 +53,8 @@ public class VRUIInput : MonoBehaviour
                 toggle.gameObject.transform.Find("normal").gameObject.SetActive(false);
                 toggle.gameObject.transform.Find("highlight").gameObject.SetActive(true);
             } else {
-                e.target.gameObject.GetComponentInChildren<Text>().gameObject.GetComponent<Outline>().enabled = true; //Highlights text when hovered over.
+                Outline outline = e.target.gameObject.GetComponentInChildren<Text>().gameObject.GetComponent<Outline>();
+                if (outline != null) outline.enabled = true; //Highlights text when hovered over.
             }
         }
     }
@@ -77,7 +76,8 @@ public class VRUIInput : MonoBehaviour
                 toggle.gameObject.transform.Find("highlight").gameObject.SetActive(false);
                 toggle.gameObject.transform.Find("normal").gameObject.SetActive(true);
             } else {
-                e.target.gameObject.GetComponentInChildren<Text>().gameObject.GetComponent<Outline>().enabled = false; //Highlights text when hovered over.
+                Outline outline = e.target.gameObject.GetComponentInChildren<Text>().gameObject.GetComponent<Outline>();
+                if (outline != null) outline.enabled = false; //De-highlights text.
             }
 
             EventSystem.current.SetSelectedGameObject(null);
