@@ -20,6 +20,7 @@ public class ResizeVideo : MonoBehaviour
     {
         while (!videoPlayer.isPrepared)
         {
+            //video is still loading
             yield return null;
         }
 
