@@ -170,6 +170,18 @@ public class SitDown : MonoBehaviour {
             rend.gameObject.SetActive(true);
         }
         SetText("NOW EXITING.");
+        
+        List<AudioSource> audioSrcs = new List<AudioSource>();
+        List<float> audioVols = new List<float>();
+        foreach (GameObject audioObj in audioToFade)
+        {
+            AudioSource[] objSrcs = audioObj.GetComponents<AudioSource>();
+            foreach (AudioSource audioSrc in objSrcs)
+            {
+                audioSrcs.Add(audioSrc);
+                audioVols.Add(audioSrc.volume);
+            }
+        }
 
         for (float t = 0; t < FADE_OUT_TIME; t += Time.deltaTime)
         {
@@ -177,19 +189,33 @@ public class SitDown : MonoBehaviour {
             {
                 isQuitting = false;
                 ClearWalls();
+                SetAllVolume(audioSrcs, audioVols, 0);
                 yield break;
             }
-            SetEverythingTransparency(1 - (t / FADE_OUT_TIME));
+            float tPercent = t / FADE_OUT_TIME;
+            SetEverythingTransparency(1 - tPercent);
+            SetAllVolume(audioSrcs, audioVols, tPercent);
             yield return new WaitForEndOfFrame();
         }
         foreach (GameObject obj in toReactivate)
         {
-            obj.SetActive(false);
+            if (obj != null)
+            {
+                obj.SetActive(false);
+            }
         }
-
         yield return new WaitForSeconds(FADE_OUT_HOLD_TIME);
 
         ReturnToMenu();
+    }
+
+    private void SetAllVolume(List<AudioSource> audioSrcs, List<float> maxVols, float t)
+    {
+        int len = audioSrcs.Count;
+        for (int i = 0; i < len; i++)
+        {
+            audioSrcs[i].volume = Mathf.Lerp(maxVols[i], 0, t);
+        }
     }
 
     private void ClearWalls()
