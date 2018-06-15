@@ -238,7 +238,7 @@ public class PickUpStretch : MonoBehaviour
         if (CanStretch(controllerIndex))
         {
             rend.material.shader = highlightShader;
-            SetColor(stretchColor);
+            SetColor(stretchHoverColor);
         }
     }
 
