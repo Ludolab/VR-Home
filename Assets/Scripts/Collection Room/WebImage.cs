@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WebImage : MonoBehaviour
+public class WebImage : ImageQuad
 {
 
     public string imageUrl;
 
-    private Renderer rend;
-    private Vector2 originalScale;
-    
     private void Start()
     {
-        originalScale = transform.localScale;
-        rend = GetComponent<Renderer>();
         StartCoroutine(DownloadImage());
     }
 
@@ -27,24 +22,5 @@ public class WebImage : MonoBehaviour
             SetTexture(texture);
         }
     }
-
-    private void SetTexture(Texture2D texture)
-    {
-        float width = originalScale.x;
-        float height = originalScale.y;
-
-        float aspect = (float)texture.width / texture.height;
-        if (aspect > 1)
-        {
-            height /= aspect;
-        }
-        else
-        {
-            width *= aspect;
-        }
-
-        transform.localScale = new Vector3(width, height, 1);
-        rend.material.mainTexture = texture;
-    }
-
+    
 }
