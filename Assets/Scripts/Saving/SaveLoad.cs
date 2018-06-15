@@ -29,7 +29,6 @@ public class SaveLoad : MonoBehaviour {
         List<SaveTransform> toSave = new List<SaveTransform>();
         foreach (GameObject obj in allObjects)
         {
-            if (obj.name == "GoldSpike") Debug.Log(obj.transform.position.y);
             SaveTransform st = new SaveTransform();
             st.objName = obj.name;
             st.xPosition = obj.transform.position.x;
@@ -55,7 +54,6 @@ public class SaveLoad : MonoBehaviour {
         FileStream file = File.Create(Application.persistentDataPath + "/savedRoom" + userToLoad + ".rm");
         bf.Serialize(file, current);
         file.Close();
-        Debug.Log("Saved data");
     }
 
     // Loads the correct room given user index.
@@ -65,7 +63,6 @@ public class SaveLoad : MonoBehaviour {
     {
         if (File.Exists(Application.persistentDataPath + "/savedRoom" + userToLoad + ".rm"))
         {
-            Debug.Log("Found save data");
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/savedRoom" + userToLoad + ".rm", FileMode.Open);
             saveRoom = (Room)bf.Deserialize(file);
@@ -75,8 +72,6 @@ public class SaveLoad : MonoBehaviour {
             // Otherwise, we'll start with the original, default scene.
             if (saveRoom != null)
             {
-                Debug.Log("Loading save data.");
-
                 // Set the saved transforms of objects.
                 SaveTransform[] loadTransforms = saveRoom.objectTransforms;
                 if (loadTransforms != null) {
