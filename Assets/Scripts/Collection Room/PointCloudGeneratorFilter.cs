@@ -9,6 +9,7 @@ public class PointCloudGeneratorFilter : MonoBehaviour
     public int skipParticles = 2;
     public float depthFilter = 1;
     public ParticleSystem pointCloudParticles;
+    public GameObject pointCloudCopy;
 
     private ParticleSystem.Particle[] particles = new ParticleSystem.Particle[0];
     private PointCloud pc = new PointCloud();
@@ -22,7 +23,7 @@ public class PointCloudGeneratorFilter : MonoBehaviour
         RealSenseDevice.Instance.onNewSampleSet += OnFrames;
 
     }
-
+    
     private void OnFrames(FrameSet frames)
     {
         using (var aligned = aligner.Process(frames))
@@ -96,9 +97,52 @@ public class PointCloudGeneratorFilter : MonoBehaviour
         return true;
     }
 
-    void Update()
+    private void Update()
     {
         //Either way, update particles
         pointCloudParticles.SetParticles(particles, particles.Length);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject copy = Instantiate(pointCloudCopy);
+            //ParticleSystem copyParticles = copy.GetComponent<ParticleSystem>();
+            //copyParticles.SetParticles(particles, particles.Length);
+            ParticleSystem.Particle[] keepParticles = new ParticleSystem.Particle[particles.Length];
+            particles.CopyTo(keepParticles, 0);
+            copy.GetComponent<KeepParticles>().SetParticles(keepParticles);
+
+            /*int len = particles.Length;
+            ParticleSystem.Particle[] oldParticles = particles;
+            UpdateParticleParams(2 * len, 1);
+            print(len + " " + particles.Length);
+            for (int i = 0; i < len; i++)
+            {
+                particles[i] = oldParticles[i];
+                print(i + len);
+                particles[i + len] = oldParticles[i];
+            }*/
+
+        }
+    }
+
+    //Modified from http://answers.unity.com/answers/1118416/view.html
+    ParticleSystem CopyParticles(ParticleSystem original, GameObject destination)
+    {
+        Type type = original.GetType();
+        ParticleSystem dst = destination.GetComponent<ParticleSystem>();
+        if (!dst) dst = destination.AddComponent<ParticleSystem>();
+        var fields = type.GetFields();
+        foreach (var field in fields)
+        {
+            if (field.IsStatic) continue;
+            field.SetValue(dst, field.GetValue(original));
+        }
+        var props = type.GetProperties();
+        foreach (var prop in props)
+        {
+            if (!prop.CanWrite || !prop.CanWrite || prop.Name == "name") continue;
+            prop.SetValue(dst, prop.GetValue(original, null), null);
+        }
+        return dst;
     }
 }
