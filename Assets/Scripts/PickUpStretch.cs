@@ -40,10 +40,6 @@ public class PickUpStretch : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
         oldShader = rend.material.shader;
-
-
-        rend.material.shader = highlightShader;
-        SetColor(stretchColor);
     }
 
     private SteamVR_Controller.Device GetInput(int controllerIndex)
