@@ -5,7 +5,7 @@ using UnityEngine;
 public class PhotoLoader : MonoBehaviour
 {
 
-    private const float HEIGHT_DIFF = 0.2f;
+    private const float HEIGHT_DIFF = 0.05f;
 
     public GameObject photoPrefab;
 
