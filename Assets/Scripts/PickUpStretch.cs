@@ -149,7 +149,7 @@ public class PickUpStretch : MonoBehaviour
                 holder = stretcher;
                 stretcher = NONE;
                 SetColor(heldColor);
-                AttachToController(controllers[controllerIndex]);
+                AttachToController(controllers[holder]);
             }
         }
 
