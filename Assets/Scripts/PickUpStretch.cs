@@ -79,7 +79,6 @@ public class PickUpStretch : MonoBehaviour
             }
             if (input.GetHairTriggerUp())
             {
-                ReleaseStretch(controllerIndex);
                 Release(controllerIndex);
             }
 
@@ -130,6 +129,13 @@ public class PickUpStretch : MonoBehaviour
 
     private void Release(int controllerIndex)
     {
+        if (stretcher == controllerIndex)
+        {
+            grabbableObjects[controllerIndex] = null;
+            stretcher = NONE;
+            Rumble(controllerIndex);
+        }
+
         if (holder == controllerIndex)
         {
             grabbableObjects[controllerIndex] = null;
@@ -137,34 +143,29 @@ public class PickUpStretch : MonoBehaviour
             ReleaseFromController(controllers[controllerIndex]);
             Rumble(controllerIndex);
 
-            if (controllersInside[controllerIndex])
+            if (stretcher != NONE)
             {
-                SetGrabbable(controllerIndex);
+                //transfer to stretcher
+                holder = stretcher;
+                stretcher = NONE;
+                SetColor(heldColor);
+                AttachToController(controllers[controllerIndex]);
             }
-            else
-            {
-                SetNotGrabbable(controllerIndex);
-            }
+        }
+
+        if (controllersInside[controllerIndex])
+        {
+            SetGrabbable(controllerIndex);
+        }
+        else
+        {
+            SetNotGrabbable(controllerIndex);
         }
     }
 
     private void ReleaseStretch(int controllerIndex)
     {
-        if (stretcher == controllerIndex)
-        {
-            grabbableObjects[controllerIndex] = null;
-            stretcher = NONE;
-            Rumble(controllerIndex);
-
-            if (controllersInside[controllerIndex])
-            {
-                SetGrabbable(controllerIndex);
-            }
-            else
-            {
-                SetNotGrabbable(controllerIndex);
-            }
-        }
+        
     }
 
     protected virtual void ReleaseFromController(SteamVR_TrackedObject controller)
