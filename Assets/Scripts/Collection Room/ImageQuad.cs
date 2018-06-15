@@ -10,7 +10,6 @@ public class ImageQuad : MonoBehaviour
 
     private void Awake()
     {
-        print(this + " awaking");
         originalScale = transform.localScale;
         rend = GetComponent<Renderer>();
     }
