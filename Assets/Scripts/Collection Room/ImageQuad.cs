@@ -29,7 +29,8 @@ public class ImageQuad : MonoBehaviour
             width *= aspect;
         }
 
-        transform.localScale = new Vector3(width, height, 1);
+        transform.localScale = new Vector3(width, height, transform.localScale.z);
+        print(this + " NEW SCALE: " + transform.localScale);
         rend.material.mainTexture = texture;
     }
 
