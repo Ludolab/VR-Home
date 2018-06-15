@@ -207,6 +207,12 @@ public class PickUpStretch : MonoBehaviour
             }
         }
 
+        if (stretcher == NONE && holder != NONE)
+        {
+            rend.material.shader = highlightShader;
+            SetColor(heldColor);
+        }
+
         ActionIfBowl(other, b => b.RemoveObject());
     }
 
