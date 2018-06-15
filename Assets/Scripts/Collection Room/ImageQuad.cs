@@ -30,7 +30,6 @@ public class ImageQuad : MonoBehaviour
         }
 
         transform.localScale = new Vector3(width, height, transform.localScale.z);
-        print(this + " NEW SCALE: " + transform.localScale);
         rend.material.mainTexture = texture;
     }
 
