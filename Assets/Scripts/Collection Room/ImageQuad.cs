@@ -5,13 +5,20 @@ using UnityEngine;
 public class ImageQuad : MonoBehaviour
 {
 
+    public GameObject rendObject;
+
     private Renderer rend;
     private Vector2 originalScale;
 
     private void Awake()
     {
         originalScale = transform.localScale;
-        rend = GetComponent<Renderer>();
+
+        if (rendObject == null)
+        {
+            rendObject = gameObject;
+        }
+        rend = rendObject.GetComponent<Renderer>();
     }
 
     public void SetTexture(Texture2D texture)
@@ -29,7 +36,7 @@ public class ImageQuad : MonoBehaviour
             width *= aspect;
         }
 
-        transform.localScale = new Vector3(width, height, transform.localScale.z);
+        transform.localScale = new Vector3(width, height, transform.localScale.z); //scale this object, not rendObject
         rend.material.mainTexture = texture;
     }
 
