@@ -5,7 +5,7 @@ using UnityEngine;
 public class PhotoLoader : MonoBehaviour
 {
 
-    private const float HEIGHT_DIFF = 0.1f;
+    private const float HEIGHT_DIFF = 0.05f;
 
     public GameObject photoPrefab;
 
@@ -15,7 +15,6 @@ public class PhotoLoader : MonoBehaviour
         float height = transform.position.y;
         foreach (Texture2D tex in textures)
         {
-            print("Generating " + tex.name);
             GameObject photo = Instantiate(photoPrefab);
             photo.GetComponent<ImageQuad>().SetTexture(tex);
             photo.transform.position = new Vector3(transform.position.x, height, transform.position.z);
