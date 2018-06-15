@@ -67,7 +67,7 @@ public class SitDown : MonoBehaviour {
         {
             sittingInProgress = true;
             StartCoroutine(WaitSitting());
-            exitText.setStartTimer(true);
+            if (exitText != null) exitText.setStartTimer(true);
             addAudioTimer();
         }
 
