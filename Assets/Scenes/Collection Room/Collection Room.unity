@@ -6621,7 +6621,6 @@ GameObject:
   - component: {fileID: 1581291530}
   - component: {fileID: 1581291529}
   - component: {fileID: 1581291528}
-  - component: {fileID: 1581291527}
   - component: {fileID: 1581291532}
   m_Layer: 0
   m_Name: Sphere
@@ -6643,23 +6642,6 @@ Transform:
   m_Father: {fileID: 508740302}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1581291527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1581291525}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bec3ebafde6b7b34aaef4f0355750d17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlightShader: {fileID: 4800000, guid: 93b6444a31715fd45ab2910e18103d4a, type: 3}
-  heldColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverColor: {r: 1, g: 1, b: 1, a: 0.29803923}
-  splashPrefab: {fileID: 1806942850736380, guid: fb4b91e9cad79624b98de521d1675678,
-    type: 2}
-  respawnPoint: {fileID: 1581291526}
 --- !u!114 &1581291528
 MonoBehaviour:
   m_ObjectHideFlags: 0
