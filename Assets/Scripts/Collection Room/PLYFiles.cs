@@ -16,35 +16,35 @@ public class PLYFiles
 
 	public static void WritePLY(string filePath, ParticleSystem.Particle[] particles)
     {
-        IEnumerable<ParticleSystem.Particle> filteredParticles = particles.Where(p => !IsUnusedParticle(p)).ToList();
-        //TODO: is this performant? could write to text list first and only go through once
+        List<string> text = new List<string>();
+        text.Add("ply");
+        text.Add("format ascii 1.0");
+        text.Add("element vertex ");
+        text.Add("property float32 x");
+        text.Add("property float32 y");
+        text.Add("property float32 z");
+        text.Add("property uchar red");
+        text.Add("property uchar green");
+        text.Add("property uchar blue");
+        text.Add("end_header");
 
-        using (StreamWriter file = File.CreateText(filePath))
+        int particleCount = 0;
+        foreach (ParticleSystem.Particle p in particles)
         {
-            int numParticles = filteredParticles.Count();
-
-            string header1 = @"ply
-format ascii 1.0
-element vertex ";
-            string header2 = @"property float32 x
-property float32 y
-property float32 z
-property uchar red
-property uchar green
-property uchar blue
-end_header";
-            file.WriteLine(header1 + numParticles);
-            file.WriteLine(header2);
-
-            foreach (ParticleSystem.Particle particle in filteredParticles)
+            if (!IsUnusedParticle(p))
             {
-                Vector3 pPos = particle.position;
+                particleCount++;
+                Vector3 pPos = p.position;
                 string particlePosInfo = pPos.x + " " + pPos.y + " " + pPos.z + " ";
-                Color32 pCol = particle.startColor;
+                Color32 pCol = p.startColor;
                 string particleColInfo = pCol.r + " " + pCol.g + " " + pCol.b + " ";
-                file.WriteLine(particlePosInfo + particleColInfo);
+                text.Add(particlePosInfo + particleColInfo);
             }
         }
+
+        text[2] = text[2] + particleCount;
+
+        File.WriteAllLines(filePath, text.ToArray());
     }
 
     public static ParticleSystem.Particle[] ReadPLY(string filePath, float pointsSize)
