@@ -55,23 +55,30 @@ end_header";
             }
             for (int i = 0; i < numParticles; i++)
             {
+                ParticleSystem.Particle particle = new ParticleSystem.Particle();
                 string[] particleInfo = file.ReadLine().Split(' ');
+
                 float pX = float.Parse(particleInfo[0]);
                 float pY = float.Parse(particleInfo[1]);
                 float pZ = float.Parse(particleInfo[2]);
-                byte pcR = byte.Parse(particleInfo[3]);
-                byte pcG = byte.Parse(particleInfo[4]);
-                byte pcB = byte.Parse(particleInfo[5]);
-
-                ParticleSystem.Particle particle = new ParticleSystem.Particle();
                 particle.position = new Vector3(pX, pY, pZ);
                 particle.startSize = pZ * pointsSize * 0.02f;
-                particle.startColor = new Color32(pcR, pcG, pcB, 255);
+
+                if (particleInfo.Length >= 6)
+                {
+                    byte pcR = byte.Parse(particleInfo[3]);
+                    byte pcG = byte.Parse(particleInfo[4]);
+                    byte pcB = byte.Parse(particleInfo[5]);
+                    particle.startColor = new Color32(pcR, pcG, pcB, 255);
+                }
+                else
+                {
+                    particle.startColor = Color.white;
+                }
 
                 particles[i] = particle;
             }
         }
-
         return particles;
     }
 }

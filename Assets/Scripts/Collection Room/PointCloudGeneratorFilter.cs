@@ -4,6 +4,9 @@ using Intel.RealSense;
 
 public class PointCloudGeneratorFilter : MonoBehaviour
 {
+
+    private const string PLY_SAVE_PATH = "Assets/Resources/PointClouds/";
+
     public bool mirrored;
     public float pointsSize = 1;
     public int skipParticles = 2;
@@ -111,10 +114,14 @@ public class PointCloudGeneratorFilter : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            PLYFiles.WritePLY("save.ply", particles);
+            DateTime now = DateTime.Now;
+            string time = now.ToString("u"); //universal sortable
+            string filename = time + ".ply";
+            PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
+            //TODO: load all in the folder in a floaty UI, discard others when grabbing one
             GameObject copy = Instantiate(pointCloudCopy);
             ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY("save.ply", pointsSize);
             copy.GetComponent<KeepParticles>().SetParticles(plyParticles);
