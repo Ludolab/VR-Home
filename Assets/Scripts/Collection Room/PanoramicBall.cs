@@ -19,6 +19,7 @@ public class PanoramicBall : MonoBehaviour {
 
     void OnColliderEnter(Collider col)
     {
+        Debug.Log("Collided with " + col.gameObject.name);
         if (col.gameObject.name == "Camera (eye)")
         {
             viewedImage = thisImage;
