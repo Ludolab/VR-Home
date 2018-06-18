@@ -18,7 +18,7 @@ public class PanoramicBall : MonoBehaviour {
         myMaterial.mainTexture = thisImage;
 	}
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
         Debug.Log("Collided with " + col.gameObject.name);
         if (col.gameObject == headCollider)
