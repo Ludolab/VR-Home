@@ -20,7 +20,7 @@ public class PanoramicBall : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Collided with " + col.gameObject.name);
+        //Debug.Log("Collided with " + col.gameObject.name);
         if (col.gameObject == headCollider)
         {
             viewedImage = thisImage;
