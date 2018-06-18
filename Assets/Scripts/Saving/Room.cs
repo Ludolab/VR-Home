@@ -7,5 +7,6 @@ public class Room
 {
     [SerializeField] public string user;
     //[SerializeField] public List<GameObject> objInRoom;
-    [SerializeField] public SaveTransform[] objectTransforms;
+    [SerializeField] public SaveObject[] objects;
+    [SerializeField] public LoadPrefab[] prefabs;
 }

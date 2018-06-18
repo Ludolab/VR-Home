@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class SaveLoad : MonoBehaviour {
 
@@ -13,47 +14,117 @@ public class SaveLoad : MonoBehaviour {
     public static SaveLoad saveFile;
 
     private Room saveRoom;
-    private SaveTransform[] transToSave;
+    private SaveObject[] objToSave;
+    private List<int> originalObjects = new List<int>(); // Save reference to original objects, not from prefabs, in the scene.
+    private Dictionary<int, string> prefabObjects = new Dictionary<int, string>(); // Save reference to objects created from prefabs in loading.
+    private LoadPrefab[] prefabToSave;
     private int toSaveCount;
     private int numToSave;
 
-	public void Awake()
+	public void Start()
 	{
+        // Save what objects were originally in the scene (i.e. not from a prefab/created during runtime).
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in allObjects)
+        {
+            originalObjects.Add(obj.GetInstanceID());
+        }
+
         Load();
 	}
 
     public void OnApplicationQuit()
     {
-        // Set a SaveTransform for everything in the scene.
-        GameObject[] allObjects = FindObjectsOfType<GameObject>();
-        List<SaveTransform> toSave = new List<SaveTransform>();
-        foreach (GameObject obj in allObjects)
-        {
-            SaveTransform st = new SaveTransform();
-            st.objName = obj.name;
-            st.xPosition = obj.transform.position.x;
-            st.yPosition = obj.transform.position.y;
-            st.zPosition = obj.transform.position.z;
-            st.xScale = obj.transform.localScale.x;
-            st.yScale = obj.transform.localScale.y;
-            st.zScale = obj.transform.localScale.z;
-            toSave.Add(st);
-        }
-        transToSave = toSave.ToArray();
         Save();
 	}
 
 	public void Save() {
+        SaveObjects();
         Room current = new Room();
         //Save the current room by saving the user and the transform of ST objects.
         current.user = userToLoad;
-        current.objectTransforms = transToSave;
+        current.objects = objToSave;
+        current.prefabs = prefabToSave;
 
         // Save the updated room.
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedRoom" + userToLoad + ".rm");
         bf.Serialize(file, current);
         file.Close();
+    }
+
+    private void SaveObjects() {
+        // Set a SaveObject or LoadPrefab for everything in scene.
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        List<SaveObject> saveObjects = new List<SaveObject>();
+        List<LoadPrefab> loadPrefabs = new List<LoadPrefab>();
+        foreach (GameObject obj in allObjects)
+        {
+            if (originalObjects.Contains(obj.GetInstanceID()))
+            { // Add to SaveObjects if originally in scene.
+                SaveObject st = new SaveObject();
+                st.objName = obj.name;
+                st.objActive = obj.activeSelf;
+                st.xPosition = obj.transform.localPosition.x;
+                st.yPosition = obj.transform.localPosition.y;
+                st.zPosition = obj.transform.localPosition.z;
+                st.xRotation = obj.transform.localEulerAngles.x;
+                st.yRotation = obj.transform.localEulerAngles.y;
+                st.zRotation = obj.transform.localEulerAngles.z;
+                st.xScale = obj.transform.localScale.x;
+                st.yScale = obj.transform.localScale.y;
+                st.zScale = obj.transform.localScale.z;
+
+                saveObjects.Add(st);
+            }
+            else if (PrefabUtility.GetPrefabParent(obj) != null || prefabObjects.ContainsKey(obj.GetInstanceID()))
+            { // Otherwise, add to loaded prefabs.
+                Debug.Log("Found prefab");
+                LoadPrefab lp = new LoadPrefab();
+                if (PrefabUtility.GetPrefabParent(obj) != null){
+                    lp.prefabToLoad = PrefabUtility.GetPrefabParent(obj).name;
+                } else {
+                    string val;
+                    prefabObjects.TryGetValue(obj.GetInstanceID(), out val);
+                    lp.prefabToLoad = val;
+                }
+                lp.objData = new SaveObject();
+                lp.objData.objActive = obj.activeSelf;
+                lp.objData.xPosition = obj.transform.localPosition.x;
+                lp.objData.yPosition = obj.transform.localPosition.y;
+                lp.objData.zPosition = obj.transform.localPosition.z;
+                lp.objData.xRotation = obj.transform.localEulerAngles.x;
+                lp.objData.yRotation = obj.transform.localEulerAngles.y;
+                lp.objData.zRotation = obj.transform.localEulerAngles.z;
+                lp.objData.xScale = obj.transform.localScale.x;
+                lp.objData.yScale = obj.transform.localScale.y;
+                lp.objData.zScale = obj.transform.localScale.z;
+
+                List<SaveObject> loadPrefabChildren = new List<SaveObject>();
+                foreach (Transform child in obj.transform)
+                {
+                    SaveObject lpc = new SaveObject();
+                    lpc.objName = child.name;
+                    lpc.objActive = child.gameObject.activeSelf;
+                    lpc.xPosition = child.localPosition.x;
+                    lpc.yPosition = child.localPosition.y;
+                    lpc.zPosition = child.localPosition.z;
+                    lpc.xRotation = child.localEulerAngles.x;
+                    lpc.yRotation = child.localEulerAngles.y;
+                    lpc.zRotation = child.localEulerAngles.z;
+                    lpc.xScale = child.localScale.x;
+                    lpc.yScale = child.localScale.y;
+                    lpc.zScale = child.localScale.z;
+                    loadPrefabChildren.Add(lpc);
+                }
+                lp.childrenData = loadPrefabChildren.ToArray();
+
+                loadPrefabs.Add(lp);
+            }
+        }
+        objToSave = saveObjects.ToArray();
+        prefabToSave = loadPrefabs.ToArray();
+
     }
 
     // Loads the correct room given user index.
@@ -72,21 +143,58 @@ public class SaveLoad : MonoBehaviour {
             // Otherwise, we'll start with the original, default scene.
             if (saveRoom != null)
             {
-                // Set the saved transforms of objects.
-                SaveTransform[] loadTransforms = saveRoom.objectTransforms;
-                if (loadTransforms != null) {
-                    foreach (SaveTransform st in loadTransforms)
-                    {
-                        GameObject toTransform = GameObject.Find(st.objName);
+                LoadObjects(saveRoom);
+            }
+        }
+    }
 
-                        if (toTransform != null)
-                        {
-                            toTransform.transform.position = new Vector3(st.xPosition, st.yPosition, st.zPosition);
-                            toTransform.transform.localScale = new Vector3(st.xScale, st.yScale, st.zScale);
-                        }
+    public void LoadObjects(Room saveRoom) {
+        // Set the saved transforms of objects.
+        SaveObject[] loadObjState = saveRoom.objects;
+        if (loadObjState != null)
+        {
+            foreach (SaveObject st in loadObjState)
+            {
+                GameObject toLoad = GameObject.Find(st.objName);
+
+                if (toLoad != null)
+                {
+                    toLoad.SetActive(st.objActive);
+                    toLoad.transform.localPosition = new Vector3(st.xPosition, st.yPosition, st.zPosition);
+                    toLoad.transform.localEulerAngles = new Vector3(st.xRotation, st.yRotation, st.zRotation);
+                    toLoad.transform.localScale = new Vector3(st.xScale, st.yScale, st.zScale);
+                }
+            }
+        }
+
+        // Load in any prefab objects created previously.
+        LoadPrefab[] loadPrefabState = saveRoom.prefabs;
+        if (loadPrefabState != null)
+        {
+            foreach (LoadPrefab lp in loadPrefabState)
+            {
+                GameObject loaded = (GameObject)Instantiate(Resources.Load(lp.prefabToLoad));
+                prefabObjects.Add(loaded.GetInstanceID(),lp.prefabToLoad);
+                loaded.SetActive(lp.objData.objActive);
+                loaded.transform.localPosition = new Vector3(lp.objData.xPosition, lp.objData.yPosition, lp.objData.zPosition);
+                loaded.transform.localEulerAngles = new Vector3(lp.objData.xRotation, lp.objData.yRotation, lp.objData.zRotation);
+                loaded.transform.localScale = new Vector3(lp.objData.xScale, lp.objData.yScale, lp.objData.zScale);
+
+                // Arrange the children of the prefab.
+                foreach (SaveObject lpc in lp.childrenData)
+                {
+                    GameObject loadChild = loaded.transform.Find(lpc.objName).gameObject;
+
+                    if (loadChild != null)
+                    {
+                        loadChild.SetActive(lpc.objActive);
+                        loadChild.transform.localPosition = new Vector3(lpc.xPosition, lpc.yPosition, lpc.zPosition);
+                        loadChild.transform.localEulerAngles = new Vector3(lpc.xRotation, lpc.yRotation, lpc.zRotation);
+                        loadChild.transform.localScale = new Vector3(lpc.xScale, lpc.yScale, lpc.zScale);
                     }
                 }
             }
         }
     }
+
 }
