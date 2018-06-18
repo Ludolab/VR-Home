@@ -8,7 +8,7 @@ public class PLYFiles
 
 	public static void WritePLY(string filePath, ParticleSystem.Particle[] particles)
     {
-        using (StreamWriter file = new StreamWriter(filePath))
+        using (StreamWriter file = File.CreateText(filePath))
         {
             int numParticles = particles.Length;
 

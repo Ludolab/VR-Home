@@ -115,7 +115,7 @@ public class PointCloudGeneratorFilter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             DateTime now = DateTime.Now;
-            string time = now.ToString("u"); //universal sortable
+            string time = now.ToString("yyyy-MM-dd_HH.mm.ss.ffff");
             string filename = time + ".ply";
             PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
         }
