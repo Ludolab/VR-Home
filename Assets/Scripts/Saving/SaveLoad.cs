@@ -16,7 +16,6 @@ public class SaveLoad : MonoBehaviour {
     private Room saveRoom;
     private SaveObject[] objToSave;
     private List<int> originalObjects = new List<int>(); // Save reference to original objects, not from prefabs, in the scene.
-    private Dictionary<int, string> prefabObjects = new Dictionary<int, string>(); // Save reference to objects created from prefabs in loading.
     private LoadPrefab[] prefabToSave;
     private int toSaveCount;
     private int numToSave;
@@ -77,17 +76,13 @@ public class SaveLoad : MonoBehaviour {
 
                 saveObjects.Add(st);
             }
-            else if (PrefabUtility.GetPrefabParent(obj) != null || prefabObjects.ContainsKey(obj.GetInstanceID()))
+            else if (CreatedPrefabs.getCreatedObj().ContainsKey(obj.GetInstanceID()))
             { // Otherwise, add to loaded prefabs.
                 Debug.Log("Found prefab");
                 LoadPrefab lp = new LoadPrefab();
-                if (PrefabUtility.GetPrefabParent(obj) != null){
-                    lp.prefabToLoad = PrefabUtility.GetPrefabParent(obj).name;
-                } else {
-                    string val;
-                    prefabObjects.TryGetValue(obj.GetInstanceID(), out val);
-                    lp.prefabToLoad = val;
-                }
+                string val;
+                CreatedPrefabs.getCreatedObj().TryGetValue(obj.GetInstanceID(), out val);
+                lp.prefabToLoad = val;
                 lp.objData = new SaveObject();
                 lp.objData.objActive = obj.activeSelf;
                 lp.objData.xPosition = obj.transform.localPosition.x;
@@ -174,7 +169,7 @@ public class SaveLoad : MonoBehaviour {
             foreach (LoadPrefab lp in loadPrefabState)
             {
                 GameObject loaded = (GameObject)Instantiate(Resources.Load(lp.prefabToLoad));
-                prefabObjects.Add(loaded.GetInstanceID(),lp.prefabToLoad);
+                CreatedPrefabs.addToCreated(loaded.GetInstanceID(), lp.prefabToLoad);
                 loaded.SetActive(lp.objData.objActive);
                 loaded.transform.localPosition = new Vector3(lp.objData.xPosition, lp.objData.yPosition, lp.objData.zPosition);
                 loaded.transform.localEulerAngles = new Vector3(lp.objData.xRotation, lp.objData.yRotation, lp.objData.zRotation);
