@@ -1,0 +1,31 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class BallInterior : MonoBehaviour {
+
+    private const int NUM_CONTROLLERS = 2;
+    private SteamVR_TrackedObject[] controllers = new SteamVR_TrackedObject[NUM_CONTROLLERS];
+
+    Material myMaterial;
+
+	// Use this for initialization
+	void Start () {
+        myMaterial = GetComponent<Renderer>().material;
+        myMaterial.mainTexture = PanoramicBall.viewedImage;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
+        {
+            SteamVR_TrackedObject controller = controllers[controllerIndex];
+            SteamVR_Controller.Device input = SteamVR_Controller.Input((int)controller.index);
+            if (input.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
+            {
+                SceneManager.LoadScene("Collection Room");
+            }
+        }
+	}
+}
