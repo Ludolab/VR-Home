@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   processMode: 0
+  pause: 0
   DeviceConfiguration:
     Profiles:
     - Stream: 1
@@ -85,4 +86,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967fa27358fa26d428f89abc9b1cafb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streaming: 0
