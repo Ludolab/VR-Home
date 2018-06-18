@@ -5,12 +5,12 @@ using UnityEngine;
 public class KeepParticles : MonoBehaviour
 {
 
-    private ParticleSystem particleSystem;
+    private ParticleSystem particleSys;
     private ParticleSystem.Particle[] particles = new ParticleSystem.Particle[0];
 
     private void Start()
     {
-        particleSystem = GetComponent<ParticleSystem>();
+        particleSys = GetComponent<ParticleSystem>();
     }
 
     public void SetParticles(ParticleSystem.Particle[] particles)
@@ -20,6 +20,6 @@ public class KeepParticles : MonoBehaviour
 
     private void Update()
     {
-        particleSystem.SetParticles(particles, particles.Length);
+        particleSys.SetParticles(particles, particles.Length);
     }
 }
