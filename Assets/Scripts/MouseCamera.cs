@@ -66,7 +66,7 @@ public class MouseCamera : MonoBehaviour {
         vertRotation = Mathf.Clamp(vertRotation, MIN_VERT_ROTATION, MAX_VERT_ROTATION);
         transform.eulerAngles = new Vector3(vertRotation, horizRotation, 0);
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             //this is weird and should only be used for debugging the meditation standing up part
             Vector3 parentPos = transform.parent.position;
