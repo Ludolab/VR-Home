@@ -7,6 +7,7 @@ public class PanoramicBall : MonoBehaviour {
 
     public static Texture viewedImage;
 
+    public GameObject headCollider;
     public Texture thisImage;
 
     Material myMaterial;
@@ -17,9 +18,10 @@ public class PanoramicBall : MonoBehaviour {
         myMaterial.mainTexture = thisImage;
 	}
 
-    void OnColliderEnter(Collider col)
+    void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "Camera (eye)")
+        Debug.Log("Collided with " + col.gameObject.name);
+        if (col.gameObject == headCollider)
         {
             viewedImage = thisImage;
             SceneManager.LoadScene("View 360");
