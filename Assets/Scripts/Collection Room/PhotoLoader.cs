@@ -16,6 +16,7 @@ public class PhotoLoader : MonoBehaviour
         foreach (Texture2D tex in textures)
         {
             GameObject photo = Instantiate(photoPrefab);
+            CreatedPrefabs.addToCreated(photo.GetInstanceID(), photoPrefab.name);
             photo.GetComponent<ImageQuad>().SetTexture(tex);
             photo.transform.position = new Vector3(transform.position.x, height, transform.position.z);
             height += HEIGHT_DIFF;

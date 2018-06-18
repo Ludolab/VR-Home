@@ -19,7 +19,7 @@ public class PanoramicBall : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "Camera (head)")
+        if (col.gameObject.name == "Camera (eye)")
         {
             viewedImage = thisImage;
             SceneManager.LoadScene("View 360");
