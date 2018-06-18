@@ -1,16 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class PLYFiles
 {
 
+    private static bool IsUnusedParticle(ParticleSystem.Particle p)
+    {
+        Vector3 pos = p.position;
+        Color32 col = p.startColor;
+        return pos.x == 0 && pos.y == 0 && pos.z == 0 && col.r == 0 && col.g == 0 && col.b == 0;
+    }
+
 	public static void WritePLY(string filePath, ParticleSystem.Particle[] particles)
     {
+        IEnumerable<ParticleSystem.Particle> filteredParticles = particles.Where(p => !IsUnusedParticle(p)).ToList();
+        //TODO: is this performant? could write to text list first and only go through once
+
         using (StreamWriter file = File.CreateText(filePath))
         {
-            int numParticles = particles.Length;
+            int numParticles = filteredParticles.Count();
 
             string header1 = @"ply
 format ascii 1.0
@@ -25,7 +36,7 @@ end_header";
             file.WriteLine(header1 + numParticles);
             file.WriteLine(header2);
 
-            foreach (ParticleSystem.Particle particle in particles)
+            foreach (ParticleSystem.Particle particle in filteredParticles)
             {
                 Vector3 pPos = particle.position;
                 string particlePosInfo = pPos.x + " " + pPos.y + " " + pPos.z + " ";

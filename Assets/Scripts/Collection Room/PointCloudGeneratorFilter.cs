@@ -121,7 +121,7 @@ public class PointCloudGeneratorFilter : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            //TODO: load all in the folder in a floaty UI, discard others when grabbing one
+            //TODO: load all
             GameObject copy = Instantiate(pointCloudCopy);
             ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + "save.ply", pointsSize);
             copy.GetComponent<KeepParticles>().SetParticles(plyParticles);
