@@ -14,6 +14,9 @@ public class BallInterior : MonoBehaviour {
 	void Start () {
         myMaterial = GetComponent<Renderer>().material;
         myMaterial.mainTexture = PanoramicBall.viewedImage;
+        SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
+        controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
+        controllers[1] = manager.right.GetComponent<SteamVR_TrackedObject>();
 	}
 	
 	// Update is called once per frame
