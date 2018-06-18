@@ -17,7 +17,7 @@ public class PanoramicBall : MonoBehaviour {
         myMaterial.mainTexture = thisImage;
 	}
 
-    void OnTriggerEnter(Collider col)
+    void OnColliderEnter(Collider col)
     {
         if (col.gameObject.name == "Camera (eye)")
         {
