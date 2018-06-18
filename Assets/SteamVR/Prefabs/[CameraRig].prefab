@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 458974}
   - component: {fileID: 11411726}
   - component: {fileID: 135456542446150604}
+  - component: {fileID: 114177787650821228}
   m_Layer: 0
   m_Name: Controller (left)
   m_TagString: Untagged
@@ -97,6 +98,7 @@ GameObject:
   - component: {fileID: 402434}
   - component: {fileID: 11463128}
   - component: {fileID: 135127542315402356}
+  - component: {fileID: 114031512305931756}
   m_Layer: 0
   m_Name: Controller (right)
   m_TagString: Untagged
@@ -602,6 +604,30 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &114031512305931756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190333478fc506840b74c777fa9e42ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newBodyTexture: {fileID: 0}
+--- !u!114 &114177787650821228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190333478fc506840b74c777fa9e42ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newBodyTexture: {fileID: 0}
 --- !u!114 &114533710736081256
 MonoBehaviour:
   m_ObjectHideFlags: 1
