@@ -16,7 +16,7 @@ public class SaveLoad : MonoBehaviour {
     private Room saveRoom;
     private SaveObject[] objToSave;
     private List<int> originalObjects = new List<int>(); // Save reference to original objects, not from prefabs, in the scene.
-    private LoadPrefab[] prefabToSave;
+    private SavePrefab[] prefabToSave;
     private int toSaveCount;
     private int numToSave;
 
@@ -47,7 +47,7 @@ public class SaveLoad : MonoBehaviour {
 
         // Save the updated room.
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/savedRoom" + userToLoad + ".rm");
+        FileStream file = File.Create(Application.persistentDataPath + "/savedRoom" + SceneManager.GetActiveScene().name + userToLoad + ".rm");
         bf.Serialize(file, current);
         file.Close();
     }
@@ -56,7 +56,7 @@ public class SaveLoad : MonoBehaviour {
         // Set a SaveObject or LoadPrefab for everything in scene.
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
         List<SaveObject> saveObjects = new List<SaveObject>();
-        List<LoadPrefab> loadPrefabs = new List<LoadPrefab>();
+        List<SavePrefab> savePrefabs = new List<SavePrefab>();
         foreach (GameObject obj in allObjects)
         {
             if (originalObjects.Contains(obj.GetInstanceID()))
@@ -73,52 +73,57 @@ public class SaveLoad : MonoBehaviour {
                 st.xScale = obj.transform.localScale.x;
                 st.yScale = obj.transform.localScale.y;
                 st.zScale = obj.transform.localScale.z;
+                Renderer rend = obj.GetComponent<Renderer>();
+                if (rend != null && rend.material.mainTexture != null) st.texture = rend.material.mainTexture.name;
 
                 saveObjects.Add(st);
             }
             else if (CreatedPrefabs.getCreatedObj().ContainsKey(obj.GetInstanceID()))
             { // Otherwise, add to loaded prefabs.
-                Debug.Log("Found prefab");
-                LoadPrefab lp = new LoadPrefab();
+
+                SavePrefab sp = new SavePrefab();
                 string val;
                 CreatedPrefabs.getCreatedObj().TryGetValue(obj.GetInstanceID(), out val);
-                lp.prefabToLoad = val;
-                lp.objData = new SaveObject();
-                lp.objData.objActive = obj.activeSelf;
-                lp.objData.xPosition = obj.transform.localPosition.x;
-                lp.objData.yPosition = obj.transform.localPosition.y;
-                lp.objData.zPosition = obj.transform.localPosition.z;
-                lp.objData.xRotation = obj.transform.localEulerAngles.x;
-                lp.objData.yRotation = obj.transform.localEulerAngles.y;
-                lp.objData.zRotation = obj.transform.localEulerAngles.z;
-                lp.objData.xScale = obj.transform.localScale.x;
-                lp.objData.yScale = obj.transform.localScale.y;
-                lp.objData.zScale = obj.transform.localScale.z;
+                sp.prefabToLoad = val;
+                sp.objData = new SaveObject();
+                sp.objData.objActive = obj.activeSelf;
+                sp.objData.xPosition = obj.transform.localPosition.x;
+                sp.objData.yPosition = obj.transform.localPosition.y;
+                sp.objData.zPosition = obj.transform.localPosition.z;
+                sp.objData.xRotation = obj.transform.localEulerAngles.x;
+                sp.objData.yRotation = obj.transform.localEulerAngles.y;
+                sp.objData.zRotation = obj.transform.localEulerAngles.z;
+                sp.objData.xScale = obj.transform.localScale.x;
+                sp.objData.yScale = obj.transform.localScale.y;
+                sp.objData.zScale = obj.transform.localScale.z;
+                Renderer rend = obj.GetComponent<Renderer>();
+                if (rend != null && rend.material.mainTexture != null) sp.objData.texture = rend.material.mainTexture.name;
 
                 List<SaveObject> loadPrefabChildren = new List<SaveObject>();
                 foreach (Transform child in obj.transform)
                 {
-                    SaveObject lpc = new SaveObject();
-                    lpc.objName = child.name;
-                    lpc.objActive = child.gameObject.activeSelf;
-                    lpc.xPosition = child.localPosition.x;
-                    lpc.yPosition = child.localPosition.y;
-                    lpc.zPosition = child.localPosition.z;
-                    lpc.xRotation = child.localEulerAngles.x;
-                    lpc.yRotation = child.localEulerAngles.y;
-                    lpc.zRotation = child.localEulerAngles.z;
-                    lpc.xScale = child.localScale.x;
-                    lpc.yScale = child.localScale.y;
-                    lpc.zScale = child.localScale.z;
-                    loadPrefabChildren.Add(lpc);
+                    SaveObject spc = new SaveObject();
+                    spc.objName = child.name;
+                    spc.objActive = child.gameObject.activeSelf;
+                    spc.xPosition = child.localPosition.x;
+                    spc.yPosition = child.localPosition.y;
+                    spc.zPosition = child.localPosition.z;
+                    spc.xRotation = child.localEulerAngles.x;
+                    spc.yRotation = child.localEulerAngles.y;
+                    spc.zRotation = child.localEulerAngles.z;
+                    spc.xScale = child.localScale.x;
+                    spc.yScale = child.localScale.y;
+                    spc.zScale = child.localScale.z;
+                    Renderer childRend = child.GetComponent<Renderer>();
+                    if (childRend != null && childRend.material.mainTexture != null) spc.texture = childRend.material.mainTexture.name;
+                    loadPrefabChildren.Add(spc);
                 }
-                lp.childrenData = loadPrefabChildren.ToArray();
-
-                loadPrefabs.Add(lp);
+                   sp.childrenData = loadPrefabChildren.ToArray();
+                   savePrefabs.Add(sp);
             }
         }
         objToSave = saveObjects.ToArray();
-        prefabToSave = loadPrefabs.ToArray();
+        prefabToSave = savePrefabs.ToArray();
 
     }
 
@@ -127,10 +132,10 @@ public class SaveLoad : MonoBehaviour {
     // Use a negative index to indicate it is a new user.
     public void Load()
     {
-        if (File.Exists(Application.persistentDataPath + "/savedRoom" + userToLoad + ".rm"))
+        if (File.Exists(Application.persistentDataPath + "/savedRoom" + SceneManager.GetActiveScene().name + userToLoad + ".rm"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/savedRoom" + userToLoad + ".rm", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/savedRoom" + SceneManager.GetActiveScene().name + userToLoad + ".rm", FileMode.Open);
             saveRoom = (Room)bf.Deserialize(file);
             file.Close();
 
@@ -158,15 +163,17 @@ public class SaveLoad : MonoBehaviour {
                     toLoad.transform.localPosition = new Vector3(st.xPosition, st.yPosition, st.zPosition);
                     toLoad.transform.localEulerAngles = new Vector3(st.xRotation, st.yRotation, st.zRotation);
                     toLoad.transform.localScale = new Vector3(st.xScale, st.yScale, st.zScale);
+                    ImageQuad imgQuad = toLoad.GetComponent<ImageQuad>();
+                    if (imgQuad != null && Resources.Load("Photos/" + st.texture) != null) imgQuad.SetTexture((Texture2D)(Resources.Load("Photos/" + st.texture)));
                 }
             }
         }
 
         // Load in any prefab objects created previously.
-        LoadPrefab[] loadPrefabState = saveRoom.prefabs;
+        SavePrefab[] loadPrefabState = saveRoom.prefabs;
         if (loadPrefabState != null)
         {
-            foreach (LoadPrefab lp in loadPrefabState)
+            foreach (SavePrefab lp in loadPrefabState)
             {
                 GameObject loaded = (GameObject)Instantiate(Resources.Load(lp.prefabToLoad));
                 CreatedPrefabs.addToCreated(loaded.GetInstanceID(), lp.prefabToLoad);
@@ -174,6 +181,8 @@ public class SaveLoad : MonoBehaviour {
                 loaded.transform.localPosition = new Vector3(lp.objData.xPosition, lp.objData.yPosition, lp.objData.zPosition);
                 loaded.transform.localEulerAngles = new Vector3(lp.objData.xRotation, lp.objData.yRotation, lp.objData.zRotation);
                 loaded.transform.localScale = new Vector3(lp.objData.xScale, lp.objData.yScale, lp.objData.zScale);
+                ImageQuad imgQuad = loaded.GetComponent<ImageQuad>();
+                if(imgQuad != null && Resources.Load("Photos/" + lp.objData.texture) != null) imgQuad.SetTexture((Texture2D)(Resources.Load("Photos/" + lp.objData.texture)));
 
                 // Arrange the children of the prefab.
                 foreach (SaveObject lpc in lp.childrenData)
@@ -186,6 +195,8 @@ public class SaveLoad : MonoBehaviour {
                         loadChild.transform.localPosition = new Vector3(lpc.xPosition, lpc.yPosition, lpc.zPosition);
                         loadChild.transform.localEulerAngles = new Vector3(lpc.xRotation, lpc.yRotation, lpc.zRotation);
                         loadChild.transform.localScale = new Vector3(lpc.xScale, lpc.yScale, lpc.zScale);
+                        ImageQuad childImgQuad = loadChild.GetComponent<ImageQuad>();
+                        if (childImgQuad != null && Resources.Load("Photos/" + lpc.texture) != null) childImgQuad.SetTexture((Texture2D)(Resources.Load("Photos/" + lpc.texture)));
                     }
                 }
             }
