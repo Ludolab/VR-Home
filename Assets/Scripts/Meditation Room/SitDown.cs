@@ -58,7 +58,8 @@ public class SitDown : MonoBehaviour {
         return //obj.activeSelf &&
                obj != gameObject &&
                obj.name != "[CameraRig]" &&
-               obj.name != "[SteamVR]";
+               obj.name != "[SteamVR]" &&
+               obj.name != "Meditation_Mat";
     }
     
     private void Update()
