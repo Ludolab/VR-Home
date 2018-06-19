@@ -14,6 +14,7 @@ public class SaveLoad : MonoBehaviour {
 
     private Room saveRoom;
     private List<int> originalObjects = new List<int>(); // Save reference to original objects, not from prefabs, in the scene.
+    private Dictionary<int, ID> originalObjID = new Dictionary<int, ID>();
     private SaveObject[] objToSave;
     private SavePrefab[] prefabToSave;
     private ID[] objToDestroy;
@@ -25,6 +26,15 @@ public class SaveLoad : MonoBehaviour {
         // Save what objects were originally in the scene (i.e. not from a prefab/created during runtime).
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
         originalObjects = allObjectID(allObjects);
+        // Generate the IDs of objects.
+        foreach (GameObject obj in allObjects) {
+            ID id = new ID();
+            id.objName = obj.name;
+            id.objCoordX = obj.transform.position.x;
+            id.objCoordY = obj.transform.position.y;
+            id.objCoordZ = obj.transform.position.z;
+            originalObjID.Add(obj.GetInstanceID(), id);
+        }
 
         Load();
 	}
@@ -58,8 +68,7 @@ public class SaveLoad : MonoBehaviour {
         List<ID> saveDestroyed = new List<ID>();
         foreach (GameObject obj in allObjects)
         {
-
-            if (UpdatedObjects.getCreatedObj().ContainsKey(obj.GetInstanceID()))
+            if (UpdatedObjects.getCreatedObj().ContainsKey(obj.GetInstanceID()) && !UpdatedObjects.getDestroyedObj().Contains(obj.GetInstanceID()))
             { // Otherwise, add to loaded prefabs.
 
                 SavePrefab sp = new SavePrefab();
@@ -70,6 +79,8 @@ public class SaveLoad : MonoBehaviour {
                 ID id = new ID();
                 id.objName = obj.name;
                 id.objCoordX = obj.transform.position.x;
+                id.objCoordY = obj.transform.position.y;
+                id.objCoordZ = obj.transform.position.z;
                 sp.objData.objID = id;
                 sp.objData.objActive = obj.activeSelf;
                 sp.objData.xPosition = obj.transform.localPosition.x;
@@ -91,6 +102,8 @@ public class SaveLoad : MonoBehaviour {
                     ID childId = new ID();
                     childId.objName = child.name;
                     childId.objCoordX = child.position.x;
+                    childId.objCoordY = child.position.y;
+                    childId.objCoordZ = child.position.z;
                     spc.objID = childId;
                     spc.objActive = child.gameObject.activeSelf;
                     spc.xPosition = child.localPosition.x;
@@ -109,17 +122,15 @@ public class SaveLoad : MonoBehaviour {
                    sp.childrenData = loadPrefabChildren.ToArray();
                    savePrefabs.Add(sp);
             } else if (UpdatedObjects.getDestroyedObj().Contains(obj.GetInstanceID())){
-                ID id = new ID();
-                id.objName = obj.name;
-                id.objCoordX = obj.transform.position.x;
-                saveDestroyed.Add(id);
+                ID id;
+                originalObjID.TryGetValue(obj.GetInstanceID(), out id);
+                if (id != null) saveDestroyed.Add(id);
             } else if (originalObjects.Contains(obj.GetInstanceID()))
             { // Add to SaveObjects if originally in scene.
 
                 SaveObject st = new SaveObject();
-                ID id = new ID();
-                id.objName = obj.name;
-                id.objCoordX = obj.transform.position.x;
+                ID id;
+                originalObjID.TryGetValue(obj.GetInstanceID(), out id);
                 st.objID = id;
 
                 st.objActive = obj.activeSelf;
@@ -242,9 +253,14 @@ public class SaveLoad : MonoBehaviour {
     }
 
     public GameObject FindFromAll(ID toFind) {
+
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
         foreach (GameObject obj in allObjects) {
-            if (obj.name == toFind.objName && (int)(obj.transform.position.x * 1000.0) == (int)(toFind.objCoordX * 1000.0)) {
+
+            if (obj.name == toFind.objName
+                && (int)(obj.transform.position.x * 100.0) == (int)(toFind.objCoordX * 100.0)
+                && (int)(obj.transform.position.y * 100.0) == (int)(toFind.objCoordY * 100.0)
+                && (int)(obj.transform.position.z * 100.0) == (int)(toFind.objCoordZ * 100.0)) {
                 return obj;
             }
         }
