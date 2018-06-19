@@ -28,6 +28,7 @@ public class PickUpStretch : MonoBehaviour
     private Renderer rend;
 
     private Vector3 startPos;
+    private Quaternion startRotation;
     private Vector3 startScale;
     private Vector3 baseScale;
     private float stretchScale;
@@ -35,6 +36,7 @@ public class PickUpStretch : MonoBehaviour
     protected virtual void Start()
     {
         startPos = transform.position;
+        startRotation = transform.rotation;
         startScale = transform.localScale;
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
@@ -285,6 +287,7 @@ public class PickUpStretch : MonoBehaviour
         }
 
         transform.position = startPos;
+        transform.rotation = startRotation;
         transform.localScale = startScale;
         rb.velocity = Vector3.zero;
     }
