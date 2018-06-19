@@ -12,7 +12,7 @@ public class SetSky : MonoBehaviour {
     public Color sunsetColor = Color.red;//new Color(1, 0.9682f, 0.6462f, 1);
     public Color nightColor = Color.blue;//new Color(0.946f, 0.929f, 1, 1);
     public Light sun;
-    public Light ambientLight;
+    public Light bounceLight;
 
 	// Use this for initialization
     void Start () {
@@ -45,33 +45,33 @@ public class SetSky : MonoBehaviour {
 	}
 
     public void applyChanges() {
-        float angleLateral = (percentThroughDay / 2) - 40;
-        if (percentThroughDay > 50)
+        float angleLateral = (percentThroughDay / 2) + 220;
+        if (percentThroughDay > 30)
         // After Sunset    
         {
-            float percentThroughEvening = (percentThroughDay - 50) / 50;
+            float percentThroughEvening = (percentThroughDay - 30) / 70;
             RenderSettings.skybox = sunsetToNight;
             sunsetToNight.SetFloat("_Blend", percentThroughEvening);
-            float angleVertical = Mathf.Lerp(10, -20, percentThroughEvening);
+            float angleVertical = Mathf.Lerp(20, -5, percentThroughEvening);
             sun.transform.rotation = Quaternion.Euler(angleVertical, angleLateral, angleVertical);
             sun.intensity = Mathf.Lerp(1.5f, 0, percentThroughEvening);
             sun.color = sunsetColor;
-            ambientLight.color = Color.Lerp(sunsetColor, nightColor, percentThroughEvening);
-            ambientLight.intensity = Mathf.Lerp(sun.intensity/2, 0.1f, percentThroughEvening);
+            bounceLight.color = Color.Lerp(sunsetColor, nightColor, percentThroughEvening);
+            bounceLight.intensity = Mathf.Lerp(sun.intensity/2, 0.0f, percentThroughEvening);
         }
         else
         // Before Sunset    
         {
-            float percentThroughMorning = percentThroughDay / 50;    
+            float percentThroughMorning = percentThroughDay / 30;    
             RenderSettings.skybox = dayToSunset;
             dayToSunset.SetFloat("_Blend", percentThroughMorning);
-            float angleVertical = Mathf.Lerp(50, 10, percentThroughMorning);
+            float angleVertical = Mathf.Lerp(60, 20, percentThroughMorning);
             sun.transform.rotation = Quaternion.Euler(angleVertical, angleLateral, angleVertical);
             sun.intensity = 1.5f;
             Color lightColor = Color.Lerp(daylightColor, sunsetColor, percentThroughMorning);
             sun.color = lightColor;
-            ambientLight.color = lightColor;
-            ambientLight.intensity = sun.intensity/2;
+            bounceLight.color = lightColor;
+            bounceLight.intensity = sun.intensity/2;
         }
     }
 

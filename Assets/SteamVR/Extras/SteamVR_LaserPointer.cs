@@ -25,6 +25,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
     public Transform reference;
     public event PointerEventHandler PointerIn;
     public event PointerEventHandler PointerOut;
+    public Material material; //added to change laser visual.
 
     Transform previousContact = null;
 
@@ -36,7 +37,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
         holder.transform.localPosition = Vector3.zero;
 		holder.transform.localRotation = Quaternion.identity;
 
-		pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
         pointer.transform.parent = holder.transform;
         pointer.transform.localScale = new Vector3(thickness, thickness, 100f);
         pointer.transform.localPosition = new Vector3(0f, 0f, 50f);
@@ -53,15 +54,20 @@ public class SteamVR_LaserPointer : MonoBehaviour
         }
         else
         {
-            if(collider)
+            if (collider)
             {
                 Object.Destroy(collider);
             }
         }
-        Material newMaterial = new Material(Shader.Find("Unlit/Color"));
-        newMaterial.SetColor("_Color", color);
-        pointer.GetComponent<MeshRenderer>().material = newMaterial;
-	}
+
+        //Material newMaterial = new Material(Shader.Find("Unlit/Color"));
+        //newMaterial.SetColor("_Color", color);
+        //pointer.GetComponent<MeshRenderer>().material = newMaterial;
+
+        //Added to change laser visual.
+        material.SetColor("_Color", color);
+        pointer.GetComponent<MeshRenderer>().material = material;
+    }
 
     public virtual void OnPointerIn(PointerEventArgs e)
     {
@@ -77,7 +83,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
 
 
     // Update is called once per frame
-	void Update ()
+    void Update()
     {
         if (!isActive)
         {
@@ -93,7 +99,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
         RaycastHit hit;
         bool bHit = Physics.Raycast(raycast, out hit);
 
-        if(previousContact && previousContact != hit.transform)
+        if (previousContact && previousContact != hit.transform)
         {
             PointerEventArgs args = new PointerEventArgs();
             if (controller != null)
@@ -106,7 +112,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
             OnPointerOut(args);
             previousContact = null;
         }
-        if(bHit && previousContact != hit.transform)
+        if (bHit && previousContact != hit.transform)
         {
             PointerEventArgs argsIn = new PointerEventArgs();
             if (controller != null)
@@ -119,7 +125,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
             OnPointerIn(argsIn);
             previousContact = hit.transform;
         }
-        if(!bHit)
+        if (!bHit)
         {
             previousContact = null;
         }
@@ -130,12 +136,13 @@ public class SteamVR_LaserPointer : MonoBehaviour
 
         if (controller != null && controller.triggerPressed)
         {
-            pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
+            //pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
+            pointer.transform.localScale = new Vector3(thickness, thickness, dist);
         }
         else
         {
             pointer.transform.localScale = new Vector3(thickness, thickness, dist);
         }
-        pointer.transform.localPosition = new Vector3(0f, 0f, dist/2f);
+        pointer.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
     }
 }

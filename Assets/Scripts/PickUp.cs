@@ -13,6 +13,8 @@ public class PickUp : MonoBehaviour
     public Shader highlightShader;
     public Color heldColor;
     public Color hoverColor;
+    public GameObject splashPrefab;
+    public Transform respawnPoint;
 
     private SteamVR_TrackedObject[] controllers = new SteamVR_TrackedObject[NUM_CONTROLLERS];
 
@@ -26,7 +28,7 @@ public class PickUp : MonoBehaviour
 
     private Vector3 startPos;
 
-    private void Start()
+    protected virtual void Start()
     {
         startPos = gameObject.transform.position;
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
@@ -43,11 +45,16 @@ public class PickUp : MonoBehaviour
         return SteamVR_Controller.Input((int)controller.index);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
         {
             CheckController(controllerIndex);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && GetComponent<Slide>() == null)
+        {
+            transform.position = new Vector3(3, 0, 0);
         }
     }
 
@@ -68,7 +75,7 @@ public class PickUp : MonoBehaviour
                 Release(controllerIndex);
             }
 
-            if (input.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
+            if (input.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
             {
                 Reset();
             }
@@ -101,7 +108,7 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    protected void AttachToController(SteamVR_TrackedObject controller)
+    protected virtual void AttachToController(SteamVR_TrackedObject controller)
     {
         gameObject.transform.parent = controller.gameObject.transform;
         rb.isKinematic = true;
@@ -116,11 +123,19 @@ public class PickUp : MonoBehaviour
             ReleaseFromController(controllers[controllerIndex]);
             SteamVR_Controller.Device input = GetInput(controllerIndex);
             Rumble(input);
-            SetGrabbable(controllerIndex);
+
+            if (controllersInside[controllerIndex])
+            {
+                SetGrabbable(controllerIndex);
+            }
+            else
+            {
+                SetNotGrabbable(controllerIndex);
+            }
         }
     }
 
-    protected void ReleaseFromController(SteamVR_TrackedObject controller)
+    protected virtual void ReleaseFromController(SteamVR_TrackedObject controller)
     {
         gameObject.transform.parent = null;
         rb.isKinematic = false;
@@ -132,6 +147,12 @@ public class PickUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ActionIfBowl(other, b => b.AddObject());
+
+        if (other.gameObject.CompareTag("SplashZone"))
+        {
+            GameObject splash = Instantiate(splashPrefab, transform.position, Quaternion.identity);
+            Respawn(); //TODO: maybe not right away?
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -154,7 +175,10 @@ public class PickUp : MonoBehaviour
             {
                 controllersInside[controllerIndex] = false;
             }
-            SetNotGrabbable(controllerIndex);
+            if (holder != controllerIndex)
+            {
+                SetNotGrabbable(controllerIndex);
+            }
         }
 
         ActionIfBowl(other, b => b.RemoveObject());
@@ -226,5 +250,15 @@ public class PickUp : MonoBehaviour
     private void Rumble(SteamVR_Controller.Device input)
     {
         input.TriggerHapticPulse(1200);
+    }
+
+    private void Respawn()
+    {
+        if (holder != NO_HOLDER)
+        {
+            Release(holder);
+        }
+        gameObject.transform.position = respawnPoint.position;
+        rb.velocity = Vector3.zero;
     }
 }

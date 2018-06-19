@@ -9,7 +9,7 @@ public class SoundWhenHit : MonoBehaviour {
     private AudioSource audioSrc;
     private float originalVolume;
 
-    private void Start()
+    private void Awake()
     {
         audioSrc = gameObject.GetComponent<AudioSource>();
         originalVolume = audioSrc.volume;
