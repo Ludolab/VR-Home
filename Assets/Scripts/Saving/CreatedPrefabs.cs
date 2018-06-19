@@ -13,9 +13,4 @@ public static class CreatedPrefabs {
     public static Dictionary<int, string> getCreatedObj() {
         return createdObj;
     }
-
-}
-
-public class SaveCreated {
-    
 }

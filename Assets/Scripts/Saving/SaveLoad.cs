@@ -23,11 +23,7 @@ public class SaveLoad : MonoBehaviour {
 	public void Start()
 	{
         // Save what objects were originally in the scene (i.e. not from a prefab/created during runtime).
-        GameObject[] allObjects = FindObjectsOfType<GameObject>();
-        foreach (GameObject obj in allObjects)
-        {
-            originalObjects.Add(obj.GetInstanceID());
-        }
+        originalObjects = allObjectID();
 
         Load();
 	}
@@ -53,32 +49,14 @@ public class SaveLoad : MonoBehaviour {
     }
 
     private void SaveObjects() {
-        // Set a SaveObject or LoadPrefab for everything in scene.
-        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        // Set a SaveObject or SavePrefab for everything in scene.
+        List<GameObject> allObj = allObjects(); // Get all game objects currently in the scene.
         List<SaveObject> saveObjects = new List<SaveObject>();
         List<SavePrefab> savePrefabs = new List<SavePrefab>();
-        foreach (GameObject obj in allObjects)
+        foreach (GameObject obj in allObj)
         {
-            if (originalObjects.Contains(obj.GetInstanceID()))
-            { // Add to SaveObjects if originally in scene.
-                SaveObject st = new SaveObject();
-                st.objName = obj.name;
-                st.objActive = obj.activeSelf;
-                st.xPosition = obj.transform.localPosition.x;
-                st.yPosition = obj.transform.localPosition.y;
-                st.zPosition = obj.transform.localPosition.z;
-                st.xRotation = obj.transform.localEulerAngles.x;
-                st.yRotation = obj.transform.localEulerAngles.y;
-                st.zRotation = obj.transform.localEulerAngles.z;
-                st.xScale = obj.transform.localScale.x;
-                st.yScale = obj.transform.localScale.y;
-                st.zScale = obj.transform.localScale.z;
-                Renderer rend = obj.GetComponent<Renderer>();
-                if (rend != null && rend.material.mainTexture != null) st.texture = rend.material.mainTexture.name;
-
-                saveObjects.Add(st);
-            }
-            else if (CreatedPrefabs.getCreatedObj().ContainsKey(obj.GetInstanceID()))
+            
+            if (CreatedPrefabs.getCreatedObj().ContainsKey(obj.GetInstanceID()))
             { // Otherwise, add to loaded prefabs.
 
                 SavePrefab sp = new SavePrefab();
@@ -120,6 +98,25 @@ public class SaveLoad : MonoBehaviour {
                 }
                    sp.childrenData = loadPrefabChildren.ToArray();
                    savePrefabs.Add(sp);
+            } else if (originalObjects.Contains(obj.GetInstanceID()))
+            { // Add to SaveObjects if originally in scene.
+
+                SaveObject st = new SaveObject();
+                st.objName = obj.name;
+                st.objActive = obj.activeSelf;
+                st.xPosition = obj.transform.localPosition.x;
+                st.yPosition = obj.transform.localPosition.y;
+                st.zPosition = obj.transform.localPosition.z;
+                st.xRotation = obj.transform.localEulerAngles.x;
+                st.yRotation = obj.transform.localEulerAngles.y;
+                st.zRotation = obj.transform.localEulerAngles.z;
+                st.xScale = obj.transform.localScale.x;
+                st.yScale = obj.transform.localScale.y;
+                st.zScale = obj.transform.localScale.z;
+                Renderer rend = obj.GetComponent<Renderer>();
+                if (rend != null && rend.material.mainTexture != null) st.texture = rend.material.mainTexture.name;
+
+                saveObjects.Add(st);
             }
         }
         objToSave = saveObjects.ToArray();
@@ -203,4 +200,39 @@ public class SaveLoad : MonoBehaviour {
         }
     }
 
+    public List<GameObject> allObjects()
+    {
+        GameObject[] allParents = FindObjectsOfType<GameObject>();
+        List<GameObject> allObj = new List<GameObject>();
+        foreach (GameObject obj in allParents)
+        {
+            allObj.Add(obj);
+            allObj.AddRange(getChildren(obj.transform, new List<GameObject>()));
+        }
+
+        return allObj;
+    }
+
+    public List<GameObject> getChildren(Transform parent, List<GameObject> list)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child == null) continue; //No more children to recurse on so break.
+
+            list.Add(child.gameObject);
+            getChildren(child, list);
+        }
+        return list;
+    }
+
+    public List<int> allObjectID()
+    {
+        List<GameObject> all = allObjects();
+        List<int> allID = new List<int>();
+        foreach (GameObject obj in all)
+        {
+            allID.Add(obj.GetInstanceID());
+        }
+        return allID;
+    }
 }
