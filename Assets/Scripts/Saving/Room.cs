@@ -9,4 +9,5 @@ public class Room
     //[SerializeField] public List<GameObject> objInRoom;
     [SerializeField] public SaveObject[] objects;
     [SerializeField] public SavePrefab[] prefabs;
+    [SerializeField] public ID[] destroyObjects;
 }

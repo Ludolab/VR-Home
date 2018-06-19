@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class SaveObject {
-    [SerializeField] public string objName;
+    [SerializeField] public ID objID;
     [SerializeField] public bool objActive;
     [SerializeField] public float xPosition;
     [SerializeField] public float yPosition;

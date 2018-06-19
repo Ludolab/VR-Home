@@ -4,7 +4,6 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
 public class SaveLoad : MonoBehaviour {
 
@@ -14,16 +13,18 @@ public class SaveLoad : MonoBehaviour {
     public static SaveLoad saveFile;
 
     private Room saveRoom;
-    private SaveObject[] objToSave;
     private List<int> originalObjects = new List<int>(); // Save reference to original objects, not from prefabs, in the scene.
+    private SaveObject[] objToSave;
     private SavePrefab[] prefabToSave;
+    private ID[] objToDestroy;
     private int toSaveCount;
     private int numToSave;
 
 	public void Start()
 	{
         // Save what objects were originally in the scene (i.e. not from a prefab/created during runtime).
-        originalObjects = allObjectID();
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        originalObjects = allObjectID(allObjects);
 
         Load();
 	}
@@ -40,6 +41,7 @@ public class SaveLoad : MonoBehaviour {
         current.user = userToLoad;
         current.objects = objToSave;
         current.prefabs = prefabToSave;
+        current.destroyObjects = objToDestroy;
 
         // Save the updated room.
         BinaryFormatter bf = new BinaryFormatter();
@@ -50,20 +52,25 @@ public class SaveLoad : MonoBehaviour {
 
     private void SaveObjects() {
         // Set a SaveObject or SavePrefab for everything in scene.
-        List<GameObject> allObj = allObjects(); // Get all game objects currently in the scene.
+        GameObject[] allObjects = FindObjectsOfType<GameObject>(); // Get all game objects currently in the scene.
         List<SaveObject> saveObjects = new List<SaveObject>();
         List<SavePrefab> savePrefabs = new List<SavePrefab>();
-        foreach (GameObject obj in allObj)
+        List<ID> saveDestroyed = new List<ID>();
+        foreach (GameObject obj in allObjects)
         {
-            
-            if (CreatedPrefabs.getCreatedObj().ContainsKey(obj.GetInstanceID()))
+
+            if (UpdatedObjects.getCreatedObj().ContainsKey(obj.GetInstanceID()))
             { // Otherwise, add to loaded prefabs.
 
                 SavePrefab sp = new SavePrefab();
                 string val;
-                CreatedPrefabs.getCreatedObj().TryGetValue(obj.GetInstanceID(), out val);
+                UpdatedObjects.getCreatedObj().TryGetValue(obj.GetInstanceID(), out val);
                 sp.prefabToLoad = val;
                 sp.objData = new SaveObject();
+                ID id = new ID();
+                id.objName = obj.name;
+                id.objCoordX = obj.transform.position.x;
+                sp.objData.objID = id;
                 sp.objData.objActive = obj.activeSelf;
                 sp.objData.xPosition = obj.transform.localPosition.x;
                 sp.objData.yPosition = obj.transform.localPosition.y;
@@ -81,7 +88,10 @@ public class SaveLoad : MonoBehaviour {
                 foreach (Transform child in obj.transform)
                 {
                     SaveObject spc = new SaveObject();
-                    spc.objName = child.name;
+                    ID childId = new ID();
+                    childId.objName = child.name;
+                    childId.objCoordX = child.position.x;
+                    spc.objID = childId;
                     spc.objActive = child.gameObject.activeSelf;
                     spc.xPosition = child.localPosition.x;
                     spc.yPosition = child.localPosition.y;
@@ -98,11 +108,20 @@ public class SaveLoad : MonoBehaviour {
                 }
                    sp.childrenData = loadPrefabChildren.ToArray();
                    savePrefabs.Add(sp);
+            } else if (UpdatedObjects.getDestroyedObj().Contains(obj.GetInstanceID())){
+                ID id = new ID();
+                id.objName = obj.name;
+                id.objCoordX = obj.transform.position.x;
+                saveDestroyed.Add(id);
             } else if (originalObjects.Contains(obj.GetInstanceID()))
             { // Add to SaveObjects if originally in scene.
 
                 SaveObject st = new SaveObject();
-                st.objName = obj.name;
+                ID id = new ID();
+                id.objName = obj.name;
+                id.objCoordX = obj.transform.position.x;
+                st.objID = id;
+
                 st.objActive = obj.activeSelf;
                 st.xPosition = obj.transform.localPosition.x;
                 st.yPosition = obj.transform.localPosition.y;
@@ -121,7 +140,7 @@ public class SaveLoad : MonoBehaviour {
         }
         objToSave = saveObjects.ToArray();
         prefabToSave = savePrefabs.ToArray();
-
+        objToDestroy = saveDestroyed.ToArray();
     }
 
     // Loads the correct room given user index.
@@ -145,14 +164,15 @@ public class SaveLoad : MonoBehaviour {
         }
     }
 
-    public void LoadObjects(Room saveRoom) {
+    public void LoadObjects(Room saveRoom)
+    {
         // Set the saved transforms of objects.
         SaveObject[] loadObjState = saveRoom.objects;
         if (loadObjState != null)
         {
             foreach (SaveObject st in loadObjState)
             {
-                GameObject toLoad = GameObject.Find(st.objName);
+                GameObject toLoad = FindFromAll(st.objID);
 
                 if (toLoad != null)
                 {
@@ -173,18 +193,18 @@ public class SaveLoad : MonoBehaviour {
             foreach (SavePrefab lp in loadPrefabState)
             {
                 GameObject loaded = (GameObject)Instantiate(Resources.Load(lp.prefabToLoad));
-                CreatedPrefabs.addToCreated(loaded.GetInstanceID(), lp.prefabToLoad);
+                UpdatedObjects.addToCreated(loaded.GetInstanceID(), lp.prefabToLoad);
                 loaded.SetActive(lp.objData.objActive);
                 loaded.transform.localPosition = new Vector3(lp.objData.xPosition, lp.objData.yPosition, lp.objData.zPosition);
                 loaded.transform.localEulerAngles = new Vector3(lp.objData.xRotation, lp.objData.yRotation, lp.objData.zRotation);
                 loaded.transform.localScale = new Vector3(lp.objData.xScale, lp.objData.yScale, lp.objData.zScale);
                 ImageQuad imgQuad = loaded.GetComponent<ImageQuad>();
-                if(imgQuad != null && Resources.Load("Photos/" + lp.objData.texture) != null) imgQuad.SetTexture((Texture2D)(Resources.Load("Photos/" + lp.objData.texture)));
+                if (imgQuad != null && Resources.Load("Photos/" + lp.objData.texture) != null) imgQuad.SetTexture((Texture2D)(Resources.Load("Photos/" + lp.objData.texture)));
 
                 // Arrange the children of the prefab.
                 foreach (SaveObject lpc in lp.childrenData)
                 {
-                    GameObject loadChild = loaded.transform.Find(lpc.objName).gameObject;
+                    GameObject loadChild = loaded.transform.Find(lpc.objID.objName).gameObject;
 
                     if (loadChild != null)
                     {
@@ -193,46 +213,41 @@ public class SaveLoad : MonoBehaviour {
                         loadChild.transform.localEulerAngles = new Vector3(lpc.xRotation, lpc.yRotation, lpc.zRotation);
                         loadChild.transform.localScale = new Vector3(lpc.xScale, lpc.yScale, lpc.zScale);
                         Renderer rend = loadChild.GetComponent<Renderer>();
-                        if(rend != null)rend.material.mainTexture = (Texture2D)(Resources.Load("Photos/" + lpc.texture));
+                        if (rend != null) rend.material.mainTexture = (Texture2D)(Resources.Load("Photos/" + lpc.texture));
                     }
                 }
             }
         }
+
+
+        // Destroy any gameobjects that the user deleted from the default.
+        ID[] toDestroy = saveRoom.destroyObjects;
+        if (toDestroy != null)
+        {
+            foreach (ID td in toDestroy){
+                GameObject destroy = FindFromAll(td);
+                if (destroy != null) Destroy(destroy);
+            }
+        }
     }
 
-    public List<GameObject> allObjects()
+    public List<int> allObjectID(GameObject[] objects)
     {
-        GameObject[] allParents = FindObjectsOfType<GameObject>();
-        List<GameObject> allObj = new List<GameObject>();
-        foreach (GameObject obj in allParents)
+        List<int> objIDs = new List<int> ();
+        foreach (GameObject obj in objects)
         {
-            allObj.Add(obj);
-            allObj.AddRange(getChildren(obj.transform, new List<GameObject>()));
+            objIDs.Add(obj.GetInstanceID());
         }
-
-        return allObj;
+        return objIDs;
     }
 
-    public List<GameObject> getChildren(Transform parent, List<GameObject> list)
-    {
-        foreach (Transform child in parent)
-        {
-            if (child == null) continue; //No more children to recurse on so break.
-
-            list.Add(child.gameObject);
-            getChildren(child, list);
+    public GameObject FindFromAll(ID toFind) {
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in allObjects) {
+            if (obj.name == toFind.objName && (int)(obj.transform.position.x * 1000.0) == (int)(toFind.objCoordX * 1000.0)) {
+                return obj;
+            }
         }
-        return list;
-    }
-
-    public List<int> allObjectID()
-    {
-        List<GameObject> all = allObjects();
-        List<int> allID = new List<int>();
-        foreach (GameObject obj in all)
-        {
-            allID.Add(obj.GetInstanceID());
-        }
-        return allID;
+        return null;
     }
 }
