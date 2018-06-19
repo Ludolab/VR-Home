@@ -49,7 +49,7 @@ public class SetSky : MonoBehaviour {
         if (percentThroughDay > 30)
         // After Sunset    
         {
-            float percentThroughEvening = (percentThroughDay - 30) / 80;
+            float percentThroughEvening = (percentThroughDay - 30) / 70;
             RenderSettings.skybox = sunsetToNight;
             sunsetToNight.SetFloat("_Blend", percentThroughEvening);
             float angleVertical = Mathf.Lerp(20, -5, percentThroughEvening);
