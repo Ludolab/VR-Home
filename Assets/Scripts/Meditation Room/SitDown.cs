@@ -75,7 +75,7 @@ public class SitDown : MonoBehaviour {
         if (done && !isQuitting && !IsSitting())
         {
             isQuitting = true;
-            StartCoroutine(FadeOut());
+            //StartCoroutine(FadeOut());
         }
     }
 
