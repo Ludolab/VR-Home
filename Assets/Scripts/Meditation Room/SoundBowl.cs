@@ -12,7 +12,7 @@ public class SoundBowl : Bowl {
 
     private void Start()
     {
-        adjustFactor = Mathf.Log(10, 4);
+        adjustFactor = Mathf.Log(10, 3);
 
         audioSrcs = GetComponents<AudioSource>();
         int len = audioSrcs.Length;
