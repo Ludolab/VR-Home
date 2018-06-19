@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundBowl : Bowl {
+public class SoundBowl : Bowl
+{
 
     private float adjustFactor;
 
@@ -22,6 +23,15 @@ public class SoundBowl : Bowl {
             maxVolumes[i] = audioSrcs[i].volume;
             audioSrcs[i].volume = 0;
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0)) SetValue(0.0f);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) SetValue(0.25f);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) SetValue(0.5f);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) SetValue(0.75f);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) SetValue(1.0f);
     }
 
     protected override float GetValue()
