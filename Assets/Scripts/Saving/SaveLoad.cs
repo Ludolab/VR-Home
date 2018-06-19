@@ -195,8 +195,8 @@ public class SaveLoad : MonoBehaviour {
                         loadChild.transform.localPosition = new Vector3(lpc.xPosition, lpc.yPosition, lpc.zPosition);
                         loadChild.transform.localEulerAngles = new Vector3(lpc.xRotation, lpc.yRotation, lpc.zRotation);
                         loadChild.transform.localScale = new Vector3(lpc.xScale, lpc.yScale, lpc.zScale);
-                        ImageQuad childImgQuad = loadChild.GetComponent<ImageQuad>();
-                        if (childImgQuad != null && Resources.Load("Photos/" + lpc.texture) != null) childImgQuad.SetTexture((Texture2D)(Resources.Load("Photos/" + lpc.texture)));
+                        Renderer rend = loadChild.GetComponent<Renderer>();
+                        if(rend != null)rend.material.mainTexture = (Texture2D)(Resources.Load("Photos/" + lpc.texture));
                     }
                 }
             }
