@@ -23,6 +23,8 @@ public class VRUIInput : MonoBehaviour
         }
         trackedController.TriggerClicked -= HandleTriggerClicked;
         trackedController.TriggerClicked += HandleTriggerClicked;
+        trackedController.PadClicked -= HandleTriggerClicked;
+        trackedController.PadClicked += HandleTriggerClicked;
     }
 
     //Perform action when an object is selected by a laser and trigger is clicked.
