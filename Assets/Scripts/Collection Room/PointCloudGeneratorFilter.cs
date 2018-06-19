@@ -42,7 +42,7 @@ public class PointCloudGeneratorFilter : MonoBehaviour
 
                 if (!UpdateParticleParams(depthFrame.Width, depthFrame.Height))
                 {
-                    Debug.Log("Unable to craete point cloud");
+                    Debug.Log("Unable to create point cloud");
                     return;
                 }
 
@@ -126,5 +126,10 @@ public class PointCloudGeneratorFilter : MonoBehaviour
             ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + "save.ply", pointsSize);
             copy.GetComponent<KeepParticles>().SetParticles(plyParticles);
         }
+    }
+
+    void OnGUI()
+    {
+        GUI.Label(new Rect(0, 0, 100, 100), "FPS: " + (1.0f / Time.smoothDeltaTime));
     }
 }
