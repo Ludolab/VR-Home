@@ -19,7 +19,7 @@ public class PointCloudGeneratorFilter : MonoBehaviour
     private Points.Vertex[] vertices;
     private byte[] lastColorImage;
     private Align aligner;
-
+    
     private void Start()
     {
         aligner = new Align(Intel.RealSense.Stream.Color);
@@ -84,7 +84,7 @@ public class PointCloudGeneratorFilter : MonoBehaviour
             {
                 particles[index].position = Vector3.zero;
                 particles[index].startSize = 0;
-                particles[index].startColor = Color.black;
+                particles[index].startColor = Color.clear;
             }
         }
     }
@@ -102,6 +102,8 @@ public class PointCloudGeneratorFilter : MonoBehaviour
 
     private void Update()
     {
+        //ParticleSystem.Particle[] filteredParticles = particles.Where(p => !PLYFiles.IsUnusedParticle(p)).ToArray();
+        //pointCloudParticles.SetParticles(filteredParticles, filteredParticles.Length);
         pointCloudParticles.SetParticles(particles, particles.Length);
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -126,10 +128,5 @@ public class PointCloudGeneratorFilter : MonoBehaviour
             ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + "save.ply", pointsSize);
             copy.GetComponent<KeepParticles>().SetParticles(plyParticles);
         }
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(0, 0, 100, 100), "FPS: " + (1.0f / Time.smoothDeltaTime));
     }
 }
