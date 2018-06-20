@@ -180,7 +180,7 @@ public class PickUpStretch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ActionIfBowl(other, b => b.AddObject());
+        print("TRIGGER ENTER: " + other.gameObject + "; held " + (holder != NONE));
     }
 
     private void OnTriggerStay(Collider other)
@@ -214,23 +214,8 @@ public class PickUpStretch : MonoBehaviour
             rend.material.shader = highlightShader;
             SetColor(heldColor);
         }
-
-        ActionIfBowl(other, b => b.RemoveObject());
     }
-
-    private void ActionIfBowl(Collider other, Action<Bowl> action)
-    {
-        Transform parent = other.gameObject.transform.parent;
-        if (parent != null)
-        {
-            Bowl bowl = parent.gameObject.GetComponent<Bowl>();
-            if (bowl != null)
-            {
-                action(bowl);
-            }
-        }
-    }
-
+    
     private void SetGrabbable(int controllerIndex)
     {
         if (grabbableObjects[controllerIndex] == null)
