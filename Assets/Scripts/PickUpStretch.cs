@@ -159,6 +159,12 @@ public class PickUpStretch : MonoBehaviour
                 SetColor(heldColor);
                 AttachToController(controllers[holder]);
             }
+
+            if (insidePickupHolder != null)
+            {
+                insidePickupHolder.Apply(gameObject);
+                gameObject.SetActive(false);
+            }
         }
 
         if (controllersInside[controllerIndex])
@@ -168,12 +174,6 @@ public class PickUpStretch : MonoBehaviour
         else
         {
             SetNotGrabbable(controllerIndex);
-        }
-
-        if (holder == NONE && insidePickupHolder != null)
-        {
-            insidePickupHolder.Apply(gameObject);
-            gameObject.SetActive(false);
         }
     }
 
