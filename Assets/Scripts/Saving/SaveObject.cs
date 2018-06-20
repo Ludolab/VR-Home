@@ -16,4 +16,5 @@ public class SaveObject {
     [SerializeField] public float yScale;
     [SerializeField] public float zScale;
     [SerializeField] public string texture;
+    [SerializeField] public string audio;
 }
