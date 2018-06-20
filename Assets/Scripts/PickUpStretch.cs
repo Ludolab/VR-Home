@@ -10,6 +10,8 @@ public class PickUpStretch : MonoBehaviour
 
     private static GameObject[] grabbableObjects = new GameObject[NUM_CONTROLLERS];
 
+    public bool canStretch = true;
+
     public Shader highlightShader;
     public Color heldColor;
     public Color hoverColor;
@@ -59,7 +61,7 @@ public class PickUpStretch : MonoBehaviour
             CheckController(controllerIndex);
         }
 
-        if (stretcher != NONE)
+        if (stretcher != NONE && canStretch)
         {
             Scale();
         }

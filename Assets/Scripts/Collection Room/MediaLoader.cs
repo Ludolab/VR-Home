@@ -10,6 +10,7 @@ public class MediaLoader : MonoBehaviour
 
     public GameObject photoPrefab;
     public GameObject videoPrefab;
+    public GameObject audioPrefab;
 
     private void Start()
     {
@@ -32,6 +33,16 @@ public class MediaLoader : MonoBehaviour
             UpdatedObjects.addToCreated(video.GetInstanceID(), videoPrefab.name);
             video.GetComponent<VideoQuad>().SetVideo(vid);
             video.transform.position = new Vector3(transform.position.x, height, transform.position.z);
+            height += HEIGHT_DIFF;
+        }
+
+        AudioClip[] audios = Resources.LoadAll<AudioClip>("Media");
+        foreach (AudioClip ac in audios)
+        {
+            GameObject audio = Instantiate(audioPrefab);
+            UpdatedObjects.addToCreated(audio.GetInstanceID(), audioPrefab.name);
+            audio.GetComponent<Record>().SetAudio(ac);
+            audio.transform.position = new Vector3(transform.position.x, height, transform.position.z);
             height += HEIGHT_DIFF;
         }
     }
