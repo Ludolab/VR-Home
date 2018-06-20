@@ -9,12 +9,14 @@ public class SaveLoad : MonoBehaviour {
 
     // Cheap way to indicate what user we want to load for now.
     public string userToLoad;
+    // Some bools for debugging purposes; whether or not to actively save/load.
+    public bool saveNew;
+    public bool loadPrevious;
 
     public static SaveLoad saveFile;
 
     private Room saveRoom;
-    private List<int> originalObjects = new List<int>(); // Save reference to original objects, not from prefabs, in the scene.
-    private Dictionary<int, ID> originalObjID = new Dictionary<int, ID>();
+    private Dictionary<int, ID> originalObjID = new Dictionary<int, ID>(); // Save reference to original objects (via instance IDs) and their IDs in the scene.
     private SaveObject[] objToSave;
     private SavePrefab[] prefabToSave;
     private ID[] objToDestroy;
@@ -25,9 +27,10 @@ public class SaveLoad : MonoBehaviour {
 	{
         // Save what objects were originally in the scene (i.e. not from a prefab/created during runtime).
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
-        originalObjects = allObjectID(allObjects);
+        List<int> originalObjects = allObjectInstanceID(allObjects);
         // Generate the IDs of objects.
-        foreach (GameObject obj in allObjects) {
+        foreach (GameObject obj in allObjects)
+        {
             ID id = new ID();
             id.objName = obj.name;
             id.objCoordX = obj.transform.position.x;
@@ -35,13 +38,12 @@ public class SaveLoad : MonoBehaviour {
             id.objCoordZ = obj.transform.position.z;
             originalObjID.Add(obj.GetInstanceID(), id);
         }
-
-        Load();
+        if(loadPrevious) Load();
 	}
 
     public void OnApplicationQuit()
     {
-        Save();
+        if(saveNew) Save();
 	}
 
 	public void Save() {
@@ -125,7 +127,7 @@ public class SaveLoad : MonoBehaviour {
                 ID id;
                 originalObjID.TryGetValue(obj.GetInstanceID(), out id);
                 if (id != null) saveDestroyed.Add(id);
-            } else if (originalObjects.Contains(obj.GetInstanceID()))
+            } else if (originalObjID.ContainsKey(obj.GetInstanceID()))
             { // Add to SaveObjects if originally in scene.
 
                 SaveObject st = new SaveObject();
@@ -242,7 +244,7 @@ public class SaveLoad : MonoBehaviour {
         }
     }
 
-    public List<int> allObjectID(GameObject[] objects)
+    public List<int> allObjectInstanceID(GameObject[] objects)
     {
         List<int> objIDs = new List<int> ();
         foreach (GameObject obj in objects)
