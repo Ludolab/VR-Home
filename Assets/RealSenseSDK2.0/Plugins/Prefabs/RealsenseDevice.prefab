@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4020745459478340}
   - component: {fileID: 114650551424188008}
-  - component: {fileID: 114909924260694744}
   m_Layer: 0
   m_Name: RealsenseDevice
   m_TagString: Untagged
@@ -75,14 +74,3 @@ MonoBehaviour:
       Width: 640
       Height: 480
     RequestedSerialNumber: 
---- !u!114 &114909924260694744
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1548574967399232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967fa27358fa26d428f89abc9b1cafb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
