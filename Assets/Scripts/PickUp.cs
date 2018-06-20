@@ -150,8 +150,8 @@ public class PickUp : MonoBehaviour
 
         if (other.gameObject.CompareTag("SplashZone"))
         {
-            GameObject splash = Instantiate(splashPrefab, transform.position, Quaternion.identity);
-            Respawn(); //TODO: maybe not right away?
+            Instantiate(splashPrefab, transform.position, Quaternion.identity);
+            Respawn();
         }
     }
 
