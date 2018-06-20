@@ -25,6 +25,8 @@ public class PickUpStretch : MonoBehaviour
     private int holder = NONE;
     private int stretcher = NONE;
 
+    private Holder insidePickupHolder = null;
+
     private Rigidbody rb;
     private Shader oldShader;
     private Renderer rend;
@@ -167,6 +169,12 @@ public class PickUpStretch : MonoBehaviour
         {
             SetNotGrabbable(controllerIndex);
         }
+
+        if (holder == NONE && insidePickupHolder != null)
+        {
+            insidePickupHolder.Apply(gameObject);
+            gameObject.SetActive(false);
+        }
     }
 
     protected virtual void ReleaseFromController(SteamVR_TrackedObject controller)
@@ -180,7 +188,11 @@ public class PickUpStretch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("TRIGGER ENTER: " + other.gameObject + "; held " + (holder != NONE));
+        Holder h = other.GetComponent<Holder>();
+        if (h != null)
+        {
+            insidePickupHolder = h;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -213,6 +225,12 @@ public class PickUpStretch : MonoBehaviour
         {
             rend.material.shader = highlightShader;
             SetColor(heldColor);
+        }
+
+        Holder h = other.GetComponent<Holder>();
+        if (h == insidePickupHolder)
+        {
+            insidePickupHolder = null;
         }
     }
     
