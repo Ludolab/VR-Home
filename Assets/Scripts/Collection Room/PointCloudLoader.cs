@@ -27,6 +27,9 @@ public class PointCloudLoader : MonoBehaviour
             keep.SetParticles(plyParticles);
             copy.transform.position = new Vector3(transform.position.x, height, transform.position.z);
             height += HEIGHT_DIFF;
+
+            CollectionData.addToClouds(path, copy);
         }
+        gameObject.GetComponent<SaveLoadCloud>().Load();
     }
 }
