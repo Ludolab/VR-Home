@@ -110,6 +110,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4335457063020918}
   - component: {fileID: 114250115406115594}
+  - component: {fileID: 114676019339216222}
+  - component: {fileID: 114162315880023978}
   m_Layer: 0
   m_Name: MediaLoader
   m_TagString: Untagged
@@ -470,6 +472,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114162315880023978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1956090105955886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92125259144d3428fba97a0ee26dd93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userToLoad: test
+  saveNew: 0
+  loadPrevious: 0
 --- !u!114 &114250115406115594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -487,3 +503,14 @@ MonoBehaviour:
     type: 2}
   audioPrefab: {fileID: 1409514980125870, guid: fead7adf0284c5f4887df7991650fb94,
     type: 2}
+--- !u!114 &114676019339216222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1956090105955886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108da0d0b33794b9e989e364e205fc59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

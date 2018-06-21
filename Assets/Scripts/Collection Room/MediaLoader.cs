@@ -11,7 +11,6 @@ public class MediaLoader : MonoBehaviour
     public GameObject photoPrefab;
     public GameObject videoPrefab;
     public GameObject audioPrefab;
-    public SaveLoad loadMedia;
 
     private void Start()
     {
@@ -24,6 +23,7 @@ public class MediaLoader : MonoBehaviour
             photo.GetComponent<ImageQuad>().SetTexture(tex);
             photo.transform.position = new Vector3(transform.position.x, height, transform.position.z);
             height += HEIGHT_DIFF;
+            CollectionData.addToImages(tex.name, photo);
         }
 
         VideoClip[] videos = Resources.LoadAll<VideoClip>("Media");
@@ -33,6 +33,7 @@ public class MediaLoader : MonoBehaviour
             video.GetComponent<VideoQuad>().SetVideo(vid);
             video.transform.position = new Vector3(transform.position.x, height, transform.position.z);
             height += HEIGHT_DIFF;
+            CollectionData.addToVideos(vid.name, video);
         }
 
         AudioClip[] audios = Resources.LoadAll<AudioClip>("Media");
@@ -42,8 +43,11 @@ public class MediaLoader : MonoBehaviour
             audio.GetComponent<Record>().SetAudio(ac);
             audio.transform.position = new Vector3(transform.position.x, height, transform.position.z);
             height += HEIGHT_DIFF;
+            CollectionData.addToSounds(ac.name, audio);
         }
 
-        loadMedia.Load();
+
+        gameObject.GetComponent<SaveLoad>().Load();
+        gameObject.GetComponent<SaveLoadMedia>().Load();
     }
 }

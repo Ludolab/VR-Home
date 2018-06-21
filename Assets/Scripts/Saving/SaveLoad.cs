@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class SaveLoad : MonoBehaviour {
 
@@ -59,59 +60,17 @@ public class SaveLoad : MonoBehaviour {
                 string val;
                 UpdatedObjects.getCreatedObj().TryGetValue(obj.GetInstanceID(), out val);
                 sp.prefabToLoad = val;
-                sp.objData = new SaveObject();
-                ID id = new ID();
-                id.objName = obj.name;
-                id.objCoordX = obj.transform.position.x;
-                id.objCoordY = obj.transform.position.y;
-                id.objCoordZ = obj.transform.position.z;
-                sp.objData.objID = id;
-                sp.objData.objActive = obj.activeSelf;
-                sp.objData.xPosition = obj.transform.localPosition.x;
-                sp.objData.yPosition = obj.transform.localPosition.y;
-                sp.objData.zPosition = obj.transform.localPosition.z;
-                sp.objData.xRotation = obj.transform.localEulerAngles.x;
-                sp.objData.yRotation = obj.transform.localEulerAngles.y;
-                sp.objData.zRotation = obj.transform.localEulerAngles.z;
-                sp.objData.xScale = obj.transform.localScale.x;
-                sp.objData.yScale = obj.transform.localScale.y;
-                sp.objData.zScale = obj.transform.localScale.z;
-                Renderer rend = obj.GetComponent<Renderer>();
-
-                if (rend != null && rend.material.mainTexture != null && rend.material.mainTexture.name != "") sp.objData.texture = rend.material.mainTexture.name;
-                AudioSource source = obj.GetComponent<AudioSource>();
-                if (source != null && source.clip != null && source.clip.name != "") sp.objData.audio = source.clip.name;
+                sp.objData = CreateSaveObj(obj);
 
                 List<SaveObject> loadPrefabChildren = new List<SaveObject>();
                 foreach (Transform child in obj.transform)
                 {
-                    SaveObject spc = new SaveObject();
-                    ID childId = new ID();
-                    childId.objName = child.name;
-                    childId.objCoordX = child.position.x;
-                    childId.objCoordY = child.position.y;
-                    childId.objCoordZ = child.position.z;
-                    spc.objID = childId;
-                    spc.objActive = child.gameObject.activeSelf;
-                    spc.xPosition = child.localPosition.x;
-                    spc.yPosition = child.localPosition.y;
-                    spc.zPosition = child.localPosition.z;
-                    spc.xRotation = child.localEulerAngles.x;
-                    spc.yRotation = child.localEulerAngles.y;
-                    spc.zRotation = child.localEulerAngles.z;
-                    spc.xScale = child.localScale.x;
-                    spc.yScale = child.localScale.y;
-                    spc.zScale = child.localScale.z;
-                    Renderer childRend = child.GetComponent<Renderer>();
-                    if (childRend != null && childRend.material.mainTexture != null && rend.material.mainTexture.name != "") spc.texture = childRend.material.mainTexture.name;
-                    AudioSource childSource = child.GetComponent<AudioSource>();
-                    if (childSource != null && childSource.clip != null && source.clip.name != "") spc.audio = childSource.clip.name;
-
+                    SaveObject spc = CreateSaveObj(child.gameObject);
                     loadPrefabChildren.Add(spc);
                 }
 
-                   sp.childrenData = loadPrefabChildren.ToArray();
-                   savePrefabs.Add(sp);
+               sp.childrenData = loadPrefabChildren.ToArray();
+               savePrefabs.Add(sp);
 
             } else if (UpdatedObjects.getDestroyedObj().Contains(obj.GetInstanceID())){
                 ID id;
@@ -119,26 +78,7 @@ public class SaveLoad : MonoBehaviour {
                 if (id != null) saveDestroyed.Add(id);
             } else if (originalObjID.ContainsKey(obj.GetInstanceID()))
             { // Add to SaveObjects if originally in scene.
-
-                SaveObject so = new SaveObject();
-                ID id;
-                originalObjID.TryGetValue(obj.GetInstanceID(), out id);
-                so.objID = id;
-
-                so.objActive = obj.activeSelf;
-                so.xPosition = obj.transform.localPosition.x;
-                so.yPosition = obj.transform.localPosition.y;
-                so.zPosition = obj.transform.localPosition.z;
-                so.xRotation = obj.transform.localEulerAngles.x;
-                so.yRotation = obj.transform.localEulerAngles.y;
-                so.zRotation = obj.transform.localEulerAngles.z;
-                so.xScale = obj.transform.localScale.x;
-                so.yScale = obj.transform.localScale.y;
-                so.zScale = obj.transform.localScale.z;
-                Renderer rend = obj.GetComponent<Renderer>();
-                if (rend != null && rend.material.mainTexture != null && rend.material.mainTexture.name != "") so.texture = rend.material.mainTexture.name;
-                AudioSource source = obj.GetComponent<AudioSource>();
-                if (source != null && source.clip != null && source.clip.name != "") so.audio = source.clip.name;
+                SaveObject so = CreateSaveObj(obj);
 
                 saveObjects.Add(so);
             }
@@ -146,6 +86,60 @@ public class SaveLoad : MonoBehaviour {
         objToSave = saveObjects.ToArray();
         prefabToSave = savePrefabs.ToArray();
         objToDestroy = saveDestroyed.ToArray();
+    }
+
+    private SaveObject CreateSaveObj(GameObject obj) {
+        SaveObject save = new SaveObject();
+        ID id;
+        originalObjID.TryGetValue(obj.GetInstanceID(), out id);
+        save.objID = id;
+
+        save.objActive = obj.activeSelf;
+        save.xPosition = obj.transform.localPosition.x;
+        save.yPosition = obj.transform.localPosition.y;
+        save.zPosition = obj.transform.localPosition.z;
+        save.xRotation = obj.transform.localEulerAngles.x;
+        save.yRotation = obj.transform.localEulerAngles.y;
+        save.zRotation = obj.transform.localEulerAngles.z;
+        save.xScale = obj.transform.localScale.x;
+        save.yScale = obj.transform.localScale.y;
+        save.zScale = obj.transform.localScale.z;
+        Renderer rend = obj.GetComponent<Renderer>();
+        if (rend != null && rend.material.mainTexture != null && rend.material.mainTexture.name != "") save.texture = rend.material.mainTexture.name;
+        VideoPlayer player = obj.GetComponent<VideoPlayer>();
+        if (player != null && player.clip != null && player.clip.name != "") save.video = player.clip.name;
+        AudioSource source = obj.GetComponent<AudioSource>();
+        if (source != null && source.clip != null && source.clip.name != "") save.audio = source.clip.name;
+
+        return save;
+    }
+
+    private SaveObject CreateSavePrefab(GameObject obj) {
+        SaveObject save = new SaveObject();
+        ID id = new ID();
+        id.objName = obj.name;
+        id.objCoordX = obj.transform.position.x;
+        id.objCoordY = obj.transform.position.y;
+        id.objCoordZ = obj.transform.position.z;
+        save.objID = id;
+        save.objActive = obj.activeSelf;
+        save.xPosition = obj.transform.localPosition.x;
+        save.yPosition = obj.transform.localPosition.y;
+        save.zPosition = obj.transform.localPosition.z;
+        save.xRotation = obj.transform.localEulerAngles.x;
+        save.yRotation = obj.transform.localEulerAngles.y;
+        save.zRotation = obj.transform.localEulerAngles.z;
+        save.xScale = obj.transform.localScale.x;
+        save.yScale = obj.transform.localScale.y;
+        save.zScale = obj.transform.localScale.z;
+        Renderer rend = obj.GetComponent<Renderer>();
+        if (rend != null && rend.material.mainTexture != null && rend.material.mainTexture.name != "") save.texture = rend.material.mainTexture.name;
+        VideoPlayer player = obj.GetComponent<VideoPlayer>();
+        if (player != null && player.clip != null && player.clip.name != "") save.video = player.clip.name;
+        AudioSource source = obj.GetComponent<AudioSource>();
+        if (source != null && source.clip != null && source.clip.name != "") save.audio = source.clip.name;
+
+        return save;
     }
 
     // Loads the correct room given user index.
@@ -195,19 +189,7 @@ public class SaveLoad : MonoBehaviour {
 
                 if (toLoad != null)
                 {
-                    toLoad.SetActive(so.objActive);
-                    toLoad.transform.localPosition = new Vector3(so.xPosition, so.yPosition, so.zPosition);
-                    toLoad.transform.localEulerAngles = new Vector3(so.xRotation, so.yRotation, so.zRotation);
-                    toLoad.transform.localScale = new Vector3(so.xScale, so.yScale, so.zScale);
-                    Renderer rend = toLoad.GetComponent<Renderer>();
-
-
-                    if (toLoad.name == "Wall") Debug.Log(so.texture);
-
-
-                    if (rend != null && so.texture != null && Resources.Load("Media/" + so.texture) != null) rend.material.mainTexture = (Texture2D)(Resources.Load("Media/" + so.texture));
-                    AudioSource source = toLoad.GetComponent<AudioSource>();
-                    if (source != null && so.audio != null && Resources.Load("Media/" + so.audio) != null) source.clip = (AudioClip)(Resources.Load("Media/" + so.audio));
+                    SetObject(toLoad, so);
                 }
             }
         }
@@ -220,14 +202,7 @@ public class SaveLoad : MonoBehaviour {
             {
                 GameObject loaded = (GameObject)Instantiate(Resources.Load(lp.prefabToLoad));
                 UpdatedObjects.addToCreated(loaded.GetInstanceID(), lp.prefabToLoad);
-                loaded.SetActive(lp.objData.objActive);
-                loaded.transform.localPosition = new Vector3(lp.objData.xPosition, lp.objData.yPosition, lp.objData.zPosition);
-                loaded.transform.localEulerAngles = new Vector3(lp.objData.xRotation, lp.objData.yRotation, lp.objData.zRotation);
-                loaded.transform.localScale = new Vector3(lp.objData.xScale, lp.objData.yScale, lp.objData.zScale);
-                Renderer rend = loaded.GetComponent<Renderer>();
-                if (rend != null && lp.objData.texture != null && Resources.Load("Media/" + lp.objData.texture) != null) rend.material.mainTexture = (Texture2D)(Resources.Load("Media/" + lp.objData.texture));
-                AudioSource source = loaded.GetComponent<AudioSource>();
-                if (source != null && lp.objData.audio != null && Resources.Load("Media/" + lp.objData.audio) != null) source.clip = (AudioClip)(Resources.Load("Media/" + lp.objData.audio));
+                SetObject(loaded, lp.objData);
 
                 // Arrange the children of the prefab.
                 foreach (SaveObject lpc in lp.childrenData)
@@ -236,14 +211,7 @@ public class SaveLoad : MonoBehaviour {
 
                     if (loadChild != null)
                     {
-                        loadChild.SetActive(lpc.objActive);
-                        loadChild.transform.localPosition = new Vector3(lpc.xPosition, lpc.yPosition, lpc.zPosition);
-                        loadChild.transform.localEulerAngles = new Vector3(lpc.xRotation, lpc.yRotation, lpc.zRotation);
-                        loadChild.transform.localScale = new Vector3(lpc.xScale, lpc.yScale, lpc.zScale);
-                        Renderer childRend = loadChild.GetComponent<Renderer>();
-                        if (childRend != null && lpc.texture != null && Resources.Load("Media/" + lpc.texture)) childRend.material.mainTexture = (Texture2D)(Resources.Load("Media/" + lpc.texture));
-                        AudioSource childSource = loadChild.GetComponent<AudioSource>();
-                        if (childSource != null && lpc.audio != null && Resources.Load("Media/" + lpc.audio)) childSource.clip = (AudioClip)(Resources.Load("Media/" + lpc.audio));
+                        SetObject(loadChild, lpc);
                     }
                 }
             }
@@ -259,6 +227,20 @@ public class SaveLoad : MonoBehaviour {
                 if (destroy != null) Destroy(destroy);
             }
         }
+    }
+
+    private void SetObject(GameObject obj, SaveObject reference)
+    {
+        obj.SetActive(reference.objActive);
+        obj.transform.localPosition = new Vector3(reference.xPosition, reference.yPosition, reference.zPosition);
+        obj.transform.localEulerAngles = new Vector3(reference.xRotation, reference.yRotation, reference.zRotation);
+        obj.transform.localScale = new Vector3(reference.xScale, reference.yScale, reference.zScale);
+        Renderer rend = obj.GetComponent<Renderer>();
+        if (rend != null && reference.texture != null && Resources.Load("Media/" + reference.texture)) rend.material.mainTexture = (Texture2D)(Resources.Load("Media/" + reference.texture));
+        VideoPlayer player = obj.GetComponent<VideoPlayer>();
+        if (player != null && reference.video != null && Resources.Load("Media/" + reference.audio)) player.clip = (VideoClip)(Resources.Load("Media/" + reference.audio));
+        AudioSource source = obj.GetComponent<AudioSource>();
+        if (source != null && reference.audio != null && Resources.Load("Media/" + reference.audio)) source.clip = (AudioClip)(Resources.Load("Media/" + reference.audio));
     }
 
     private List<int> allObjectInstanceID(GameObject[] objects)
