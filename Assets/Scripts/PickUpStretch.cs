@@ -111,7 +111,7 @@ public class PickUpStretch : MonoBehaviour
         return controllersInside[controllerIndex] && grabbableObjects[controllerIndex] == gameObject && holder != NONE && holder != controllerIndex && stretcher == NONE;
     }
 
-    private void Grab(int controllerIndex)
+    public void Grab(int controllerIndex)
     {
         SteamVR_TrackedObject controller = controllers[controllerIndex];
         holder = controllerIndex;

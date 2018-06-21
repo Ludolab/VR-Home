@@ -8,15 +8,41 @@ public class Holder : MonoBehaviour
 
     private const int NUM_CONTROLLERS = 2;
 
+    private SteamVR_TrackedObject[] controllers = new SteamVR_TrackedObject[NUM_CONTROLLERS];
+    private bool[] controllersInside = new bool[NUM_CONTROLLERS];
 
     protected GameObject heldObject = null;
 
-    void Start()
+    protected virtual void Start()
     {
-
+        SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
+        controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
+        controllers[1] = manager.right.GetComponent<SteamVR_TrackedObject>();
     }
 
-    /*protected virtual void Update()
+    private void OnTriggerStay(Collider other)
+    {
+        for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
+        {
+            if (other.gameObject == controllers[controllerIndex].gameObject)
+            {
+                controllersInside[controllerIndex] = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
+        {
+            if (other.gameObject == controllers[controllerIndex].gameObject)
+            {
+                controllersInside[controllerIndex] = false;
+            }
+        }
+    }
+
+    protected virtual void Update()
     {
         for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
         {
@@ -46,11 +72,42 @@ public class Holder : MonoBehaviour
         {
             //can't talk to controller, don't do anything
         }
-    }*/
+    }
+
+    private SteamVR_Controller.Device GetInput(int controllerIndex)
+    {
+        SteamVR_TrackedObject controller = controllers[controllerIndex];
+        return SteamVR_Controller.Input((int)controller.index);
+    }
+
+    private bool CanGrab(int controllerIndex)
+    {
+        return controllersInside[controllerIndex] && heldObject != null;
+    }
+
+    private void Grab(int controllerIndex)
+    {
+        PickUpStretch pickUp = heldObject.GetComponent<PickUpStretch>();
+        if (pickUp != null)
+        {
+            pickUp.Grab(controllerIndex);
+        }
+        Remove();
+    }
+
+    private void Reset()
+    {
+        //TODO
+        //Remove();
+    }
 
     public virtual void Apply(GameObject obj)
     {
         heldObject = obj;
-        GetComponent<Renderer>().material.mainTexture = obj.GetComponent<Renderer>().material.mainTexture;
+    }
+
+    protected virtual void Remove()
+    {
+        heldObject = null;
     }
 }
