@@ -113,7 +113,7 @@ public class PointCloudGeneratorFilter : MonoBehaviour
             particles.CopyTo(keepParticles, 0);
             copy.GetComponent<KeepParticles>().SetParticles(keepParticles);
         }
-
+        
         if (Input.GetKeyDown(KeyCode.S))
         {
             DateTime now = DateTime.Now;
@@ -123,7 +123,7 @@ public class PointCloudGeneratorFilter : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            //TODO: load all
+            //TODO: remove
             GameObject copy = Instantiate(pointCloudCopy);
             ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + "save.ply", pointsSize);
             copy.GetComponent<KeepParticles>().SetParticles(plyParticles);
