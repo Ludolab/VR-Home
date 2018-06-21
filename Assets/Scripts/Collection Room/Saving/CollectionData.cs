@@ -7,6 +7,7 @@ public class CollectionData {
     private static Dictionary<string, GameObject> images = new Dictionary<string, GameObject>();
     private static Dictionary<string, GameObject> videos = new Dictionary<string, GameObject>();
     private static Dictionary<string, GameObject> sounds = new Dictionary<string, GameObject>();
+    private static Dictionary<string, GameObject> pointClouds = new Dictionary<string, GameObject>();
 
     public static void addToImages(string texture, GameObject obj) {
         images.Add(texture, obj);
@@ -35,6 +36,16 @@ public class CollectionData {
     public static Dictionary<string, GameObject> getSounds()
     {
         return sounds;
+    }
+
+    public static void addToClouds(string cloud, GameObject obj)
+    {
+        pointClouds.Add(cloud, obj);
+    }
+
+    public static Dictionary<string, GameObject> getClouds()
+    {
+        return pointClouds;
     }
 
 }

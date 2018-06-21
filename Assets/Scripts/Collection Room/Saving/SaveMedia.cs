@@ -8,4 +8,5 @@ public class SaveMedia
     [SerializeField] public SaveObject[] images;
     [SerializeField] public SaveObject[] videos;
     [SerializeField] public SaveObject[] sounds;
+    [SerializeField] public SaveCloud[] pointClouds;
 }

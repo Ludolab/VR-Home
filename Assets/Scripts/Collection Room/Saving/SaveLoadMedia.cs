@@ -16,8 +16,6 @@ public class SaveLoadMedia : MonoBehaviour {
     private bool saveNew;
     private bool loadPrevious;
 
-    private GameObject test;
-
 	private void Start()
 	{
         userToLoad = gameObject.GetComponent<SaveLoad>().userToLoad;
