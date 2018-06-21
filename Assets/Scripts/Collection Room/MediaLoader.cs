@@ -11,7 +11,7 @@ public class MediaLoader : MonoBehaviour
     public GameObject photoPrefab;
     public GameObject videoPrefab;
     public GameObject audioPrefab;
-    public SaveLoadMedia loadMedia;
+    public SaveLoad loadMedia;
 
     private void Start()
     {
@@ -21,7 +21,6 @@ public class MediaLoader : MonoBehaviour
         foreach (Texture2D tex in textures)
         {
             GameObject photo = Instantiate(photoPrefab);
-            CollectionData.addImage(photo);
             photo.GetComponent<ImageQuad>().SetTexture(tex);
             photo.transform.position = new Vector3(transform.position.x, height, transform.position.z);
             height += HEIGHT_DIFF;
@@ -31,7 +30,6 @@ public class MediaLoader : MonoBehaviour
         foreach (VideoClip vid in videos)
         {
             GameObject video = Instantiate(videoPrefab);
-            CollectionData.addImage(video);
             video.GetComponent<VideoQuad>().SetVideo(vid);
             video.transform.position = new Vector3(transform.position.x, height, transform.position.z);
             height += HEIGHT_DIFF;
@@ -41,7 +39,6 @@ public class MediaLoader : MonoBehaviour
         foreach (AudioClip ac in audios)
         {
             GameObject audio = Instantiate(audioPrefab);
-            CollectionData.addSound(audio);
             audio.GetComponent<Record>().SetAudio(ac);
             audio.transform.position = new Vector3(transform.position.x, height, transform.position.z);
             height += HEIGHT_DIFF;
