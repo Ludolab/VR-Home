@@ -106,27 +106,27 @@ public class PointCloudGeneratorFilter : MonoBehaviour
         //pointCloudParticles.SetParticles(filteredParticles, filteredParticles.Length);
         pointCloudParticles.SetParticles(particles, particles.Length);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject copy = Instantiate(pointCloudCopy);
             ParticleSystem.Particle[] keepParticles = new ParticleSystem.Particle[particles.Length];
             particles.CopyTo(keepParticles, 0);
             copy.GetComponent<KeepParticles>().SetParticles(keepParticles);
-        }
+        }*/
         
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             DateTime now = DateTime.Now;
             string time = now.ToString("yyyy-MM-dd_HH.mm.ss.ffff");
             string filename = time + ".ply";
             PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        /*if (Input.GetKeyDown(KeyCode.L))
         {
             //TODO: remove
             GameObject copy = Instantiate(pointCloudCopy);
             ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + "save.ply", pointsSize);
             copy.GetComponent<KeepParticles>().SetParticles(plyParticles);
-        }
+        }*/
     }
 }
