@@ -121,11 +121,17 @@ public class PointCloudGeneratorFilter : MonoBehaviour
             string filename = time + ".ply";
             PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
         }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            string filename = "head.ply";
+            PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
+        }
         /*if (Input.GetKeyDown(KeyCode.L))
         {
             //TODO: remove
             GameObject copy = Instantiate(pointCloudCopy);
-            ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + "save.ply", pointsSize);
+            ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + "save.ply");
             copy.GetComponent<KeepParticles>().SetParticles(plyParticles);
         }*/
     }

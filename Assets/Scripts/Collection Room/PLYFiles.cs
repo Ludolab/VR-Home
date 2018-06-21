@@ -6,6 +6,8 @@ using UnityEngine;
 public class PLYFiles
 {
 
+    public static float pointsSize = 1.0f;
+
     private static bool IsUnusedParticle(ParticleSystem.Particle p)
     {
         Vector3 pos = p.position;
@@ -46,7 +48,7 @@ public class PLYFiles
         File.WriteAllLines(filePath, text.ToArray());
     }
 
-    public static ParticleSystem.Particle[] ReadPLY(string filePath, float pointsSize)
+    public static ParticleSystem.Particle[] ReadPLY(string filePath)
     {
         ParticleSystem.Particle[] particles;
 

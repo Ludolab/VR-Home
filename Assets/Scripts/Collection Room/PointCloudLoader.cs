@@ -10,8 +10,7 @@ public class PointCloudLoader : MonoBehaviour
     private const float HEIGHT_DIFF = 0.05f;
 
     public GameObject pcPrefab;
-    public float pointsSize = 1;
-
+    
     private void Start()
     {
         float height = transform.position.y;
@@ -20,9 +19,10 @@ public class PointCloudLoader : MonoBehaviour
         foreach (string path in paths)
         {
             if (Path.GetExtension(path) != ".ply") continue;
-            
+            if (Path.GetFileNameWithoutExtension(path) == "head") continue;
+
             GameObject copy = Instantiate(pcPrefab);
-            ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(path, pointsSize);
+            ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(path);
             KeepParticles keep = copy.transform.Find("PointCloudCopy").GetComponent<KeepParticles>();
             keep.SetParticles(plyParticles);
             copy.transform.position = new Vector3(transform.position.x, height, transform.position.z);
