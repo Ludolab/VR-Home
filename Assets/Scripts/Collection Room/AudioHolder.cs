@@ -1,42 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
 
 public class AudioHolder : Holder
 {
 
-    private Renderer rend;
-    private VideoPlayer vp;
-    private Texture defaultTexture;
+    private AudioSource audioSrc;
 
     protected override void Start()
     {
         base.Start();
-        rend = GetComponent<Renderer>();
-        vp = GetComponent<VideoPlayer>();
-        defaultTexture = rend.material.mainTexture;
+        audioSrc = GetComponent<AudioSource>();
     }
 
     public override void Apply(GameObject obj)
     {
         base.Apply(obj);
-        //TODO: check whether it's image or video
-        Transform t = obj.transform.Find("Quad");
-        if (t != null)
+        Record rec = obj.GetComponent<Record>();
+        if (rec != null)
         {
-            GameObject quad = t.gameObject;
-            VideoPlayer vid = quad.GetComponent<VideoPlayer>();
-            if (vid != null)
-            {
-                vp.clip = vid.clip;
-                vp.Play();
-            }
-            else
-            {
-                //use image texture
-                rend.material.mainTexture = quad.GetComponent<Renderer>().material.mainTexture;
-            }
+            audioSrc.clip = rec.GetAudio();
         }
     }
 
@@ -44,8 +27,7 @@ public class AudioHolder : Holder
     {
         base.Remove();
 
-        vp.Stop();
-        vp.clip = null;
-        rend.material.mainTexture = defaultTexture;
+        audioSrc.Stop();
+        audioSrc.clip = null;
     }
 }

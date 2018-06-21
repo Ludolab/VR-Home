@@ -21,7 +21,6 @@ public class ImageHolder : Holder
     public override void Apply(GameObject obj)
     {
         base.Apply(obj);
-        //TODO: check whether it's image or video
         Transform t = obj.transform.Find("Quad");
         if (t != null)
         {
