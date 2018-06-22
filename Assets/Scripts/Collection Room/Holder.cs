@@ -57,8 +57,10 @@ public class Holder : MonoBehaviour
             SteamVR_Controller.Device input = GetInput(controllerIndex);
             if (input.GetHairTriggerDown())
             {
+                print("TRIGGER");
                 if (CanGrab(controllerIndex))
                 {
+                    print("CANGRAB");
                     Grab(controllerIndex);
                 }
             }
@@ -87,9 +89,11 @@ public class Holder : MonoBehaviour
 
     private void Grab(int controllerIndex)
     {
+        heldObject.SetActive(true);
         PickUpStretch pickUp = heldObject.GetComponent<PickUpStretch>();
         if (pickUp != null)
         {
+            print("PICKUPGRAB");
             pickUp.Grab(controllerIndex);
         }
         Remove();
@@ -99,6 +103,11 @@ public class Holder : MonoBehaviour
     {
         //TODO
         //Remove();
+    }
+
+    public bool CanApply()
+    {
+        return heldObject == null;
     }
 
     public virtual void Apply(GameObject obj)

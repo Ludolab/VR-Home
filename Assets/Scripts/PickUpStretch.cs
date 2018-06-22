@@ -160,7 +160,7 @@ public class PickUpStretch : MonoBehaviour
                 AttachToController(controllers[holder]);
             }
 
-            if (insidePickupHolder != null)
+            if (insidePickupHolder != null && insidePickupHolder.CanApply())
             {
                 insidePickupHolder.Apply(gameObject);
                 SetNotGrabbable(controllerIndex);

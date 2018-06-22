@@ -20,10 +20,10 @@ public class ImageHolder : Holder
 
     public override void Apply(GameObject obj)
     {
-        base.Apply(obj);
         Transform t = obj.transform.Find("Quad");
         if (t != null)
         {
+            base.Apply(obj);
             GameObject quad = t.gameObject;
             VideoPlayer vid = quad.GetComponent<VideoPlayer>();
             if (vid != null)

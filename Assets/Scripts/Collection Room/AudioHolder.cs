@@ -15,11 +15,12 @@ public class AudioHolder : Holder
 
     public override void Apply(GameObject obj)
     {
-        base.Apply(obj);
         Record rec = obj.GetComponent<Record>();
         if (rec != null)
         {
+            base.Apply(obj);
             audioSrc.clip = rec.GetAudio();
+            audioSrc.Play();
         }
     }
 
