@@ -26,6 +26,7 @@ public class Holder : MonoBehaviour
         {
             if (other.gameObject == controllers[controllerIndex].gameObject)
             {
+                print("INSIDE " + controllerIndex);
                 controllersInside[controllerIndex] = true;
             }
         }
