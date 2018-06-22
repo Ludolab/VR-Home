@@ -1,4 +1,4 @@
-﻿Shader "Toon/Iridescent" {
+﻿Shader "Custom/Iridescent" {
     Properties{
         _Color("Main Color", Color) = (0.5,0.5,0.5,1)
        
