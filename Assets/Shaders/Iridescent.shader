@@ -1,10 +1,9 @@
 ﻿Shader "Custom/Iridescent" {
     Properties{
-        _Color("Main Color", Color) = (0.5,0.5,0.5,1)
+        _Color("Main Color", Color) = (0.5,0.5,0.5,0.25)
        
         _MainTex("Base (RGB)", 2D) = "white" {}
         _Transparency("Transparency", Range(0.0,0.5)) = 0.25
-        _RippleTime("RippleTime", int) = 2
     _Noise("Noise (RGB)", 2D) = "white" {} // noise texture
     _Ramp("Toon Ramp (RGB)", 2D) = "gray" {}
     _IrTex("Iridescence Ramp (RGB)", 2D) = "white" {} // color ramp
@@ -25,18 +24,18 @@
         Blend SrcAlpha OneMinusSrcAlpha
 
         CGPROGRAM
-#pragma surface surf ToonRamp
-#pragma shader_feature LM
+        #pragma surface surf ToonRamp
+        #pragma shader_feature LM
         sampler2D _Ramp;
  
     // custom lighting function that uses a texture ramp based
     // on angle between light direction and normal
-#pragma lighting ToonRamp exclude_path:prepass
+    #pragma lighting ToonRamp exclude_path:prepass
     inline half4 LightingToonRamp(SurfaceOutput s, half3 lightDir, half atten)
     {
-#ifndef USING_DIRECTIONAL_LIGHT
+    #ifndef USING_DIRECTIONAL_LIGHT
         lightDir = normalize(lightDir);
-#endif
+    #endif
  
         half d = dot(s.Normal, lightDir)*0.5 + 0.5;
         half3 ramp = tex2D(_Ramp, float2(d,d)).rgb;
