@@ -19,7 +19,10 @@
         SubShader{
         Tags{"Queue"="Transparent" "RenderType"="Transparent"}
         LOD 200
- 
+
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+
         CGPROGRAM
 #pragma surface surf ToonRamp
 #pragma shader_feature LM
