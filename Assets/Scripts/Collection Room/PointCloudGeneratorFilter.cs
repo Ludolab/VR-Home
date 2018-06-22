@@ -13,6 +13,7 @@ public class PointCloudGeneratorFilter : MonoBehaviour
     public float depthFilter = 1;
     public ParticleSystem pointCloudParticles;
     public GameObject pointCloudCopy;
+    public GameObject snapshotDisplay;
 
     private ParticleSystem.Particle[] particles = new ParticleSystem.Particle[0];
     private PointCloud pc = new PointCloud();
@@ -120,12 +121,18 @@ public class PointCloudGeneratorFilter : MonoBehaviour
             string time = now.ToString("yyyy-MM-dd_HH.mm.ss.ffff");
             string filename = time + ".ply";
             PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
+
+            ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + filename);
+            snapshotDisplay.GetComponent<KeepParticles>().SetParticles(plyParticles);
         }
 
         if (Input.GetKeyDown(KeyCode.H))
         {
             string filename = "head.ply";
             PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
+
+            ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + filename);
+            snapshotDisplay.GetComponent<KeepParticles>().SetParticles(plyParticles);
         }
         /*if (Input.GetKeyDown(KeyCode.L))
         {
