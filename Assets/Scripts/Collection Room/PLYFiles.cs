@@ -7,7 +7,7 @@ public class PLYFiles
 {
 
     public static float pointsSize = 1.0f;
-    public static int particlesToSkip = 2;
+    public static int particlesToSkip = 4;
 
     private static bool IsUnusedParticle(ParticleSystem.Particle p)
     {
