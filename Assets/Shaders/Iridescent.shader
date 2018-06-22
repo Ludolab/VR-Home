@@ -54,8 +54,7 @@
     float4 _Color;
     float4 _IrColor; // extra tinting
     float _Transparency; //what it sounds like
-    int _RippleTime; // time for irriedescence offset to cycle
-    float _Offset; // color ramp offset (except we manually set it anyway)
+    float _Offset; // color ramp offset
     float _Brightness; // Iridescence opacity
     float _WorldScale; // noise scale
  
@@ -68,8 +67,7 @@
  
     void surf(Input IN, inout SurfaceOutput o) {
         
-        float newOffset = ((_Time % _RippleTime)+1)/_RippleTime;
-        half f = 1 -dot(o.Normal, IN.viewDir) + newOffset; // fresnel
+        half f = 1 -dot(o.Normal, IN.viewDir) + _Offset; // fresnel
         half4 n = tex2D(_Noise, IN.uv_MainTex * _WorldScale); // noise based on the first uv set
 #if LM
         n = tex2D(_Noise, IN.uv2_Noise * _WorldScale); // noise based on the lightmap uv set
