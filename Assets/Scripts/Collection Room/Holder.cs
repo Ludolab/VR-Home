@@ -26,7 +26,6 @@ public class Holder : MonoBehaviour
         {
             if (other.gameObject == controllers[controllerIndex].gameObject)
             {
-                print("INSIDE " + controllerIndex);
                 controllersInside[controllerIndex] = true;
             }
         }
@@ -58,10 +57,8 @@ public class Holder : MonoBehaviour
             SteamVR_Controller.Device input = GetInput(controllerIndex);
             if (input.GetHairTriggerDown())
             {
-                print("TRIGGER");
                 if (CanGrab(controllerIndex))
                 {
-                    print("CANGRAB");
                     Grab(controllerIndex);
                 }
             }
@@ -94,7 +91,6 @@ public class Holder : MonoBehaviour
         PickUpStretch pickUp = heldObject.GetComponent<PickUpStretch>();
         if (pickUp != null)
         {
-            print("PICKUPGRAB");
             pickUp.Grab(controllerIndex);
         }
         Remove();
