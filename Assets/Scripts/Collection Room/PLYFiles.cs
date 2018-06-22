@@ -7,6 +7,7 @@ public class PLYFiles
 {
 
     public static float pointsSize = 1.0f;
+    public static int particlesToSkip = 2;
 
     private static bool IsUnusedParticle(ParticleSystem.Particle p)
     {
@@ -30,16 +31,22 @@ public class PLYFiles
         text.Add("end_header");
 
         int particleCount = 0;
+        int skip = 0;
         foreach (ParticleSystem.Particle p in particles)
         {
             if (!IsUnusedParticle(p))
             {
-                particleCount++;
-                Vector3 pPos = p.position;
-                string particlePosInfo = pPos.x + " " + pPos.y + " " + pPos.z + " ";
-                Color32 pCol = p.startColor;
-                string particleColInfo = pCol.r + " " + pCol.g + " " + pCol.b + " ";
-                text.Add(particlePosInfo + particleColInfo);
+                skip++;
+                if (skip == particlesToSkip)
+                {
+                    skip = 0;
+                    particleCount++;
+                    Vector3 pPos = p.position;
+                    string particlePosInfo = pPos.x + " " + pPos.y + " " + pPos.z + " ";
+                    Color32 pCol = p.startColor;
+                    string particleColInfo = pCol.r + " " + pCol.g + " " + pCol.b + " ";
+                    text.Add(particlePosInfo + particleColInfo);
+                }
             }
         }
 
