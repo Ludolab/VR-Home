@@ -4,6 +4,7 @@
        
         _MainTex("Base (RGB)", 2D) = "white" {}
         _Transparency("Transparency", Range(0.0,0.5)) = 0.25
+        _RippleTime("RippleTime", int) = 2
     _Noise("Noise (RGB)", 2D) = "white" {} // noise texture
     _Ramp("Toon Ramp (RGB)", 2D) = "gray" {}
     _IrTex("Iridescence Ramp (RGB)", 2D) = "white" {} // color ramp
@@ -53,7 +54,8 @@
     float4 _Color;
     float4 _IrColor; // extra tinting
     float _Transparency; //what it sounds like
-    float _Offset; // color ramp offset
+    int _RippleTime; // time for irriedescence offset to cycle
+    float _Offset; // color ramp offset (except we manually set it anyway)
     float _Brightness; // Iridescence opacity
     float _WorldScale; // noise scale
  
@@ -61,11 +63,13 @@
         float2 uv_MainTex : TEXCOORD0;
         float2 uv2_Noise : TEXCOORD1; // lightmap uvs
         float3 viewDir; // view direction
+        float4 _Time;
     };
  
     void surf(Input IN, inout SurfaceOutput o) {
- 
-        half f = 1 -dot(o.Normal, IN.viewDir) + _Offset; // fresnel
+        
+        float newOffset = ((_Time % _RippleTime)+1)/_RippleTime;
+        half f = 1 -dot(o.Normal, IN.viewDir) + newOffset; // fresnel
         half4 n = tex2D(_Noise, IN.uv_MainTex * _WorldScale); // noise based on the first uv set
 #if LM
         n = tex2D(_Noise, IN.uv2_Noise * _WorldScale); // noise based on the lightmap uv set
