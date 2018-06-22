@@ -52,6 +52,7 @@
     sampler2D _IrTex; // color ramp
     float4 _Color;
     float4 _IrColor; // extra tinting
+    float _Transparency; //what it sounds like
     float _Offset; // color ramp offset
     float _Brightness; // Iridescence opacity
     float _WorldScale; // noise scale
