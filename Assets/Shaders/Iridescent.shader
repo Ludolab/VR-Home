@@ -3,7 +3,7 @@
         _Color("Main Color", Color) = (0.5,0.5,0.5,1)
        
         _MainTex("Base (RGB)", 2D) = "white" {}
- 
+        _Transparency("Transparency", Range(0.0,0.5)) = 0.25
     _Noise("Noise (RGB)", 2D) = "white" {} // noise texture
     _Ramp("Toon Ramp (RGB)", 2D) = "gray" {}
     _IrTex("Iridescence Ramp (RGB)", 2D) = "white" {} // color ramp
@@ -17,7 +17,7 @@
     }
  
         SubShader{
-        Tags{ "RenderType" = "Opaque" }
+        Tags{"Queue"="Transparent" "RenderType"="Transparent"}
         LOD 200
  
         CGPROGRAM
