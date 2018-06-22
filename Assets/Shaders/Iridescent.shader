@@ -3,7 +3,7 @@
         _Color("Main Color", Color) = (0.5,0.5,0.5,0.25)
        
         _MainTex("Base (RGB)", 2D) = "white" {}
-        _Transparency("Transparency", Range(0.0,0.5)) = 0.25
+        _Opacity("Opacity", Range(0.0,0.5)) = 0.25
     _Noise("Noise (RGB)", 2D) = "white" {} // noise texture
     _Ramp("Toon Ramp (RGB)", 2D) = "gray" {}
     _IrTex("Iridescence Ramp (RGB)", 2D) = "white" {} // color ramp
@@ -52,7 +52,7 @@
     sampler2D _IrTex; // color ramp
     float4 _Color;
     float4 _IrColor; // extra tinting
-    float _Transparency; //what it sounds like
+    float _Opacity; //what it sounds like
     float _Offset; // color ramp offset
     float _Brightness; // Iridescence opacity
     float _WorldScale; // noise scale
@@ -61,7 +61,6 @@
         float2 uv_MainTex : TEXCOORD0;
         float2 uv2_Noise : TEXCOORD1; // lightmap uvs
         float3 viewDir; // view direction
-        float4 _Time;
     };
  
     void surf(Input IN, inout SurfaceOutput o) {
@@ -79,7 +78,7 @@
        
         o.Albedo = (c.rgb) + ((i * n) * _Brightness); // multiplied by original texture, with an opacity float
        
-        o.Alpha = c.a;
+        o.Alpha =_Opacity;
     }
     ENDCG
  
