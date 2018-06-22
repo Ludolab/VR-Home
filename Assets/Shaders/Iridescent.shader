@@ -3,7 +3,7 @@
         _Color("Main Color", Color) = (0.5,0.5,0.5,0.25)
        
         _MainTex("Base (RGB)", 2D) = "white" {}
-        _Opacity("Opacity", Range(0.0,0.5)) = 0.25
+        _Opacity("Opacity", Range(0.0,1)) = 0.25
     _Noise("Noise (RGB)", 2D) = "white" {} // noise texture
     _Ramp("Toon Ramp (RGB)", 2D) = "gray" {}
     _IrTex("Iridescence Ramp (RGB)", 2D) = "white" {} // color ramp
@@ -18,16 +18,18 @@
  
         SubShader{
         Tags{"Queue"="Transparent" "RenderType"="Transparent"}
-        LOD 200
+        LOD 100
 
         ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
 
         CGPROGRAM
-        #pragma surface surf ToonRamp
+        #pragma surface surf ToonRamp alpha
         #pragma shader_feature LM
         sampler2D _Ramp;
- 
+        float _Opacity; //what it sounds like
+       
+
     // custom lighting function that uses a texture ramp based
     // on angle between light direction and normal
     #pragma lighting ToonRamp exclude_path:prepass
@@ -42,7 +44,7 @@
  
         half4 c;
         c.rgb = s.Albedo * _LightColor0.rgb * ramp * (atten * 2);
-        c.a = 0;
+        c.a = _Opacity;
         return c;
     }
  
@@ -52,7 +54,6 @@
     sampler2D _IrTex; // color ramp
     float4 _Color;
     float4 _IrColor; // extra tinting
-    float _Opacity; //what it sounds like
     float _Offset; // color ramp offset
     float _Brightness; // Iridescence opacity
     float _WorldScale; // noise scale
@@ -72,13 +73,12 @@
 #endif
  
         half4 c = tex2D(_MainTex, IN.uv_MainTex ) * _Color;
- 
-       
+
         half3 i = tex2D(_IrTex, float2(f,f)+ n).rgb * _IrColor; // iridescence effect
        
         o.Albedo = (c.rgb) + ((i * n) * _Brightness); // multiplied by original texture, with an opacity float
        
-        o.Alpha =_Opacity;
+        o.Alpha = _Opacity;
     }
     ENDCG
  
