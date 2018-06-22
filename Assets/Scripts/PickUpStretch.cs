@@ -201,7 +201,7 @@ public class PickUpStretch : MonoBehaviour
     {
         for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
         {
-            if (other.gameObject == controllers[controllerIndex].gameObject)
+            if (controllers[controllerIndex] != null && other.gameObject == controllers[controllerIndex].gameObject)
             {
                 controllersInside[controllerIndex] = true;
                 SetGrabbable(controllerIndex);

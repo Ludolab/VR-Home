@@ -8,7 +8,7 @@ public class KeepParticles : MonoBehaviour
     private ParticleSystem particleSys;
     private ParticleSystem.Particle[] particles = new ParticleSystem.Particle[0];
 
-    private void Start()
+    private void Awake()
     {
         particleSys = GetComponent<ParticleSystem>();
     }
