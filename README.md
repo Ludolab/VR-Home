@@ -13,3 +13,4 @@
 - Letter spacing script by Andrew Pavlovich: https://bitbucket.org/AcornGame/adjustable-character-spacing/downloads/
 - RealSense SDK by Intel: https://github.com/IntelRealSense/librealsense/tree/master/wrappers/unity
 - Record player by VIS Games: https://assetstore.unity.com/packages/3d/props/interior/record-player-4249
+- Sample music by Greek555: https://freesound.org/people/Greek555/
