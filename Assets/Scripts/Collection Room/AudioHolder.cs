@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AudioHolder : Holder
 {
-    private const float BASE_SCALE = 0.02f;
+    private const float BASE_SCALE = 0.025f;
 
     public GameObject recordPlayer;
     public GameObject teller;
