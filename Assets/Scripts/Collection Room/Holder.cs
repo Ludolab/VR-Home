@@ -88,7 +88,7 @@ public class Holder : MonoBehaviour
     private void Grab(int controllerIndex)
     {
         heldObject.SetActive(true);
-        heldObject.transform.position = controllers[controllerIndex].gameObject.GetComponent<SphereCollider>().center;
+        heldObject.transform.position = controllers[controllerIndex].gameObject.GetComponent<SphereCollider>().center + controllers[controllerIndex].gameObject.transform.position;
         PickUpStretch pickUp = heldObject.GetComponent<PickUpStretch>();
         if (pickUp != null)
         {
