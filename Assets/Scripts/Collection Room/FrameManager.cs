@@ -129,10 +129,10 @@ public class FrameManager : MonoBehaviour {
         float oldValue = myMaterial.GetFloat("_Threshold");
         for (float t = 0; t < transitionTime; t += Time.deltaTime)
         {
-            myMaterial.SetFloat("_Threshold", Mathf.Lerp(oldValue, 1, t / transitionTime));
+            myMaterial.SetFloat("_Threshold", Mathf.Lerp(oldValue, 0, t / transitionTime));
             yield return new WaitForEndOfFrame();
         }
-        myMaterial.SetFloat("_Threshold", 1);
+        myMaterial.SetFloat("_Threshold", 0);
     }
 
     private IEnumerator TransitionToDisplay(Texture newTex)
@@ -141,9 +141,9 @@ public class FrameManager : MonoBehaviour {
         float oldValue = myMaterial.GetFloat("_Threshold");
         for (float t = 0; t < transitionTime; t += Time.deltaTime)
         {
-            myMaterial.SetFloat("_Threshold", Mathf.Lerp(oldValue, 0, t / transitionTime));
+            myMaterial.SetFloat("_Threshold", Mathf.Lerp(oldValue, 1, t / transitionTime));
             yield return new WaitForEndOfFrame();
         }
-        myMaterial.SetFloat("_Threshold", 0);
+        myMaterial.SetFloat("_Threshold", 1);
     }
 }
