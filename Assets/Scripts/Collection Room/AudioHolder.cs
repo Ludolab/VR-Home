@@ -35,6 +35,8 @@ public class AudioHolder : Holder
             teller.SetActive(true);
             colorRend.material.color = rec.GetColor();
             text3d.text = rec.GetText();
+            float scale = Record.BASE_SCALE / text3d.text.Length;
+            textObj.transform.localScale = new Vector3(scale, scale, 1);
             rp.recordPlayerActive = true;
         }
     }

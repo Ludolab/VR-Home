@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pcPrefab: {fileID: 1777218712437806, guid: 46cc2cfec6a0af147ad8bdd39cac3f63, type: 2}
-  pointsSize: 1
+  pool: {fileID: 0}
+  poolScale: 0.4
 --- !u!114 &114363366484026754
 MonoBehaviour:
   m_ObjectHideFlags: 1

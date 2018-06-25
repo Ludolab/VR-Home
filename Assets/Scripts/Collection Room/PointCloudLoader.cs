@@ -29,7 +29,6 @@ public class PointCloudLoader : MonoBehaviour
             keep.SetParticles(plyParticles);
             Vector2 offset = Random.insideUnitCircle * poolScale;
             copy.transform.position = poolPos + new Vector3(offset.x, 0, offset.y);
-            print(copy.transform.position);
 
             CollectionData.addToClouds(path, copy);
         }

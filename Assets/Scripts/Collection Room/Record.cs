@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Record : MonoBehaviour
 {
+    public const float BASE_SCALE = 0.08f;
+
     public GameObject colorObj;
     public GameObject textObj;
 
@@ -22,6 +24,8 @@ public class Record : MonoBehaviour
         ac = audioClip;
         rend.material.color = AudioToColor(audioClip);
         text3d.text = ac.name;
+        float scale = BASE_SCALE / ac.name.Length;
+        textObj.transform.localScale = new Vector3(scale, scale, 1);
     }
 
     public AudioClip GetAudio()
