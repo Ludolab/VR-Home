@@ -81,7 +81,7 @@ public class FrameManager : MonoBehaviour {
             {
                 Debug.Log("About to call Transition to Display");
                 //use image texture
-                TransitionToDisplay(image.GetComponent<Renderer>().material.mainTexture);
+                StartCoroutine(TransitionToDisplay(image.GetComponent<Renderer>().material.mainTexture));
             }
             heldMedia = obj;
             PickUpStretch pickerUpper = heldMedia.GetComponent<PickUpStretch>();
@@ -115,7 +115,7 @@ public class FrameManager : MonoBehaviour {
     public void removeImage(int controllerIndex)
     {
         Debug.Log("removeImage called");
-        TransitionToDefault();
+        StartCoroutine(TransitionToDefault());
         vp.Stop();
         vp.clip = null;
         heldMedia.SetActive(true);
