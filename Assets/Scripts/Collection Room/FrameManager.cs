@@ -66,7 +66,6 @@ public class FrameManager : MonoBehaviour {
 	}
 
     public void setImage(GameObject obj) {
-        Debug.Log("Setting Image");
         Transform t = obj.transform.Find("Quad");
         if (t != null)
         {
@@ -80,9 +79,12 @@ public class FrameManager : MonoBehaviour {
             else
             {
                 //use image texture
+                Debug.Log("Transitioning to Display");
                 TransitionToDisplay(image.GetComponent<Renderer>().material.mainTexture);
             }
             heldMedia = obj;
+            PickUpStretch pickerUpper = heldMedia.GetComponent<PickUpStretch>();
+            pickerUpper.Release(pickerUpper.holder);
             heldMedia.SetActive(false);
         } else {
             Debug.Log("Could not find Quad");
