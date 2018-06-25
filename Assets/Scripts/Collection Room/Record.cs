@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Record : MonoBehaviour
 {
-    public const float BASE_SCALE = 0.08f;
+    private const float BASE_SCALE = 0.08f;
 
     public GameObject colorObj;
     public GameObject textObj;

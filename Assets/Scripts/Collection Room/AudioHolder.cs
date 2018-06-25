@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class AudioHolder : Holder
 {
+    private const float BASE_SCALE = 0.02f;
+
     public GameObject recordPlayer;
     public GameObject teller;
     public GameObject colorObj;
@@ -22,6 +24,7 @@ public class AudioHolder : Holder
         rp = recordPlayer.GetComponent<RecordPlayer>();
         colorRend = colorObj.GetComponent<Renderer>();
         text3d = textObj.GetComponent<TextMesh>();
+        SetText("BASS");
     }
 
     public override void Apply(GameObject obj)
@@ -34,11 +37,16 @@ public class AudioHolder : Holder
             audioSrc.Play();
             teller.SetActive(true);
             colorRend.material.color = rec.GetColor();
-            text3d.text = rec.GetText();
-            float scale = Record.BASE_SCALE / text3d.text.Length;
-            textObj.transform.localScale = new Vector3(scale, scale, 1);
+            SetText(rec.GetText());
             rp.recordPlayerActive = true;
         }
+    }
+
+    private void SetText(string text)
+    {
+        text3d.text = text;
+        float scale = BASE_SCALE / text.Length;
+        textObj.transform.localScale = new Vector3(scale, scale, 1);
     }
 
     protected override void Remove()
