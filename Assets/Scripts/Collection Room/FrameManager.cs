@@ -31,6 +31,8 @@ public class FrameManager : MonoBehaviour {
         controllersBehindCanvas[1] = false;
         canvasSphereColliders = new List<ClothSphereColliderPair>();
         canvasCapsuleColliders = new List<ClothSphereColliderPair>();
+        canvasSphereColliders.Add(new ClothSphereColliderPair(controllers[0].GetComponent<SphereCollider>()));
+        canvasSphereColliders.Add(new ClothSphereColliderPair(controllers[1].GetComponent<SphereCollider>()));
 	}
 	
 	// Update is called once per frame
@@ -43,16 +45,18 @@ public class FrameManager : MonoBehaviour {
                     SteamVR_Controller.Device input = SteamVR_Controller.Input((int)controller.index);
                     if (input.GetHairTriggerDown())
                     {
-                        canvasSphereColliders.Add(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
-                        myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
+                        /*canvasSphereColliders.Add(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
+                        myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();*/
                         if (controllersBehindCanvas[controllerIndex]){
                             removeImage(controllerIndex);
+                        } else {
+                            Debug.Log("Controller not behind canvas")
                         }
                     }
                     if (input.GetHairTriggerUp())
                     {
-                        canvasSphereColliders.Remove(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
-                        myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
+                        /*canvasSphereColliders.Remove(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
+                        myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();*/
                     }
                 }
             }
@@ -108,6 +112,7 @@ public class FrameManager : MonoBehaviour {
 
     public void removeImage(int controllerIndex)
     {
+        Debug.Log("removeImage called");
         vp.Stop();
         vp.clip = null;
         myMaterial.mainTexture = defaultTexture;
