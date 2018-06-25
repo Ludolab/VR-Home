@@ -33,6 +33,6 @@ public class Record : MonoBehaviour
     private static Color AudioToColor(AudioClip audioClip)
     {
         Random.InitState(audioClip.GetHashCode());
-        return Random.ColorHSV(0f, 1f, 1f, 1f, 0.1f, 0.6f);
+        return Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1.0f);
     }
 }
