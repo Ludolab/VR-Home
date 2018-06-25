@@ -61,6 +61,7 @@ public class FrameManager : MonoBehaviour {
             {
                 if (controllers[controllerIndex] != null && other.gameObject == controllers[controllerIndex].gameObject && PickUpStretch.grabbableObjects[(int)controllerIndex] != null)
                 {
+                    Debug.Log("Controller Also Touching Back");
                     SteamVR_TrackedObject controller = controllers[controllerIndex];
                     canvasSphereColliders.Remove(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
                     myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
@@ -84,6 +85,7 @@ public class FrameManager : MonoBehaviour {
             {
                 if (controllers[controllerIndex] != null && other.gameObject == controllers[controllerIndex].gameObject)
                 {
+                    Debug.Log("Controller Also Touching Front");
                     SteamVR_TrackedObject controller = controllers[controllerIndex];
                     canvasSphereColliders.Remove(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
                     myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
