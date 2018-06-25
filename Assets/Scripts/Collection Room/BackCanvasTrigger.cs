@@ -15,6 +15,11 @@ public class BackCanvasTrigger : MonoBehaviour
 
     void OnTriggerStay (Collider other)
     {
-        myManager.removeImage(other.gameObject);
+        myManager.mayHaveFoundController(other.gameObject);
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        myManager.mayHaveLostController(other.gameObject);
     }
 }
