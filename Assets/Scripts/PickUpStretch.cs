@@ -150,7 +150,7 @@ public class PickUpStretch : MonoBehaviour
         Rumble(controllerIndex);
     }
 
-    private void Release(int controllerIndex)
+    public void Release(int controllerIndex)
     {
         if (stretcher == controllerIndex)
         {
