@@ -13,8 +13,8 @@ public class FrameManager : MonoBehaviour {
     public GameObject myCanvas;
     GameObject heldMedia;
     Material myMaterial;
-    Texture defaultTexture;
 
+    private float transitionTime = 0.5f;
     private const int NUM_CONTROLLERS = 2;
     private SteamVR_TrackedObject[] controllers = new SteamVR_TrackedObject[NUM_CONTROLLERS];
     private bool[] controllersBehindCanvas = new bool[NUM_CONTROLLERS];
@@ -23,7 +23,6 @@ public class FrameManager : MonoBehaviour {
 	void Start () {
         myMaterial = myCanvas.GetComponent<Renderer>().material;
         vp = myCanvas.GetComponent<VideoPlayer>();
-        defaultTexture = myMaterial.mainTexture;
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
         controllers[1] = manager.right.GetComponent<SteamVR_TrackedObject>();
@@ -50,8 +49,6 @@ public class FrameManager : MonoBehaviour {
                         myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();*/
                         if (controllersBehindCanvas[controllerIndex]){
                             removeImage(controllerIndex);
-                        } else {
-                            Debug.Log("Controller not behind canvas");
                         }
                     }
                     if (input.GetHairTriggerUp())
@@ -82,7 +79,7 @@ public class FrameManager : MonoBehaviour {
             else
             {
                 //use image texture
-                myMaterial.mainTexture = image.GetComponent<Renderer>().material.mainTexture;
+                TransitionToDisplay(image.GetComponent<Renderer>().material.mainTexture);
             }
             heldMedia = obj;
             heldMedia.SetActive(false);
@@ -114,11 +111,34 @@ public class FrameManager : MonoBehaviour {
     public void removeImage(int controllerIndex)
     {
         Debug.Log("removeImage called");
+        TransitionToDefault();
         vp.Stop();
         vp.clip = null;
-        myMaterial.mainTexture = defaultTexture;
         heldMedia.SetActive(true);
         heldMedia.GetComponent<PickUpStretch>().Grab(controllerIndex);
         heldMedia = null;
+    }
+
+    private IEnumerator TransitionToDefault()
+    {
+        float oldValue = myMaterial.GetFloat("_Threshold");
+        for (float t = 0; t < transitionTime; t += Time.deltaTime)
+        {
+            myMaterial.SetFloat("_Threshold", Mathf.Lerp(oldValue, 1, t / transitionTime));
+            yield return new WaitForEndOfFrame();
+        }
+        myMaterial.SetFloat("_Threshold", 1);
+    }
+
+    private IEnumerator TransitionToDisplay(Texture newTex)
+    {
+        myMaterial.SetTexture("_DisplayTex", newTex);
+        float oldValue = myMaterial.GetFloat("_Threshold");
+        for (float t = 0; t < transitionTime; t += Time.deltaTime)
+        {
+            myMaterial.SetFloat("_Threshold", Mathf.Lerp(oldValue, 0, t / transitionTime));
+            yield return new WaitForEndOfFrame();
+        }
+        myMaterial.SetFloat("_Threshold", 0);
     }
 }
