@@ -53,4 +53,12 @@ public class FrameManager : MonoBehaviour {
             }
         }
 	}
+
+    void backCollision(Collider other) {
+        int collidingControllerIndex = controllers.IndexOf(other.GameObject);
+        SteamVR_TrackedObject collidingController = controllers[collidingControllerIndex];
+        if (collidingControllerIndex >= 0){
+            
+        }
+    }
 }
