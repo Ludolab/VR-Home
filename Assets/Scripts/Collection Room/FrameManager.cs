@@ -50,7 +50,7 @@ public class FrameManager : MonoBehaviour {
                         if (controllersBehindCanvas[controllerIndex]){
                             removeImage(controllerIndex);
                         } else {
-                            Debug.Log("Controller not behind canvas")
+                            Debug.Log("Controller not behind canvas");
                         }
                     }
                     if (input.GetHairTriggerUp())
