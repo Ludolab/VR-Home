@@ -56,7 +56,7 @@ public class PickUpStretch : MonoBehaviour
         {
             baseRend = transform.Find("Base").GetComponent<Renderer>();
             oldShader = baseRend.material.shader;
-            baseRend = transform.Find("Outline").GetComponent<Renderer>();
+            outlineRend = transform.Find("Outline").GetComponent<Renderer>();
         }
         else
         {
