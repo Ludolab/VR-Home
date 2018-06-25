@@ -7,13 +7,15 @@ using UnityEngine.Video;
 public class PointCloudLoader : MonoBehaviour
 {
     private const string PLY_SAVE_PATH = "Assets/Resources/PointClouds/";
-    private const float HEIGHT_DIFF = 0.05f;
 
     public GameObject pcPrefab;
-    
+    public GameObject pool;
+    public float poolScale;
+
     private void Start()
     {
-        float height = transform.position.y;
+        pool = GameObject.Find("Bottom Water");
+        Vector3 poolPos = pool.transform.position;
 
         string[] paths = Directory.GetFiles(PLY_SAVE_PATH);
         foreach (string path in paths)
@@ -25,8 +27,9 @@ public class PointCloudLoader : MonoBehaviour
             ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(path);
             KeepParticles keep = copy.transform.Find("PointCloudCopy").GetComponent<KeepParticles>();
             keep.SetParticles(plyParticles);
-            copy.transform.position = new Vector3(transform.position.x, height, transform.position.z);
-            height += HEIGHT_DIFF;
+            Vector2 offset = Random.insideUnitCircle * poolScale;
+            copy.transform.position = poolPos + new Vector3(offset.x, 0, offset.y);
+            print(copy.transform.position);
 
             CollectionData.addToClouds(path, copy);
         }
