@@ -12,6 +12,8 @@ public class PickUpStretch : MonoBehaviour
 
     public bool canStretch = true;
 
+    public bool specialOutline = false; //use special crystal sphere outline behavior
+
     public Shader highlightShader;
     public Color heldColor;
     public Color hoverColor;
@@ -37,6 +39,9 @@ public class PickUpStretch : MonoBehaviour
     private Vector3 baseScale;
     private float stretchScale;
 
+    private Renderer baseRend; //only used if specialOutline is true
+    private Renderer outlineRend; //only used if specialOutline is true
+
     protected virtual void Start()
     {
         startPos = transform.position;
@@ -47,7 +52,16 @@ public class PickUpStretch : MonoBehaviour
         controllers[1] = manager.right.GetComponent<SteamVR_TrackedObject>();
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
-        oldShader = rend.material.shader;
+        if (specialOutline)
+        {
+            baseRend = transform.Find("Base").GetComponent<Renderer>();
+            oldShader = baseRend.material.shader;
+            baseRend = transform.Find("Outline").GetComponent<Renderer>();
+        }
+        else
+        {
+            oldShader = rend.material.shader;
+        }
     }
 
     private SteamVR_Controller.Device GetInput(int controllerIndex)
@@ -225,7 +239,7 @@ public class PickUpStretch : MonoBehaviour
 
         if (stretcher == NONE && holder != NONE)
         {
-            rend.material.shader = highlightShader;
+            SetShader(highlightShader);
             SetColor(heldColor);
         }
 
@@ -245,12 +259,12 @@ public class PickUpStretch : MonoBehaviour
 
         if (CanGrab(controllerIndex))
         {
-            rend.material.shader = highlightShader;
+            SetShader(highlightShader);
             SetColor(hoverColor);
         }
         if (CanStretch(controllerIndex))
         {
-            rend.material.shader = highlightShader;
+            SetShader(highlightShader);
             SetColor(stretchHoverColor);
         }
     }
@@ -272,13 +286,35 @@ public class PickUpStretch : MonoBehaviour
         }
         if (noneInside)
         {
-            rend.material.shader = oldShader;
+            SetShader(oldShader);
+        }
+    }
+
+    private void SetShader(Shader shader)
+    {
+        if (specialOutline)
+        {
+            baseRend.material.shader = shader;
+            bool isOutlined = shader != oldShader;
+            outlineRend.gameObject.SetActive(isOutlined);
+        }
+        else
+        {
+            rend.material.shader = shader;
         }
     }
 
     private void SetColor(Color color)
     {
-        rend.material.SetColor("_OutlineColor", color);
+        if (specialOutline)
+        {
+            baseRend.material.SetColor("_OutlineColor", color);
+            outlineRend.material.SetColor("_Color", color);
+        }
+        else
+        {
+            rend.material.SetColor("_OutlineColor", color);
+        }
     }
 
     private void Reset()
