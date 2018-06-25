@@ -106,7 +106,7 @@ public class PickUpStretch : MonoBehaviour
 
             if (input.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
             {
-                Reset();
+                ResetPos();
             }
         }
         catch (IndexOutOfRangeException)
@@ -317,7 +317,7 @@ public class PickUpStretch : MonoBehaviour
         }
     }
 
-    private void Reset()
+    private void ResetPos()
     {
         if (stretcher != NONE)
         {
