@@ -12,3 +12,4 @@
 - Skybox Fading Shader by Aras Pranckevicius: http://wiki.unity3d.com/index.php?title=SkyboxBlended
 - Letter spacing script by Andrew Pavlovich: https://bitbucket.org/AcornGame/adjustable-character-spacing/downloads/
 - RealSense SDK by Intel: https://github.com/IntelRealSense/librealsense/tree/master/wrappers/unity
+- Record player by VIS Games: https://assetstore.unity.com/packages/3d/props/interior/record-player-4249

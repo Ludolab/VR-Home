@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class AudioHolder : Holder
 {
+    public GameObject recordPlayer;
+    public GameObject teller;
+    public GameObject colorObj;
 
     private AudioSource audioSrc;
+    private RecordPlayer rp;
+    private Renderer colorRend;
 
     protected override void Start()
     {
         base.Start();
         audioSrc = GetComponent<AudioSource>();
+        rp = recordPlayer.GetComponent<RecordPlayer>();
+        colorRend = colorObj.GetComponent<Renderer>();
     }
 
     public override void Apply(GameObject obj)
@@ -21,6 +28,9 @@ public class AudioHolder : Holder
             base.Apply(obj);
             audioSrc.clip = rec.GetAudio();
             audioSrc.Play();
+            teller.SetActive(true);
+            colorRend.material.color = rec.GetColor();
+            rp.recordPlayerActive = true;
         }
     }
 
@@ -30,5 +40,7 @@ public class AudioHolder : Holder
 
         audioSrc.Stop();
         audioSrc.clip = null;
+        rp.recordPlayerActive = false;
+        teller.SetActive(false);
     }
 }

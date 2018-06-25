@@ -6,13 +6,13 @@ using UnityEngine.Video;
 public class MediaLoader : MonoBehaviour
 {
 
-    public Transform start;
+    public Transform start; //should be a little bit along the string, since a photo will spawn here
     public Transform end;
     //TODO: support more than one string
     //TODO: support curved strings
 
-    //TODO: how to load records?
     public Transform recordSpawn;
+    public float recordHeight = 0.05f;
 
     public GameObject photoPrefab;
     public GameObject videoPrefab;
@@ -20,6 +20,7 @@ public class MediaLoader : MonoBehaviour
 
     private void Start()
     {
+        //load photos along the string
         Vector3 startPos = start.position;
         Vector3 endPos = end.position;
 
@@ -49,15 +50,15 @@ public class MediaLoader : MonoBehaviour
             CollectionData.addToVideos(vid.name, video);
         }
 
-        //TODO: how to load records?
-        float height = 0.1f;
+        //load records in a stack
+        float height = recordSpawn.position.y;
         AudioClip[] audios = Resources.LoadAll<AudioClip>("Media");
         foreach (AudioClip ac in audios)
         {
             GameObject audio = Instantiate(audioPrefab);
             audio.GetComponent<Record>().SetAudio(ac);
-            audio.transform.position = new Vector3(transform.position.x, height, transform.position.z);
-            height += 0.05f;
+            audio.transform.position = new Vector3(recordSpawn.position.x, height, recordSpawn.position.z);
+            height += recordHeight;
             CollectionData.addToSounds(ac.name, audio);
         }
 
