@@ -9,13 +9,12 @@ public class PointCloudLoader : MonoBehaviour
     private const string PLY_SAVE_PATH = "Assets/Resources/PointClouds/";
 
     public GameObject pcPrefab;
-    public GameObject pool;
+    public Transform poolSpot;
     public float poolScale;
 
     private void Start()
     {
-        pool = GameObject.Find("Bottom Water");
-        Vector3 poolPos = pool.transform.position;
+        Vector3 poolPos = poolSpot.transform.position;
 
         string[] paths = Directory.GetFiles(PLY_SAVE_PATH);
         foreach (string path in paths)
