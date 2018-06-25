@@ -15,6 +15,7 @@ public class FrontCanvasTrigger : MonoBehaviour {
         }
         if (other.gameObject == myManager.myCanvas)
         {
+            Debug.Log("Cloth Touching Front");
             touchingCloth = true;
         }
     }
