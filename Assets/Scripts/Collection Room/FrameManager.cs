@@ -17,6 +17,7 @@ public class FrameManager : MonoBehaviour {
 
     private const int NUM_CONTROLLERS = 2;
     private SteamVR_TrackedObject[] controllers = new SteamVR_TrackedObject[NUM_CONTROLLERS];
+    private bool[] controllersBehindCanvas = new bool[NUM_CONTROLLERS];
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,8 @@ public class FrameManager : MonoBehaviour {
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
         controllers[1] = manager.right.GetComponent<SteamVR_TrackedObject>();
+        controllersBehindCanvas[0] = false;
+        controllersBehindCanvas[1] = false;
         canvasSphereColliders = new List<ClothSphereColliderPair>();
         canvasCapsuleColliders = new List<ClothSphereColliderPair>();
 	}
@@ -42,6 +45,9 @@ public class FrameManager : MonoBehaviour {
                     {
                         canvasSphereColliders.Add(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
                         myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
+                        if (controllersBehindCanvas[controllerIndex]){
+                            removeImage(controllerIndex);
+                        }
                     }
                     if (input.GetHairTriggerUp())
                     {
@@ -78,21 +84,35 @@ public class FrameManager : MonoBehaviour {
         }
     }
 
-    public void removeImage(GameObject other)
+    public void mayHaveFoundController(GameObject other)
     {
-        Debug.Log("removeImage called.");
         for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
         {
-            if (controllers[controllerIndex] != null && other == controllers[controllerIndex].gameObject && SteamVR_Controller.Input((int)controllerIndex).GetHairTriggerDown())
+            if (controllers[controllerIndex] != null && other == controllers[controllerIndex].gameObject)
             {
-                Debug.Log("Image being removed.");
-                vp.Stop();
-                vp.clip = null;
-                myMaterial.mainTexture = defaultTexture;
-                heldMedia.SetActive(true);
-                heldMedia.GetComponent<PickUpStretch>().Grab(controllerIndex);
-                heldMedia = null;
+                controllersBehindCanvas[controllerIndex] = true; 
             }
-        }
+       }
+   }
+
+    public void mayHaveLostController(GameObject other)
+    {
+        for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
+        {
+            if (controllers[controllerIndex] != null && other == controllers[controllerIndex].gameObject)
+            {
+                controllersBehindCanvas[controllerIndex] = false;
+            }
+         }
+    } 
+
+    public void removeImage(int controllerIndex)
+    {
+        vp.Stop();
+        vp.clip = null;
+        myMaterial.mainTexture = defaultTexture;
+        heldMedia.SetActive(true);
+        heldMedia.GetComponent<PickUpStretch>().Grab(controllerIndex);
+        heldMedia = null;
     }
 }
