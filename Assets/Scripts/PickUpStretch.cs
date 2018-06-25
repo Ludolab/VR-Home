@@ -24,7 +24,7 @@ public class PickUpStretch : MonoBehaviour
 
     private bool[] controllersInside = new bool[NUM_CONTROLLERS];
 
-    private int holder = NONE;
+    public int holder = NONE;
     private int stretcher = NONE;
 
     private Holder insidePickupHolder = null;
