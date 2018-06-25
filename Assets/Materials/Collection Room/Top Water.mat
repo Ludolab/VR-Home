@@ -67,7 +67,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _IrTex:
-        m_Texture: {fileID: 2800000, guid: f477f8c9a466a4b8cb2229e1224cd26b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 82337844da2e048a6ab124dbda074ea2, type: 3}
         m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     - _LeftTex:
@@ -136,8 +136,8 @@ Material:
     - _MinDist: 10
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset: 0
-    - _Opacity: 0.6
+    - _Offset: 0.227
+    - _Opacity: 0.614
     - _Parallax: 0.02
     - _RippleTime: 4
     - _SmoothnessTextureChannel: 0
@@ -153,5 +153,5 @@ Material:
     - _BackColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.30980393, g: 0.7335834, b: 0.7921569, a: 0.5176471}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _IrColor: {r: 0.9960785, g: 0.9333334, b: 0.5764706, a: 1}
+    - _IrColor: {r: 1, g: 1, b: 1, a: 1}
     - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
