@@ -23,6 +23,8 @@ public class FrameManager : MonoBehaviour {
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
         controllers[1] = manager.right.GetComponent<SteamVR_TrackedObject>();
+        canvasSphereColliders = new List<ClothSphereColliderPair>();
+        canvasCapsuleColliders = new List<ClothSphereColliderPair>();
 	}
 	
 	// Update is called once per frame
