@@ -5,15 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class FrameManager : MonoBehaviour {
 
+    private static List<ClothSphereColliderPair> canvasSphereColliders;
+    private static List<ClothSphereColliderPair> canvasCapsuleColliders;
+
+    public GameObject myCanvas;
+    Material myMaterial;
+    Texture defaultTexture;
+    Texture storedImage = null;
+
     private const int NUM_CONTROLLERS = 2;
     private SteamVR_TrackedObject[] controllers = new SteamVR_TrackedObject[NUM_CONTROLLERS];
 
-    Material myMaterial;
-
 	// Use this for initialization
 	void Start () {
-        myMaterial = GetComponent<Renderer>().material;
-        myMaterial.mainTexture = PanoramicBall.viewedImage;
+        myMaterial = myCanvas.GetComponent<Renderer>().material;
+        defaultTexture = myMaterial.mainTexture;
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
         controllers[1] = manager.right.GetComponent<SteamVR_TrackedObject>();
@@ -27,9 +33,15 @@ public class FrameManager : MonoBehaviour {
                 SteamVR_TrackedObject controller = controllers[controllerIndex];
                 if (controller.gameObject.activeSelf){
                     SteamVR_Controller.Device input = SteamVR_Controller.Input((int)controller.index);
-                    if (input.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
+                    if (input.GetHairTriggerDown())
                     {
-                        SceneManager.LoadScene("Collection Room");
+                        canvasSphereColliders.Add(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
+                        myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
+                    }
+                    if (input.GetHairTriggerUp())
+                    {
+                        canvasSphereColliders.Remove(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
+                        myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
                     }
                 }
             }
