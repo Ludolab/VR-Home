@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class FrontCanvasTrigger : MonoBehaviour
 {
-
     public FrameManager myManager;
-    bool touchingCloth;
 
+    void OnTriggerStay(Collider other)
+    {
+        myManager.mayHaveFoundController(other.gameObject);
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        myManager.mayHaveLostController(other.gameObject);
+    }
 }
