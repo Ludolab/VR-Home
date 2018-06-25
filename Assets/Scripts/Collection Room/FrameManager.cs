@@ -79,7 +79,6 @@ public class FrameManager : MonoBehaviour {
             else
             {
                 //use image texture
-                Debug.Log("Transitioning to Display");
                 TransitionToDisplay(image.GetComponent<Renderer>().material.mainTexture);
             }
             heldMedia = obj;
@@ -137,13 +136,16 @@ public class FrameManager : MonoBehaviour {
 
     private IEnumerator TransitionToDisplay(Texture newTex)
     {
+        Debug.Log("Transitioning to Display");
         myMaterial.SetTexture("_DisplayTex", newTex);
         float oldValue = myMaterial.GetFloat("_Threshold");
+        Debug.Log("oldValue is " + string(oldValue));
         for (float t = 0; t < transitionTime; t += Time.deltaTime)
         {
             myMaterial.SetFloat("_Threshold", Mathf.Lerp(oldValue, 1, t / transitionTime));
             yield return new WaitForEndOfFrame();
         }
         myMaterial.SetFloat("_Threshold", 1);
+        Debug.Log("Done transitioning to Display");
     }
 }

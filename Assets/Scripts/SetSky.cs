@@ -49,7 +49,7 @@ public class SetSky : MonoBehaviour {
     public void applyChanges() {
         float angleLateral = (percentThroughDay / 2) + 220;
         if (percentThroughDay > 40)
-        // After Sunset    
+        // After Sunset    Debug.Log("Could not find Quad");
         {
             float percentThroughEvening = (percentThroughDay - 40) / 60;
             RenderSettings.skybox = sunsetToNight;
