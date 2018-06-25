@@ -66,6 +66,7 @@ public class FrameManager : MonoBehaviour {
 	}
 
     public void setImage(GameObject obj) {
+        Debug.Log("Setting Image");
         Transform t = obj.transform.Find("Quad");
         if (t != null)
         {
@@ -83,6 +84,8 @@ public class FrameManager : MonoBehaviour {
             }
             heldMedia = obj;
             heldMedia.SetActive(false);
+        } else {
+            Debug.Log("Could not find Quad");
         }
     }
 

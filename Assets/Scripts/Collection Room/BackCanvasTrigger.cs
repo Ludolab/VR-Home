@@ -9,6 +9,7 @@ public class BackCanvasTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Something Collided");
         myManager.setImage(other.gameObject);
 
     }
