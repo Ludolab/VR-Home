@@ -66,6 +66,7 @@ public class FrameManager : MonoBehaviour {
 	}
 
     public void setImage(GameObject obj) {
+        Debug.Log("Setting Image");
         Transform t = obj.transform.Find("Quad");
         if (t != null)
         {
@@ -78,6 +79,7 @@ public class FrameManager : MonoBehaviour {
             }
             else
             {
+                Debug.Log("About to call Transition to Display");
                 //use image texture
                 TransitionToDisplay(image.GetComponent<Renderer>().material.mainTexture);
             }

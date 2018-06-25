@@ -10,7 +10,6 @@ public class BackCanvasTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         myManager.setImage(other.gameObject);
-
     }
 
     void OnTriggerStay (Collider other)
