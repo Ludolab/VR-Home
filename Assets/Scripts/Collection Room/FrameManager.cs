@@ -80,15 +80,17 @@ public class FrameManager : MonoBehaviour {
 
     public void removeImage(GameObject other)
     {
+        Debug.Log("removeImage called.");
         for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
         {
             if (controllers[controllerIndex] != null && other == controllers[controllerIndex].gameObject && SteamVR_Controller.Input((int)controllerIndex).GetHairTriggerDown())
             {
-                PickUpStretch.grabbableObjects[(int)controllerIndex] = heldMedia;
+                Debug.Log("Image being removed.");
                 vp.Stop();
                 vp.clip = null;
                 myMaterial.mainTexture = defaultTexture;
                 heldMedia.SetActive(true);
+                heldMedia.GetComponent<PickUpStretch>().Grab(controllerIndex);
                 heldMedia = null;
             }
         }
