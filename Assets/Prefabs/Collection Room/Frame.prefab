@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4624985557916258}
   - component: {fileID: 65504005709050988}
+  - component: {fileID: 114494764253209962}
   m_Layer: 0
   m_Name: Front Trigger
   m_TagString: Untagged
@@ -70,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4139709032526888}
   - component: {fileID: 65954456385053312}
+  - component: {fileID: 114866107913446892}
   m_Layer: 0
   m_Name: Back Trigger
   m_TagString: Untagged
@@ -519,6 +521,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCanvas: {fileID: 1278580501093062}
+--- !u!114 &114494764253209962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1305383780711334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860b82153ac7746e192540315467a98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myManager: {fileID: 114461634019605860}
+--- !u!114 &114866107913446892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519366111589712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c4bd6c6802a4377904f0a5a778fad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myManager: {fileID: 114461634019605860}
 --- !u!137 &137965639461551600
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
