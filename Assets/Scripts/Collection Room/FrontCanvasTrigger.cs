@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackCanvasTrigger : MonoBehaviour {
+public class FrontCanvasTrigger : MonoBehaviour {
 
     public FrameManager myManager;
     bool touchingCloth;
 
-    void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other)
+    {
         if (touchingCloth)
         {
-            myManager.backCollisionWithCloth(other);
+            myManager.frontCollisionWithCloth(other);
         }
         if (other.gameObject == myManager.myCanvas)
         {
@@ -18,7 +19,8 @@ public class BackCanvasTrigger : MonoBehaviour {
         }
     }
 
-    void OnTriggerExit(Collider other){
+    void OnTriggerExit(Collider other)
+    {
         if (other.gameObject == myManager.myCanvas)
         {
             touchingCloth = false;

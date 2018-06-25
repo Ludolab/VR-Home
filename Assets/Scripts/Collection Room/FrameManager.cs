@@ -9,9 +9,9 @@ public class FrameManager : MonoBehaviour {
     private static List<ClothSphereColliderPair> canvasCapsuleColliders;
 
     public GameObject myCanvas;
+    GameObject heldMedia;
     Material myMaterial;
     Texture defaultTexture;
-    Texture storedImage = null;
 
     private const int NUM_CONTROLLERS = 2;
     private SteamVR_TrackedObject[] controllers = new SteamVR_TrackedObject[NUM_CONTROLLERS];
@@ -54,11 +54,48 @@ public class FrameManager : MonoBehaviour {
         }
 	}
 
-    void backCollision(Collider other) {
-        int collidingControllerIndex = controllers.IndexOf(other.GameObject);
-        SteamVR_TrackedObject collidingController = controllers[collidingControllerIndex];
-        if (collidingControllerIndex >= 0){
-            
+    public void backCollisionWithCloth(Collider other) {
+        for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
+        {
+            try
+            {
+                if (controllers[controllerIndex] != null && other.gameObject == controllers[controllerIndex].gameObject && PickUpStretch.grabbableObjects[(int)controllerIndex] != null)
+                {
+                    SteamVR_TrackedObject controller = controllers[controllerIndex];
+                    canvasSphereColliders.Remove(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
+                    myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
+                    heldMedia = PickUpStretch.grabbableObjects[(int)controllerIndex];
+                    myMaterial.mainTexture = heldMedia.GetComponent<Renderer>().material.mainTexture;
+                    heldMedia.SetActive(false);
+                }
+            }
+            catch (System.IndexOutOfRangeException)
+            {
+                //can't talk to controller, don't do anything
+            }
+        }
+    }
+
+    public void frontCollisionWithCloth(Collider other)
+    {
+        for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
+        {
+            try
+            {
+                if (controllers[controllerIndex] != null && other.gameObject == controllers[controllerIndex].gameObject)
+                {
+                    SteamVR_TrackedObject controller = controllers[controllerIndex];
+                    canvasSphereColliders.Remove(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
+                    myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
+                    PickUpStretch.grabbableObjects[(int)controllerIndex] = heldMedia;
+                    heldMedia.SetActive(true);
+                    myMaterial.mainTexture = defaultTexture;
+                }
+            }
+            catch (System.IndexOutOfRangeException)
+            {
+                //can't talk to controller, don't do anything
+            }
         }
     }
 }

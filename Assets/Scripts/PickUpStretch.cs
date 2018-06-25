@@ -8,7 +8,7 @@ public class PickUpStretch : MonoBehaviour
     private const int NONE = -1;
     private const int NUM_CONTROLLERS = 2;
 
-    private static GameObject[] grabbableObjects = new GameObject[NUM_CONTROLLERS];
+    public static GameObject[] grabbableObjects = new GameObject[NUM_CONTROLLERS];
 
     public bool canStretch = true;
 
