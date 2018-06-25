@@ -12,7 +12,7 @@ public class FrameManager : MonoBehaviour {
 
     public GameObject myCanvas;
     GameObject heldMedia;
-    Renderer canvasRend;
+    Material myMaterial;
 
     private float transitionTime = 0.5f;
     private const int NUM_CONTROLLERS = 2;
@@ -21,7 +21,7 @@ public class FrameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        canvasRend = myCanvas.GetComponent<Renderer>();
+        myMaterial = myCanvas.GetComponent<Renderer>().material;
         vp = myCanvas.GetComponent<VideoPlayer>();
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
@@ -126,24 +126,24 @@ public class FrameManager : MonoBehaviour {
 
     private IEnumerator TransitionToDefault()
     {
-        float oldValue = canvasRend.material.GetFloat("_Threshold");
+        float oldValue = myMaterial.GetFloat("_Threshold");
         for (float t = 0; t < transitionTime; t += Time.deltaTime)
         {
-            canvasRend.material.SetFloat("_Threshold", Mathf.Lerp(oldValue, 0, t / transitionTime));
+            myMaterial.SetFloat("_Threshold", Mathf.Lerp(oldValue, 0, t / transitionTime));
             yield return new WaitForEndOfFrame();
         }
-        canvasRend.material.SetFloat("_Threshold", 0);
+        myMaterial.SetFloat("_Threshold", 0);
     }
 
     private IEnumerator TransitionToDisplay(Texture newTex)
     {
-        canvasRend.material.SetTexture("_DisplayTex", newTex);
-        float oldValue = canvasRend.material.GetFloat("_Threshold");
+        myMaterial.SetTexture("_DisplayTex", newTex);
+        float oldValue = myMaterial.GetFloat("_Threshold");
         for (float t = 0; t < transitionTime; t += Time.deltaTime)
         {
-            canvasRend.material.SetFloat("_Threshold", Mathf.Lerp(oldValue, 1, t / transitionTime));
+            myMaterial.SetFloat("_Threshold", Mathf.Lerp(oldValue, 1, t / transitionTime));
             yield return new WaitForEndOfFrame();
         }
-        canvasRend.material.SetFloat("_Threshold", 1);
+        myMaterial.SetFloat("_Threshold", 1);
     }
 }
