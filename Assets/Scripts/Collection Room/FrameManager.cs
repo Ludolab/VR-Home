@@ -85,8 +85,6 @@ public class FrameManager : MonoBehaviour {
             PickUpStretch pickerUpper = heldMedia.GetComponent<PickUpStretch>();
             pickerUpper.Release(pickerUpper.holder);
             heldMedia.SetActive(false);
-        } else {
-            Debug.Log("Could not find Quad");
         }
     }
 
