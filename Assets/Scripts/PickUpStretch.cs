@@ -28,6 +28,7 @@ public class PickUpStretch : MonoBehaviour
     private int stretcher = NONE;
 
     private Holder insidePickupHolder = null;
+    private bool onString = false;
 
     private Rigidbody rb;
     private Shader oldShader;
@@ -196,7 +197,10 @@ public class PickUpStretch : MonoBehaviour
     protected virtual void ReleaseFromController(SteamVR_TrackedObject controller)
     {
         gameObject.transform.parent = null;
-        rb.isKinematic = false;
+        if (!onString)
+        {
+            rb.isKinematic = false;
+        }
         SteamVR_Controller.Device input = SteamVR_Controller.Input((int)controller.index);
         rb.velocity = input.velocity;
         rb.angularVelocity = input.angularVelocity;
@@ -208,6 +212,11 @@ public class PickUpStretch : MonoBehaviour
         if (h != null)
         {
             insidePickupHolder = h;
+        }
+
+        if (other.CompareTag("String"))
+        {
+            onString = true;
         }
     }
 
@@ -247,6 +256,11 @@ public class PickUpStretch : MonoBehaviour
         if (h == insidePickupHolder)
         {
             insidePickupHolder = null;
+        }
+
+        if (other.CompareTag("String"))
+        {
+            onString = false;
         }
     }
     
