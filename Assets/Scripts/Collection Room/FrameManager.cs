@@ -22,7 +22,7 @@ public class FrameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myMaterial = myCanvas.GetComponent<Renderer>().material;
-        vp = GetComponent<VideoPlayer>();
+        vp = myCanvas.GetComponent<VideoPlayer>();
         defaultTexture = myMaterial.mainTexture;
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
@@ -33,6 +33,7 @@ public class FrameManager : MonoBehaviour {
         canvasCapsuleColliders = new List<ClothSphereColliderPair>();
         canvasSphereColliders.Add(new ClothSphereColliderPair(controllers[0].GetComponent<SphereCollider>()));
         canvasSphereColliders.Add(new ClothSphereColliderPair(controllers[1].GetComponent<SphereCollider>()));
+        myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
 	}
 	
 	// Update is called once per frame
