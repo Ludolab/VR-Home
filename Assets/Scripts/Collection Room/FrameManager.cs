@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class FrameManager : MonoBehaviour {
 
     private static List<ClothSphereColliderPair> canvasSphereColliders;
     private static List<ClothSphereColliderPair> canvasCapsuleColliders;
+    private VideoPlayer vp;
 
     public GameObject myCanvas;
     GameObject heldMedia;
@@ -19,6 +21,7 @@ public class FrameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myMaterial = myCanvas.GetComponent<Renderer>().material;
+        vp = GetComponent<VideoPlayer>();
         defaultTexture = myMaterial.mainTexture;
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
@@ -54,49 +57,39 @@ public class FrameManager : MonoBehaviour {
         }
 	}
 
-    public void backCollisionWithCloth(Collider other) {
-        for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
+    public void setImage(GameObject obj) {
+        Transform t = obj.transform.Find("Quad");
+        if (t != null)
         {
-            try
+            GameObject image = t.gameObject;
+            VideoPlayer vid = image.GetComponent<VideoPlayer>();
+            if (vid != null)
             {
-                if (controllers[controllerIndex] != null && other.gameObject == controllers[controllerIndex].gameObject && PickUpStretch.grabbableObjects[(int)controllerIndex] != null)
-                {
-                    Debug.Log("Controller Also Touching Back");
-                    SteamVR_TrackedObject controller = controllers[controllerIndex];
-                    canvasSphereColliders.Remove(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
-                    myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
-                    heldMedia = PickUpStretch.grabbableObjects[(int)controllerIndex];
-                    myMaterial.mainTexture = heldMedia.GetComponent<Renderer>().material.mainTexture;
-                    heldMedia.SetActive(false);
-                }
+                vp.clip = vid.clip;
+                vp.Play();
             }
-            catch (System.IndexOutOfRangeException)
+            else
             {
-                //can't talk to controller, don't do anything
+                //use image texture
+                myMaterial.mainTexture = image.GetComponent<Renderer>().material.mainTexture;
             }
+            heldMedia = obj;
+            heldMedia.SetActive(false);
         }
     }
 
-    public void frontCollisionWithCloth(Collider other)
+    public void removeImage(GameObject other)
     {
         for (int controllerIndex = 0; controllerIndex < NUM_CONTROLLERS; controllerIndex++)
         {
-            try
+            if (controllers[controllerIndex] != null && other == controllers[controllerIndex].gameObject && SteamVR_Controller.Input((int)controllerIndex).GetHairTriggerDown())
             {
-                if (controllers[controllerIndex] != null && other.gameObject == controllers[controllerIndex].gameObject)
-                {
-                    Debug.Log("Controller Also Touching Front");
-                    SteamVR_TrackedObject controller = controllers[controllerIndex];
-                    canvasSphereColliders.Remove(new ClothSphereColliderPair(controller.GetComponent<SphereCollider>()));
-                    myCanvas.GetComponent<Cloth>().sphereColliders = canvasSphereColliders.ToArray();
-                    PickUpStretch.grabbableObjects[(int)controllerIndex] = heldMedia;
-                    heldMedia.SetActive(true);
-                    myMaterial.mainTexture = defaultTexture;
-                }
-            }
-            catch (System.IndexOutOfRangeException)
-            {
-                //can't talk to controller, don't do anything
+                PickUpStretch.grabbableObjects[(int)controllerIndex] = heldMedia;
+                vp.Stop();
+                vp.clip = null;
+                myMaterial.mainTexture = defaultTexture;
+                heldMedia.SetActive(true);
+                heldMedia = null;
             }
         }
     }

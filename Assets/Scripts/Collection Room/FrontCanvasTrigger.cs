@@ -2,29 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrontCanvasTrigger : MonoBehaviour {
+public class FrontCanvasTrigger : MonoBehaviour
+{
 
     public FrameManager myManager;
     bool touchingCloth;
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (touchingCloth)
-        {
-            myManager.frontCollisionWithCloth(other);
-        }
-        if (other.gameObject == myManager.myCanvas)
-        {
-            Debug.Log("Cloth Touching Front");
-            touchingCloth = true;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject == myManager.myCanvas)
-        {
-            touchingCloth = false;
-        }
-    }
 }
