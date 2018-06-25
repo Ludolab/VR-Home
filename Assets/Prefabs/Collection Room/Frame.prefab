@@ -56,11 +56,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4242612270051312}
   - component: {fileID: 33269464943983928}
-  - component: {fileID: 64917435572619152}
   - component: {fileID: 137234079596640074}
   - component: {fileID: 183541917560169956}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,20 +434,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1774401249099240}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64917435572619152
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1348288080927690}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65374968936069500
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -575,7 +560,7 @@ Cloth:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1348288080927690}
   m_Enabled: 1
-  m_StretchingStiffness: 0.5
+  m_StretchingStiffness: 1
   m_BendingStiffness: 0
   m_UseTethers: 1
   m_UseGravity: 1
