@@ -6,6 +6,7 @@ using UnityEngine;
 public class SaveObject {
     [SerializeField] public ID objID;
     [SerializeField] public bool objActive;
+    [SerializeField] public bool objKinematic;
     [SerializeField] public float xPosition;
     [SerializeField] public float yPosition;
     [SerializeField] public float zPosition;

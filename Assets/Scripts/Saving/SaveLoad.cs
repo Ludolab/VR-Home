@@ -89,13 +89,14 @@ public class SaveLoad : MonoBehaviour {
     }
 
     private SaveObject CreateSaveObj(GameObject obj) {
-        if (obj.name == "Canvas") Debug.Log(obj.GetComponent<Renderer>().material.mainTexture.name);
-
         SaveObject save = new SaveObject();
         ID id;
         originalObjID.TryGetValue(obj.GetInstanceID(), out id);
         save.objID = id;
 
+        save.objActive = obj.activeSelf;
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if (rb != null) save.objKinematic = rb.isKinematic;
         save.objActive = obj.activeSelf;
         save.xPosition = obj.transform.localPosition.x;
         save.yPosition = obj.transform.localPosition.y;
@@ -125,6 +126,8 @@ public class SaveLoad : MonoBehaviour {
         id.objCoordZ = obj.transform.position.z;
         save.objID = id;
         save.objActive = obj.activeSelf;
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if (rb != null) save.objKinematic = rb.isKinematic;
         save.xPosition = obj.transform.localPosition.x;
         save.yPosition = obj.transform.localPosition.y;
         save.zPosition = obj.transform.localPosition.z;
@@ -234,6 +237,8 @@ public class SaveLoad : MonoBehaviour {
     private void SetObject(GameObject obj, SaveObject reference)
     {
         obj.SetActive(reference.objActive);
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if (rb != null) rb.isKinematic = reference.objKinematic;
         obj.transform.localPosition = new Vector3(reference.xPosition, reference.yPosition, reference.zPosition);
         obj.transform.localEulerAngles = new Vector3(reference.xRotation, reference.yRotation, reference.zRotation);
         obj.transform.localScale = new Vector3(reference.xScale, reference.yScale, reference.zScale);
