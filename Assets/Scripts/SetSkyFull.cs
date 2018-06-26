@@ -71,7 +71,7 @@ public class SetSkyFull : MonoBehaviour {
         {
             float percentThroughPhase = percentThroughDay / transitionTime;
             RenderSettings.skybox = nightToSunrise;
-            nightToSunrise.SetFloat("_Blend", percentThroughPhase/100.0f);
+            nightToSunrise.SetFloat("_Blend", percentThroughPhase);
             sunLight.intensity = Mathf.Lerp(0, 1, percentThroughPhase);
             sunLight.color = sunriseColor;
         }
@@ -80,7 +80,7 @@ public class SetSkyFull : MonoBehaviour {
         {
             float percentThroughPhase = (percentThroughDay - transitionTime) / transitionTime;
             RenderSettings.skybox = sunriseToDay;
-            sunriseToDay.SetFloat("_Blend", percentThroughPhase/100.0f);
+            sunriseToDay.SetFloat("_Blend", percentThroughPhase);
             sunLight.intensity = Mathf.Lerp(1, 1.5f, percentThroughPhase);
             Color lightColor = Color.Lerp(sunriseColor, daylightColor, percentThroughPhase);
             sunLight.color = lightColor;
@@ -90,7 +90,7 @@ public class SetSkyFull : MonoBehaviour {
         {
             float percentThroughPhase = (percentThroughDay - (2 * transitionTime)) / dayTime;
             RenderSettings.skybox = sunriseToDay;
-            sunriseToDay.SetFloat("_Blend", 1);
+            sunriseToDay.SetFloat("_Blend", 100);
             sunLight.intensity = 1.5f;
             sunLight.color = daylightColor;
         }
@@ -99,7 +99,7 @@ public class SetSkyFull : MonoBehaviour {
         {
             float percentThroughPhase = (percentThroughDay - (2 * transitionTime) - dayTime) / transitionTime;
             RenderSettings.skybox = dayToSunset;
-            dayToSunset.SetFloat("_Blend", percentThroughPhase/100.0f);
+            dayToSunset.SetFloat("_Blend", percentThroughPhase);
             sunLight.intensity = Mathf.Lerp(1.5f, 1, percentThroughPhase);
             Color lightColor = Color.Lerp(daylightColor, sunsetColor, percentThroughPhase);
             sunLight.color = lightColor;
@@ -110,7 +110,7 @@ public class SetSkyFull : MonoBehaviour {
         {
             float percentThroughPhase = (percentThroughDay - (3 * transitionTime) - dayTime) / transitionTime;
             RenderSettings.skybox = sunsetToNight;
-            sunsetToNight.SetFloat("_Blend", percentThroughPhase/100.0f);
+            sunsetToNight.SetFloat("_Blend", percentThroughPhase);
             sunLight.intensity = Mathf.Lerp(1, 0, percentThroughPhase);
             sunLight.color = sunsetColor;
         }
@@ -119,7 +119,7 @@ public class SetSkyFull : MonoBehaviour {
         {
             float percentThroughPhase = (percentThroughDay - (4 * transitionTime) - dayTime) / nightTime;
             RenderSettings.skybox = sunsetToNight;
-            sunsetToNight.SetFloat("_Blend", 1);
+            sunsetToNight.SetFloat("_Blend", 100);
             sunLight.intensity = 0;
             sunLight.color = sunsetColor;
         }
