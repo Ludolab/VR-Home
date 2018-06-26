@@ -14,3 +14,5 @@
 - RealSense SDK by Intel: https://github.com/IntelRealSense/librealsense/tree/master/wrappers/unity
 - Record player by VIS Games: https://assetstore.unity.com/packages/3d/props/interior/record-player-4249
 - Sample music by Greek555: https://freesound.org/people/Greek555/
+- Texture Transition Shader by Professor Snake: https://answers.unity.com/questions/569528/making-specific-shader-for-texture-transition-effe.html
+- Iridescent Shader (for cloth water) by Minions Art: https://www.patreon.com/posts/quick-game-art-15466787
