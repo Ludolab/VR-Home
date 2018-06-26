@@ -23,7 +23,7 @@ public class SetSkyFull : MonoBehaviour {
     private static int nightTime = 20;
     private static int dayTime = 30;
     private static int transitionTime = (100 - (nightTime + dayTime)) / 4;
-    private static Quaternion sunStartAngle = Quaternion.Euler(10, 10, 10);
+    private static Quaternion sunStartAngle = Quaternion.Euler(10, 10, -10);
     private static Vector3 axisOfSunRotation = new Vector3(5, 1, 2);
 
     // Use this for initialization
