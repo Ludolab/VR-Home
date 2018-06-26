@@ -11,6 +11,7 @@ public class FrameManager : MonoBehaviour {
     private VideoPlayer vp;
 
     public GameObject myCanvas;
+    public GameObject backTrigger;
     GameObject heldMedia;
     Material myMaterial;
 
@@ -114,6 +115,7 @@ public class FrameManager : MonoBehaviour {
     {
         StartCoroutine(TransitionToDefault());
         vp.Stop();
+        StartCoroutine(DisableBack());
         vp.clip = null;
         heldMedia.SetActive(true);
         heldMedia.transform.position = (2* controllers[controllerIndex].gameObject.GetComponent<SphereCollider>().center) + controllers[controllerIndex].gameObject.transform.position;
@@ -142,5 +144,14 @@ public class FrameManager : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         myMaterial.SetFloat("_Threshold", 1.0f);
+    }
+
+    private IEnumerator DisableBack()
+    {
+        backTrigger.SetActive(false);
+
+        yield return new WaitForSeconds(1);
+
+        backTrigger.SetActive(true);
     }
 }

@@ -231,7 +231,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1760660315727680}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15000013, y: -1.94, z: -0.06}
+  m_LocalPosition: {x: -0.15000013, y: -1.25, z: -0.06}
   m_LocalScale: {x: 4.001156, y: 1.72184, z: 4.3775454}
   m_Children: []
   m_Father: {fileID: 4320613966635228}
@@ -522,6 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCanvas: {fileID: 1985710019638250}
+  backTrigger: {fileID: 0}
 --- !u!114 &114842504294570168
 MonoBehaviour:
   m_ObjectHideFlags: 1
