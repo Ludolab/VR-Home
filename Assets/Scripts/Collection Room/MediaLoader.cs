@@ -7,9 +7,9 @@ public class MediaLoader : MonoBehaviour
 {
 
     public Transform start; //should be a little bit along the string, since a photo will spawn here
+    public Transform mid; //should be further down from the actual midpoint (uses Bezier curve)
     public Transform end;
     //TODO: support more than one string
-    //TODO: support curved strings
 
     public Transform recordSpawn;
     public float recordHeight = 0.05f;
@@ -22,6 +22,7 @@ public class MediaLoader : MonoBehaviour
     {
         //load photos along the string
         Vector3 startPos = start.position;
+        Vector3 midPos = mid.position;
         Vector3 endPos = end.position;
 
         Texture2D[] textures = Resources.LoadAll<Texture2D>("Media");
@@ -34,7 +35,7 @@ public class MediaLoader : MonoBehaviour
         {
             GameObject photo = Instantiate(photoPrefab);
             photo.GetComponent<ImageQuad>().SetTexture(tex);
-            photo.transform.position = Vector3.Lerp(startPos, endPos, i / numPhotos);
+            photo.transform.position = GetLinePos(startPos, midPos, endPos, i / numPhotos);
             photo.GetComponent<Rigidbody>().isKinematic = true;
             i++;
             CollectionData.addToImages(tex.name, photo);
@@ -44,7 +45,7 @@ public class MediaLoader : MonoBehaviour
         {
             GameObject video = Instantiate(videoPrefab);
             video.GetComponent<VideoQuad>().SetVideo(vid);
-            video.transform.position = Vector3.Lerp(startPos, endPos, i / numPhotos);
+            video.transform.position = GetLinePos(startPos, midPos, endPos, i / numPhotos);
             video.GetComponent<Rigidbody>().isKinematic = true;
             i++;
             CollectionData.addToVideos(vid.name, video);
@@ -64,5 +65,12 @@ public class MediaLoader : MonoBehaviour
 
         gameObject.GetComponent<SaveLoad>().Load();
         gameObject.GetComponent<SaveLoadMedia>().Load();
+    }
+
+    private Vector3 GetLinePos(Vector3 startPos, Vector3 midPos, Vector3 endPos, float t)
+    {
+        Vector3 a = Vector3.Lerp(startPos, midPos, t);
+        Vector3 b = Vector3.Lerp(midPos, endPos, t);
+        return Vector3.Lerp(a, b, t);
     }
 }
