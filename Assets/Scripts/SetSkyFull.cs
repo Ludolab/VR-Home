@@ -65,7 +65,7 @@ public class SetSkyFull : MonoBehaviour {
 
     public void applyChanges()
     {
-        sunLight.transform.rotation = sunStartAngle * Quaternion.AngleAxis(Mathf.Lerp(0, 360, percentThroughDay), axisOfSunRotation);
+        sunLight.transform.rotation = sunStartAngle * Quaternion.AngleAxis(Mathf.Lerp(0, 360, percentThroughDay/100.0f), axisOfSunRotation);
         if (percentThroughDay <= transitionTime)
         // Night to Sunrise
         {
@@ -90,7 +90,7 @@ public class SetSkyFull : MonoBehaviour {
         {
             float percentThroughPhase = (percentThroughDay - (2 * transitionTime)) / dayTime;
             RenderSettings.skybox = sunriseToDay;
-            sunriseToDay.SetFloat("_Blend", 100);
+            sunriseToDay.SetFloat("_Blend", 1);
             sunLight.intensity = 1.5f;
             sunLight.color = daylightColor;
         }
@@ -119,7 +119,7 @@ public class SetSkyFull : MonoBehaviour {
         {
             float percentThroughPhase = (percentThroughDay - (4 * transitionTime) - dayTime) / nightTime;
             RenderSettings.skybox = sunsetToNight;
-            sunsetToNight.SetFloat("_Blend", 100);
+            sunsetToNight.SetFloat("_Blend", 1);
             sunLight.intensity = 0;
             sunLight.color = sunsetColor;
         }
