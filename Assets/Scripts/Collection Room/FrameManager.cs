@@ -66,9 +66,8 @@ public class FrameManager : MonoBehaviour {
 	}
 
     public void setImage(GameObject obj) {
-        Debug.Log("Setting Image");
         Transform t = obj.transform.Find("Quad");
-        if (t != null)
+        if (t != null && heldMedia == null)
         {
             GameObject image = t.gameObject;
             VideoPlayer vid = image.GetComponent<VideoPlayer>();
@@ -79,7 +78,6 @@ public class FrameManager : MonoBehaviour {
             }
             else
             {
-                Debug.Log("About to call Transition to Display");
                 //use image texture
                 StartCoroutine(TransitionToDisplay(image.GetComponent<Renderer>().material.mainTexture));
             }
@@ -114,7 +112,6 @@ public class FrameManager : MonoBehaviour {
 
     public void removeImage(int controllerIndex)
     {
-        Debug.Log("removeImage called");
         StartCoroutine(TransitionToDefault());
         vp.Stop();
         vp.clip = null;
@@ -137,16 +134,13 @@ public class FrameManager : MonoBehaviour {
 
     private IEnumerator TransitionToDisplay(Texture newTex)
     {
-        Debug.Log("Transitioning to Display");
         myMaterial.SetTexture("_DisplayTex", newTex);
         float oldValue = myMaterial.GetFloat("_Threshold");
-        Debug.Log("oldValue was just found");
         for (float t = 0; t < transitionTime; t += Time.deltaTime)
         {
             myMaterial.SetFloat("_Threshold", Mathf.Lerp(oldValue, 1.0f, t / transitionTime));
             yield return new WaitForEndOfFrame();
         }
         myMaterial.SetFloat("_Threshold", 1.0f);
-        Debug.Log("Done transitioning to Display");
     }
 }
