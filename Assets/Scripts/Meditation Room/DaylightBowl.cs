@@ -6,11 +6,11 @@ public class DaylightBowl : Bowl {
 
     public GameObject Sky;
 
-    private SetSky skyScript;
+    private SetSkyHalf skyScript;
 
     private void Start()
     {
-        skyScript = Sky.GetComponent<SetSky>();
+        skyScript = Sky.GetComponent<SetSkyHalf>();
     }
 
     protected override float GetValue()

@@ -8,7 +8,7 @@ public class Slide : PickUp
 
     public GameObject Sun;
 
-    private SetSky skyScript;
+    private SetSkyHalf skyScript;
 
     public Vector3 minPoint;
     public Vector3 maxPoint;
@@ -23,7 +23,7 @@ public class Slide : PickUp
     protected override void Start()
     {
         base.Start();
-        skyScript = Sun.GetComponent<SetSky>();
+        skyScript = Sun.GetComponent<SetSkyHalf>();
         isHeld = false;
         gameObject.transform.position = minPoint;
     }

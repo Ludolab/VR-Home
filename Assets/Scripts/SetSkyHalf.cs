@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class SetSky : MonoBehaviour {
+public class SetSkyHalf : MonoBehaviour {
 
     public float percentThroughDay;
     public Material dayToSunset;
     public Material sunsetToNight;
-    public Color daylightColor = Color.white; //new Color(1, 0.9568f, 0.8392f, 1);
-    public Color sunsetColor = Color.red;//new Color(1, 0.9682f, 0.6462f, 1);
-    public Color nightColor = Color.blue;//new Color(0.946f, 0.929f, 1, 1);
+    public Color daylightColor = new Color(1, 0.9568f, 0.8392f, 1);
+    public Color sunsetColor = new Color(1, 0.9682f, 0.6462f, 1);
+    public Color nightColor = new Color(0.946f, 0.929f, 1, 1);
     public Light sunLight;
     public Light bounceLight;
 
