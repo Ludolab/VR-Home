@@ -150,7 +150,7 @@ public class FrameManager : MonoBehaviour {
     {
         backTrigger.SetActive(false);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
 
         backTrigger.SetActive(true);
     }
