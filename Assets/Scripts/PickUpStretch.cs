@@ -291,7 +291,7 @@ public class PickUpStretch : MonoBehaviour
         }
     }
 
-    private void SetNotGrabbable(int controllerIndex)
+    public void SetNotGrabbable(int controllerIndex)
     {
         if (grabbableObjects[controllerIndex] == gameObject)
         {
