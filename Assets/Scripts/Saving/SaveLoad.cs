@@ -245,7 +245,7 @@ public class SaveLoad : MonoBehaviour {
         Renderer rend = obj.GetComponent<Renderer>();
         if (rend != null && reference.texture != null && Resources.Load("Media/" + reference.texture) != null) rend.material.mainTexture = (Texture2D)(Resources.Load("Media/" + reference.texture));
         VideoPlayer player = obj.GetComponent<VideoPlayer>();
-        if (player != null && reference.video != null && Resources.Load("Media/" + reference.audio) != null) player.clip = (VideoClip)(Resources.Load("Media/" + reference.audio));
+        if (player != null && reference.video != null && Resources.Load("Media/" + reference.audio) != null) player.clip = (VideoClip)(Resources.Load("Media/" + reference.video));
         AudioSource source = obj.GetComponent<AudioSource>();
         if (source != null && reference.audio != null && Resources.Load("Media/" + reference.audio) != null) source.clip = (AudioClip)(Resources.Load("Media/" + reference.audio));
     }

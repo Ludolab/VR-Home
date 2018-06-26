@@ -11,6 +11,9 @@ public class SaveLoadMedia : MonoBehaviour {
     private SaveObject[] imgToSave;
     private SaveObject[] vidToSave;
     private SaveObject[] soundToSave;
+    private SaveObject[] canvasToSave;
+
+    private List<GameObject> allCanvases = new List<GameObject>();
 
     private string userToLoad;
     private bool saveNew;
@@ -21,6 +24,12 @@ public class SaveLoadMedia : MonoBehaviour {
         userToLoad = gameObject.GetComponent<SaveLoad>().userToLoad;
         saveNew = gameObject.GetComponent<SaveLoad>().saveNew;
         loadPrevious = gameObject.GetComponent<SaveLoad>().loadPrevious;
+
+        // Find all the canvases in the scene
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in allObjects) {
+            if (obj.GetComponent<FrameManager>() != null) allCanvases.Add(obj);
+        }
 	}
 
 	private void OnApplicationQuit()
@@ -45,6 +54,7 @@ public class SaveLoadMedia : MonoBehaviour {
         List<SaveObject> saveImages = new List<SaveObject>();
         List<SaveObject> saveVideos = new List<SaveObject>();
         List<SaveObject> saveSounds = new List<SaveObject>();
+        List<SaveObject> saveCanvas = new List<SaveObject>();
 
         foreach(KeyValuePair<string, GameObject> img in CollectionData.getImages())
         {
@@ -58,9 +68,13 @@ public class SaveLoadMedia : MonoBehaviour {
         {
             AddMediaToList(sound, saveSounds);
         }
+        foreach(GameObject canvas in allCanvases) {
+            AddCanvasToList(canvas, saveCanvas);
+        }
         imgToSave = saveImages.ToArray();
         vidToSave = saveVideos.ToArray();
         soundToSave = saveSounds.ToArray();
+        canvasToSave = saveCanvas.ToArray();
     }
 
     private void AddMediaToList(KeyValuePair<string, GameObject> media, List<SaveObject> list) {
@@ -93,6 +107,25 @@ public class SaveLoadMedia : MonoBehaviour {
         list.Add(so);
     }
 
+    private void AddCanvasToList(GameObject obj, List<SaveObject> list) {
+        SaveObject saveObject = new SaveObject();
+
+        ID id = new ID();
+        id.objName = obj.name;
+        id.objCoordX = obj.transform.position.x;
+        id.objCoordY = obj.transform.position.y;
+        id.objCoordZ = obj.transform.position.z;
+        saveObject.objID = id;
+
+        GameObject canvas = obj.transform.Find("Canvas").gameObject;
+        if(canvas != null) {
+            saveObject.texture = canvas.GetComponent<Renderer>().material.GetTexture("_DisplayTex").name;
+            saveObject.video = canvas.GetComponent<VideoPlayer>().clip.name;
+        }
+
+        list.Add(saveObject);
+    }
+
     public void Load() {
         if (File.Exists(Application.persistentDataPath + "/savedRoom" + SceneManager.GetActiveScene().name + userToLoad + ".media") && loadPrevious)
         {
@@ -114,6 +147,8 @@ public class SaveLoadMedia : MonoBehaviour {
         SaveObject[] images = media.images;
         SaveObject[] videos = media.videos;
         SaveObject[] sounds = media.sounds;
+        SaveObject[] canvases = media.canvases;
+
 
         Dictionary<string, GameObject> imgLoaded = CollectionData.getImages();
         Dictionary<string, GameObject> vidLoaded = CollectionData.getVideos();
@@ -149,6 +184,16 @@ public class SaveLoadMedia : MonoBehaviour {
                 SetObject(obj, sound);
             }
         }
+
+        foreach (SaveObject canvas in canvases) {
+            GameObject obj = FindFromAll(canvas.objID);
+
+            if(obj != null) {
+                GameObject c = obj.transform.Find("Canvas").gameObject;
+                c.GetComponent<Renderer>().material.SetTexture("_DisplayTex", (Texture)Resources.Load("Media/" + canvas.texture));
+                c.GetComponent<VideoPlayer>().clip = (VideoClip)(Resources.Load("Media/" + canvas.audio));
+            }
+        }
     }
 
     private void SetObject(GameObject obj, SaveObject reference) {
@@ -156,5 +201,23 @@ public class SaveLoadMedia : MonoBehaviour {
         obj.transform.localPosition = new Vector3(reference.xPosition, reference.yPosition, reference.zPosition);
         obj.transform.localEulerAngles = new Vector3(reference.xRotation, reference.yRotation, reference.zRotation);
         obj.transform.localScale = new Vector3(reference.xScale, reference.yScale, reference.zScale);
+    }
+
+    private GameObject FindFromAll(ID toFind)
+    {
+
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in allObjects)
+        {
+
+            if (obj.name == toFind.objName
+                && (int)(obj.transform.position.x * 100.0) == (int)(toFind.objCoordX * 100.0)
+                && (int)(obj.transform.position.y * 100.0) == (int)(toFind.objCoordY * 100.0)
+                && (int)(obj.transform.position.z * 100.0) == (int)(toFind.objCoordZ * 100.0))
+            {
+                return obj;
+            }
+        }
+        return null;
     }
 }

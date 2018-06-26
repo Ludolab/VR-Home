@@ -81,6 +81,7 @@ public class FrameManager : MonoBehaviour {
             {
                 //use image texture
                 StartCoroutine(TransitionToDisplay(image.GetComponent<Renderer>().material.mainTexture));
+
             }
             heldMedia = obj;
             PickUpStretch pickerUpper = heldMedia.GetComponent<PickUpStretch>();
