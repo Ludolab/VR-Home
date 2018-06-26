@@ -116,7 +116,7 @@ public class FrameManager : MonoBehaviour {
         vp.Stop();
         vp.clip = null;
         heldMedia.SetActive(true);
-        heldMedia.transform.position = controllers[controllerIndex].gameObject.GetComponent<SphereCollider>().center + controllers[controllerIndex].gameObject.transform.position;
+        heldMedia.transform.position = (2* controllers[controllerIndex].gameObject.GetComponent<SphereCollider>().center) + controllers[controllerIndex].gameObject.transform.position;
         heldMedia.GetComponent<PickUpStretch>().Grab(controllerIndex);
         heldMedia = null;
     }
