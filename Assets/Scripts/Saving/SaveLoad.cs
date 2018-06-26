@@ -89,6 +89,8 @@ public class SaveLoad : MonoBehaviour {
     }
 
     private SaveObject CreateSaveObj(GameObject obj) {
+        if (obj.name == "Canvas") Debug.Log(obj.GetComponent<Renderer>().material.mainTexture.name);
+
         SaveObject save = new SaveObject();
         ID id;
         originalObjID.TryGetValue(obj.GetInstanceID(), out id);
@@ -236,11 +238,11 @@ public class SaveLoad : MonoBehaviour {
         obj.transform.localEulerAngles = new Vector3(reference.xRotation, reference.yRotation, reference.zRotation);
         obj.transform.localScale = new Vector3(reference.xScale, reference.yScale, reference.zScale);
         Renderer rend = obj.GetComponent<Renderer>();
-        if (rend != null && reference.texture != null && Resources.Load("Media/" + reference.texture)) rend.material.mainTexture = (Texture2D)(Resources.Load("Media/" + reference.texture));
+        if (rend != null && reference.texture != null && Resources.Load("Media/" + reference.texture) != null) rend.material.mainTexture = (Texture2D)(Resources.Load("Media/" + reference.texture));
         VideoPlayer player = obj.GetComponent<VideoPlayer>();
-        if (player != null && reference.video != null && Resources.Load("Media/" + reference.audio)) player.clip = (VideoClip)(Resources.Load("Media/" + reference.audio));
+        if (player != null && reference.video != null && Resources.Load("Media/" + reference.audio) != null) player.clip = (VideoClip)(Resources.Load("Media/" + reference.audio));
         AudioSource source = obj.GetComponent<AudioSource>();
-        if (source != null && reference.audio != null && Resources.Load("Media/" + reference.audio)) source.clip = (AudioClip)(Resources.Load("Media/" + reference.audio));
+        if (source != null && reference.audio != null && Resources.Load("Media/" + reference.audio) != null) source.clip = (AudioClip)(Resources.Load("Media/" + reference.audio));
     }
 
     private List<int> allObjectInstanceID(GameObject[] objects)
