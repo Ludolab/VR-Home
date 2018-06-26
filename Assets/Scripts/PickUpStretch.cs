@@ -20,6 +20,8 @@ public class PickUpStretch : MonoBehaviour
     public Color stretchColor;
     public Color stretchHoverColor;
 
+    public GameObject splashPrefab;
+
     private SteamVR_TrackedObject[] controllers = new SteamVR_TrackedObject[NUM_CONTROLLERS];
 
     private bool[] controllersInside = new bool[NUM_CONTROLLERS];
@@ -217,6 +219,12 @@ public class PickUpStretch : MonoBehaviour
         if (other.CompareTag("String"))
         {
             onString = true;
+        }
+
+        if (other.CompareTag("SplashZone"))
+        {
+            Instantiate(splashPrefab, transform.position, Quaternion.identity);
+
         }
     }
 
