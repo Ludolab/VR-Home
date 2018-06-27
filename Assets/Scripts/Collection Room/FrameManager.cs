@@ -116,9 +116,7 @@ public class FrameManager : MonoBehaviour {
     public void removeImage(int controllerIndex)
     {
         StartCoroutine(TransitionToDefault());
-        vp.Stop();
         StartCoroutine(DisableBack());
-        vp.clip = null;
         heldMedia.SetActive(true);
         heldMedia.transform.position = (2* controllers[controllerIndex].gameObject.GetComponent<SphereCollider>().center) + controllers[controllerIndex].gameObject.transform.position;
         heldMedia.GetComponent<PickUpStretch>().Grab(controllerIndex);
@@ -134,6 +132,8 @@ public class FrameManager : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         myMaterial.SetFloat("_Threshold", 0.0f);
+        vp.Stop();
+        vp.clip = null;
     }
 
     private IEnumerator TransitionToDisplay(Texture newTex, VideoClip newVid)
