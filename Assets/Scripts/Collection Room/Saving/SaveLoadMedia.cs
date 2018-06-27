@@ -28,7 +28,10 @@ public class SaveLoadMedia : MonoBehaviour {
         // Find all the canvases in the scene
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
         foreach (GameObject obj in allObjects) {
-            if (obj.GetComponent<FrameManager>() != null) allCanvases.Add(obj);
+            if (obj.GetComponent<FrameManager>() != null) {
+                allCanvases.Add(obj);
+                Debug.Log("Found a Canvas");
+            } 
         }
 	}
 
@@ -70,6 +73,7 @@ public class SaveLoadMedia : MonoBehaviour {
         }
         foreach(GameObject canvas in allCanvases) {
             AddCanvasToList(canvas, saveCanvas);
+            Debug.Log("Saving a Canvas");
         }
         imgToSave = saveImages.ToArray();
         vidToSave = saveVideos.ToArray();
