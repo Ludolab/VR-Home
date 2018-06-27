@@ -46,6 +46,7 @@ public class SaveLoadMedia : MonoBehaviour {
         current.images = imgToSave;
         current.videos = vidToSave;
         current.sounds = soundToSave;
+        current.canvases = canvasToSave;
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedRoom" + SceneManager.GetActiveScene().name + userToLoad + ".media");
@@ -194,6 +195,8 @@ public class SaveLoadMedia : MonoBehaviour {
         }
 
         foreach (SaveObject canvas in canvases) {
+            Debug.Log("Trying to find canvas");
+
             GameObject obj = FindFromAll(canvas.objID);
 
             if(obj != null) {
