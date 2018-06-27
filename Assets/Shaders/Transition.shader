@@ -20,21 +20,18 @@
          float _Threshold;
          float _ScaleWidth;
          float _ScaleHeight;
+		 float4 _MainTex_TexelSize;
 		 float4 _DisplayTex_TexelSize;
+		 float4 _Guide_TexelSize;
  
-         struct Input {
-             float2 uv_MainTex;
-             float2 uv_DisplayTex;
-             float2 uv_Guide;
-         };
- 
-         void surf (Input IN, inout SurfaceOutput o) {
-             half4 c = tex2D (_MainTex, IN.uv_MainTex);
+         float2 SquareUVs(float4 size, float2 oldUVs) {
+		     //Scales the image up to match width or height (whichever is smaller)
+			 // and clips off the rest, centering it and keeping aspect ratio.
 
-			 float width = _ScaleWidth / _DisplayTex_TexelSize.z;// * _ScaleWidth;
-			 float height = _ScaleHeight / _DisplayTex_TexelSize.w;// * _ScaleHeight;
-			 float newU = IN.uv_DisplayTex.x;
-			 float newV = IN.uv_DisplayTex.y;
+			 float width = _ScaleWidth / size.z;
+			 float height = _ScaleHeight / size.w;
+			 float newU = oldUVs.x;
+			 float newV = oldUVs.y;
 			 float aspect;
 			 if(width < height) {
 			     //height is big- keep the height and make it wider
@@ -46,10 +43,25 @@
 			     aspect = width / height;
 				 newV = newV / aspect + 0.5f - 0.5f / aspect;
 			 }
-			 float2 newUV = float2(1 - newU, 1 - newV); //rotate the image 180 degrees for some reason
+			 return float2(newU, newV);
+		 }
 
-             half4 d = tex2D (_DisplayTex, newUV);
-             half4 g = tex2D (_Guide, IN.uv_Guide); //TODO: make this adjusted UVs too
+         struct Input {
+             float2 uv_MainTex;
+             float2 uv_DisplayTex;
+             float2 uv_Guide;
+         };
+ 
+         void surf (Input IN, inout SurfaceOutput o) {
+		     float2 mainUVs = SquareUVs(_MainTex_TexelSize, IN.uv_MainTex);
+             half4 c = tex2D (_MainTex, mainUVs);
+
+			 float2 displayUVs = SquareUVs(_DisplayTex_TexelSize, IN.uv_DisplayTex);
+			 float2 flippedDisplayUVs = float2(1 - displayUVs.x, 1 - displayUVs.y); //rotate the image 180 degrees for some reason
+             half4 d = tex2D (_DisplayTex, flippedDisplayUVs);
+
+			 float2 guideUVs = SquareUVs(_Guide_TexelSize, IN.uv_Guide);
+             half4 g = tex2D (_Guide, guideUVs);
              if((g.r+g.g+g.b)*0.33333f<_Threshold)
                  o.Albedo = d.rgb;
              else
