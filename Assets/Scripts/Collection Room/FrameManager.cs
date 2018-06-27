@@ -23,6 +23,7 @@ public class FrameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myMaterial = myCanvas.GetComponent<Renderer>().material;
+        SetCanvasScale();
         vp = myCanvas.GetComponent<VideoPlayer>();
         SteamVR_ControllerManager manager = GameObject.Find("[CameraRig]").GetComponent<SteamVR_ControllerManager>();
         controllers[0] = manager.left.GetComponent<SteamVR_TrackedObject>();
@@ -137,6 +138,7 @@ public class FrameManager : MonoBehaviour {
 
     private IEnumerator TransitionToDisplay(Texture newTex)
     {
+        SetCanvasScale();
         myMaterial.SetTexture("_DisplayTex", newTex);
         float oldValue = myMaterial.GetFloat("_Threshold");
         for (float t = 0; t < transitionTime; t += Time.deltaTime)
@@ -145,6 +147,12 @@ public class FrameManager : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         myMaterial.SetFloat("_Threshold", 1.0f);
+    }
+
+    private void SetCanvasScale()
+    {
+        myMaterial.SetFloat("_ScaleWidth", myCanvas.transform.lossyScale.x);
+        myMaterial.SetFloat("_ScaleHeight", myCanvas.transform.lossyScale.z);
     }
 
     private IEnumerator DisableBack()
