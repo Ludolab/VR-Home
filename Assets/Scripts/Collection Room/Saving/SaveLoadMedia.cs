@@ -121,7 +121,7 @@ public class SaveLoadMedia : MonoBehaviour {
         if(canvas != null) {
             Renderer rend = canvas.GetComponent<Renderer>();
             VideoPlayer vid = canvas.GetComponent<VideoPlayer>();
-            if(rend != null && rend.material != null && rend.material.GetTexture("_DisplayText") != null && rend.material.GetTexture("_DisplayText").name != "")
+            if(rend != null && rend.material != null && rend.material.GetTexture("_DisplayTex") != null && rend.material.GetTexture("_DisplayTex").name != "")
                 saveObject.texture = rend.material.GetTexture("_DisplayTex").name;
             if(vid != null && vid.clip != null && vid.clip.name != "")
                 saveObject.video = vid.clip.name;
@@ -194,8 +194,18 @@ public class SaveLoadMedia : MonoBehaviour {
 
             if(obj != null) {
                 GameObject c = obj.transform.Find("Canvas").gameObject;
-                c.GetComponent<Renderer>().material.SetTexture("_DisplayTex", (Texture)Resources.Load("Media/" + canvas.texture));
-                c.GetComponent<VideoPlayer>().clip = (VideoClip)(Resources.Load("Media/" + canvas.audio));
+                Renderer rend = c.GetComponent<Renderer>();
+                VideoPlayer vid = c.GetComponent<VideoPlayer>();
+
+                Debug.Log("Found canvas. _DisplayTex is: " + rend.material.GetTexture("_DisplayTex"));
+
+                if(rend != null && rend.material != null && rend.material.GetTexture("_DisplayTex") != null && Resources.Load("Media/" + canvas.texture) != null) {
+                    Debug.Log("Found saved canvas texture: " + canvas.texture);
+
+                    rend.material.SetTexture("_DisplayTex", (Texture)Resources.Load("Media/" + canvas.texture));
+                }
+                if(vid != null && Resources.Load("Media/" + canvas.audio) != null)
+                    c.GetComponent<VideoPlayer>().clip = (VideoClip)(Resources.Load("Media/" + canvas.audio));
             }
         }
     }
