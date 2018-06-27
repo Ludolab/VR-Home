@@ -142,6 +142,12 @@ public class FrameManager : MonoBehaviour {
         SetCanvasScale();
         if (newVid != null){
             vp.clip = newVid;
+            vp.Prepare();
+            while (!vp.isPrepared)
+            {
+                Debug.Log("Preparing Video");
+                yield return null;
+            }
             vp.Play();
         } else {
             myMaterial.SetTexture("_DisplayTex", newTex);
