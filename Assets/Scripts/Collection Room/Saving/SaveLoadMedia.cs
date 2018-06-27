@@ -74,7 +74,6 @@ public class SaveLoadMedia : MonoBehaviour {
         }
         foreach(GameObject canvas in allCanvases) {
             AddCanvasToList(canvas, saveCanvas);
-            Debug.Log("Saving a Canvas");
         }
         imgToSave = saveImages.ToArray();
         vidToSave = saveVideos.ToArray();
@@ -204,12 +203,11 @@ public class SaveLoadMedia : MonoBehaviour {
                 Renderer rend = c.GetComponent<Renderer>();
                 VideoPlayer vid = c.GetComponent<VideoPlayer>();
 
-                Debug.Log("Found canvas. _DisplayTex is: " + rend.material.GetTexture("_DisplayTex"));
-
                 if(rend != null && rend.material != null && rend.material.GetTexture("_DisplayTex") != null && Resources.Load("Media/" + canvas.texture) != null) {
                     Debug.Log("Found saved canvas texture: " + canvas.texture);
 
                     rend.material.SetTexture("_DisplayTex", (Texture)Resources.Load("Media/" + canvas.texture));
+                    rend.material.SetFloat("_Threshold", 1.0f);
                 }
                 if(vid != null && Resources.Load("Media/" + canvas.audio) != null)
                     c.GetComponent<VideoPlayer>().clip = (VideoClip)(Resources.Load("Media/" + canvas.audio));
