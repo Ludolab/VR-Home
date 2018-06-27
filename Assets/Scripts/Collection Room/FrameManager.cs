@@ -142,7 +142,7 @@ public class FrameManager : MonoBehaviour {
         SetCanvasScale();
         if (newVid != null){
             vp.clip = newVid;
-            //vp.Play();
+            vp.Play();
         } else {
             myMaterial.SetTexture("_DisplayTex", newTex);
         }
