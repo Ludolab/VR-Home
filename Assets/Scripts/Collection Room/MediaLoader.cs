@@ -9,7 +9,7 @@ public class MediaLoader : MonoBehaviour
     public Transform start; //should be a little bit along the string, since a photo will spawn here
     public Transform mid; //should be further down from the actual midpoint (uses Bezier curve)
     public Transform end;
-    //TODO: support more than one string
+    //TODO: support more than one string?
 
     public Transform recordSpawn;
     public float recordHeight = 0.05f;
@@ -20,7 +20,7 @@ public class MediaLoader : MonoBehaviour
 
     private void Start()
     {
-        //load photos along the string
+        //load photos and videos along the string
         Vector3 startPos = start.position;
         Vector3 midPos = mid.position;
         Vector3 endPos = end.position;
