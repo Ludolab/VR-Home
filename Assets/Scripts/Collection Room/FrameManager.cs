@@ -75,13 +75,13 @@ public class FrameManager : MonoBehaviour {
             VideoPlayer vid = image.GetComponent<VideoPlayer>();
             if (vid != null)
             {
-                vp.clip = vid.clip;
-                vp.Play();
+                //use video texture
+                StartCoroutine(TransitionToDisplay(null, vid.clip));
             }
             else
             {
                 //use image texture
-                StartCoroutine(TransitionToDisplay(image.GetComponent<Renderer>().material.mainTexture));
+                StartCoroutine(TransitionToDisplay(image.GetComponent<Renderer>().material.mainTexture, null));
 
             }
             heldMedia = obj;
@@ -136,10 +136,16 @@ public class FrameManager : MonoBehaviour {
         myMaterial.SetFloat("_Threshold", 0.0f);
     }
 
-    private IEnumerator TransitionToDisplay(Texture newTex)
+    private IEnumerator TransitionToDisplay(Texture newTex, VideoClip newVid)
     {
+        
         SetCanvasScale();
-        myMaterial.SetTexture("_DisplayTex", newTex);
+        if (newVid != null){
+            vp.clip = newVid;
+            vp.Play();
+        } else {
+            myMaterial.SetTexture("_DisplayTex", newTex);
+        }
         float oldValue = myMaterial.GetFloat("_Threshold");
         for (float t = 0; t < transitionTime; t += Time.deltaTime)
         {
