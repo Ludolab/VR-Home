@@ -119,8 +119,12 @@ public class SaveLoadMedia : MonoBehaviour {
 
         GameObject canvas = obj.transform.Find("Canvas").gameObject;
         if(canvas != null) {
-            saveObject.texture = canvas.GetComponent<Renderer>().material.GetTexture("_DisplayTex").name;
-            saveObject.video = canvas.GetComponent<VideoPlayer>().clip.name;
+            Renderer rend = canvas.GetComponent<Renderer>();
+            VideoPlayer vid = canvas.GetComponent<VideoPlayer>();
+            if(rend != null && rend.material != null && rend.material.GetTexture("_DisplayText") != null && rend.material.GetTexture("_DisplayText").name != "")
+                saveObject.texture = rend.material.GetTexture("_DisplayTex").name;
+            if(vid != null && vid.clip != null && vid.clip.name != "")
+                saveObject.video = vid.clip.name;
         }
 
         list.Add(saveObject);
@@ -205,11 +209,9 @@ public class SaveLoadMedia : MonoBehaviour {
 
     private GameObject FindFromAll(ID toFind)
     {
-
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
         foreach (GameObject obj in allObjects)
         {
-
             if (obj.name == toFind.objName
                 && (int)(obj.transform.position.x * 100.0) == (int)(toFind.objCoordX * 100.0)
                 && (int)(obj.transform.position.y * 100.0) == (int)(toFind.objCoordY * 100.0)
