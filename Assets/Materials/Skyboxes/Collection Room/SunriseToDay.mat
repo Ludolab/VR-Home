@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: NightToSunrise
+  m_Name: SunriseToDay
   m_Shader: {fileID: 4800000, guid: 23b8e431113a048519f6773c068c377d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -19,11 +19,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BackTex:
-        m_Texture: {fileID: 2800000, guid: 3b959a1e383f24db4a61d3d64199584d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7e3c2abefb6324062b9ca9ca4aa6d6e1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BackTex2:
-        m_Texture: {fileID: 2800000, guid: dbfd4ac6ee9a044bab748b91fd22635c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8ad844541cc7047429b7605aa29c3236, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -43,31 +43,39 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DownTex:
-        m_Texture: {fileID: 2800000, guid: 7358fda1f375d4f8c914b3160064529b, type: 3}
+        m_Texture: {fileID: 2800000, guid: e2a20426c0d0445fd92494fddc2d5a25, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DownTex2:
-        m_Texture: {fileID: 2800000, guid: 5d4cfba8b68144f4fa9f42b6ae85aed1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 49261e3ac6cea46ffbf1f5d031e7115a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FogBottom:
+        m_Texture: {fileID: 2800000, guid: a025c23fceb7d4966b603419f551ce99, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FogSide:
+        m_Texture: {fileID: 2800000, guid: a025c23fceb7d4966b603419f551ce99, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _FrontTex:
-        m_Texture: {fileID: 2800000, guid: b8b51a33a77a143dabb14eef5a0ab594, type: 3}
+        m_Texture: {fileID: 2800000, guid: c8ff73b58a8b44c8e92693cc78c0a416, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontTex2:
-        m_Texture: {fileID: 2800000, guid: fa94bfd811fd14fcbac7fe4dbe39292a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5215911ba1a3c47d4be3a069fdf685dd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeftTex:
-        m_Texture: {fileID: 2800000, guid: 153b13814f4dc4c769db06d50c7245f0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 630889f71344a4d34bca70f5537d2a6a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeftTex2:
-        m_Texture: {fileID: 2800000, guid: 7852343432c1d49c28b5578fabac9870, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6b16313703160489eb7e23fab88871dd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -87,23 +95,23 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightTex:
-        m_Texture: {fileID: 2800000, guid: a4bb1acdc6aa848769d4b1421b245cb3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 44264edfc99e243de981267be4ea05ec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightTex2:
-        m_Texture: {fileID: 2800000, guid: c5576a68514f44a9f997b8698fe7abe9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 68b6556a6bee54bb380a0341f01823b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpTex:
-        m_Texture: {fileID: 2800000, guid: ee66e52db06e74a138a28b27b4f4bd80, type: 3}
+        m_Texture: {fileID: 2800000, guid: 25d494a2b15244d8ab4e8fd7d3d157fc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpTex2:
-        m_Texture: {fileID: 2800000, guid: 86a29f0913a2c4c5b8af8ea9d81e986e, type: 3}
+        m_Texture: {fileID: 2800000, guid: afd017d8694ca4603859540e4e244883, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Blend: 0.9999349
+    - _Blend: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -123,4 +131,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+    - _FogTint: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.34901962}
+    - _Tint: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5}
