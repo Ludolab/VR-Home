@@ -174,4 +174,11 @@ public class FrameManager : MonoBehaviour {
 
         backTrigger.SetActive(true);
     }
+
+    private void OnApplicationQuit()
+    {
+        myMaterial.SetFloat("_Threshold", 0);
+        myMaterial.SetFloat("_ScaleWidth", 1);
+        myMaterial.SetFloat("_ScaleHeight", 1);
+    }
 }
