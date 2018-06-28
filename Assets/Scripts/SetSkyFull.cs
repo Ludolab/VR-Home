@@ -124,4 +124,11 @@ public class SetSkyFull : MonoBehaviour {
             sunLight.color = sunsetColor;
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        //reset material properties so they aren't set permanently
+        percentThroughDay = 25;
+        applyChanges();
+    }
 }

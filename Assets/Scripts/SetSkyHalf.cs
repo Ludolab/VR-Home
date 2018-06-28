@@ -79,4 +79,9 @@ public class SetSkyHalf : MonoBehaviour {
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        percentThroughDay = 0f;
+        applyChanges();
+    }
 }
