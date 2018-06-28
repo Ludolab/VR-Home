@@ -145,7 +145,6 @@ public class FrameManager : MonoBehaviour {
             vp.Prepare();
             while (!vp.isPrepared)
             {
-                Debug.Log("Preparing Video");
                 yield return null;
             }
             vp.Play();
