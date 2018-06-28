@@ -31,6 +31,7 @@ public class GenerateNames : MonoBehaviour
     private const float START_CONSONANT_CHANCE = 1.0f;
     private const float END_CONSONANT_CHANCE = 0.7f;
     private const float SUFFIX_CHANCE = 0.3f;
+    private const float SILENT_E_CHANCE = 0.4f;
 
     private NameParts nameParts;
 
@@ -54,20 +55,19 @@ public class GenerateNames : MonoBehaviour
 
     public string GenerateName()
     {
-        //TODO: if it's the end, make it more likely to be start-e-[no last consonant]
-
         int numSyllables = Random.Range(MIN_SYLLABLES, MAX_SYLLABLES + 1);
         StringBuilder name = new StringBuilder();
 
         for (int i = 0; i < numSyllables; i++)
         {
-            name.Append(GenerateSyllable());
+            bool last = numSyllables > 1 && i == numSyllables - 1;
+            name.Append(GenerateSyllable(last));
         }
 
         //prevent single-letter names
         if (name.Length == 1)
         {
-            name.Append(GenerateSyllable());
+            name.Append(GenerateSyllable(true));
         }
 
         if (name.Length < MIN_LENGTH || Random.value < SUFFIX_CHANCE)
@@ -82,8 +82,12 @@ public class GenerateNames : MonoBehaviour
         return result;
     }
 
-    private string GenerateSyllable()
+    private string GenerateSyllable(bool last)
     {
+        if (last && Random.value < SILENT_E_CHANCE)
+        {
+            return GenerateLastSyllable();
+        }
         StringBuilder syllable = new StringBuilder();
         if (Random.value < START_CONSONANT_CHANCE)
         {
@@ -96,6 +100,11 @@ public class GenerateNames : MonoBehaviour
         }
 
         return syllable.ToString();
+    }
+
+    private string GenerateLastSyllable()
+    {
+        return GetConsonant(false) + "e";
     }
 
     private string GetConsonant(bool end)
