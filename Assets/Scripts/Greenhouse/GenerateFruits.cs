@@ -47,6 +47,8 @@ public class GenerateFruits : MonoBehaviour
         string name = nameGen.GenerateName();
         TextMesh textMesh = fruit.transform.Find("Name").GetComponent<TextMesh>();
         textMesh.text = name;
+        float textScale = 1 / scale * 0.01f;
+        textMesh.gameObject.transform.localScale = new Vector3(textScale, textScale, textScale);
 
         return fruit;
     }
