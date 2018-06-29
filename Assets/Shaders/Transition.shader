@@ -43,8 +43,7 @@
 			     aspect = width / height;
 				 newV = newV / aspect + 0.5f - 0.5f / aspect;
 			 }
-			 //return float2(newU, newV);
-			 return oldUVs;
+			 return float2(newU, newV);
 		 }
 
          struct Input {
@@ -58,8 +57,8 @@
              half4 c = tex2D (_MainTex, mainUVs);
 
 			 float2 displayUVs = SquareUVs(_DisplayTex_TexelSize, IN.uv_DisplayTex);
-			 float2 flippedDisplayUVs = float2(1 - displayUVs.x, 1 - displayUVs.y); //rotate the image 180 degrees for some reason
-             half4 d = tex2D (_DisplayTex, flippedDisplayUVs);
+			 //displayUVs = float2(1 - displayUVs.x, 1 - displayUVs.y); //rotate the image 180 degrees for some reason
+             half4 d = tex2D (_DisplayTex, displayUVs);
 
 			 float2 guideUVs = SquareUVs(_Guide_TexelSize, IN.uv_Guide);
              half4 g = tex2D (_Guide, guideUVs);

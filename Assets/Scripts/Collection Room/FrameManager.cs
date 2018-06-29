@@ -163,7 +163,7 @@ public class FrameManager : MonoBehaviour {
     private void SetCanvasScale()
     {
         myMaterial.SetFloat("_ScaleWidth", myCanvas.transform.lossyScale.x);
-        myMaterial.SetFloat("_ScaleHeight", myCanvas.transform.lossyScale.z);
+        myMaterial.SetFloat("_ScaleHeight", myCanvas.transform.lossyScale.y);
     }
 
     private IEnumerator DisableBack()
