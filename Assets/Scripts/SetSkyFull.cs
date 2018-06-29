@@ -20,8 +20,8 @@ public class SetSkyFull : MonoBehaviour {
 
     private Vector3 sunDefaultPositionVector = new Vector3(-10, 0, -135);
 
-    private static int nightTime = 20;
-    private static int dayTime = 30;
+    private static int nightTime = 10;
+    private static int dayTime = 40;
     private static int transitionTime = (100 - (nightTime + dayTime)) / 4;
     private static Quaternion sunStartAngle = Quaternion.Euler(0, 190, 0);
     private static Vector3 axisOfSunRotation = new Vector3(5, -1, 2);
