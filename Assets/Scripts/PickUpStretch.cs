@@ -11,6 +11,7 @@ public class PickUpStretch : MonoBehaviour
     public static GameObject[] grabbableObjects = new GameObject[NUM_CONTROLLERS];
 
     public bool canStretch = true;
+    public bool makeKinematicWhenReset = false;
 
     public bool specialOutline = false; //use special crystal sphere outline behavior
 
@@ -355,6 +356,11 @@ public class PickUpStretch : MonoBehaviour
         transform.rotation = startRotation;
         transform.localScale = startScale;
         rb.velocity = Vector3.zero;
+
+        if (makeKinematicWhenReset)
+        {
+            rb.isKinematic = true;
+        }
     }
 
     private void Rumble(int controllerIndex)
