@@ -42,7 +42,8 @@ public class GenerateFruits : MonoBehaviour
 
         int s = Random.Range(0, scales.Length);
         float scale = scales[s];
-        fruit.transform.localScale = new Vector3(scale, scale, scale);
+        float squashScale = scale * Random.Range(0.7f, 1.1f);
+        fruit.transform.localScale = new Vector3(squashScale, scale, squashScale);
         fruit.transform.rotation = Random.rotation;
 
         Material fruitMat = fruit.GetComponent<Renderer>().material;
