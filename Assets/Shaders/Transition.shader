@@ -43,7 +43,8 @@
 			     aspect = width / height;
 				 newV = newV / aspect + 0.5f - 0.5f / aspect;
 			 }
-			 return float2(newU, newV);
+			 //return float2(newU, newV);
+			 return oldUVs;
 		 }
 
          struct Input {
