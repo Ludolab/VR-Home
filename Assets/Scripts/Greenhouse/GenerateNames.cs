@@ -35,7 +35,7 @@ public class GenerateNames : MonoBehaviour
 
     private NameParts nameParts;
 
-    private void Start()
+    private void Awake()
     {
         LoadData();
         for (int i = 0; i < 10; i++)
