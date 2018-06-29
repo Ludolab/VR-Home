@@ -21,6 +21,13 @@ public class GenerateNames : MonoBehaviour
         public string[] suffixes;
     }
 
+    internal enum ConsonantOptions
+    {
+        None,
+        Start,
+        End
+    }
+
     private const string NAME_PARTS_PATH = "Assets/Config/name_parts.json";
 
     private const int MIN_SYLLABLES = 1;
@@ -91,12 +98,12 @@ public class GenerateNames : MonoBehaviour
         StringBuilder syllable = new StringBuilder();
         if (Random.value < START_CONSONANT_CHANCE)
         {
-            syllable.Append(GetConsonant(false));
+            syllable.Append(GetConsonant(ConsonantOptions.Start));
         }
         syllable.Append(GetVowel());
         if (Random.value < END_CONSONANT_CHANCE)
         {
-            syllable.Append(GetConsonant(true));
+            syllable.Append(GetConsonant(ConsonantOptions.End));
         }
 
         return syllable.ToString();
@@ -104,12 +111,24 @@ public class GenerateNames : MonoBehaviour
 
     private string GenerateLastSyllable()
     {
-        return GetConsonant(false) + "e";
+        return GetConsonant(ConsonantOptions.None) + "e";
     }
 
-    private string GetConsonant(bool end)
+    private string GetConsonant(ConsonantOptions option)
     {
-        string[] otherConsonants = end ? nameParts.endConsonants : nameParts.startConsonants;
+        string[] otherConsonants;
+        if (option == ConsonantOptions.Start)
+        {
+            otherConsonants = nameParts.startConsonants;
+        }
+        else if(option == ConsonantOptions.End)
+        {
+            otherConsonants = nameParts.endConsonants;
+        }
+        else
+        {
+            otherConsonants = new string[0];
+        }
         int cLen = nameParts.consonants.Length;
         int r = Random.Range(0, cLen + otherConsonants.Length);
         return r < cLen ? nameParts.consonants[r] : otherConsonants[r - cLen];
