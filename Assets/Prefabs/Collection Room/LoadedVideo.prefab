@@ -319,6 +319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverClip: {fileID: 8300000, guid: 743da14d62b214c7aacb3cf761dbacab, type: 3}
+  volLowRange: 0.1
+  volHighRange: 1
   vidObject: {fileID: 1637683520507460}
 --- !u!114 &114634396711085012
 MonoBehaviour:

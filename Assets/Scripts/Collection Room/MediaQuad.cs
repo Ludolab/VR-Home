@@ -5,9 +5,9 @@ using UnityEngine;
 public class MediaQuad : MonoBehaviour
 {
     //Hovering triggers audio
-    private AudioClip hoverClip;
-    private float volLowRange = .1f;
-    private float volHighRange = 1.0f;
+    public AudioClip hoverClip;
+    public float volLowRange = .1f;
+    public float volHighRange = 1.0f;
     private AudioSource source;
 
     private Vector2 originalScale;

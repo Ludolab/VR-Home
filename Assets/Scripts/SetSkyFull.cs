@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SetSkyFull : MonoBehaviour {
 
+    //sound changes according to the time of the day
+    private AudioSource ambientSound;
+    public AudioClip ambient;
+
     public float percentThroughDay;
     public Material dayToSunset;
     public Material sunsetToNight;
@@ -32,12 +36,17 @@ public class SetSkyFull : MonoBehaviour {
         cycleStartTime = -1 * (secondsPerCycle / 4);
         percentThroughDay = 25; // starts with daylight
         applyChanges();
+
+        ambientSound = GetComponent<AudioSource>();
+        ambientSound.clip = ambient;
+        ambientSound.loop = true;
+        ambientSound.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /* MANUAL TIME SHIFT: FOR DEBUGGING 
+        /* MANUAL TIME SHIFT: FOR DEBUGGING
         if (Input.GetKey("right"))
         {
             percentThroughDay += 1f;
@@ -60,6 +69,8 @@ public class SetSkyFull : MonoBehaviour {
             cycleStartTime = Time.time;
         }
         percentThroughDay = Mathf.Lerp(0, 100, (Time.time - cycleStartTime) / secondsPerCycle);
+        ambientSound.volume = percentThroughDay / 100;
+
         applyChanges();
     }
 
