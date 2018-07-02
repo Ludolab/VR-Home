@@ -15,8 +15,9 @@ public class Fruit : MonoBehaviour
         ib = GetComponent<InteractionBehaviour>();
     }
 
-    public void Release()
+    public void Pick()
     {
+        //TODO: sound, particles
         Destroy(joint);
         StartCoroutine(RefreshLocked());
     }

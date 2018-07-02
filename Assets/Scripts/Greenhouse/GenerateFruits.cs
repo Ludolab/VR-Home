@@ -27,7 +27,7 @@ public class GenerateFruits : MonoBehaviour
             for (int j = 0; j < 5; j++)
             {
                 Vector3 pos = new Vector3(x, y, 1f);
-                GameObject fruit = GenerateFruit(pos);
+                GenerateFruit(pos);
                 x += 0.5f;
             }
             y += 0.5f;

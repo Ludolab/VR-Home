@@ -8,7 +8,7 @@ public class GenerateNames : MonoBehaviour
 {
 
     [System.Serializable]
-    internal class NameParts
+    private class NameParts
     {
         public string[] consonants;
 
