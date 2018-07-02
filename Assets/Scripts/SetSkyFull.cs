@@ -7,6 +7,9 @@ public class SetSkyFull : MonoBehaviour {
     //sound changes according to the time of the day
     private AudioSource ambientSound;
     public AudioClip ambient;
+    public float volumehi = 0.7f;
+    public float volumelo = 0f;
+    private float volumeind = 0f;
 
     public float percentThroughDay;
     public Material dayToSunset;
@@ -40,6 +43,7 @@ public class SetSkyFull : MonoBehaviour {
         ambientSound = GetComponent<AudioSource>();
         ambientSound.clip = ambient;
         ambientSound.loop = true;
+        ambientSound.volume = 0;
         ambientSound.Play();
     }
 
@@ -69,7 +73,14 @@ public class SetSkyFull : MonoBehaviour {
             cycleStartTime = Time.time;
         }
         percentThroughDay = Mathf.Lerp(0, 100, (Time.time - cycleStartTime) / secondsPerCycle);
-        ambientSound.volume = percentThroughDay / 100;
+
+        if(percentThroughDay > 60) {
+          volumeind = (float)((percentThroughDay - 60) / 80);
+          ambientSound.volume = Mathf.Lerp(volumelo, volumehi, volumeind);
+        } else if(percentThroughDay < 30) {
+          volumeind = (float)((percentThroughDay + 40) / 80);
+          ambientSound.volume = Mathf.Lerp(volumelo, volumehi, volumeind);
+        }
 
         applyChanges();
     }
