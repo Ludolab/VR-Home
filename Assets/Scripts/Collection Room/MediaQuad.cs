@@ -7,7 +7,8 @@ public class MediaQuad : MonoBehaviour
     //Hovering triggers audio
     public AudioClip hoverClip;
     public float volLowRange = .1f;
-    public float volHighRange = .3f;
+    public float volHighRange = 1.0f;
+    private AudioSource source;
 
     private Vector2 originalScale;
 
@@ -39,9 +40,11 @@ public class MediaQuad : MonoBehaviour
         //play sound
         if (other.gameObject.name.StartsWith("Controller"))
         {
+            source = GetComponent<AudioSource>();
             print("play sound");
             float vol = Random.Range(volLowRange, volHighRange);
-            GetComponent<AudioSource>().PlayOneShot(hoverClip, vol);
+            source.pitch = Random.Range(0.1f, 4.0f);
+            source.PlayOneShot(hoverClip, vol);
         }
     }
 

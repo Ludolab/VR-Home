@@ -317,7 +317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22fc45fada16427459fc1758e17b6a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverClip: {fileID: 8300000, guid: 6a23191910576455690ef52c22e260eb, type: 3}
+  hoverClip: {fileID: 8300000, guid: 743da14d62b214c7aacb3cf761dbacab, type: 3}
+  volLowRange: 0.1
+  volHighRange: 1
   rendObject: {fileID: 1637683520507460}
 --- !u!114 &114634396711085012
 MonoBehaviour:
