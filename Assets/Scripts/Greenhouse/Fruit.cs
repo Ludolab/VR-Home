@@ -18,6 +18,13 @@ public class Fruit : MonoBehaviour
     public void Release()
     {
         Destroy(joint);
+        StartCoroutine(RefreshLocked());
+    }
+
+    private IEnumerator RefreshLocked()
+    {
+        yield return null;
+        yield return null;
         ib.RefreshPositionLockedState();
     }
 }
