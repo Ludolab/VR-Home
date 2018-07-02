@@ -4,27 +4,18 @@ using UnityEngine;
 
 public class Pot : MonoBehaviour
 {
-	public GameObject fruitPrefab;
+	public GameObject plantPrefab;
 
-	private Genome plantedGenome;
-	private bool isFilled = false;
+	private GameObject plant;
 
 	public void PlantFruit(Fruit fruit)
 	{
-		if (!isFilled)
+		if (plant == null)
 		{
-			plantedGenome = fruit.GetGenome();
-			isFilled = true;
-		}
-	}
-
-	private void Update()
-	{
-		if (isFilled)
-		{
-			GameObject fruit = Instantiate(fruitPrefab, transform.position, Quaternion.identity);
-			Fruit fruitInfo = fruit.GetComponent<Fruit>();
-			fruitInfo.SetGenome(plantedGenome);
+			plant = Instantiate(plantPrefab);
+			//TODO: position
+			Plant plantScript = plant.GetComponent<Plant>();
+			plantScript.SetGenome(fruit.GetGenome());
 		}
 	}
 }
