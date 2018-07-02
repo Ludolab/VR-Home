@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using UnityEngine;
 
 public class GenerateFruits : MonoBehaviour
@@ -37,26 +35,32 @@ public class GenerateFruits : MonoBehaviour
 
     public GameObject GenerateFruit(Vector3 pos)
     {
-        GameObject fruitObj = Instantiate(fruitPrefab, pos, Quaternion.identity);
-        GameObject fruit = fruitObj.transform.Find("Fruit").gameObject;
-
         int s = Random.Range(0, scales.Length);
         float scale = scales[s];
         float stretchScale = scale * Random.Range(0.8f, 2.0f);
-        fruit.transform.localScale = new Vector3(scale, stretchScale, scale);
-        //fruit.transform.rotation = Random.rotation;
 
-        Material fruitMat = fruit.GetComponent<Renderer>().material;
-        int c1 = Random.Range(0, colors.Length);
+		int c1 = Random.Range(0, colors.Length);
         int c2 = Random.Range(0, colors.Length);
-        Color color1 = colors[c1]; //TODO: add a little random adjustment
+        Color color1 = colors[c1];
         Color color2 = colors[c2];
-        fruitMat.SetColor("_Color1", color1);
-        fruitMat.SetColor("_Color2", color2);
 
-        string name = nameGen.GenerateName();
-        TextMesh textMesh = fruitObj.transform.Find("Name").GetComponent<TextMesh>();
-        textMesh.text = name;
+		GameObject fruitObj = Instantiate(fruitPrefab, pos, Quaternion.identity);
+		GameObject fruit = fruitObj.transform.Find("Fruit").gameObject;
+		Fruit fruitInfo = fruit.GetComponent<Fruit>();
+
+		string name = nameGen.GenerateName();
+		TextMesh textMesh = fruitObj.transform.Find("Name").GetComponent<TextMesh>();
+		textMesh.text = name;
+		
+		Genome g = new Genome
+		{
+			name = name,
+			color1 = color1,
+			color2 = color2,
+			scale = scale,
+			stretchScale = stretchScale
+		};
+		fruitInfo.SetGenome(g);
 
         return fruitObj;
     }
