@@ -24,7 +24,6 @@ public class Fruit : MonoBehaviour
     private IEnumerator RefreshLocked()
     {
         yield return null;
-        yield return null;
         ib.RefreshPositionLockedState();
     }
 }
