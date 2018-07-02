@@ -14,7 +14,6 @@ public class Fruit : MonoBehaviour
 
     public void Release()
     {
-        print("RELEASE");
         Destroy(joint);
     }
 }
