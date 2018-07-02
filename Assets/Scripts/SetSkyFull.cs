@@ -74,12 +74,11 @@ public class SetSkyFull : MonoBehaviour {
         }
         percentThroughDay = Mathf.Lerp(0, 100, (Time.time - cycleStartTime) / secondsPerCycle);
 
-        if(percentThroughDay > 60) {
-          volumeind = (float)((percentThroughDay - 60) / 80);
+        if(percentThroughDay > 50 && percentThroughDay < 100) {
+          volumeind = 1 - (float)((Mathf.Abs(75 - percentThroughDay)) / 25);
           ambientSound.volume = Mathf.Lerp(volumelo, volumehi, volumeind);
-        } else if(percentThroughDay < 30) {
-          volumeind = (float)((percentThroughDay + 40) / 80);
-          ambientSound.volume = Mathf.Lerp(volumelo, volumehi, volumeind);
+        } else {
+          ambientSound.volume = 0;
         }
 
         applyChanges();

@@ -6,8 +6,8 @@ public class MediaQuad : MonoBehaviour
 {
     //Hovering triggers audio
     public AudioClip hoverClip;
-    public float volLowRange = .1f;
-    public float volHighRange = .3f;
+    public float volLowRange = .05f;
+    public float volHighRange = .1f;
     private AudioSource source;
 
     private Vector2 originalScale;
