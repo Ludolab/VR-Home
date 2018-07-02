@@ -26,8 +26,8 @@ public class GenerateFruits : MonoBehaviour
             float x = -1f;
             for (int j = 0; j < 5; j++)
             {
-                GameObject fruit = GenerateFruit();
-                fruit.transform.position = new Vector3(x, y, 1f);
+                Vector3 pos = new Vector3(x, y, 1f);
+                GameObject fruit = GenerateFruit(pos);
                 x += 0.5f;
             }
             y += 0.5f;
@@ -35,9 +35,9 @@ public class GenerateFruits : MonoBehaviour
 
     }
 
-    public GameObject GenerateFruit()
+    public GameObject GenerateFruit(Vector3 pos)
     {
-        GameObject fruitObj = Instantiate(fruitPrefab);
+        GameObject fruitObj = Instantiate(fruitPrefab, pos, Quaternion.identity);
         GameObject fruit = fruitObj.transform.Find("Fruit").gameObject;
 
         int s = Random.Range(0, scales.Length);

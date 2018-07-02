@@ -45,10 +45,6 @@ public class GenerateNames : MonoBehaviour
     private void Awake()
     {
         LoadData();
-        for (int i = 0; i < 10; i++)
-        {
-            print(GenerateName());
-        }
     }
 
     public void LoadData()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MediaQuad : MonoBehaviour
 {
+    public AudioClip hoverClip;
+
     private Vector2 originalScale;
 
     protected virtual void Awake()
@@ -28,4 +30,15 @@ public class MediaQuad : MonoBehaviour
 
         transform.localScale = new Vector3(width, height, transform.localScale.z);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //play sound
+        if (other.gameObject.name.StartsWith("Controller"))
+        {
+            print("play sound");
+            GetComponent<AudioSource>().PlayOneShot(hoverClip);
+        }
+    }
+
 }
