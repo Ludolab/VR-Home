@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class MediaQuad : MonoBehaviour
 {
+    //Hovering triggers audio
     public AudioClip hoverClip;
+    public float volLowRange = .5f;
+    public float volHighRange = 1.0f;
 
     private Vector2 originalScale;
 
@@ -33,8 +36,10 @@ public class MediaQuad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //play sound
         if (other.gameObject.name.StartsWith("Controller"))
         {
+            print("play sound");
             GetComponent<AudioSource>().PlayOneShot(hoverClip);
         }
     }
