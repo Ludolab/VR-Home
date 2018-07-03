@@ -44,7 +44,7 @@ public class Beetle : MonoBehaviour
 		rb.AddForce(vel * flickMultiplier, ForceMode.Impulse);
 	}
 
-	private void Squish()
+	public void Squish()
 	{
 		//TODO: sound, particles
 		Destroy(gameObject);
