@@ -12,8 +12,7 @@ public class Pot : MonoBehaviour
 	{
 		if (plant == null)
 		{
-			plant = Instantiate(plantPrefab);
-			//TODO: position
+			plant = Instantiate(plantPrefab, transform.position, Quaternion.identity);
 			Plant plantScript = plant.GetComponent<Plant>();
 			plantScript.SetGenome(fruit.GetGenome());
 		}

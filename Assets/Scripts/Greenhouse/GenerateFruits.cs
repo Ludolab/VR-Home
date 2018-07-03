@@ -31,6 +31,8 @@ public class GenerateFruits : MonoBehaviour
             y += 0.5f;
         }
 
+		Vector3 potPos = GameObject.Find("PlantableSpot").transform.position;
+		GenerateFruit(potPos);
     }
 
     public GameObject GenerateFruit(Vector3 pos)
@@ -51,6 +53,8 @@ public class GenerateFruits : MonoBehaviour
 		string name = nameGen.GenerateName();
 		TextMesh textMesh = fruitObj.transform.Find("Name").GetComponent<TextMesh>();
 		textMesh.text = name;
+
+		float lifetime = Random.Range(10.0f, 20.0f);
 		
 		Genome g = new Genome
 		{
@@ -58,7 +62,8 @@ public class GenerateFruits : MonoBehaviour
 			color1 = color1,
 			color2 = color2,
 			scale = scale,
-			stretchScale = stretchScale
+			stretchScale = stretchScale,
+			lifetime = lifetime
 		};
 		fruitInfo.SetGenome(g);
 
