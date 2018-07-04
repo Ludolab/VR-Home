@@ -1,15 +1,56 @@
 fileFormatVersion: 2
-guid: e1a4959d1d74a45069bce663f435cc3b
+guid: 901e099b0de224b22b79984bdab5c219
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: group10
+    100004: group7
+    100006: group8
+    100008: group9
+    100010: pasted__pCube6
+    100012: pasted__pCube6 1
+    100014: pasted__pCube6 2
+    100016: pasted__pCube6 3
+    100018: pCube5
+    100020: pCube6
     400000: //RootNode
+    400002: group10
+    400004: group7
+    400006: group8
+    400008: group9
+    400010: pasted__pCube6
+    400012: pasted__pCube6 1
+    400014: pasted__pCube6 2
+    400016: pasted__pCube6 3
+    400018: pCube5
+    400020: pCube6
     2100000: garden_box_wood
-    2300000: //RootNode
-    3300000: //RootNode
+    2100002: garden_box_divisors
+    2300000: pasted__pCube6
+    2300002: pasted__pCube6 1
+    2300004: pasted__pCube6 2
+    2300006: pasted__pCube6 3
+    2300008: pCube5
+    2300010: pCube6
+    3300000: pasted__pCube6
+    3300002: pasted__pCube6 1
+    3300004: pasted__pCube6 2
+    3300006: pasted__pCube6 3
+    3300008: pCube5
+    3300010: pCube6
     4300000: pCube5
+    4300002: pCube6
+    4300004: pasted__pCube6
+    4300006: pasted__pCube6
+    4300008: pasted__pCube6
+    4300010: pasted__pCube6
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: garden_box_divisors
+    second: {fileID: 2100000, guid: 88365d5b2cd6b45c6bd4b707f8047601, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
