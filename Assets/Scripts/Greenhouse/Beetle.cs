@@ -8,6 +8,9 @@ public class Beetle : MonoBehaviour
 	public float flickThreshold;
 	public float flickMultiplier;
 
+	public GameObject particlePrefab;
+	public AudioClip squishSound;
+
 	private Rigidbody rb;
 
 	private bool isFlicked;
@@ -46,7 +49,17 @@ public class Beetle : MonoBehaviour
 
 	public void Squish()
 	{
-		//TODO: sound, particles
+		SpawnParticles();
 		Destroy(gameObject);
+	}
+
+	private void SpawnParticles()
+	{
+		GameObject particles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+		ParticleSystem ps = particles.GetComponent<ParticleSystem>();
+		ParticleSystem.MainModule main = ps.main;
+		main.startColor = GetComponent<Renderer>().material.color; //TODO: set this manually once beetle has a real model & texture
+		AudioSource aud = particles.GetComponent<AudioSource>();
+		aud.clip = squishSound;
 	}
 }

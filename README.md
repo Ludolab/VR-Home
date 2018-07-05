@@ -16,3 +16,4 @@
 - Sample music by Greek555: https://freesound.org/people/Greek555/
 - Texture Transition Shader by Professor Snake: https://answers.unity.com/questions/569528/making-specific-shader-for-texture-transition-effe.html
 - Iridescent Shader (for cloth water) by Minions Art: https://www.patreon.com/posts/quick-game-art-15466787
+- Squish sound by HonorHunter: https://freesound.org/people/HonorHunter/sounds/271666/

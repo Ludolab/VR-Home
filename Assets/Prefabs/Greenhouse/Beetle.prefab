@@ -161,6 +161,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flickThreshold: 0.6
   flickMultiplier: 4
+  particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
+    type: 2}
+  squishSound: {fileID: 8300000, guid: cdfbf6cef0c797a43a463c203279c343, type: 3}
 --- !u!135 &135443453744850174
 SphereCollider:
   m_ObjectHideFlags: 1
