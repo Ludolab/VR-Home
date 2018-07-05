@@ -23,6 +23,7 @@ public class Letter : MonoBehaviour
 		numJoints--;
 		if (numJoints == 0)
 		{
+			paperObj.transform.parent = null;
 			paperObj.SetActive(true);
 		}
 	}
