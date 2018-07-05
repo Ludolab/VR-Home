@@ -3036,7 +3036,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 1, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.55, y: 0.6, z: 0.025}
+  m_ConnectedAnchor: {x: 0.6, y: 0.6, z: 0.025}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -3054,8 +3054,8 @@ HingeJoint:
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
-  m_BreakForce: 10
-  m_BreakTorque: 10
+  m_BreakForce: 100
+  m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
@@ -3085,7 +3085,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: -0.5, z: 0}
   m_Axis: {x: 1, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.55, y: -0.59999996, z: 0.025}
+  m_ConnectedAnchor: {x: 0.6, y: -0.59999996, z: 0.025}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -3103,8 +3103,8 @@ HingeJoint:
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
-  m_BreakForce: 10
-  m_BreakTorque: 10
+  m_BreakForce: 100
+  m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
