@@ -23,7 +23,7 @@ public class Neighbor : MonoBehaviour
 			NeighborInfo.LetterInfo l = info.letters[day];
 			if (l.exists)
 			{
-				GenerateLetter(l.text1, l.text2, new Vector3(0, 0.1f, 0)); //TODO: position
+				GenerateLetter(l.text1, l.text2, new Vector3(0, 1f, 0)); //TODO: position
 			}
 		}
 	}

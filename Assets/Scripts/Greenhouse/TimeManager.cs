@@ -29,6 +29,7 @@ public class TimeManager : MonoBehaviour
 		}
 	}
 
+	[ContextMenu("Next Day")]
 	public void NextDay()
 	{
 		day++;
