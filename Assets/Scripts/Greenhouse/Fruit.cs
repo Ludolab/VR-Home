@@ -24,6 +24,8 @@ public class Fruit : MonoBehaviour
 {
 
 	public Color unripeColor;
+	public GameObject particlePrefab;
+	public AudioClip pickSound;
 
 	private ConfigurableJoint joint;
 	private Rigidbody rb;
@@ -61,9 +63,19 @@ public class Fruit : MonoBehaviour
 
 	public void Pick()
 	{
-		//TODO: sound, particles
+		SpawnParticles();
 		Destroy(joint);
 		StartCoroutine(RefreshLocked());
+	}
+
+	private void SpawnParticles()
+	{
+		GameObject particles = Instantiate(particlePrefab, transform.position, Quaternion.identity); //TODO: at anchor position?
+		ParticleSystem ps = particles.GetComponent<ParticleSystem>();
+		ParticleSystem.MainModule main = ps.main;
+		main.startColor = genome.color1;
+		AudioSource aud = particles.GetComponent<AudioSource>();
+		aud.clip = pickSound;
 	}
 
 	private IEnumerator RefreshLocked()
@@ -97,16 +109,6 @@ public class Fruit : MonoBehaviour
 		float s = Mathf.Lerp(0, genome.scale, age);
 		float ss = Mathf.Lerp(0, genome.stretchScale, age);
 		ApplyProperties(c1, c2, s, ss);
-
-		/*rb.isKinematic = true;
-		Vector3 pos = rb.position;
-		pos.y = Mathf.Lerp(anchorY, anchorY - genome.stretchScale / 2, age);
-		rb.position = pos;
-		rb.isKinematic = false;*/
-		Vector3 anchor = joint.anchor;
-		anchor.y = ss / 2;
-		joint.anchor = anchor;
-		//TODO: fix fruit pos- keep anchor the same but move fruit relative to it
 	}
 
 	private void ApplyProperties(Color color1, Color color2, float scale, float stretchScale)
@@ -114,6 +116,10 @@ public class Fruit : MonoBehaviour
 		mat.SetColor("_Color1", color1);
 		mat.SetColor("_Color2", color2);
 		transform.localScale = new Vector3(scale, stretchScale, scale);
+
+		/*Vector3 anchor = joint.anchor;
+		anchor.y = 0.5f;
+		joint.anchor = anchor;*/
 	}
 
 	public void SetMutatedGenome(Genome g)
