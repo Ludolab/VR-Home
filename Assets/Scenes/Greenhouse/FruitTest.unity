@@ -253,6 +253,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1064695730}
     m_Modifications:
+    - target: {fileID: 114193398573130750, guid: a7352a23d4d23024d899707790f5a250,
+        type: 2}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4493201980653798, guid: a7352a23d4d23024d899707790f5a250, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -301,6 +306,31 @@ Prefab:
     - target: {fileID: 4493201980653798, guid: a7352a23d4d23024d899707790f5a250, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.0000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193398573130750, guid: a7352a23d4d23024d899707790f5a250,
+        type: 2}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193398573130750, guid: a7352a23d4d23024d899707790f5a250,
+        type: 2}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193398573130750, guid: a7352a23d4d23024d899707790f5a250,
+        type: 2}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 594781361}
+    - target: {fileID: 114193398573130750, guid: a7352a23d4d23024d899707790f5a250,
+        type: 2}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextDay
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193398573130750, guid: a7352a23d4d23024d899707790f5a250,
+        type: 2}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7352a23d4d23024d899707790f5a250, type: 2}
@@ -517,8 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace43e0aac3f0644daeb12650404b11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fontMaterial: {fileID: 2100000, guid: bdc2005ff350fbd4eb6bd55d1dfe10a8, type: 2}
-  font: {fileID: 12800000, guid: 65f5e1d3ea189b14d88af0c733ffdb2b, type: 3}
+  info: {fileID: 11400000, guid: eecc189d68757e140b8f8a310471d0bb, type: 2}
   letterPrefab: {fileID: 165899331}
 --- !u!1 &263441709
 GameObject:
@@ -1094,6 +1123,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 594781360}
+  - component: {fileID: 594781361}
   m_Layer: 0
   m_Name: TimeManager
   m_TagString: Untagged
@@ -1114,6 +1144,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &594781361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 594781359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9c0bdfe8e347840bb39395adc3509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neighborsObj: {fileID: 2093323421}
 --- !u!1 &619567118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,8 +2835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace43e0aac3f0644daeb12650404b11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fontMaterial: {fileID: 2100000, guid: 44f4e89cafb9ef64a96422c18be9edf6, type: 2}
-  font: {fileID: 12800000, guid: d7757a5665876e942b3751f0cf8ad0c3, type: 3}
+  info: {fileID: 11400000, guid: 0a4a435e00ddcff44b4ac55ade23a23f, type: 2}
   letterPrefab: {fileID: 165899331}
 --- !u!1 &1172002674
 GameObject:
@@ -4360,7 +4401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2093323422}
   m_Layer: 0
-  m_Name: Community
+  m_Name: Neighbors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

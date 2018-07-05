@@ -816,7 +816,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.95, z: 0.01}
+  m_Size: {x: 1, y: 0.95, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65610962015146132
 BoxCollider:
@@ -840,7 +840,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.95, z: 0.01}
+  m_Size: {x: 1, y: 0.95, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82369621891610088
 AudioSource:
@@ -1155,17 +1155,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1404612182106858}
-  m_Text: 'I asked the mailman to
-
-    set up some outboxes for
-
-    you. Just change the label
-
-    and leave something in
-
-    there overnight, he''ll
-
-    take care of the rest.'
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1186,18 +1176,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964303388416590}
-  m_Text: 'If you''re feeling generous,
-
-    maybe you could test it
-
-    out by sending me one of
-
-    those fruits you''re growing
-
-    ;)
-
-
-    - Sanjay'
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
