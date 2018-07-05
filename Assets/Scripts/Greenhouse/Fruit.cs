@@ -117,9 +117,10 @@ public class Fruit : MonoBehaviour
 		mat.SetColor("_Color2", color2);
 		transform.localScale = new Vector3(scale, stretchScale, scale);
 
-		/*Vector3 anchor = joint.anchor;
+		//force anchor recalculation
+		Vector3 anchor = joint.anchor;
 		anchor.y = 0.5f;
-		joint.anchor = anchor;*/
+		joint.anchor = anchor;
 	}
 
 	public void SetMutatedGenome(Genome g)
