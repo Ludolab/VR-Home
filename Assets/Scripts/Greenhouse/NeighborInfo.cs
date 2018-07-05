@@ -17,6 +17,9 @@ public class NeighborInfo : ScriptableObject
 
 		[TextArea(3, 10)]
 		public string text2;
+
+		public bool dependsOnGift;
+		//TODO: type of gift required
 	}
 
 	public Material fontMaterial;
