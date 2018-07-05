@@ -19,3 +19,14 @@
 - Rock sound by LittleLuigi: https://freesound.org/people/LittleLuigi/sounds/364790/
 - Sample music by Greek555: https://freesound.org/people/Greek555/
 - Squish sound by HonorHunter: https://freesound.org/people/HonorHunter/sounds/271666/
+
+### Fonts
+- TrashHand by Luce Avérous: https://www.dafont.com/trashhand.font
+- Jaime Blues by PremiereGraphics: https://www.dafont.com/jaime-blues.font
+- Journal by Fontourist: https://www.dafont.com/journal.font
+- Skinny by notfon1234: https://www.dafont.com/skinny-notfon1234.font
+- Angelina by Angie Durbin: https://www.dafont.com/angelina.font
+- Daniel by Daniel Midgley: https://www.dafont.com/daniel.font
+- Apalu by Khurasan: https://www.dafont.com/apalu.font
+- Aision by Fortress Tech: https://www.dafont.com/aision.font
+- Throw My Hands Up in the Air by Kimberly Geswein: https://www.dafont.com/throw-my-hands-up-in-the-air.font

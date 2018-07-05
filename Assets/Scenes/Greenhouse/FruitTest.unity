@@ -347,6 +347,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 901e099b0de224b22b79984bdab5c219, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &165899331 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1414620563094724, guid: e9e2aeed42e11ce41b979754f34b4751,
+    type: 2}
+  m_PrefabInternal: {fileID: 845239875}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +477,49 @@ Transform:
   m_Father: {fileID: 1172002675}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &224395553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224395554}
+  - component: {fileID: 224395555}
+  m_Layer: 0
+  m_Name: Sanjay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &224395554
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 224395553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2093323422}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &224395555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 224395553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace43e0aac3f0644daeb12650404b11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontMaterial: {fileID: 2100000, guid: bdc2005ff350fbd4eb6bd55d1dfe10a8, type: 2}
+  font: {fileID: 12800000, guid: 65f5e1d3ea189b14d88af0c733ffdb2b, type: 3}
+  letterPrefab: {fileID: 165899331}
 --- !u!1 &263441709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,6 +2753,49 @@ Transform:
   m_PrefabParentObject: {fileID: 4493201980653798, guid: a7352a23d4d23024d899707790f5a250,
     type: 2}
   m_PrefabInternal: {fileID: 50737445}
+--- !u!1 &1156262061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1156262062}
+  - component: {fileID: 1156262063}
+  m_Layer: 0
+  m_Name: Harry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1156262062
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1156262061}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2093323422}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1156262063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1156262061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace43e0aac3f0644daeb12650404b11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontMaterial: {fileID: 2100000, guid: 44f4e89cafb9ef64a96422c18be9edf6, type: 2}
+  font: {fileID: 12800000, guid: d7757a5665876e942b3751f0cf8ad0c3, type: 3}
+  letterPrefab: {fileID: 165899331}
 --- !u!1 &1172002674
 GameObject:
   m_ObjectHideFlags: 0
@@ -4260,6 +4351,36 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2093323421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2093323422}
+  m_Layer: 0
+  m_Name: Community
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2093323422
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2093323421}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 224395554}
+  - {fileID: 1156262062}
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2113203712
 GameObject:
   m_ObjectHideFlags: 0
