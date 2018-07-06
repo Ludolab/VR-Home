@@ -33,17 +33,19 @@ public class TimeManager : MonoBehaviour
 
 	private void ProcessDay()
 	{
-
-		if (day == 1)
+		foreach (Outbox outbox in outboxes)
 		{
-			foreach (Outbox outbox in outboxes)
+			Fruit[] contents = outbox.ClearFruit();
+			Neighbor receiver = ; //TODO
+			receiver.GiveGift(contents);
+			//TODO: tell neighbors about outbox contents
+
+			if (day == 1)
 			{
 				outbox.gameObject.SetActive(true);
 			}
 		}
 
-		//TODO: clear outbox
-		//TODO: tell neighbors about outbox contents
 		foreach (Neighbor neighbor in neighbors)
 		{
 			neighbor.StartDay(day);

@@ -27,8 +27,7 @@ public class NeighborInfo : ScriptableObject
 	//TODO: paper texture
 
 	public LetterInfo[] letters;
-	//TODO: gifts
-	//TODO: conditional somehow on gifts from player
+	//TODO: gifts with letters
 
-	public int dayLabelUnlocked; //index of day on which this person's label is selectable in outbox
+	public int dayLabelUnlocked; //index of day on which this person's label becomes selectable in outbox
 }

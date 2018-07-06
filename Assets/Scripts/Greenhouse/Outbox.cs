@@ -9,9 +9,10 @@ public class Outbox : MonoBehaviour
 	public Transform labelTransform;
 
 	private List<GameObject> labels = new List<GameObject>();
-
 	private int labelIndex = 0;
 	private GameObject activeLabel;
+
+	private List<Fruit> fruits = new List<Fruit>();
 
 	public void AddLabel(NeighborInfo info)
 	{
@@ -63,5 +64,22 @@ public class Outbox : MonoBehaviour
 			activeLabel = labels[labelIndex];
 			activeLabel.SetActive(true);
 		}
+	}
+
+	public void AddFruit(Fruit f)
+	{
+		fruits.Add(f);
+	}
+
+	public void RemoveFruit(Fruit f)
+	{
+		fruits.Remove(f);
+	}
+
+	public Fruit[] ClearFruit()
+	{
+		Fruit[] contents = fruits.ToArray();
+		fruits.Clear();
+		return contents;
 	}
 }
