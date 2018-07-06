@@ -24,6 +24,7 @@ MonoBehaviour:
 
 
       -Sanjay'
+    dependsOnGift: 0
   - exists: 1
     text1: 'I asked the mailman to
 
@@ -47,6 +48,9 @@ MonoBehaviour:
       =^)
 
       -Sanjay'
+    dependsOnGift: 0
   - exists: 0
-    text1: 
-    text2: 
+    text1: Hey... thanks for the gift
+    text2: -Sanjay
+    dependsOnGift: 1
+  dayLabelUnlocked: 0

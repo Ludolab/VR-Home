@@ -7,6 +7,7 @@ public class Neighbor : MonoBehaviour
 
 	public NeighborInfo info;
 	public GameObject letterPrefab;
+	public Fruit[] todaysGift = new Fruit[0];
 
 	public GameObject GenerateLetter(string text1, string text2, Vector3 position)
 	{
@@ -23,7 +24,10 @@ public class Neighbor : MonoBehaviour
 			NeighborInfo.LetterInfo l = info.letters[day];
 			if (l.exists)
 			{
-				GenerateLetter(l.text1, l.text2, new Vector3(0, 1f, 0)); //TODO: position
+				if (!l.dependsOnGift || todaysGift.Length > 0) //TODO: type of gift
+				{
+					GenerateLetter(l.text1, l.text2, new Vector3(0, 1f, 0)); //TODO: position
+				}
 			}
 		}
 
@@ -31,5 +35,12 @@ public class Neighbor : MonoBehaviour
 		{
 			TimeManager.instance.AddOutboxLabel(info);
 		}
+
+		todaysGift = new Fruit[0];
+	}
+
+	public void GiveGift(Fruit[] gift)
+	{
+		todaysGift = gift;
 	}
 }
