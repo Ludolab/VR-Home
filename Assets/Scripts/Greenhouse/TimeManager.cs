@@ -36,7 +36,7 @@ public class TimeManager : MonoBehaviour
 		foreach (Outbox outbox in outboxes)
 		{
 			Fruit[] contents = outbox.ClearFruit();
-			Neighbor receiver = ; //TODO
+			Neighbor receiver = null; //TODO
 			receiver.GiveGift(contents);
 			//TODO: tell neighbors about outbox contents
 
