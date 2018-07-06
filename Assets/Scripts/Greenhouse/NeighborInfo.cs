@@ -30,4 +30,5 @@ public class NeighborInfo : ScriptableObject
 	//TODO: gifts
 	//TODO: conditional somehow on gifts from player
 
+	public int dayLabelUnlocked; //index of day on which this person's label is selectable in outbox
 }

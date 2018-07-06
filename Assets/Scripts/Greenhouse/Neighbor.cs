@@ -26,5 +26,10 @@ public class Neighbor : MonoBehaviour
 				GenerateLetter(l.text1, l.text2, new Vector3(0, 1f, 0)); //TODO: position
 			}
 		}
+
+		if (day == info.dayLabelUnlocked)
+		{
+			TimeManager.instance.AddOutboxLabel(info);
+		}
 	}
 }

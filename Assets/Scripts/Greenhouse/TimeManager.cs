@@ -12,6 +12,7 @@ public class TimeManager : MonoBehaviour
 	private int day = 0;
 
 	private Neighbor[] neighbors;
+	private Outbox[] outboxes;
 	private List<Plant> plants = new List<Plant>();
 
 	private void Awake()
@@ -26,11 +27,21 @@ public class TimeManager : MonoBehaviour
 	private void Start()
 	{
 		neighbors = neighborsObj.GetComponentsInChildren<Neighbor>();
+		outboxes = FindObjectsOfType<Outbox>();
 		ProcessDay();
 	}
 
 	private void ProcessDay()
 	{
+
+		if (day == 1)
+		{
+			foreach (Outbox outbox in outboxes)
+			{
+				outbox.gameObject.SetActive(true);
+			}
+		}
+
 		//TODO: clear outbox
 		//TODO: tell neighbors about outbox contents
 		foreach (Neighbor neighbor in neighbors)
@@ -60,5 +71,13 @@ public class TimeManager : MonoBehaviour
 	public void AddPlant(Plant plant)
 	{
 		plants.Add(plant);
+	}
+
+	public void AddOutboxLabel(NeighborInfo info)
+	{
+		foreach (Outbox outbox in outboxes)
+		{
+			outbox.AddLabel(info);
+		}
 	}
 }
