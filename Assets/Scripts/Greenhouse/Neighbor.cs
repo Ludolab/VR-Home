@@ -22,9 +22,9 @@ public class Neighbor : MonoBehaviour
 		if (day < info.letters.Length)
 		{
 			NeighborInfo.LetterInfo l = info.letters[day];
-			if (l.exists)
+			if (l.Exists())
 			{
-				print("[Day " + day + "] Requires gift: " + l.dependsOnGift + ", gift: " + todaysGift);
+				//print("[Day " + day + "] Requires gift: " + l.dependsOnGift + ", gift: " + todaysGift);
 				if (!l.dependsOnGift || todaysGift.Length > 0) //TODO: type of gift
 				{
 					GenerateLetter(l.text1, l.text2, new Vector3(0, 1f, 0)); //TODO: position

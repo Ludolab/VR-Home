@@ -545,6 +545,7 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: eecc189d68757e140b8f8a310471d0bb, type: 2}
   letterPrefab: {fileID: 1975304855732882, guid: c8c24c597dcbdc04f97b43795c500e19,
     type: 2}
+  todaysGift: []
 --- !u!1 &263441709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,6 +2324,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 23274173820079858, guid: 77428c347a8b56143828eafeaab5dd14,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b5162e65f07ed44cb9ee8c330db25c1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77428c347a8b56143828eafeaab5dd14, type: 2}
   m_IsPrefabParent: 0
@@ -2860,6 +2866,7 @@ MonoBehaviour:
   info: {fileID: 11400000, guid: 0a4a435e00ddcff44b4ac55ade23a23f, type: 2}
   letterPrefab: {fileID: 1975304855732882, guid: c8c24c597dcbdc04f97b43795c500e19,
     type: 2}
+  todaysGift: []
 --- !u!1 &1172002674
 GameObject:
   m_ObjectHideFlags: 0
