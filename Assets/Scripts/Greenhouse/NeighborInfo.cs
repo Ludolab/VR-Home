@@ -10,8 +10,6 @@ public class NeighborInfo : ScriptableObject
 	[Serializable]
 	public struct LetterInfo
 	{
-		public bool exists;
-
 		[TextArea(3, 10)]
 		public string text1;
 
@@ -20,6 +18,11 @@ public class NeighborInfo : ScriptableObject
 
 		public bool dependsOnGift;
 		//TODO: type of gift required
+
+		public bool Exists()
+		{
+			return (text1 != null && text1 != "") || (text2 != null && text2 != "");
+		}
 	}
 
 	public Material fontMaterial;

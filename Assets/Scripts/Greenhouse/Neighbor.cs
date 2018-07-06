@@ -22,7 +22,7 @@ public class Neighbor : MonoBehaviour
 		if (day < info.letters.Length)
 		{
 			NeighborInfo.LetterInfo l = info.letters[day];
-			if (l.exists)
+			if (l.Exists())
 			{
 				print("[Day " + day + "] Requires gift: " + l.dependsOnGift + ", gift: " + todaysGift);
 				if (!l.dependsOnGift || todaysGift.Length > 0) //TODO: type of gift

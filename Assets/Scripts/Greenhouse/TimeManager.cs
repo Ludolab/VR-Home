@@ -34,6 +34,7 @@ public class TimeManager : MonoBehaviour
 
 	private void ProcessDay()
 	{
+		print("Day " + day);
 		foreach (Outbox outbox in outboxes)
 		{
 			string[] contents = outbox.ClearFruit();
