@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class SetSkyFull : MonoBehaviour {
 
-    //sound changes according to the time of the day
     private AudioSource ambientSound;
-    public AudioClip ambient;
-    public float volumehi = 0.7f;
-    public float volumelo = 0f;
-    private float volumeind = 0f;
+
+    //NIGHTTIME AMBIENT SOUND
+    public AudioClip ambientNight;
+    private float volumehiN = 0.7f;
+    private float volumeloN = 0f;
+    private float volumeindN = 0f;
+
+    //DAYTIME AMBIENT SOUND
+    public AudioClip ambientMorning;
+    private float volumehiM = 0.7f;
+    private float volumeloM = 0f;
+    private float volumeindM = 0f;
+
+    private bool isMorningAbient = false;
 
     public float percentThroughDay;
     public Material dayToSunset;
@@ -41,7 +50,7 @@ public class SetSkyFull : MonoBehaviour {
         applyChanges();
 
         ambientSound = GetComponent<AudioSource>();
-        ambientSound.clip = ambient;
+        ambientSound.clip = ambientMorning;
         ambientSound.loop = true;
         ambientSound.volume = 0;
         ambientSound.Play();
@@ -74,14 +83,31 @@ public class SetSkyFull : MonoBehaviour {
         }
         percentThroughDay = Mathf.Lerp(0, 100, (Time.time - cycleStartTime) / secondsPerCycle);
 
-        if(percentThroughDay > 50 && percentThroughDay < 100) {
-          volumeind = 1 - (float)((Mathf.Abs(75 - percentThroughDay)) / 25);
-          ambientSound.volume = Mathf.Lerp(volumelo, volumehi, volumeind);
-        } else {
-          ambientSound.volume = 0;
-        }
-
         applyChanges();
+
+
+        //Adjust volume of daytime sound
+        if(percentThroughDay >= 0 && percentThroughDay < 50) {
+          if(!isMorningAbient){
+            ambientSound.clip = ambientMorning;
+            ambientSound.Play();
+            isMorningAbient = true;
+            print("Sound changed to morning ambient");
+          }
+          volumeindM = 1 - (float)((Mathf.Abs(25 - percentThroughDay)) / 25);
+          ambientSound.volume = Mathf.Lerp(volumeloM, volumehiM, volumeindM);
+        }
+        //Adjust volume of nighttime sound
+        else if(percentThroughDay >= 50 && percentThroughDay < 100) {
+          if(isMorningAbient){
+            ambientSound.clip = ambientNight;
+            ambientSound.Play();
+            isMorningAbient = false;
+            print("Sound changed to night ambient");
+          }
+          volumeindN = 1 - (float)((Mathf.Abs(75 - percentThroughDay)) / 25);
+          ambientSound.volume = Mathf.Lerp(volumeloN, volumehiN, volumeindN);
+        }
     }
 
     public void applyChanges()
