@@ -45,6 +45,10 @@ public class Outbox : MonoBehaviour
 	private void ChangeLabel(int addition)
 	{
 		labelIndex = (labelIndex + addition) % labels.Count;
+		if (labelIndex < 0)
+		{
+			labelIndex += labels.Count;
+		}
 		UpdateLabel();
 	}
 
