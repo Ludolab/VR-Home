@@ -79,6 +79,10 @@ public class Outbox : MonoBehaviour
 	public Fruit[] ClearFruit()
 	{
 		Fruit[] contents = fruits.ToArray();
+		foreach (Fruit f in fruits)
+		{
+			Destroy(f.gameObject);
+		}
 		fruits.Clear();
 		return contents;
 	}
