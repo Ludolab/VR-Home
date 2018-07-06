@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TimeManager : MonoBehaviour
@@ -36,9 +37,15 @@ public class TimeManager : MonoBehaviour
 		foreach (Outbox outbox in outboxes)
 		{
 			Fruit[] contents = outbox.ClearFruit();
-			Neighbor receiver = null; //TODO
-			receiver.GiveGift(contents);
-			//TODO: tell neighbors about outbox contents
+			if (contents.Length > 0)
+			{
+				string name = outbox.GetLabel();
+				if (name != null)
+				{
+					Neighbor receiver = GetNeighborByName(name);
+					receiver.GiveGift(contents);
+				}
+			}
 
 			if (day == 1)
 			{
@@ -81,5 +88,10 @@ public class TimeManager : MonoBehaviour
 		{
 			outbox.AddLabel(info);
 		}
+	}
+
+	private Neighbor GetNeighborByName(string name)
+	{
+		return neighbors.First(n => n.info.name == name);
 	}
 }

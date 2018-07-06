@@ -82,4 +82,11 @@ public class Outbox : MonoBehaviour
 		fruits.Clear();
 		return contents;
 	}
+
+	public string GetLabel()
+	{
+		if (activeLabel == null) return null;
+
+		return activeLabel.transform.Find("text").GetComponent<TextMesh>().text;
+	}
 }
