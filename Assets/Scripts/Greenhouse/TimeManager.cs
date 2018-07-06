@@ -36,7 +36,7 @@ public class TimeManager : MonoBehaviour
 	{
 		foreach (Outbox outbox in outboxes)
 		{
-			Fruit[] contents = outbox.ClearFruit();
+			string[] contents = outbox.ClearFruit();
 			if (contents.Length > 0)
 			{
 				string name = outbox.GetLabel();

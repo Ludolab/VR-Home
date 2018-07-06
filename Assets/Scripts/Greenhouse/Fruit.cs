@@ -155,4 +155,9 @@ public class Fruit : MonoBehaviour
 
 		return g;
 	}
+
+	public string GetName()
+	{
+		return genome.name;
+	}
 }
