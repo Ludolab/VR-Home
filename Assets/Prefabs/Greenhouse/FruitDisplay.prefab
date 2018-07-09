@@ -216,7 +216,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -451,7 +451,11 @@ MonoBehaviour:
   unripeColor: {r: 0.08784264, g: 0.8867924, b: 0.24378105, a: 1}
   particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
     type: 2}
-  pickSound: {fileID: 8300000, guid: 891b9c1d17e50204a85ebdf71b6670f5, type: 3}
+  pickSound:
+  - {fileID: 8300000, guid: 7383e9a8f73064e71bfc248e71da8aba, type: 3}
+  - {fileID: 8300000, guid: 957ba31a9137d4079bb57e90d57943bc, type: 3}
+  - {fileID: 8300000, guid: ec941f546044945b39c7c349d290220a, type: 3}
+  - {fileID: 8300000, guid: 68810c78ecaa84754b97d90b86cf6ec3, type: 3}
 --- !u!114 &114951180911778752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -463,6 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22dba5ee526fb7e4b9b99763d1c104a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineEnabled: 1
   hoverColor: {r: 0, g: 0.6435714, b: 1, a: 0.3647059}
   heldColor: {r: 0, g: 0.05708027, b: 1, a: 0.72156864}
 --- !u!135 &135373034551345952
