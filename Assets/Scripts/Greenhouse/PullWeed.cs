@@ -61,7 +61,7 @@ public class PullWeed : MonoBehaviour
 		Vector3 to = newPosition - transform.position;
 		transform.rotation = Quaternion.FromToRotation(from, to);*/
 
-		if (dist < pullDistance)
+		if (dist > pullDistance)
 		{
 			transform.localScale = startScale;
 			print("POP");
