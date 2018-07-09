@@ -9,11 +9,11 @@ public class TimeManager : MonoBehaviour
 	public static TimeManager instance;
 
 	public GameObject neighborsObj;
+	public Outbox[] outboxes;
 
 	private int day = 0;
 
 	private Neighbor[] neighbors;
-	private Outbox[] outboxes;
 	private List<Plant> plants = new List<Plant>();
 	private List<GameObject> garbage = new List<GameObject>();
 
@@ -29,7 +29,6 @@ public class TimeManager : MonoBehaviour
 	private void Start()
 	{
 		neighbors = neighborsObj.GetComponentsInChildren<Neighbor>();
-		outboxes = FindObjectsOfType<Outbox>();
 		ProcessDay();
 	}
 
