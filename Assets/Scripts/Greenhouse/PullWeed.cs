@@ -24,6 +24,7 @@ public class PullWeed : MonoBehaviour
 	private Quaternion baseRotation;
 	private Vector3 offset;
 	private Vector3 startScale;
+	private Vector3 grabbedPosition;
 
 	private void Start()
 	{
@@ -41,6 +42,7 @@ public class PullWeed : MonoBehaviour
 		basePosition = GetDragPosition();
 		baseRotation = dragObj.transform.rotation;
 		offset = transform.position - basePosition;
+		grabbedPosition = transform.position;
 		print("GRASP");
 		//TODO: could play some sort of looping stretchy sound here?
 	}
@@ -100,6 +102,8 @@ public class PullWeed : MonoBehaviour
 	public void OnUngrasp()
 	{
 		grasped = false;
+		transform.position = grabbedPosition;
+		transform.localScale = startScale;
 		dragObj.transform.position = basePosition;
 		dragObj.transform.rotation = baseRotation;
 	}
