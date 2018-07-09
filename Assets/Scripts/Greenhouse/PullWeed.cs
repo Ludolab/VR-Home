@@ -16,6 +16,7 @@ public class PullWeed : MonoBehaviour
 	private Rigidbody rb;
 	private Collider col;
 	private AudioSource audioSrc;
+	private Rigidbody dragRB;
 
 	private bool grasped = false;
 	private bool pulled = false;
@@ -27,6 +28,7 @@ public class PullWeed : MonoBehaviour
 	{
 		ib = GetComponent<InteractionBehaviour>();
 		rb = GetComponent<Rigidbody>();
+		dragRB = dragObj.GetComponent<Rigidbody>();
 		col = GetComponent<Collider>();
 		audioSrc = GetComponent<AudioSource>();
 		startScale = transform.localScale;
@@ -38,38 +40,42 @@ public class PullWeed : MonoBehaviour
 		basePosition = GetDragPosition();
 		offset = transform.position - basePosition;
 		print("GRASP");
+		//TODO: could play some sort of looping stretchy sound here?
 	}
 
 	private Vector3 GetDragPosition()
 	{
-		return dragObj.transform.position;
+		return dragRB.position;
 	}
 
-	public void HoldGrasp()
+	private void FixedUpdate()
 	{
-		//TODO: could play some sort of stretchy sound here?
-
-		Vector3 newPosition = GetDragPosition();
-
-		//TODO: stretch/turn around anchor point in roots
-		Vector3 diff = newPosition - basePosition;
-		float dist = diff.magnitude;
-		//print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
-
-		float yScale = startScale.y + dist;
-		transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
-
-		transform.position = (newPosition + basePosition) / 2 + offset;
-
-		/*Vector3 from = basePosition - transform.position;
-		Vector3 to = newPosition - transform.position;
-		transform.rotation = Quaternion.FromToRotation(from, to);*/
-
-		if (dist > pullDistance)
+		if (grasped)
 		{
-			transform.localScale = startScale;
-			print("POP");
-			PullOut();
+			Vector3 newPosition = GetDragPosition();
+
+			//TODO: stretch/turn around anchor point in roots
+			Vector3 diff = newPosition - basePosition;
+			float dist = diff.magnitude;
+			//print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
+
+			float yScale = startScale.y + dist;
+			transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
+
+			transform.position = (newPosition + basePosition) / 2 + offset;
+
+			/*Vector3 from = basePosition - transform.position;
+			Vector3 to = newPosition - transform.position;
+			transform.rotation = Quaternion.FromToRotation(from, to);*/
+
+			//TODO: adjust pitch of stretchy sound?
+
+			if (dist > pullDistance)
+			{
+				transform.localScale = startScale;
+				print("POP");
+				PullOut();
+			}
 		}
 	}
 
