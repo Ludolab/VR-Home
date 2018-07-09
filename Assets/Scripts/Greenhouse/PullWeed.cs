@@ -59,10 +59,11 @@ public class PullWeed : MonoBehaviour
 			float dist = diff.magnitude;
 			//print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
 
-			float yScale = startScale.y + dist;
+			float yScale = startScale.y + dist * 10;
 			transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
 
-			transform.position = (newPosition + basePosition) / 2 + offset;
+			float yAvg = ((newPosition + basePosition) / 2).y;
+			transform.position = yAvg * Vector3.up + offset;
 
 			/*Vector3 from = basePosition - transform.position;
 			Vector3 to = newPosition - transform.position;
