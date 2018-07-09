@@ -63,8 +63,8 @@ public class PullWeed : MonoBehaviour
 			float yScale = startScale.y;
 			transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
 
-			float yAvg = ((dragPosition + basePosition) / 2).y;
-			transform.position = yAvg * Vector3.up + offset;
+			float yAvg = ((dragPosition - basePosition) / 2).y;
+			transform.position = yAvg * Vector3.up + offset + basePosition;
 
 			/*Vector3 from = basePosition - transform.position;
 			Vector3 to = newPosition - transform.position;
