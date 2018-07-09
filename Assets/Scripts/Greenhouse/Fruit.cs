@@ -16,7 +16,7 @@ public struct Genome
 	public float stretchScale; //y dimension size
 
 	public float lifetime; //time (seconds) to reach maximum age
-	
+
 	//TODO: more fruit/plant properties...
 }
 
@@ -25,7 +25,8 @@ public class Fruit : MonoBehaviour
 
 	public Color unripeColor;
 	public GameObject particlePrefab;
-	public AudioClip pickSound;
+	public AudioClip[] pickSound;
+
 
 	private ConfigurableJoint joint;
 	private Rigidbody rb;
@@ -77,7 +78,7 @@ public class Fruit : MonoBehaviour
 		ParticleSystem.MainModule main = ps.main;
 		main.startColor = genome.color1;
 		AudioSource aud = particles.GetComponent<AudioSource>();
-		aud.clip = pickSound;
+		aud.clip = pickSound[Random.Range(0, pickSound.Length)];
 	}
 
 	private IEnumerator RefreshLocked()
