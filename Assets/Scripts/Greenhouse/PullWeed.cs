@@ -21,6 +21,7 @@ public class PullWeed : MonoBehaviour
 	private bool grasped = false;
 	private bool pulled = false;
 	private Vector3 basePosition;
+	private Quaternion baseRotation;
 	private Vector3 offset;
 	private Vector3 startScale;
 
@@ -38,6 +39,7 @@ public class PullWeed : MonoBehaviour
 	{
 		grasped = true;
 		basePosition = GetDragPosition();
+		baseRotation = dragObj.transform.rotation;
 		offset = transform.position - basePosition;
 		print("GRASP");
 		//TODO: could play some sort of looping stretchy sound here?
@@ -60,7 +62,7 @@ public class PullWeed : MonoBehaviour
 			float dist = diff.magnitude;
 			//print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
 
-			float yScale = startScale.y + dist;
+			float yScale = startScale.y + dist * 4;
 			transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
 
 			float yAvg = ((dragPosition - basePosition) / 2).y;
@@ -99,6 +101,7 @@ public class PullWeed : MonoBehaviour
 	{
 		grasped = false;
 		dragObj.transform.position = basePosition;
+		dragObj.transform.rotation = baseRotation;
 	}
 
 	public void OnContact()
