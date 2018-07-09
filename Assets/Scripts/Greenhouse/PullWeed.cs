@@ -76,10 +76,8 @@ public class PullWeed : MonoBehaviour
 		audioSrc.PlayOneShot(popOutClip);
 		rb.isKinematic = false;
 		rb.useGravity = true;
-		ib.moveObjectWhenGrasped = true;
-		ib.ReleaseFromGrasp(); //TODO no
-		//ib.RefreshPositionLockedState(); //??
-		//TODO: snap into hand?
+		ib.enabled = true;
+		//TODO: grasp, snap into hand
 	}
 
 	public void OnUngrasp()
