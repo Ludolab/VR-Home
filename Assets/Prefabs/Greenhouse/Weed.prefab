@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 82707367968796936}
   - component: {fileID: 54658013942226920}
   - component: {fileID: 114397440995952710}
+  - component: {fileID: 136794429129151384}
   m_Layer: 0
   m_Name: Weed
   m_TagString: Untagged
@@ -657,7 +658,7 @@ MonoBehaviour:
   _contactForceMode: 0
   _allowMultiGrasp: 0
   _moveObjectWhenGrasped: 1
-  graspedMovementType: 0
+  graspedMovementType: 1
   _overrideInteractionLayer: 0
   _interactionLayer:
     layerIndex: 0
@@ -734,6 +735,19 @@ MonoBehaviour:
             m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+--- !u!136 &136794429129151384
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1600760226230220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05
+  m_Height: 0.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.05, z: 0.01}
 --- !u!136 &136806532407300488
 CapsuleCollider:
   m_ObjectHideFlags: 1

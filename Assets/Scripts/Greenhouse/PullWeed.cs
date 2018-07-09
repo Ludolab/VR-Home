@@ -14,6 +14,7 @@ public class PullWeed : MonoBehaviour
 
 	private InteractionBehaviour ib;
 	private Rigidbody rb;
+	private Collider col;
 	private AudioSource audioSrc;
 
 	private bool grasped = false;
@@ -26,6 +27,7 @@ public class PullWeed : MonoBehaviour
 	{
 		ib = GetComponent<InteractionBehaviour>();
 		rb = GetComponent<Rigidbody>();
+		col = GetComponent<Collider>();
 		audioSrc = GetComponent<AudioSource>();
 		startScale = transform.localScale;
 	}
@@ -52,7 +54,7 @@ public class PullWeed : MonoBehaviour
 		//TODO: stretch/turn around anchor point in roots
 		Vector3 diff = newPosition - basePosition;
 		float dist = diff.magnitude;
-		print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
+		//print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
 
 		float yScale = startScale.y + dist;
 		transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
@@ -75,6 +77,7 @@ public class PullWeed : MonoBehaviour
 	{
 		audioSrc.PlayOneShot(popOutClip);
 		dragObj.SetActive(false);
+		col.enabled = true;
 		rb.isKinematic = false;
 		rb.useGravity = true;
 		ib.enabled = true;
