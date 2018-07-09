@@ -61,6 +61,6 @@ public class PickUpLeap : MonoBehaviour
 
 	private void SetColor(Color color)
 	{
-		outlineMat.SetColor("_Color", color);
+		outlineMat.SetColor("_OutlineColor", color);
 	}
 }
