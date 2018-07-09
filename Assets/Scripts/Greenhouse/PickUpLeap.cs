@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PickUpLeap : MonoBehaviour
 {
+
+	public bool outlineEnabled = true; //uncheck to disable outlines completely (without having to remove outline material)
+
 	public Color hoverColor;
 	public Color heldColor;
 
@@ -77,9 +80,9 @@ public class PickUpLeap : MonoBehaviour
 		}
 	}
 
-	private void SetOutline(bool enabled)
+	private void SetOutline(bool outlined)
 	{
-		rend.materials = enabled ? withOutline : noOutline;
+		rend.materials = (outlineEnabled && outlined) ? withOutline : noOutline;
 	}
 
 	private void SetColor(Color color)

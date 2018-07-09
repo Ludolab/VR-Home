@@ -7,7 +7,8 @@ public class Neighbor : MonoBehaviour
 
 	public NeighborInfo info;
 	public GameObject letterPrefab;
-	public string[] todaysGift = new string[0];
+
+	private string[] todaysGift = new string[0];
 
 	public GameObject GenerateLetter(string text1, string text2, Vector3 position)
 	{

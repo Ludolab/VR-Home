@@ -5,10 +5,10 @@ using UnityEngine;
 public class TearOff : MonoBehaviour
 {
 
-	public Letter letter;
+	public Envelope envelope;
 
 	private void OnJointBreak(float breakForce)
 	{
-		letter.JointBroke();
+		envelope.JointBroke();
 	}
 }
