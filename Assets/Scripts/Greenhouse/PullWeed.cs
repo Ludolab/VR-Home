@@ -74,7 +74,8 @@ public class PullWeed : MonoBehaviour
 		rb.isKinematic = false;
 		rb.useGravity = true;
 		ib.moveObjectWhenGrasped = true;
-		ib.RefreshPositionLockedState(); //??
+		ib.ReleaseFromGrasp(); //TODO no
+		//ib.RefreshPositionLockedState(); //??
 		//TODO: snap into hand?
 	}
 
