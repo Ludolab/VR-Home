@@ -60,7 +60,7 @@ public class PullWeed : MonoBehaviour
 			float dist = diff.magnitude;
 			//print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
 
-			float yScale = startScale.y;
+			float yScale = startScale.y + dist;
 			transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
 
 			float yAvg = ((dragPosition - basePosition) / 2).y;
@@ -98,6 +98,7 @@ public class PullWeed : MonoBehaviour
 	public void OnUngrasp()
 	{
 		grasped = false;
+		dragObj.transform.position = basePosition;
 	}
 
 	public void OnContact()
