@@ -50,6 +50,7 @@ public class PullWeed : MonoBehaviour
 		//TODO: stretch/turn around anchor point in roots
 		Vector3 diff = newPosition - basePosition;
 		float dist = diff.magnitude;
+		print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
 
 		float yScale = startScale.y + dist;
 		transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
