@@ -14,6 +14,9 @@ public class PickUpLeap : MonoBehaviour
 	private Material[] noOutline;
 	private Material[] withOutline;
 
+	private bool hovered;
+	private bool held;
+
 	private void Start()
 	{
 		rend = GetComponent<Renderer>();
@@ -33,25 +36,45 @@ public class PickUpLeap : MonoBehaviour
 
 	public void OnHover()
 	{
-		SetOutline(true);
-		SetColor(hoverColor);
+		hovered = true;
+
+		if (!held)
+		{
+			SetOutline(true);
+			SetColor(hoverColor);
+		}
 	}
 
 	public void OnUnhover()
 	{
-		SetOutline(false);
+		hovered = false;
+
+		if (!held)
+		{
+			SetOutline(false);
+		}
 	}
 
 	public void OnGrasp()
 	{
+		held = true;
 		SetOutline(true);
 		SetColor(heldColor);
 	}
 
 	public void OnUngrasp()
 	{
-		SetOutline(true);
-		SetColor(hoverColor);
+		held = false;
+
+		if (hovered)
+		{
+			SetOutline(true);
+			SetColor(hoverColor);
+		}
+		else
+		{
+			SetOutline(false);
+		}
 	}
 
 	private void SetOutline(bool enabled)
