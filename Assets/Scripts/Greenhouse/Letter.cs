@@ -16,6 +16,7 @@ public class Letter : MonoBehaviour
 	private void Start()
 	{
 		numJoints = hingeObj.GetComponents<Joint>().Length;
+		TimeManager.instance.AddGarbage(gameObject);
 	}
 
 	public void JointBroke()
@@ -25,6 +26,7 @@ public class Letter : MonoBehaviour
 		{
 			paperObj.transform.parent = null;
 			paperObj.SetActive(true);
+			TimeManager.instance.AddGarbage(paperObj);
 		}
 	}
 

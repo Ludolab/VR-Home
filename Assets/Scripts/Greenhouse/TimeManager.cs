@@ -15,6 +15,7 @@ public class TimeManager : MonoBehaviour
 	private Neighbor[] neighbors;
 	private Outbox[] outboxes;
 	private List<Plant> plants = new List<Plant>();
+	private List<GameObject> garbage = new List<GameObject>();
 
 	private void Awake()
 	{
@@ -53,6 +54,12 @@ public class TimeManager : MonoBehaviour
 				outbox.gameObject.SetActive(true);
 			}
 		}
+
+		foreach (GameObject obj in garbage)
+		{
+			Destroy(obj);
+		}
+		garbage.Clear();
 
 		foreach (Neighbor neighbor in neighbors)
 		{
@@ -94,5 +101,10 @@ public class TimeManager : MonoBehaviour
 	private Neighbor GetNeighborByName(string name)
 	{
 		return neighbors.First(n => n.info.name == name);
+	}
+
+	public void AddGarbage(GameObject obj)
+	{
+		garbage.Add(obj);
 	}
 }

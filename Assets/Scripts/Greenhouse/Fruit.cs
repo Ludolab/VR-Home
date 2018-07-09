@@ -61,11 +61,13 @@ public class Fruit : MonoBehaviour
 		return genome;
 	}
 
+	[ContextMenu("Pick")]
 	public void Pick()
 	{
 		SpawnParticles();
 		Destroy(joint);
 		StartCoroutine(RefreshLocked());
+		TimeManager.instance.AddGarbage(gameObject);
 	}
 
 	private void SpawnParticles()

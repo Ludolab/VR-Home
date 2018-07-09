@@ -82,7 +82,7 @@ public class Outbox : MonoBehaviour
 		foreach (Fruit f in fruits)
 		{
 			fruitNames.Add(f.GetName()); 
-			Destroy(f.gameObject);
+			//Destroy(f.gameObject);
 		}
 		fruits.Clear();
 		return fruitNames.ToArray();
