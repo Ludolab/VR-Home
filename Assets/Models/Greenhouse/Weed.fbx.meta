@@ -1,38 +1,37 @@
 fileFormatVersion: 2
-guid: 814f5065d8b1d4873bb0480138bb69e8
+guid: 091c28d179808488698d434164633b61
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: group10
-    100002: group11
-    100004: group12
-    100006: pasted__pCube2
-    100008: pasted__pCube2 1
-    100010: pasted__pCube2 2
-    100012: pCube2
-    100014: //RootNode
-    400000: group10
-    400002: group11
-    400004: group12
-    400006: pasted__pCube2
-    400008: pasted__pCube2 1
-    400010: pasted__pCube2 2
-    400012: pCube2
-    400014: //RootNode
+    100000: group11
+    100002: group12
+    100004: pasted__pCube2
+    100006: pasted__pCube2 1
+    100008: pCube2
+    100010: pPipe1
+    100012: //RootNode
+    400000: group11
+    400002: group12
+    400004: pasted__pCube2
+    400006: pasted__pCube2 1
+    400008: pCube2
+    400010: pPipe1
+    400012: //RootNode
     2100000: weed_1
     2100002: weed_2
+    2100004: weed_root
     2300000: pasted__pCube2
     2300002: pasted__pCube2 1
-    2300004: pasted__pCube2 2
-    2300006: pCube2
+    2300004: pCube2
+    2300006: pPipe1
     3300000: pasted__pCube2
     3300002: pasted__pCube2 1
-    3300004: pasted__pCube2 2
-    3300006: pCube2
+    3300004: pCube2
+    3300006: pPipe1
     4300000: pCube2
     4300002: pasted__pCube2
     4300004: pasted__pCube2
-    4300006: pasted__pCube2
+    4300006: pPipe1
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -44,6 +43,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: weed_2
     second: {fileID: 2100000, guid: 2a12d072c96b84895ab29c91e2bcd872, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: weed_root
+    second: {fileID: 2100000, guid: 4a200fba384564dcfa97952f68b5678a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
