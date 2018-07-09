@@ -5,33 +5,23 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: pasted__group11
-    100004: pasted__pasted__pCube6
-    100006: pasted__pCube5
+    100004: pasted__group7
+    100006: pasted__pasted__pCube5
+    100008: pasted__pasted__pCube6
     400000: //RootNode
     400002: pasted__group11
-    400004: pasted__pasted__pCube6
-    400006: pasted__pCube5
-    2100000: pasted__garden_box_wood2
-    2100002: pasted__pasted__garden_box_divisors1
-    2300000: pasted__pasted__pCube6
-    2300002: pasted__pCube5
-    3300000: pasted__pasted__pCube6
-    3300002: pasted__pCube5
-    4300000: pasted__pCube5
-    4300002: pasted__pasted__pCube6
-    7400000: Take 001
-    9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__garden_box_wood2
-    second: {fileID: 2100000, guid: f0f0768846526413a90e3ed01f0bb618, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pasted__pasted__garden_box_divisors1
-    second: {fileID: 2100000, guid: 88365d5b2cd6b45c6bd4b707f8047601, type: 2}
+    400004: pasted__group7
+    400006: pasted__pasted__pCube5
+    400008: pasted__pasted__pCube6
+    2100000: garden_box_divisors
+    2100002: garden_box_wood
+    2300000: pasted__pasted__pCube5
+    2300002: pasted__pasted__pCube6
+    3300000: pasted__pasted__pCube5
+    3300002: pasted__pasted__pCube6
+    4300000: pasted__pasted__pCube6
+    4300002: pasted__pasted__pCube5
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -106,7 +96,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -1,51 +1,30 @@
 fileFormatVersion: 2
-guid: 1d631a2a8328e4e3891ef71a2353bc65
+guid: c68d31ed0bc0441eab2456d20604a48d
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pasted__group11
-    100004: pasted__group7
-    100006: pasted__pasted__group8
-    100008: pasted__pasted__group9
-    100010: pasted__pasted__pasted__pCube6
-    100012: pasted__pasted__pasted__pCube6 1
-    100014: pasted__pasted__pCube5
-    100016: pasted__pasted__pCube6
-    100018: pasted__pCube6
     400000: //RootNode
-    400002: pasted__group11
-    400004: pasted__group7
-    400006: pasted__pasted__group8
-    400008: pasted__pasted__group9
-    400010: pasted__pasted__pasted__pCube6
-    400012: pasted__pasted__pasted__pCube6 1
-    400014: pasted__pasted__pCube5
-    400016: pasted__pasted__pCube6
-    400018: pasted__pCube6
-    2100000: garden_box_divisors
-    2100002: garden_box_wood
-    2300000: pasted__pasted__pasted__pCube6
-    2300002: pasted__pasted__pasted__pCube6 1
-    2300004: pasted__pasted__pCube5
-    2300006: pasted__pasted__pCube6
-    2300008: pasted__pCube6
-    3300000: pasted__pasted__pasted__pCube6
-    3300002: pasted__pasted__pasted__pCube6 1
-    3300004: pasted__pasted__pCube5
-    3300006: pasted__pasted__pCube6
-    3300008: pasted__pCube6
-    4300000: pasted__pCube6
-    4300002: pasted__pasted__pCube6
-    4300004: pasted__pasted__pCube5
-    4300006: pasted__pasted__pasted__pCube6
-    4300008: pasted__pasted__pasted__pCube6
-  externalObjects: {}
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Mesh
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaves
+    second: {fileID: 2100000, guid: d14e8d71b5b614b13b623490ef68e721, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vegetables
+    second: {fileID: 2100000, guid: c49b0f61ef5e04c11bc177b2c4cbba0b, type: 2}
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 3
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -71,13 +50,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.01
     meshCompression: 0
     addColliders: 0
-    importVisibility: 1
+    importVisibility: 0
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -85,17 +64,17 @@ ModelImporter:
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    indexFormat: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 3
-    normalCalculationMode: 4
+    tangentImportMode: 4
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -115,7 +94,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
