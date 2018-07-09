@@ -10,6 +10,8 @@ public class PullWeed : MonoBehaviour
 
 	public float pullDistance;
 
+	public GameObject dragObj;
+
 	private InteractionBehaviour ib;
 	private Rigidbody rb;
 	private AudioSource audioSrc;
@@ -31,26 +33,21 @@ public class PullWeed : MonoBehaviour
 	public void OnGrasp()
 	{
 		grasped = true;
-		basePosition = GetHandPosition();
+		basePosition = GetDragPosition();
 		offset = transform.position - basePosition;
 		print("GRASP");
 	}
 
-	private Vector3 GetHandPosition()
+	private Vector3 GetDragPosition()
 	{
-		foreach (InteractionHand hand in ib.graspingHands)
-		{
-			return hand.transform.position;
-		}
-		print("No grasping hands...");
-		return Vector3.zero;
+		return dragObj.transform.position;
 	}
 
 	public void HoldGrasp()
 	{
 		//TODO: could play some sort of stretchy sound here?
 
-		Vector3 newPosition = GetHandPosition();
+		Vector3 newPosition = GetDragPosition();
 
 		//TODO: stretch/turn around anchor point in roots
 		Vector3 diff = newPosition - basePosition;
