@@ -19,7 +19,7 @@ public class PickUpLeap : MonoBehaviour
 		rend = GetComponent<Renderer>();
 		if (rend.materials.Length < 2)
 		{
-			throw new Exception(gameObject + " must have an outline shader and a normal shader");
+			throw new Exception(gameObject + " must have an outline shader and a regular shader");
 		}
 
 		outlineMat = rend.materials[0];
@@ -45,7 +45,7 @@ public class PickUpLeap : MonoBehaviour
 	public void OnGrasp()
 	{
 		SetOutline(true);
-		SetColor(hoverColor);
+		SetColor(heldColor);
 	}
 
 	public void OnUngrasp()
