@@ -17,6 +17,7 @@ public class PullWeed : MonoBehaviour
 	private bool grasped = false;
 	private bool pulled = false;
 	private Vector3 basePosition;
+	private Vector3 offset;
 	private Vector3 startScale;
 
 	private void Start()
@@ -31,6 +32,7 @@ public class PullWeed : MonoBehaviour
 	{
 		grasped = true;
 		basePosition = GetHandPosition();
+		offset = transform.position - basePosition;
 	}
 
 	private Vector3 GetHandPosition()
@@ -50,6 +52,8 @@ public class PullWeed : MonoBehaviour
 
 		float yScale = startScale.y + dist;
 		transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
+
+		transform.position = (newPosition + basePosition) / 2 + offset;
 
 		/*Vector3 from = basePosition - transform.position;
 		Vector3 to = newPosition - transform.position;
