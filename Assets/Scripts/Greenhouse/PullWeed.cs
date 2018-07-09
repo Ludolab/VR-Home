@@ -38,7 +38,12 @@ public class PullWeed : MonoBehaviour
 
 	private Vector3 GetHandPosition()
 	{
-		return ib.graspingHands.GetEnumerator().Current.transform.position;
+		foreach (InteractionHand hand in ib.graspingHands)
+		{
+			return hand.transform.position;
+		}
+		print("No grasping hands...");
+		return Vector3.zero;
 	}
 
 	public void HoldGrasp()
