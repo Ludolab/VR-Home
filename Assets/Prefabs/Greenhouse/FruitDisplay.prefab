@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 114533338955435050}
   - component: {fileID: 114410864502032436}
   - component: {fileID: 82679755564569618}
+  - component: {fileID: 114951180911778752}
   m_Layer: 0
   m_Name: Fruit
   m_TagString: Untagged
@@ -158,6 +159,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
+  - {fileID: 2100000, guid: f2729970354565f47ad37c841679d383, type: 2}
   - {fileID: 2100000, guid: e2f5f57473af872448839ffd2e09dc36, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -360,6 +362,68 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 1
+          - m_Target: {fileID: 114951180911778752}
+            m_MethodName: OnGrasp
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    - enumValue: 100
+      callback:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 114951180911778752}
+            m_MethodName: OnHover
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    - enumValue: 101
+      callback:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 114951180911778752}
+            m_MethodName: OnUnhover
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    - enumValue: 141
+      callback:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 114951180911778752}
+            m_MethodName: OnUngrasp
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
 --- !u!114 &114410864502032436
@@ -388,6 +452,19 @@ MonoBehaviour:
   particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
     type: 2}
   pickSound: {fileID: 8300000, guid: 891b9c1d17e50204a85ebdf71b6670f5, type: 3}
+--- !u!114 &114951180911778752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1073349052461862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dba5ee526fb7e4b9b99763d1c104a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 0, g: 0.6435714, b: 1, a: 0.3647059}
+  heldColor: {r: 0, g: 0.48673248, b: 1, a: 0.627451}
 --- !u!135 &135373034551345952
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -40,7 +40,7 @@ public class Fruit : MonoBehaviour
 		joint = GetComponent<ConfigurableJoint>();
 		rb = GetComponent<Rigidbody>();
 		ib = GetComponent<InteractionBehaviour>();
-		mat = GetComponent<Renderer>().material;
+		mat = GetComponent<Renderer>().materials[1];
 	}
 
 	private void Start()

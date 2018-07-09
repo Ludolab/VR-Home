@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Leap.Unity.Interaction;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,15 +13,18 @@ public class Letter : MonoBehaviour
 	public GameObject hingeObj;
 
 	private int numJoints;
+	private InteractionBehaviour ib;
 
 	private void Start()
 	{
 		numJoints = hingeObj.GetComponents<Joint>().Length;
+		ib = hingeObj.GetComponent<InteractionBehaviour>();
 		TimeManager.instance.AddGarbage(gameObject);
 	}
 
 	public void JointBroke()
 	{
+		StartCoroutine(RefreshLocked());
 		numJoints--;
 		if (numJoints == 0)
 		{
@@ -28,6 +32,12 @@ public class Letter : MonoBehaviour
 			paperObj.SetActive(true);
 			TimeManager.instance.AddGarbage(paperObj);
 		}
+	}
+
+	private IEnumerator RefreshLocked()
+	{
+		yield return null;
+		ib.RefreshPositionLockedState();
 	}
 
 	public void SetContents(string text1, string text2, Font font, Material fontMaterial)
