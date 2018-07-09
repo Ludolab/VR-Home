@@ -33,6 +33,7 @@ public class PullWeed : MonoBehaviour
 		grasped = true;
 		basePosition = GetHandPosition();
 		offset = transform.position - basePosition;
+		print("GRASP");
 	}
 
 	private Vector3 GetHandPosition()
@@ -62,6 +63,7 @@ public class PullWeed : MonoBehaviour
 		if (dist < pullDistance)
 		{
 			transform.localScale = startScale;
+			print("POP");
 			PullOut();
 		}
 	}
@@ -72,6 +74,7 @@ public class PullWeed : MonoBehaviour
 		rb.isKinematic = false;
 		rb.useGravity = true;
 		ib.moveObjectWhenGrasped = true;
+		ib.RefreshPositionLockedState(); //??
 		//TODO: snap into hand?
 	}
 
