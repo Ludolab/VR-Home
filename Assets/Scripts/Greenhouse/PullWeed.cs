@@ -74,6 +74,7 @@ public class PullWeed : MonoBehaviour
 	private void PullOut()
 	{
 		audioSrc.PlayOneShot(popOutClip);
+		dragObj.SetActive(false);
 		rb.isKinematic = false;
 		rb.useGravity = true;
 		ib.enabled = true;
