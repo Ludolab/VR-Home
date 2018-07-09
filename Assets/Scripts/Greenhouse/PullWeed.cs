@@ -45,7 +45,7 @@ public class PullWeed : MonoBehaviour
 
 	private Vector3 GetDragPosition()
 	{
-		return dragRB.position;
+		return dragObj.transform.position;
 	}
 
 	private void FixedUpdate()
@@ -69,6 +69,8 @@ public class PullWeed : MonoBehaviour
 			transform.rotation = Quaternion.FromToRotation(from, to);*/
 
 			//TODO: adjust pitch of stretchy sound?
+
+			dragObj.transform.position = newPosition;
 
 			if (dist > pullDistance)
 			{
