@@ -38,7 +38,7 @@ public class PullWeed : MonoBehaviour
 
 	private Vector3 GetHandPosition()
 	{
-		return ib.graspingController.transform.position;
+		return ib.graspingHands.GetEnumerator().Current.transform.position;
 	}
 
 	public void HoldGrasp()
