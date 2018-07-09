@@ -31,8 +31,8 @@ public class GenerateFruits : MonoBehaviour
             y += 0.5f;
         }
 
-		Vector3 potPos = GameObject.Find("PlantableSpot").transform.position;
-		GenerateFruit(potPos);
+		/*Vector3 potPos = GameObject.Find("PlantableSpot").transform.position;
+		GenerateFruit(potPos);*/
     }
 
     public GameObject GenerateFruit(Vector3 pos)

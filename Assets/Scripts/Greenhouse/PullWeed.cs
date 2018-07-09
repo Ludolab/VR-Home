@@ -51,9 +51,9 @@ public class PullWeed : MonoBehaviour
 		float yScale = startScale.y + dist;
 		transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
 
-		Vector3 from = basePosition - transform.position;
+		/*Vector3 from = basePosition - transform.position;
 		Vector3 to = newPosition - transform.position;
-		transform.rotation = Quaternion.FromToRotation(from, to);
+		transform.rotation = Quaternion.FromToRotation(from, to);*/
 
 		if (dist < pullDistance)
 		{
