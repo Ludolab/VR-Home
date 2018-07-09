@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 54997955969088824}
   - component: {fileID: 114381357177315874}
   - component: {fileID: 82521040090556904}
+  - component: {fileID: 65606995905597892}
   m_Layer: 0
   m_Name: Weed
   m_TagString: Untagged
@@ -535,6 +536,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65606995905597892
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766629860958532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.2, z: 0.1}
+  m_Center: {x: 0, y: 0.07, z: 0}
 --- !u!82 &82521040090556904
 AudioSource:
   m_ObjectHideFlags: 1
