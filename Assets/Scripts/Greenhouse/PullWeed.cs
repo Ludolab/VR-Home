@@ -52,17 +52,18 @@ public class PullWeed : MonoBehaviour
 	{
 		if (grasped)
 		{
-			Vector3 newPosition = GetDragPosition();
+			Vector3 dragPosition = GetDragPosition();
+			Vector3 dragScale = dragObj.transform.localScale;
 
 			//TODO: stretch/turn around anchor point in roots
-			Vector3 diff = newPosition - basePosition;
+			Vector3 diff = dragPosition - basePosition;
 			float dist = diff.magnitude;
 			//print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
 
-			float yScale = startScale.y + dist * 10;
+			float yScale = startScale.y;
 			transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
 
-			float yAvg = ((newPosition + basePosition) / 2).y;
+			float yAvg = ((dragPosition + basePosition) / 2).y;
 			transform.position = yAvg * Vector3.up + offset;
 
 			/*Vector3 from = basePosition - transform.position;
@@ -71,7 +72,8 @@ public class PullWeed : MonoBehaviour
 
 			//TODO: adjust pitch of stretchy sound?
 
-			dragObj.transform.position = newPosition;
+			dragObj.transform.position = dragPosition;
+			dragObj.transform.localScale = dragScale;
 
 			if (dist > pullDistance)
 			{
