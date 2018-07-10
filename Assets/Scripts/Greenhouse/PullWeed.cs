@@ -56,6 +56,7 @@ public class PullWeed : MonoBehaviour
 		if (grasped)
 		{
 			Vector3 dragPosition = GetDragPosition();
+			Quaternion dragRotation = dragObj.transform.rotation;
 			Vector3 dragScale = dragObj.transform.localScale;
 
 			//TODO: stretch/turn around anchor point in roots
@@ -74,10 +75,12 @@ public class PullWeed : MonoBehaviour
 			Vector3 to = newPosition - transform.position;
 			transform.rotation = Quaternion.FromToRotation(from, to);*/
 			transform.LookAt(dragObj.transform);
+			//transform.Rotate(0, -90, 0); //TODO: spin to face mostly up
 
 			//TODO: adjust pitch of stretchy sound?
 
 			dragObj.transform.position = dragPosition;
+			dragObj.transform.rotation = dragRotation;
 			dragObj.transform.localScale = dragScale;
 
 			if (dist > pullDistance)
