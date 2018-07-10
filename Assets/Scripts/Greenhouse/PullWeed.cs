@@ -40,23 +40,18 @@ public class PullWeed : MonoBehaviour
 	public void OnGrasp()
 	{
 		grasped = true;
-		basePosition = GetDragPosition();
+		basePosition = dragObj.transform.position;
 		baseRotation = dragObj.transform.rotation;
 		offset = modelObj.transform.position - basePosition;
 		grabbedPosition = modelObj.transform.position;
 		//TODO: could play some sort of looping stretchy sound here?
 	}
 
-	private Vector3 GetDragPosition()
-	{
-		return dragObj.transform.position;
-	}
-
 	private void FixedUpdate()
 	{
 		if (grasped)
 		{
-			Vector3 dragPosition = GetDragPosition();
+			Vector3 dragPosition = dragObj.transform.position;
 			//Quaternion dragRotation = dragObj.transform.rotation;
 			//Vector3 dragScale = dragObj.transform.localScale;
 
