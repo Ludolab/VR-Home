@@ -11,6 +11,7 @@ public class PullWeed : MonoBehaviour
 	public float pullDistance;
 
 	public GameObject dragObj;
+	public GameObject modelObj;
 
 	private InteractionBehaviour ib;
 	private Rigidbody rb;
@@ -28,12 +29,12 @@ public class PullWeed : MonoBehaviour
 
 	private void Start()
 	{
-		ib = GetComponent<InteractionBehaviour>();
-		rb = GetComponent<Rigidbody>();
+		ib = modelObj.GetComponent<InteractionBehaviour>();
+		rb = modelObj.GetComponent<Rigidbody>();
 		dragRB = dragObj.GetComponent<Rigidbody>();
-		col = GetComponent<Collider>();
+		col = modelObj.GetComponent<Collider>();
 		audioSrc = GetComponent<AudioSource>();
-		startScale = transform.localScale;
+		startScale = modelObj.transform.localScale;
 	}
 
 	public void OnGrasp()
@@ -41,8 +42,8 @@ public class PullWeed : MonoBehaviour
 		grasped = true;
 		basePosition = GetDragPosition();
 		baseRotation = dragObj.transform.rotation;
-		offset = transform.position - basePosition;
-		grabbedPosition = transform.position;
+		offset = modelObj.transform.position - basePosition;
+		grabbedPosition = modelObj.transform.position;
 		//TODO: could play some sort of looping stretchy sound here?
 	}
 
@@ -56,8 +57,8 @@ public class PullWeed : MonoBehaviour
 		if (grasped)
 		{
 			Vector3 dragPosition = GetDragPosition();
-			Quaternion dragRotation = dragObj.transform.rotation;
-			Vector3 dragScale = dragObj.transform.localScale;
+			//Quaternion dragRotation = dragObj.transform.rotation;
+			//Vector3 dragScale = dragObj.transform.localScale;
 
 			//TODO: stretch/turn around anchor point in roots
 			Vector3 diff = dragPosition - basePosition;
@@ -65,7 +66,7 @@ public class PullWeed : MonoBehaviour
 			//print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
 
 			float yScale = startScale.y + dist * 4;
-			transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
+			modelObj.transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
 
 			//float yAvg = ((dragPosition - basePosition) / 2).y;
 			//transform.position = yAvg * Vector3.up + offset + basePosition;
@@ -74,18 +75,18 @@ public class PullWeed : MonoBehaviour
 			/*Vector3 from = basePosition - transform.position;
 			Vector3 to = newPosition - transform.position;
 			transform.rotation = Quaternion.FromToRotation(from, to);*/
-			transform.LookAt(dragObj.transform);
+			modelObj.transform.LookAt(dragObj.transform);
 			//transform.Rotate(0, -90, 0); //TODO: spin to face mostly up
 
 			//TODO: adjust pitch of stretchy sound?
 
-			dragObj.transform.position = dragPosition;
+			/*dragObj.transform.position = dragPosition;
 			dragObj.transform.rotation = dragRotation;
-			dragObj.transform.localScale = dragScale;
+			dragObj.transform.localScale = dragScale;*/
 
 			if (dist > pullDistance)
 			{
-				transform.localScale = startScale;
+				modelObj.transform.localScale = startScale;
 				print("POP");
 				PullOut();
 			}
@@ -108,8 +109,8 @@ public class PullWeed : MonoBehaviour
 	public void OnUngrasp()
 	{
 		grasped = false;
-		transform.position = grabbedPosition;
-		transform.localScale = startScale;
+		modelObj.transform.position = grabbedPosition;
+		modelObj.transform.localScale = startScale;
 		dragObj.transform.position = basePosition;
 		dragObj.transform.rotation = baseRotation;
 		//TODO: stop stretchy sound?
