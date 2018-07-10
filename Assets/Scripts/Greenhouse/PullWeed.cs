@@ -66,13 +66,14 @@ public class PullWeed : MonoBehaviour
 			float yScale = startScale.y + dist * 4;
 			transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
 
-			float yAvg = ((dragPosition - basePosition) / 2).y;
-			transform.position = yAvg * Vector3.up + offset + basePosition;
+			//float yAvg = ((dragPosition - basePosition) / 2).y;
+			//transform.position = yAvg * Vector3.up + offset + basePosition;
 
 			//TODO: rotation!
 			/*Vector3 from = basePosition - transform.position;
 			Vector3 to = newPosition - transform.position;
 			transform.rotation = Quaternion.FromToRotation(from, to);*/
+			transform.LookAt(dragObj.transform);
 
 			//TODO: adjust pitch of stretchy sound?
 
