@@ -73,8 +73,11 @@ public class PullWeed : MonoBehaviour
 			Vector3 to = newPosition - transform.position;
 			transform.rotation = Quaternion.FromToRotation(from, to);*/
 			modelObj.transform.LookAt(dragObj.transform);
-			modelObj.transform.Rotate(90, -modelObj.transform.rotation.eulerAngles.y, 0);
-			
+			modelObj.transform.Rotate(90, 0, 0);
+			Quaternion rot = modelObj.transform.rotation;
+			rot.eulerAngles = new Vector3(rot.eulerAngles.x, 0, rot.eulerAngles.z);
+			modelObj.transform.rotation = rot;
+
 
 			//TODO: adjust pitch of stretchy sound?
 
