@@ -25,6 +25,7 @@ public class PullWeed : MonoBehaviour
 	private Quaternion baseRotation;
 	private Vector3 offset;
 	private Vector3 startScale;
+	private Quaternion startRotation;
 	private Vector3 grabbedPosition;
 
 	private void Start()
@@ -35,6 +36,7 @@ public class PullWeed : MonoBehaviour
 		col = modelObj.GetComponent<Collider>();
 		audioSrc = GetComponent<AudioSource>();
 		startScale = modelObj.transform.localScale;
+		startRotation = modelObj.transform.rotation;
 	}
 
 	public void OnGrasp()
@@ -71,7 +73,8 @@ public class PullWeed : MonoBehaviour
 			Vector3 to = newPosition - transform.position;
 			transform.rotation = Quaternion.FromToRotation(from, to);*/
 			modelObj.transform.LookAt(dragObj.transform);
-			modelObj.transform.Rotate(90, 0, 0);
+			modelObj.transform.Rotate(90, -modelObj.transform.rotation.eulerAngles.y, 0);
+			
 
 			//TODO: adjust pitch of stretchy sound?
 
@@ -106,6 +109,7 @@ public class PullWeed : MonoBehaviour
 		grasped = false;
 		modelObj.transform.position = grabbedPosition;
 		modelObj.transform.localScale = startScale;
+		modelObj.transform.rotation = startRotation;
 		dragObj.transform.position = basePosition;
 		dragObj.transform.rotation = baseRotation;
 		//TODO: stop stretchy sound?
