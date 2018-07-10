@@ -14,7 +14,22 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Default_Layer
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaves1
+    second: {fileID: 2100000, guid: 061ee2098118c46cfb2e51ccdade7af8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vegetables3
+    second: {fileID: 2100000, guid: a7c4d70bb82894ef0b89faef0ecc7a94, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vegetables4
+    second: {fileID: 2100000, guid: 1bcd75a92ff544932882b6f63cac23bf, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Default_Layer
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vegetables3
+    second: {fileID: 2100000, guid: b13e20fa0a15f425f9ac04ff346873a7, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
