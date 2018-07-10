@@ -21,8 +21,10 @@ public class PullWeed : MonoBehaviour
 	private bool grasped = false;
 	private bool pulled = false;
 	private Vector3 basePosition;
+	private Quaternion baseRotation;
 	private Vector3 offset;
 	private Vector3 startScale;
+	private Vector3 grabbedPosition;
 
 	private void Start()
 	{
@@ -38,8 +40,9 @@ public class PullWeed : MonoBehaviour
 	{
 		grasped = true;
 		basePosition = GetDragPosition();
+		baseRotation = dragObj.transform.rotation;
 		offset = transform.position - basePosition;
-		print("GRASP");
+		grabbedPosition = transform.position;
 		//TODO: could play some sort of looping stretchy sound here?
 	}
 
@@ -60,12 +63,13 @@ public class PullWeed : MonoBehaviour
 			float dist = diff.magnitude;
 			//print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
 
-			float yScale = startScale.y;
+			float yScale = startScale.y + dist * 4;
 			transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
 
 			float yAvg = ((dragPosition - basePosition) / 2).y;
 			transform.position = yAvg * Vector3.up + offset + basePosition;
 
+			//TODO: rotation!
 			/*Vector3 from = basePosition - transform.position;
 			Vector3 to = newPosition - transform.position;
 			transform.rotation = Quaternion.FromToRotation(from, to);*/
@@ -93,11 +97,18 @@ public class PullWeed : MonoBehaviour
 		rb.useGravity = true;
 		ib.enabled = true;
 		//TODO: grasp, snap into hand
+		//(might not work right if OnUngrasp() gets called when dragObj is disabled)
+		//TODO: stop stretchy sound??? may not be necessary if OnUngrasp() gets called when dragObj is disabled
 	}
 
 	public void OnUngrasp()
 	{
 		grasped = false;
+		transform.position = grabbedPosition;
+		transform.localScale = startScale;
+		dragObj.transform.position = basePosition;
+		dragObj.transform.rotation = baseRotation;
+		//TODO: stop stretchy sound?
 	}
 
 	public void OnContact()
