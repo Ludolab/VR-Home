@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: f977d591870a74f4e9d266b190b8c412
+guid: 289c855f4787e49989510d1b0b382f1e
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
     2100000: Vegetables2
-    2100002: Leaves
-    2100004: lambert1
     2300000: //RootNode
     3300000: //RootNode
     4300000: Default_Layer
@@ -15,18 +13,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leaves
-    second: {fileID: 2100000, guid: 2687a40939a2b49f6b0752fce0336a36, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Vegetables2
-    second: {fileID: 2100000, guid: 58ec90b625c1b41e2a0004b46a82b84a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: cda8172d695f54e428c2f82b45b89a12, type: 2}
+    second: {fileID: 2100000, guid: 19b2b0395703343eea14ccd9e24744ab, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
