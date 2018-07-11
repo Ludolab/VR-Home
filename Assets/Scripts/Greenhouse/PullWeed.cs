@@ -81,7 +81,6 @@ public class PullWeed : MonoBehaviour
 			if (dist > pullDistance)
 			{
 				modelObj.transform.localScale = startScale;
-				print("PULL OUT");
 				PullOut();
 			}
 		}
@@ -112,7 +111,6 @@ public class PullWeed : MonoBehaviour
 
 	public void OnUngrasp()
 	{
-		print("UNGRASP");
 		grasped = false;
 		modelObj.transform.position = grabbedPosition;
 		modelObj.transform.localScale = startScale;
