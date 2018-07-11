@@ -88,7 +88,6 @@ public class PullWeed : MonoBehaviour
 	private void PullOut()
 	{
 		audioSrc.PlayOneShot(popOutClip);
-		dragObj.SetActive(false);
 		col.enabled = true;
 		rb.isKinematic = false;
 		rb.useGravity = true;
@@ -102,6 +101,7 @@ public class PullWeed : MonoBehaviour
 		//TODO: snap into hand
 		//(might not work right if OnUngrasp() gets called when dragObj is disabled)
 		//TODO: stop stretchy sound??? may not be necessary if OnUngrasp() gets called when dragObj is disabled
+		dragObj.SetActive(false);
 	}
 
 	public void OnUngrasp()
