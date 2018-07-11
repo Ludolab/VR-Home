@@ -18,12 +18,13 @@ public class PullWeed : MonoBehaviour
 	private Collider col;
 	private AudioSource audioSrc;
 	private Rigidbody dragRB;
+	private InteractionBehaviour dragIB;
 
 	private bool grasped = false;
 	private bool pulled = false;
 	private Vector3 basePosition;
+	private Vector3 baseGrabPosition;
 	private Quaternion baseRotation;
-	private Vector3 offset;
 	private Vector3 startScale;
 	private Quaternion startRotation;
 	private Vector3 grabbedPosition;
@@ -33,6 +34,7 @@ public class PullWeed : MonoBehaviour
 		ib = modelObj.GetComponent<InteractionBehaviour>();
 		rb = modelObj.GetComponent<Rigidbody>();
 		dragRB = dragObj.GetComponent<Rigidbody>();
+		dragIB = dragObj.GetComponent<InteractionBehaviour>();
 		col = modelObj.GetComponent<Collider>();
 		audioSrc = GetComponent<AudioSource>();
 		startScale = modelObj.transform.localScale;
@@ -43,30 +45,28 @@ public class PullWeed : MonoBehaviour
 	{
 		grasped = true;
 		basePosition = dragObj.transform.position;
+		baseGrabPosition = GetDragPosition();
 		baseRotation = dragObj.transform.rotation;
-		offset = modelObj.transform.position - basePosition;
 		grabbedPosition = modelObj.transform.position;
 		//TODO: could play some sort of looping stretchy sound here?
+	}
+
+	private Vector3 GetDragPosition()
+	{
+		return dragIB.GetGraspPoint(dragIB.graspingController);
 	}
 
 	private void FixedUpdate()
 	{
 		if (grasped)
 		{
-			Vector3 dragPosition = dragObj.transform.position;
-			//Quaternion dragRotation = dragObj.transform.rotation;
-			//Vector3 dragScale = dragObj.transform.localScale;
+			Vector3 dragPosition = GetDragPosition();
 
-			//TODO: stretch/turn around anchor point in roots
-			Vector3 diff = dragPosition - basePosition;
+			Vector3 diff = dragPosition - baseGrabPosition;
 			float dist = diff.magnitude;
-			//print("base: " + basePosition + ", new: " + newPosition + ", dist: " + dist);
 
 			float yScale = startScale.y + dist * 4;
 			modelObj.transform.localScale = new Vector3(startScale.x, yScale, startScale.z);
-
-			//float yAvg = ((dragPosition - basePosition) / 2).y;
-			//transform.position = yAvg * Vector3.up + offset + basePosition;
 
 			modelObj.transform.LookAt(dragObj.transform);
 			modelObj.transform.Rotate(90, 0, 0);
@@ -79,7 +79,7 @@ public class PullWeed : MonoBehaviour
 			if (dist > pullDistance)
 			{
 				modelObj.transform.localScale = startScale;
-				print("POP");
+				print("PULL OUT");
 				PullOut();
 			}
 		}
@@ -93,13 +93,20 @@ public class PullWeed : MonoBehaviour
 		rb.isKinematic = false;
 		rb.useGravity = true;
 		ib.enabled = true;
-		//TODO: grasp, snap into hand
+
+		List<InteractionController> controllers = new List<InteractionController>
+		{
+			dragIB.graspingController
+		};
+		ib.BeginGrasp(controllers);
+		//TODO: snap into hand
 		//(might not work right if OnUngrasp() gets called when dragObj is disabled)
 		//TODO: stop stretchy sound??? may not be necessary if OnUngrasp() gets called when dragObj is disabled
 	}
 
 	public void OnUngrasp()
 	{
+		print("UNGRASP");
 		grasped = false;
 		modelObj.transform.position = grabbedPosition;
 		modelObj.transform.localScale = startScale;
@@ -114,6 +121,8 @@ public class PullWeed : MonoBehaviour
 		if (!grasped && !pulled)
 		{
 			//TODO: wobble
+			//TODO: play wobble sound
+			//TODO: make this the case for all plants?
 		}
 	}
 }

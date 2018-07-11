@@ -134,9 +134,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4125461306871988}
-  - component: {fileID: 54896112517945686}
-  - component: {fileID: 114385654993150698}
-  - component: {fileID: 136722561697731272}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -172,6 +169,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4298303985001036}
+  - component: {fileID: 136754141137254896}
+  - component: {fileID: 54344595009534880}
+  - component: {fileID: 114907148331950000}
   m_Layer: 0
   m_Name: ModelBase
   m_TagString: Untagged
@@ -528,12 +528,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383905031236762}
   m_Mesh: {fileID: 4300002, guid: 091c28d179808488698d434164633b61, type: 3}
---- !u!54 &54770807441780470
+--- !u!54 &54344595009534880
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570645499916664}
+  m_GameObject: {fileID: 1578214404177026}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -543,12 +543,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!54 &54896112517945686
+--- !u!54 &54770807441780470
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554694090141378}
+  m_GameObject: {fileID: 1570645499916664}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -668,35 +668,6 @@ MonoBehaviour:
   pullDistance: 0.3
   dragObj: {fileID: 1570645499916664}
   modelObj: {fileID: 1578214404177026}
---- !u!114 &114385654993150698
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554694090141378}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _manager: {fileID: 0}
-  _ignoreHoverMode: 0
-  _isIgnoringAllHoverState: 0
-  _ignorePrimaryHover: 0
-  _ignoreContact: 0
-  _ignoreGrasping: 0
-  _contactForceMode: 0
-  _allowMultiGrasp: 0
-  _moveObjectWhenGrasped: 1
-  graspedMovementType: 0
-  _overrideInteractionLayer: 0
-  _interactionLayer:
-    layerIndex: 0
-  _overrideNoContactLayer: 0
-  _noContactLayer:
-    layerIndex: 0
-  _eventTable:
-    _entries: []
 --- !u!114 &114433619900429550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -777,6 +748,35 @@ MonoBehaviour:
             m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+--- !u!114 &114907148331950000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1578214404177026}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _manager: {fileID: 0}
+  _ignoreHoverMode: 0
+  _isIgnoringAllHoverState: 0
+  _ignorePrimaryHover: 0
+  _ignoreContact: 0
+  _ignoreGrasping: 0
+  _contactForceMode: 0
+  _allowMultiGrasp: 0
+  _moveObjectWhenGrasped: 1
+  graspedMovementType: 0
+  _overrideInteractionLayer: 0
+  _interactionLayer:
+    layerIndex: 0
+  _overrideNoContactLayer: 0
+  _noContactLayer:
+    layerIndex: 0
+  _eventTable:
+    _entries: []
 --- !u!136 &136026126508620338
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -789,17 +789,17 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: -0.0000009536743, z: 0}
---- !u!136 &136722561697731272
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136754141137254896
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1554694090141378}
+  m_GameObject: {fileID: 1578214404177026}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.05
   m_Height: 0.2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.05, z: 0.01}
+  m_Center: {x: 0, y: 0.085, z: 0}
