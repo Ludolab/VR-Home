@@ -13,7 +13,7 @@ public class WateringCan : MonoBehaviour
 
 	private void Start()
 	{
-		audioSrc = particleObj.GetComponent<AudioSource>();
+		audioSrc = GetComponent<AudioSource>();
 		ps = particleObj.GetComponent<ParticleSystem>();
 		ps.Stop();
 	}
