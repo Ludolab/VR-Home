@@ -4,59 +4,47 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Garden_Bed_2:group17
-    100004: Garden_Bed_2:group18
-    100006: Garden_Bed_2:group18_Garden_Bed_2:pasted__pCube6
-    100008: Garden_Bed_2:group18_Garden_Bed_2:transform1
-    100010: Garden_Bed_2:group18_Garden_Bed_2:transform2
-    100012: Garden_Bed_2:group18_Garden_Bed_2:transform3
-    100014: Garden_Bed_2:group18_Garden_Bed_2:transform4
-    100016: Garden_Bed_2:group18_Garden_Bed_2:transform5
-    100018: Garden_Bed_2:group18_Garden_Bed_2:transform6
-    100020: Garden_Bed_2:group18_Garden_Bed_2:transform7
-    100022: Garden_Bed_2:pasted__pCube6
-    100024: Garden_Bed_2:pasted__pCube6 1
-    100026: Garden_Bed_2:pCube5
-    100028: Garden_Bed_2:pCube7
-    100030: Garden_Bed_3:pCube7
-    100032: Garden_Bed_4:pCube7
-    100034: Garden_Bed_5:pCube7
-    100036: group
-    100038: group1
-    100040: group2
-    100042: pasted__group1
     400000: //RootNode
-    400002: Garden_Bed_2:group17
-    400004: Garden_Bed_2:group18
-    400006: Garden_Bed_2:group18_Garden_Bed_2:pasted__pCube6
-    400008: Garden_Bed_2:group18_Garden_Bed_2:transform1
-    400010: Garden_Bed_2:group18_Garden_Bed_2:transform2
-    400012: Garden_Bed_2:group18_Garden_Bed_2:transform3
-    400014: Garden_Bed_2:group18_Garden_Bed_2:transform4
-    400016: Garden_Bed_2:group18_Garden_Bed_2:transform5
-    400018: Garden_Bed_2:group18_Garden_Bed_2:transform6
-    400020: Garden_Bed_2:group18_Garden_Bed_2:transform7
-    400022: Garden_Bed_2:pasted__pCube6
-    400024: Garden_Bed_2:pasted__pCube6 1
-    400026: Garden_Bed_2:pCube5
-    400028: Garden_Bed_2:pCube7
-    400030: Garden_Bed_3:pCube7
-    400032: Garden_Bed_4:pCube7
-    400034: Garden_Bed_5:pCube7
-    400036: group
-    400038: group1
-    400040: group2
-    400042: pasted__group1
-    2100000: Garden_Bed_2_garden_box_divisors
-    2100002: Garden_Bed_5_garden_box_legs
-    2100004: Garden_Bed_4_garden_box_legs
-    2100006: Garden_Bed_2_garden_box_wood
-    2100008: Garden_Bed_2_garden_box_legs
-    2100010: Garden_Bed_3_garden_box_legs
-    2300000: Garden_Bed_2:group18_Garden_Bed_2:pasted__pCube6
-    3300000: Garden_Bed_2:group18_Garden_Bed_2:pasted__pCube6
+    2100000: Garden_Bed_2_garden_box_divisors2
+    2100002: Garden_Bed_5_garden_box_legs2
+    2100004: Garden_Bed_4_garden_box_legs2
+    2100006: Garden_Bed_2_garden_box_wood2
+    2100008: Garden_Bed_2_garden_box_legs2
+    2100010: Garden_Bed_3_garden_box_legs2
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Garden_Bed_2:group18_Garden_Bed_2:pasted__pCube6
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_2_garden_box_divisors2
+    second: {fileID: 2100000, guid: 88365d5b2cd6b45c6bd4b707f8047601, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_2_garden_box_legs2
+    second: {fileID: 2100000, guid: 9cd47dbbae1d14aa58ee47c7c8745f49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_2_garden_box_wood2
+    second: {fileID: 2100000, guid: f0f0768846526413a90e3ed01f0bb618, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_3_garden_box_legs2
+    second: {fileID: 2100000, guid: 9cd47dbbae1d14aa58ee47c7c8745f49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_4_garden_box_legs2
+    second: {fileID: 2100000, guid: 9cd47dbbae1d14aa58ee47c7c8745f49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_5_garden_box_legs2
+    second: {fileID: 2100000, guid: 9cd47dbbae1d14aa58ee47c7c8745f49, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
