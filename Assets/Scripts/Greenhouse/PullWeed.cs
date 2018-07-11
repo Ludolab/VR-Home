@@ -70,17 +70,17 @@ public class PullWeed : MonoBehaviour
 
 			modelObj.transform.LookAt(dragObj.transform);
 			modelObj.transform.Rotate(90, 0, 0);
+
 			//TODO: keep local Y rotation fixed
+			float yRot = modelObj.transform.localEulerAngles.y;
+			modelObj.transform.Rotate(0, -yRot, 0, Space.Self);
+
 			//Quaternion rot = modelObj.transform.localRotation;
 			//rot.eulerAngles = new Vector3(rot.eulerAngles.x, 0, rot.eulerAngles.z);
 			//modelObj.transform.localRotation = rot;
 
 			//TODO: adjust pitch of stretchy sound?
-
-			/*dragObj.transform.position = dragPosition;
-			dragObj.transform.rotation = dragRotation;
-			dragObj.transform.localScale = dragScale;*/
-
+			
 			if (dist > pullDistance)
 			{
 				modelObj.transform.localScale = startScale;
