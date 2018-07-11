@@ -359,7 +359,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1570645499916664}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -670,7 +670,7 @@ MonoBehaviour:
   particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
     type: 2}
   pickSound: {fileID: 8300000, guid: 0858be1afe7ac384698e357be00d670f, type: 3}
-  particleColor: {r: 0, g: 0.41509432, b: 0.068933025, a: 1}
+  particleColor: {r: 0.019090435, g: 0.31132078, b: 0.06871443, a: 1}
 --- !u!114 &114433619900429550
 MonoBehaviour:
   m_ObjectHideFlags: 1
