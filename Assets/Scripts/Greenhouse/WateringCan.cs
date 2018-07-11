@@ -7,11 +7,13 @@ public class WateringCan : MonoBehaviour
 
 	public GameObject particleObj;
 
+	private AudioSource audioSrc;
 	private ParticleSystem ps;
 	private bool particlesActive = false;
 
 	private void Start()
 	{
+		audioSrc = particleObj.GetComponent<AudioSource>();
 		ps = particleObj.GetComponent<ParticleSystem>();
 		ps.Stop();
 	}
@@ -21,12 +23,14 @@ public class WateringCan : MonoBehaviour
 		if (IsTilted() && !particlesActive)
 		{
 			ps.Play();
+			audioSrc.Play();
 			particlesActive = true;
 		}
 
 		if (!IsTilted() && particlesActive)
 		{
 			ps.Stop();
+			audioSrc.Stop();
 			particlesActive = false;
 		}
 	}
