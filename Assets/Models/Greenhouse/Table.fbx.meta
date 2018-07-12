@@ -91,7 +91,12 @@ ModelImporter:
     2300000: group24_pasted__group22_pasted__pasted__group17_pasted__pasted__pasted__pCube6
     3300000: group24_pasted__group22_pasted__pasted__group17_pasted__pasted__pasted__pCube6
     4300000: group24_pasted__group22_pasted__pasted__group17_pasted__pasted__pasted__pCube6
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: table
+    second: {fileID: 2100000, guid: ecad1b76af7004c99bb62c83ebd32b8a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
