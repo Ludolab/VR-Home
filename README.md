@@ -12,6 +12,7 @@
 - Texture Transition Shader by Professor Snake: https://answers.unity.com/questions/569528/making-specific-shader-for-texture-transition-effe.html
 - Iridescent Shader (for cloth water) by Minions Art: https://www.patreon.com/posts/quick-game-art-15466787
 - Vegetable plant models by Dexsoft Games: https://assetstore.unity.com/packages/3d/vegetation/plants/vegetable-plants-2394
+- Node Editor Framework by Seneral: https://github.com/Seneral/Node_Editor_Framework/tree/develop
 
 ### Sounds
 - Thud sound by OtisJames: https://freesound.org/people/OtisJames/sounds/215162/
