@@ -255,11 +255,28 @@ namespace NodeEditorFramework
 
 		#region Zoom
 
+		[Hotkey(KeyCode.LeftControl, EventType.KeyDown)]
+		[Hotkey(KeyCode.RightControl, EventType.KeyDown)]
+		private static void HandleCanZoom(NodeEditorInputInfo inputInfo)
+		{
+			inputInfo.editorState.canZoom = true;
+		}
+
+		[Hotkey(KeyCode.LeftControl, EventType.KeyUp)]
+		[Hotkey(KeyCode.RightControl, EventType.KeyUp)]
+		private static void HandleCannotZoom(NodeEditorInputInfo inputInfo)
+		{
+			inputInfo.editorState.canZoom = false;
+		}
+
 		[EventHandlerAttribute (EventType.ScrollWheel)]
 		private static void HandleZooming (NodeEditorInputInfo inputInfo) 
 		{
-			inputInfo.editorState.zoom = (float)Math.Round (Math.Min (4.0, Math.Max (0.6, inputInfo.editorState.zoom + inputInfo.inputEvent.delta.y / 15)), 2);
-			NodeEditor.RepaintClients ();
+			if (inputInfo.editorState.canZoom)
+			{
+				inputInfo.editorState.zoom = (float)Math.Round(Math.Min(4.0, Math.Max(0.6, inputInfo.editorState.zoom + inputInfo.inputEvent.delta.y / 15)), 2);
+				NodeEditor.RepaintClients();
+			}
 		}
 
 		#endregion

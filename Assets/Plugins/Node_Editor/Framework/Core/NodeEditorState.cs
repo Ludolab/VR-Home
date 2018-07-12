@@ -28,6 +28,7 @@ namespace NodeEditorFramework
 		[NonSerialized] public bool panWindow; // window panning
 		[NonSerialized] public bool navigate; // navigation ('N')
 		[NonSerialized] public bool resizeGroup; // whether the active group is being resized; if not, it is dragged
+		[NonSerialized] public bool canZoom; // whether scrolling will zoom the canvas
 
 		// Temporary variables
 		public Vector2 zoomPos { get { return canvasRect.size/2; } } // zoom center in canvas space
