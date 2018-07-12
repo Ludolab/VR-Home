@@ -13,6 +13,7 @@
 - Iridescent Shader (for cloth water) by Minions Art: https://www.patreon.com/posts/quick-game-art-15466787
 - Vegetable plant models by Dexsoft Games: https://assetstore.unity.com/packages/3d/vegetation/plants/vegetable-plants-2394
 - Node Editor Framework by Seneral: https://github.com/Seneral/Node_Editor_Framework/tree/develop
+- Hanging plant models by Enaendea: https://3dwarehouse.sketchup.com/model/u8dfc1d61-9f63-4734-ab43-b62b47fe538b/hanging-plants?hl=en
 
 ### Sounds
 - Thud sound by OtisJames: https://freesound.org/people/OtisJames/sounds/215162/
