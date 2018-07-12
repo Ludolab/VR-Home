@@ -2,7 +2,7 @@
 using UnityEngine;
 using Intel.RealSense;
 
-public class PointCloudGeneratorFilter : MonoBehaviour
+public class PointCloudGeneratorFilter_cs : MonoBehaviour
 {
 
     private const string PLY_SAVE_PATH = "Assets/Resources/PointClouds/";
@@ -11,21 +11,26 @@ public class PointCloudGeneratorFilter : MonoBehaviour
     public float pointsSize = 1;
     public int skipParticles = 2;
     public float depthFilter = 1;
-    public ParticleSystem pointCloudParticles;
-    public GameObject pointCloudCopy;
-    public GameObject snapshotDisplay;
-    public Material ISPlane;
+    //public ParticleSystem pointCloudParticles;
+    //public GameObject pointCloudCopy;
+    //public GameObject snapshotDisplay;
+    public Renderer RSPlane;
+    public Texture2D RSTex;
 
     private ParticleSystem.Particle[] particles = new ParticleSystem.Particle[0];
     private PointCloud pc = new PointCloud();
     private Points.Vertex[] vertices;
     private byte[] lastColorImage;
     private Align aligner;
-    
+    int colorFrameSize = 1920 * 480;
+    Color32[] newColors;
+
     private void Start()
     {
         aligner = new Align(Intel.RealSense.Stream.Color);
         RealSenseDevice.Instance.onNewSampleSet += OnFrames;
+
+       // RSTex = new Texture2D(1000, 1000, TextureFormat.RGB24, false);
 
     }
     
@@ -36,6 +41,8 @@ public class PointCloudGeneratorFilter : MonoBehaviour
             using (var colorFrame = aligned.ColorFrame)
             using (var depthFrame = aligned.DepthFrame)
             {
+                //Debug.Log(aligned.ColorFrame);
+                //Debug.Log(aligned.DepthFrame);
                 if (depthFrame == null)
                 {
                     Debug.Log("No depth frame in frameset, can't create point cloud");
@@ -50,92 +57,123 @@ public class PointCloudGeneratorFilter : MonoBehaviour
 
                 using (var points = pc.Calculate(depthFrame))
                 {
-                    SetParticles(points, colorFrame);
+                    SetParticles(colorFrame);
                 }
             }
         }
     }
 
-    private void SetParticles(Points points, VideoFrame colorFrame)
+    private void SetParticles(VideoFrame colorFrame)
     {
+        Debug.Log("got hefgdfgdre");
         //if (points == null)
         //    throw new Exception("Frame in queue is not a points frame");
-
-        //if (lastColorImage == null)
-        //{
-        //    int colorFrameSize = colorFrame.Height * colorFrame.Stride;
-        //    lastColorImage = new byte[colorFrameSize];
-        //}
-        //colorFrame.CopyTo(lastColorImage);
+        
+        if (lastColorImage == null)
+        {
+            colorFrameSize = colorFrame.Height * colorFrame.Stride;
+            lastColorImage = new byte[colorFrameSize];
+            //Debug.Log(colorFrame.Height); //480
+            //Debug.Log(colorFrame.Stride); //1920
+            //Debug.Log(colorFrame.Width); // 640
+        }
+        
+        colorFrame.CopyTo(lastColorImage);
+        //var data = RSTex.LoadRawTextureData(lastColorImage);
+        //data = lastColorImage;
+        //RSTex.Apply();
 
         //vertices = vertices ?? new Points.Vertex[points.Count];
         //points.CopyTo(vertices);
 
         //Debug.Assert(vertices.Length == particles.Length);
         //int mirror = mirrored ? -1 : 1;
-        //for (int index = 0; index < vertices.Length; index += skipParticles)
-        //{
-        //    var v = vertices[index];
-        //    if (v.z > 0 && v.z < depthFilter)
-        //    {
-        //        particles[index].position = new Vector3(v.x * mirror, v.y, v.z);
-        //        particles[index].startSize = v.z * pointsSize * 0.02f;
-        //        particles[index].startColor = new Color32(lastColorImage[index * 3], lastColorImage[index * 3 + 1], lastColorImage[index * 3 + 2], 255);
-        //    }
-        //    else //Required since we reuse the array
-        //    {
-        //        particles[index].position = Vector3.zero;
-        //        particles[index].startSize = 0;
-        //        particles[index].startColor = Color.clear;
-        //    }
-        //}
-        ISPlane.SetTexture("_ISPlane", colorFrame);
+        newColors = new Color32[colorFrameSize];
+        int index = 0;
+        Debug.Log(colorFrameSize);
+        for (int y = 0; y < (colorFrameSize/3); y++){
+
+            
+                newColors[y] = (new Color(lastColorImage[index * 3], lastColorImage[index * 3 + 1], lastColorImage[index * 3 + 2], 255));
+                index++;
+
+                //Debug.Log(lastColorImage[index * 3]);
+                //Debug.Log(colorFrame);
+                //    if (v.z > 0 && v.z < depthFilter)
+                //    {
+                //        particles[index].position = new Vector3(v.x * mirror, v.y, v.z);
+                //        particles[index].startSize = v.z * pointsSize * 0.02f;
+                //        particles[index].startColor = new Color32(lastColorImage[index * 3], lastColorImage[index * 3 + 1], lastColorImage[index * 3 + 2], 255);
+                //    }
+                //    else //Required since we reuse the array
+                //    {
+                //        particles[index].position = Vector3.zero;
+                //        particles[index].startSize = 0;
+                //        particles[index].startColor = Color.clear;
+                //    }
+          
+        }
+        Debug.Log("got her2222e");
+        
+        
+        //Debug.Log(newColors);
+        //Debug.Log(RSTex);
+        
     }
 
     private bool UpdateParticleParams(int width, int height)
     {
-        var numParticles = (width * height);
-        if (particles.Length != numParticles)
-        {
-            particles = new ParticleSystem.Particle[numParticles];
-        }
+        //var numParticles = (width * height);
+        //if (particles.Length != numParticles)
+        //{
+        //    particles = new ParticleSystem.Particle[numParticles];
+        //}
 
         return true;
     }
 
     private void Update()
     {
+
+        if (lastColorImage != null)
+        {
+            RSTex.LoadRawTextureData(lastColorImage);
+            
+            //RSTex.SetPixels32(newColors);
+            RSTex.Apply();
+            RSPlane.material.mainTexture = RSTex;
+        }
         //ParticleSystem.Particle[] filteredParticles = particles.Where(p => !PLYFiles.IsUnusedParticle(p)).ToArray();
         //pointCloudParticles.SetParticles(filteredParticles, filteredParticles.Length);
-        pointCloudParticles.SetParticles(particles, particles.Length);
+        //pointCloudParticles.SetParticles(particles, particles.Length);
 
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameObject copy = Instantiate(pointCloudCopy);
-            ParticleSystem.Particle[] keepParticles = new ParticleSystem.Particle[particles.Length];
-            particles.CopyTo(keepParticles, 0);
-            copy.GetComponent<KeepParticles>().SetParticles(keepParticles);
-        }*/
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DateTime now = DateTime.Now;
-            string time = now.ToString("yyyy-MM-dd_HH.mm.ss.ffff");
-            string filename = time + ".ply";
-            PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
+        ///*if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    GameObject copy = Instantiate(pointCloudCopy);
+        //    ParticleSystem.Particle[] keepParticles = new ParticleSystem.Particle[particles.Length];
+        //    particles.CopyTo(keepParticles, 0);
+        //    copy.GetComponent<KeepParticles>().SetParticles(keepParticles);
+        //}*/
 
-            ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + filename);
-            snapshotDisplay.GetComponent<KeepParticles>().SetParticles(plyParticles);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    DateTime now = DateTime.Now;
+        //    string time = now.ToString("yyyy-MM-dd_HH.mm.ss.ffff");
+        //    string filename = time + ".ply";
+        //    PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
 
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            string filename = "head.ply";
-            PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
+        //    ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + filename);
+        //    snapshotDisplay.GetComponent<KeepParticles>().SetParticles(plyParticles);
+        //}
 
-            ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + filename);
-            snapshotDisplay.GetComponent<KeepParticles>().SetParticles(plyParticles);
-        }
+        //if (Input.GetKeyDown(KeyCode.H))
+        //{
+        //    string filename = "head.ply";
+        //    PLYFiles.WritePLY(PLY_SAVE_PATH + filename, particles);
+
+        //    ParticleSystem.Particle[] plyParticles = PLYFiles.ReadPLY(PLY_SAVE_PATH + filename);
+        //    snapshotDisplay.GetComponent<KeepParticles>().SetParticles(plyParticles);
+        //}
         /*if (Input.GetKeyDown(KeyCode.L))
         {
             //TODO: remove
