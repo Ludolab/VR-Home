@@ -6,12 +6,14 @@ using UnityEngine;
 public class PullWeed : MonoBehaviour
 {
 
-	public AudioClip popOutClip;
-
 	public float pullDistance;
 
 	public GameObject dragObj;
 	public GameObject modelObj;
+
+	public GameObject particlePrefab;
+	public AudioClip pickSound;
+	public Color particleColor;
 
 	private InteractionBehaviour ib;
 	private Rigidbody rb;
@@ -79,15 +81,15 @@ public class PullWeed : MonoBehaviour
 			if (dist > pullDistance)
 			{
 				modelObj.transform.localScale = startScale;
-				print("PULL OUT");
 				PullOut();
 			}
 		}
 	}
 
-	private void PullOut()
+	[ContextMenu("Pull Out")]
+	public void PullOut()
 	{
-		modelObj.transform.position = GetDragPosition();
+		/*modelObj.transform.position = GetDragPosition();
 		col.enabled = true;
 		rb.isKinematic = false;
 		rb.useGravity = true;
@@ -99,13 +101,16 @@ public class PullWeed : MonoBehaviour
 		};
 		ib.BeginGrasp(controllers); //not how to do this?
 		dragObj.SetActive(false);
-
-		audioSrc.PlayOneShot(popOutClip);
+		
+		audioSrc.PlayOneShot(pickSound);
+		 */
+		
+		SpawnParticles();
+		Destroy(gameObject);
 	}
 
 	public void OnUngrasp()
 	{
-		print("UNGRASP");
 		grasped = false;
 		modelObj.transform.position = grabbedPosition;
 		modelObj.transform.localScale = startScale;
@@ -123,5 +128,15 @@ public class PullWeed : MonoBehaviour
 			//TODO: play wobble sound
 			//TODO: make this the case for all plants?
 		}
+	}
+
+	private void SpawnParticles()
+	{
+		GameObject particles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+		ParticleSystem ps = particles.GetComponent<ParticleSystem>();
+		ParticleSystem.MainModule main = ps.main;
+		main.startColor = particleColor;
+		AudioSource aud = particles.GetComponent<AudioSource>();
+		aud.clip = pickSound;
 	}
 }

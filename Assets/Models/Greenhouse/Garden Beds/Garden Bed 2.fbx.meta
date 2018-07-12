@@ -4,24 +4,47 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pasted__group11
-    100004: pasted__group7
-    100006: pasted__pasted__pCube5
-    100008: pasted__pasted__pCube6
     400000: //RootNode
-    400002: pasted__group11
-    400004: pasted__group7
-    400006: pasted__pasted__pCube5
-    400008: pasted__pasted__pCube6
-    2100000: garden_box_divisors
-    2100002: garden_box_wood
-    2300000: pasted__pasted__pCube5
-    2300002: pasted__pasted__pCube6
-    3300000: pasted__pasted__pCube5
-    3300002: pasted__pasted__pCube6
-    4300000: pasted__pasted__pCube6
-    4300002: pasted__pasted__pCube5
-  externalObjects: {}
+    2100000: Garden_Bed_2_garden_box_divisors1
+    2100002: Garden_Bed_3_garden_box_legs1
+    2100004: Garden_Bed_2_garden_box_legs1
+    2100006: Garden_Bed_2_garden_box_wood1
+    2100008: Garden_Bed_4_garden_box_legs1
+    2100010: Garden_Bed_5_garden_box_legs1
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Garden_Bed_2:pasted__pCube6
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_2_garden_box_divisors1
+    second: {fileID: 2100000, guid: 88365d5b2cd6b45c6bd4b707f8047601, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_2_garden_box_legs1
+    second: {fileID: 2100000, guid: 9cd47dbbae1d14aa58ee47c7c8745f49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_2_garden_box_wood1
+    second: {fileID: 2100000, guid: f0f0768846526413a90e3ed01f0bb618, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_3_garden_box_legs1
+    second: {fileID: 2100000, guid: 9cd47dbbae1d14aa58ee47c7c8745f49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_4_garden_box_legs1
+    second: {fileID: 2100000, guid: 9cd47dbbae1d14aa58ee47c7c8745f49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garden_Bed_5_garden_box_legs1
+    second: {fileID: 2100000, guid: 9cd47dbbae1d14aa58ee47c7c8745f49, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
