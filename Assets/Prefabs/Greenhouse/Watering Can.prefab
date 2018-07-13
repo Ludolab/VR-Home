@@ -664,7 +664,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleObj: {fileID: 1104660517894256}
-  soundFadeTime: 0.5
 --- !u!135 &135423107832548448
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -4257,7 +4256,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
