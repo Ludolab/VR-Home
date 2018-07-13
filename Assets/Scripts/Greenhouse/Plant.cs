@@ -32,7 +32,10 @@ public class Plant : MonoBehaviour
 		{
 			Destroy(model);
 		}
+        Debug.Log("Stage specific transformation: " + growthStagesTrans[stage].position);
         model = Instantiate(growthStages[stage], growthStagesTrans[stage]);
+        Debug.Log("Model expected global position: " + (transform.position + growthStagesTrans[stage].localPosition));
+        Debug.Log("Model global position: " + model.transform.position);
 
 		//TODO: spawn fruit- half ripe and half unripe (don't spawn unripe if last ripe one was not picked)
 	}
