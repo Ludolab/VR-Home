@@ -10,6 +10,7 @@ public class Beetle : MonoBehaviour
 
 	public GameObject particlePrefab;
 	public AudioClip squishSound;
+	public Color squishColor;
 
 	private Rigidbody rb;
 
@@ -58,7 +59,7 @@ public class Beetle : MonoBehaviour
 		GameObject particles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
 		ParticleSystem ps = particles.GetComponent<ParticleSystem>();
 		ParticleSystem.MainModule main = ps.main;
-		main.startColor = GetComponent<Renderer>().material.color; //TODO: set this manually once beetle has a real model & texture
+		main.startColor = squishColor;
 		AudioSource aud = particles.GetComponent<AudioSource>();
 		aud.clip = squishSound;
 	}
