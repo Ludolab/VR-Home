@@ -9,8 +9,9 @@ public class Dirt : MonoBehaviour {
     SkinnedMeshRenderer skinnedMeshRenderer;
     int digState; // 0 = flat, 1 = hole, 2 = mound
     float wetness;
-    float waterTime;
-    float digTime;
+    float waterTime = 0.5f;
+    float waterIncrement = 0.01f;
+    float digTime = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -34,15 +35,15 @@ public class Dirt : MonoBehaviour {
         }
     }
 
-    private IEnumerator TransitionWetness(float newVal){
+    private IEnumerator IncrementWetness(){
         float oldValue = wetness;
         for (float t = 0; t < waterTime; t += Time.deltaTime)
         {
-            wetness = Mathf.Lerp(oldValue, newVal, t / waterTime);
+            wetness = Mathf.Lerp(oldValue, oldValue + waterIncrement, t / waterTime);
             myMaterial.SetFloat("_Threshold", wetness);
             yield return new WaitForEndOfFrame();
         }
-        wetness = newVal;
+        wetness = oldValue + waterIncrement;
         myMaterial.SetFloat("_Threshold", wetness);
     }
 
@@ -72,5 +73,13 @@ public class Dirt : MonoBehaviour {
         skinnedMeshRenderer.SetBlendShapeWeight(1, 100);
         digState = 2;
         dirtParticles.GetComponent<ParticleSystem>().Stop();
+    }
+
+    void OnParticleCollision(GameObject other)
+    {
+        if (other.transform.parent.gameObject.GetComponent<WateringCan>() != null)
+        {
+            IncrementWetness();
+        }
     }
 }
