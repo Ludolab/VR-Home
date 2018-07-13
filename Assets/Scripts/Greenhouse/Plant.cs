@@ -42,10 +42,6 @@ public class Plant : MonoBehaviour
         model.transform.eulerAngles = transform.eulerAngles + growthStagesTrans[stage].localEulerAngles;
         model.transform.localScale = growthStagesTrans[stage].localScale;
 
-        Debug.Log("Stage specific transformation: " + growthStagesTrans[stage].localPosition);
-        Debug.Log("Model expected global position: " + (transform.position + growthStagesTrans[stage].localPosition));
-        Debug.Log("Model global position: " + model.transform.position);
-
 		//TODO: spawn fruit- half ripe and half unripe (don't spawn unripe if last ripe one was not picked)
 	}
 
