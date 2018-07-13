@@ -41,15 +41,18 @@ public class Dirt : MonoBehaviour {
     }
 
     private IEnumerator IncrementWetness(){
-        float oldValue = wetness;
-        for (float t = 0; t < waterTime; t += Time.deltaTime)
-        {
-            wetness = Mathf.Lerp(oldValue, oldValue + waterIncrement, t / waterTime);
+        if (wetness < 1){
+            float oldValue = wetness;
+            Debug.Log("We're being incrementing wetness!");
+            for (float t = 0; t < waterTime; t += Time.deltaTime)
+            {
+                wetness = Mathf.Lerp(oldValue, oldValue + waterIncrement, t / waterTime);
+                myMaterial.SetFloat("_Wetness", wetness);
+                yield return new WaitForEndOfFrame();
+            }
+            wetness = oldValue + waterIncrement;
             myMaterial.SetFloat("_Wetness", wetness);
-            yield return new WaitForEndOfFrame();
         }
-        wetness = oldValue + waterIncrement;
-        myMaterial.SetFloat("_Wetness", wetness);
     }
 
     private IEnumerator DigHole (){
@@ -84,6 +87,7 @@ public class Dirt : MonoBehaviour {
     {
         if (other.transform.parent.gameObject.GetComponent<WateringCan>() != null)
         {
+            Debug.Log("We're being watered!");
             IncrementWetness();
         }
     }
