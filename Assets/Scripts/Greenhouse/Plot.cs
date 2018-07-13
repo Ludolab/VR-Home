@@ -12,8 +12,10 @@ public class Plot : MonoBehaviour {
     //TODO: change this later to be after dirt planting action has been done.
 	void OnTriggerEnter(Collision other)
 	{
+        Debug.Log("Plot collided with.");
         Plant p = other.gameObject.GetComponent<Plant>();
         if(!hasPlant && p != null) {
+            Debug.Log("Found a plant.");
             hasPlant = true;
             plant = p;
             p.Planted();
@@ -22,8 +24,9 @@ public class Plot : MonoBehaviour {
 
     public void StartDay(int day)
     {
+        //TODO: condition on stage based on watering, beetle squashing, weeding.
         if(hasPlant) {
-            //TODO: condition on stage based on watering, beetle squashing, weeding.
+            Debug.Log("Advancing day on plant.");
             plant.setStage(day - plant.getDayBorn());
             if (plant.getStage() >= plant.growthStages.Length)
             {
@@ -36,6 +39,7 @@ public class Plot : MonoBehaviour {
             // Check for the young stage.
             if(plant.getStage() == 1)
             {
+                Debug.Log("Young stage. Adding beetles.");
                 //TODO: don't spawn more beetles if the previous day's haven't been killed.
                 //TODO: come up with a better system for randomizing number of beetles?
                 int numberBeetles = (int)(Random.Range(-1f, plant.beetleTransYoung.Length - 1));
@@ -52,6 +56,7 @@ public class Plot : MonoBehaviour {
             // Note should not be proceeded to if any beetles remained on the young stage, so shouldn't have conflicts there in final.
             if(plant.getStage() == 2)
             {
+                Debug.Log("Grown stage. Adding beetles (and fruit).");
                 int numberBeetles = (int)(Random.Range(-1f, plant.beetleTransGrown.Length - 1));
                 for (int i = 0; i <= numberBeetles; i++)
                 {
