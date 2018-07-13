@@ -23,14 +23,16 @@ public class PointCloudGeneratorFilter_cs : MonoBehaviour
     private byte[] lastColorImage;
     private Align aligner;
     int colorFrameSize = 1920 * 480;
-    Color32[] newColors;
+    int colorFrameWidth = 640;
+    int colorFrameHeight = 480;
+    Color[] newColors;
 
     private void Start()
     {
         aligner = new Align(Intel.RealSense.Stream.Color);
         RealSenseDevice.Instance.onNewSampleSet += OnFrames;
+        RSTex = new Texture2D(colorFrameWidth, colorFrameHeight, TextureFormat.RGB24, false);
 
-       // RSTex = new Texture2D(1000, 1000, TextureFormat.RGB24, false);
 
     }
     
@@ -65,7 +67,6 @@ public class PointCloudGeneratorFilter_cs : MonoBehaviour
 
     private void SetParticles(VideoFrame colorFrame)
     {
-        Debug.Log("got hefgdfgdre");
         //if (points == null)
         //    throw new Exception("Frame in queue is not a points frame");
         
@@ -74,10 +75,10 @@ public class PointCloudGeneratorFilter_cs : MonoBehaviour
             colorFrameSize = colorFrame.Height * colorFrame.Stride;
             lastColorImage = new byte[colorFrameSize];
             //Debug.Log(colorFrame.Height); //480
-            //Debug.Log(colorFrame.Stride); //1920
-            //Debug.Log(colorFrame.Width); // 640
+            //Debug.Log(colorFrame.Stride); //1920 // this is 640 *3
+            //Debug.Log(colorFrame.Width); // 640 
         }
-        
+
         colorFrame.CopyTo(lastColorImage);
         //var data = RSTex.LoadRawTextureData(lastColorImage);
         //data = lastColorImage;
@@ -88,13 +89,17 @@ public class PointCloudGeneratorFilter_cs : MonoBehaviour
 
         //Debug.Assert(vertices.Length == particles.Length);
         //int mirror = mirrored ? -1 : 1;
-        newColors = new Color32[colorFrameSize];
+        newColors = new Color[colorFrame.Width * colorFrame.Height];
         int index = 0;
-        Debug.Log(colorFrameSize);
-        for (int y = 0; y < (colorFrameSize/3); y++){
+        for (int y = 0; y < (colorFrame.Height); y++)
+        {
+            for (int x = 0; x < (colorFrame.Width); x++)
+            {
 
-            
-                newColors[y] = (new Color(lastColorImage[index * 3], lastColorImage[index * 3 + 1], lastColorImage[index * 3 + 2], 255));
+
+                //newColors[y] = (new Color32(lastColorImage[index * 3], lastColorImage[index * 3 + 1], lastColorImage[index * 3 + 2], 255));
+                newColors[index] = (new Color(lastColorImage[index * 3], lastColorImage[index * 3 + 1], lastColorImage[index * 3 + 2], 255));
+                //RSTex.SetPixel(x, y, new Color(lastColorImage[index * 3], lastColorImage[index * 3 + 1], lastColorImage[index * 3 + 2], 255));
                 index++;
 
                 //Debug.Log(lastColorImage[index * 3]);
@@ -111,14 +116,11 @@ public class PointCloudGeneratorFilter_cs : MonoBehaviour
                 //        particles[index].startSize = 0;
                 //        particles[index].startColor = Color.clear;
                 //    }
-          
+            }
         }
-        Debug.Log("got her2222e");
-        
-        
-        //Debug.Log(newColors);
-        //Debug.Log(RSTex);
-        
+
+
+
     }
 
     private bool UpdateParticleParams(int width, int height)
@@ -135,11 +137,18 @@ public class PointCloudGeneratorFilter_cs : MonoBehaviour
     private void Update()
     {
 
+        
+
         if (lastColorImage != null)
         {
+
+            //if ((RSTex.width * RSTex.height) != colorFrameSize)
+            //{
+            //    //RSTex = new Texture2D(colorFrameWidth, colorFrameHeight, TextureFormat.RGBAFloat, false);
+            //    RSTex = new Texture2D(colorFrameWidth, colorFrameHeight, TextureFormat.RGB24, false);
+            //}
             RSTex.LoadRawTextureData(lastColorImage);
-            
-            //RSTex.SetPixels32(newColors);
+            //RSTex.SetPixels(newColors);
             RSTex.Apply();
             RSPlane.material.mainTexture = RSTex;
         }
