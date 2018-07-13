@@ -10,9 +10,9 @@ public class Plot : MonoBehaviour {
     private Plant plant;
 
     //TODO: change this later to be after dirt planting action has been done.
-	void OnCollisionEnter(Collision col)
+	void OnTriggerEnter(Collision other)
 	{
-        Plant p = col.gameObject.GetComponent<Plant>();
+        Plant p = other.gameObject.GetComponent<Plant>();
         if(!hasPlant && p != null) {
             hasPlant = true;
             plant = p;

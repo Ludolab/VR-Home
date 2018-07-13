@@ -620,6 +620,7 @@ GameObject:
   - component: {fileID: 231633024}
   - component: {fileID: 231633023}
   - component: {fileID: 231633022}
+  - component: {fileID: 231633025}
   m_Layer: 0
   m_Name: Dirt
   m_TagString: Untagged
@@ -703,6 +704,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &231633025
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 231633021}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.0018705109, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &263441709
 GameObject:
   m_ObjectHideFlags: 0
