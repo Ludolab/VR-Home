@@ -60,6 +60,7 @@ public class WateringCan : MonoBehaviour
 			audioSrc.volume = Mathf.Lerp(startVolume, maxVolume, t);
 			yield return new WaitForEndOfFrame();
 		}
+		audioSrc.volume = maxVolume;
 	}
 
 	private IEnumerator StopSound()
@@ -70,6 +71,7 @@ public class WateringCan : MonoBehaviour
 			audioSrc.volume = Mathf.Lerp(startVolume, 0, t);
 			yield return new WaitForEndOfFrame();
 		}
+		audioSrc.volume = 0;
 		audioSrc.Stop();
 	}
 }
