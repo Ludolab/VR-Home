@@ -90,7 +90,7 @@ public class Dirt : MonoBehaviour {
         if (other.transform.parent.gameObject.GetComponent<WateringCan>() != null)
         {
             Debug.Log("We're being watered!");
-            IncrementWetness();
+            StartCoroutine(IncrementWetness());
         }
     }
 }
