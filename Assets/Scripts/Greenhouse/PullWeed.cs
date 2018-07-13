@@ -15,11 +15,11 @@ public class PullWeed : MonoBehaviour
 	public AudioClip pickSound;
 	public Color particleColor;
 
-	private InteractionBehaviour ib;
+	/*private InteractionBehaviour ib;
 	private Rigidbody rb;
 	private Collider col;
 	private AudioSource audioSrc;
-	private Rigidbody dragRB;
+	private Rigidbody dragRB;*/
 	private InteractionBehaviour dragIB;
 
 	private bool grasped = false;
@@ -33,12 +33,12 @@ public class PullWeed : MonoBehaviour
 
 	private void Start()
 	{
-		ib = modelObj.GetComponent<InteractionBehaviour>();
-		rb = modelObj.GetComponent<Rigidbody>();
-		dragRB = dragObj.GetComponent<Rigidbody>();
+		//ib = modelObj.GetComponent<InteractionBehaviour>();
+		//rb = modelObj.GetComponent<Rigidbody>();
+		//col = modelObj.GetComponent<Collider>();
+		//audioSrc = GetComponent<AudioSource>();
+		//dragRB = dragObj.GetComponent<Rigidbody>();
 		dragIB = dragObj.GetComponent<InteractionBehaviour>();
-		col = modelObj.GetComponent<Collider>();
-		audioSrc = GetComponent<AudioSource>();
 		startScale = modelObj.transform.localScale;
 		startRotation = modelObj.transform.rotation;
 	}
