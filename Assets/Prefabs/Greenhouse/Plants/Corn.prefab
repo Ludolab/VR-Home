@@ -155,6 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4852168942216306}
   - component: {fileID: 114178327677996460}
+  - component: {fileID: 135287444980150032}
   m_Layer: 0
   m_Name: Corn
   m_TagString: Untagged
@@ -350,7 +351,7 @@ MonoBehaviour:
   - {fileID: 4297132737191968}
   - {fileID: 4702183755152058}
   multiHarvest: 1
-  fruit: {fileID: 100000, guid: 3a383a05f8e084fbf8ca277442111b2d, type: 3}
+  fruit: {fileID: 1343712615588854, guid: d3d6df1497932409395b071de5557a9b, type: 2}
   fruitTrans:
   - {fileID: 4549437221965688}
   - {fileID: 4377116243610030}
@@ -362,3 +363,15 @@ MonoBehaviour:
   - {fileID: 4685585525950530}
   - {fileID: 4299728709657604}
   nonFruitingStages: 2
+--- !u!135 &135287444980150032
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1828312225532444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}

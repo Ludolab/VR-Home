@@ -80,6 +80,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4850396164578470}
   - component: {fileID: 114459036108709564}
+  - component: {fileID: 135354091263769686}
   m_Layer: 0
   m_Name: Chili
   m_TagString: Untagged
@@ -379,7 +380,7 @@ MonoBehaviour:
   - {fileID: 4426999638733878}
   - {fileID: 4892282684459616}
   multiHarvest: 1
-  fruit: {fileID: 100000, guid: 289c855f4787e49989510d1b0b382f1e, type: 3}
+  fruit: {fileID: 1320748229465608, guid: f1b6541c4969647f3a92626b461f6ef4, type: 2}
   fruitTrans:
   - {fileID: 4142322940541304}
   - {fileID: 4979033137364154}
@@ -392,3 +393,15 @@ MonoBehaviour:
   - {fileID: 4812271243237696}
   - {fileID: 4485211820038074}
   nonFruitingStages: 2
+--- !u!135 &135354091263769686
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327576423824070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}

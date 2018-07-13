@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4075889843314678}
   - component: {fileID: 114371595698535848}
+  - component: {fileID: 135904194206777768}
   m_Layer: 0
   m_Name: Leek
   m_TagString: Untagged
@@ -242,3 +243,15 @@ MonoBehaviour:
   - {fileID: 4720567766089342}
   - {fileID: 4514630196111018}
   nonFruitingStages: 2
+--- !u!135 &135904194206777768
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013408812136994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}

@@ -18,19 +18,15 @@ public class Plant : MonoBehaviour
 	private int stage;
 	private int dayBorn;
 
-	private void Start()
+	public void Planted()
 	{
-		TimeManager.instance.AddPlant(this);
+		//TimeManager.instance.AddPlant(this);
 		dayBorn = TimeManager.instance.GetDay();
 		stage = 0;
 		UpdateModel();
-
-        Debug.Log(growthStagesTrans[0]);
-        Debug.Log(growthStagesTrans[1]);
-        Debug.Log(growthStagesTrans[2]);
 	}
 	
-	private void UpdateModel()
+	public void UpdateModel()
 	{
 		if (model != null)
 		{
@@ -45,13 +41,15 @@ public class Plant : MonoBehaviour
 		//TODO: spawn fruit- half ripe and half unripe (don't spawn unripe if last ripe one was not picked)
 	}
 
-	public void StartDay(int day)
-	{
-		stage = day - dayBorn;
-		if (stage >= growthStages.Length)
-		{
-			stage = nonFruitingStages;
-		}
-		UpdateModel();
-	}
+    public void setStage(int s) {
+        stage = s;
+    }
+
+    public int getStage() {
+        return stage;
+    }
+
+    public int getDayBorn() {
+        return dayBorn;
+    }
 }
