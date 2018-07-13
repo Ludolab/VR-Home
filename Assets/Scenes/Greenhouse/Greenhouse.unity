@@ -326,7 +326,6 @@ GameObject:
   - component: {fileID: 239629047}
   - component: {fileID: 239629046}
   - component: {fileID: 239629045}
-  - component: {fileID: 239629044}
   m_Layer: 0
   m_Name: Dirt Particles
   m_TagString: Untagged
@@ -348,18 +347,6 @@ Transform:
   m_Father: {fileID: 1443325018}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &239629044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114789507617700988, guid: c71df3e0fe0394b759e223fc7f13e6da,
-    type: 2}
-  m_PrefabInternal: {fileID: 1908996004}
-  m_GameObject: {fileID: 239629042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d0321b0389cac14ca859b92328ac13d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!199 &239629045
 ParticleSystemRenderer:
   serializedVersion: 5
@@ -8728,7 +8715,8 @@ Prefab:
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value
       value: 0.97979736
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: c71df3e0fe0394b759e223fc7f13e6da, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1965236622
