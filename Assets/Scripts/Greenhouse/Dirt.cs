@@ -9,9 +9,9 @@ public class Dirt : MonoBehaviour {
     SkinnedMeshRenderer skinnedMeshRenderer;
     int digState; // 0 = flat, 1 = hole, 2 = mound
     float wetness;
-    float waterTime = 0.5f;
-    float waterIncrement = 0.01f;
-    float digTime = 0.5f;
+    public float waterTime;
+    public float waterIncrement;
+    public float digTime;
 
 	// Use this for initialization
 	void Start () {
@@ -90,7 +90,7 @@ public class Dirt : MonoBehaviour {
         if (other.transform.parent.gameObject.GetComponent<WateringCan>() != null)
         {
             Debug.Log("We're being watered!");
-            IncrementWetness();
+            StartCoroutine(IncrementWetness());
         }
     }
 }
