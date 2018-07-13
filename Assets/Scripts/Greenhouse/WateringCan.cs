@@ -15,7 +15,7 @@ public class WateringCan : MonoBehaviour
 
 	private void Start()
 	{
-		audioSrc = GetComponent<AudioSource>();
+		audioSrc = particleObj.GetComponent<AudioSource>();
 		maxVolume = audioSrc.volume;
 		audioSrc.volume = 0;
 		ps = particleObj.GetComponent<ParticleSystem>();
