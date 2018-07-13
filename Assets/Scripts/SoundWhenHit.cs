@@ -8,6 +8,8 @@ public class SoundWhenHit : MonoBehaviour {
 
     private AudioSource audioSrc;
     private float originalVolume;
+    private float originalPitch;
+
 
     private void Awake()
     {
