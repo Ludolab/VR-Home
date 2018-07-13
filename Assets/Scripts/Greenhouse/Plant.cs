@@ -24,6 +24,10 @@ public class Plant : MonoBehaviour
 		dayBorn = TimeManager.instance.GetDay();
 		stage = 0;
 		UpdateModel();
+
+        Debug.Log(growthStagesTrans[0]);
+        Debug.Log(growthStagesTrans[1]);
+        Debug.Log(growthStagesTrans[2]);
 	}
 	
 	private void UpdateModel()
@@ -31,9 +35,9 @@ public class Plant : MonoBehaviour
 		if (model != null)
 		{
 			Destroy(model);
-		}
-        Debug.Log("Stage specific transformation: " + growthStagesTrans[stage].position);
+        }
         model = Instantiate(growthStages[stage], growthStagesTrans[stage]);
+        Debug.Log("Stage specific transformation: " + growthStagesTrans[stage].localPosition);
         Debug.Log("Model expected global position: " + (transform.position + growthStagesTrans[stage].localPosition));
         Debug.Log("Model global position: " + model.transform.position);
 
