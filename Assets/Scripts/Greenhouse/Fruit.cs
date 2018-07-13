@@ -29,24 +29,16 @@ public class Fruit : MonoBehaviour
 
 
 	private ConfigurableJoint joint;
-	private Rigidbody rb;
 	private InteractionBehaviour ib;
 	private Material mat;
 
 	private Genome genome;
-	private float anchorY;
-
+	
 	private void Awake()
 	{
 		joint = GetComponent<ConfigurableJoint>();
-		rb = GetComponent<Rigidbody>();
 		ib = GetComponent<InteractionBehaviour>();
 		mat = GetComponent<Renderer>().materials[1];
-	}
-
-	private void Start()
-	{
-		anchorY = transform.position.y;
 	}
 
 	public void SetGenome(Genome g)
