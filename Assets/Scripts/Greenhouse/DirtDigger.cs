@@ -18,9 +18,9 @@ public class DirtDigger : MonoBehaviour
 	public void handTouching()
     {
         Debug.Log("Collision with Dirt");
-        GameObject myController = myIB.closestHoveringController.gameObject;
+        InteractionController myController = myIB.closestHoveringController;
         Vector3 relativePos = this.gameObject.transform.position - myController.transform.position;
-        Vector3 vel = myController.GetComponent<Rigidbody>().velocity;
+        Vector3 vel = myController.velocity;
         float relativeAngle = Vector3.Angle(relativePos, vel);
         Debug.Log("relative Angle is " + relativeAngle);
         if (relativeAngle > 120 && vel.magnitude > motionThreshold)
