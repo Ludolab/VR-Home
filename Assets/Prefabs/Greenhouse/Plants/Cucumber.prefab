@@ -1,0 +1,334 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1641295004333326}
+  m_IsPrefabParent: 1
+--- !u!1 &1005837638657614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4349697827864292}
+  m_Layer: 0
+  m_Name: FruitTrans1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1122909068550778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4098274019082312}
+  m_Layer: 0
+  m_Name: CucumberTrans3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1133684228874032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4340789329332864}
+  m_Layer: 0
+  m_Name: CucumberTrans1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1141438985646494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4224791769625948}
+  m_Layer: 0
+  m_Name: FruitTrans3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1307865114965568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4586566410947798}
+  m_Layer: 0
+  m_Name: FruitTrans2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1641295004333326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4724066998595802}
+  - component: {fileID: 114460021117233218}
+  m_Layer: 0
+  m_Name: Cucumber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1668665124923846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4005963043596706}
+  m_Layer: 0
+  m_Name: BeetleTransG1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1687118086159994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4071959547961052}
+  m_Layer: 0
+  m_Name: CucumberTrans2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1739593685841122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4482806831803494}
+  m_Layer: 0
+  m_Name: BeetleTransY1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1786543442532932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4258894441157868}
+  m_Layer: 0
+  m_Name: BeetleTransG2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4005963043596706
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1668665124923846}
+  m_LocalRotation: {x: -0.10650667, y: 0.71954715, z: -0.09234868, w: 0.6799854}
+  m_LocalPosition: {x: 0.523, y: 0.623, z: -0.148}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4724066998595802}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: -0.68500006, y: 93.336006, z: -16.194}
+--- !u!4 &4071959547961052
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687118086159994}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -0.09, y: -0.009, z: -0.029}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 4724066998595802}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!4 &4098274019082312
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1122909068550778}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -0.09, y: -0.009, z: -0.029}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 4724066998595802}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!4 &4224791769625948
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141438985646494}
+  m_LocalRotation: {x: -0.028450739, y: -0.027603164, z: -0.7171525, w: 0.695788}
+  m_LocalPosition: {x: 0.281, y: 0.272, z: -0.312}
+  m_LocalScale: {x: 0.30000004, y: 0.29999998, z: 0.29999998}
+  m_Children: []
+  m_Father: {fileID: 4724066998595802}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -4.5420003, y: 0.13800001, z: -91.73801}
+--- !u!4 &4258894441157868
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786543442532932}
+  m_LocalRotation: {x: -0.03814492, y: -0.2521645, z: 0.353809, w: 0.8998763}
+  m_LocalPosition: {x: 0.0458728, y: 0.86743534, z: -0.33539003}
+  m_LocalScale: {x: 1.0000007, y: 1, z: 1.0000007}
+  m_Children: []
+  m_Father: {fileID: 4724066998595802}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 6.3030005, y: -28.931002, z: 41.300003}
+--- !u!4 &4340789329332864
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1133684228874032}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1600292, y: 3.5382335, z: 0.15558946}
+  m_Children: []
+  m_Father: {fileID: 4724066998595802}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4349697827864292
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005837638657614}
+  m_LocalRotation: {x: -0.028450739, y: -0.027603164, z: -0.7171525, w: 0.695788}
+  m_LocalPosition: {x: 0.217, y: 0.519, z: -0.138}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_Children: []
+  m_Father: {fileID: 4724066998595802}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -4.5420003, y: 0.13800001, z: -91.73801}
+--- !u!4 &4482806831803494
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1739593685841122}
+  m_LocalRotation: {x: 0.031993575, y: -0.14937808, z: 0.20697069, w: 0.9663466}
+  m_LocalPosition: {x: 0.184, y: 0.441, z: 0.003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4724066998595802}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 7.1040006, y: -16.116001, z: 23.171001}
+--- !u!4 &4586566410947798
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307865114965568}
+  m_LocalRotation: {x: -0.04133404, y: -0.04010265, z: -0.71652544, w: 0.6951796}
+  m_LocalPosition: {x: 0.30499128, y: 0.7447093, z: 0.2050409}
+  m_LocalScale: {x: 0.3000001, y: 0.3000001, z: 0.29999998}
+  m_Children: []
+  m_Father: {fileID: 4724066998595802}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -6.6000004, y: 0.201, z: -91.744}
+--- !u!4 &4724066998595802
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1641295004333326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4340789329332864}
+  - {fileID: 4071959547961052}
+  - {fileID: 4098274019082312}
+  - {fileID: 4349697827864292}
+  - {fileID: 4586566410947798}
+  - {fileID: 4224791769625948}
+  - {fileID: 4482806831803494}
+  - {fileID: 4005963043596706}
+  - {fileID: 4258894441157868}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114460021117233218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1641295004333326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3a199c4bb21cb44aa8a04b20363418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growthStages:
+  - {fileID: 100000, guid: 788f6ac5b560f4c76922079b1d038e36, type: 3}
+  - {fileID: 100000, guid: e932ad7a351704575bda567e6eeeae39, type: 3}
+  - {fileID: 100000, guid: ae204e56006634dd4883fe1569f9e3ce, type: 3}
+  growthStagesTrans:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  multiHarvest: 1
+  fruit: {fileID: 100000, guid: d00af8b99ee4d4509911158808bc14ba, type: 3}
+  fruitTrans:
+  - {fileID: 4349697827864292}
+  - {fileID: 4586566410947798}
+  - {fileID: 4224791769625948}
+  beetleTransYoung:
+  - {fileID: 4482806831803494}
+  beetleTransGrown:
+  - {fileID: 4005963043596706}
+  - {fileID: 4258894441157868}
+  nonFruitingStages: 2
