@@ -36,7 +36,12 @@ public class Plant : MonoBehaviour
 		{
 			Destroy(model);
         }
-        model = Instantiate(growthStages[stage], growthStagesTrans[stage]);
+
+        model = Instantiate(growthStages[stage]);
+        model.transform.position = transform.position + growthStagesTrans[stage].localPosition;
+        model.transform.eulerAngles = transform.eulerAngles + growthStagesTrans[stage].localEulerAngles;
+        model.transform.localScale = growthStagesTrans[stage].localScale;
+
         Debug.Log("Stage specific transformation: " + growthStagesTrans[stage].localPosition);
         Debug.Log("Model expected global position: " + (transform.position + growthStagesTrans[stage].localPosition));
         Debug.Log("Model global position: " + model.transform.position);
