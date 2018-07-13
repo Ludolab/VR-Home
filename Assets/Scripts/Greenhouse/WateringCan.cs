@@ -6,14 +6,18 @@ public class WateringCan : MonoBehaviour
 {
 
 	public GameObject particleObj;
+	public float soundFadeTime;
 
 	private AudioSource audioSrc;
 	private ParticleSystem ps;
 	private bool particlesActive = false;
+	private float maxVolume;
 
 	private void Start()
 	{
 		audioSrc = GetComponent<AudioSource>();
+		maxVolume = audioSrc.volume;
+		audioSrc.volume = 0;
 		ps = particleObj.GetComponent<ParticleSystem>();
 		ps.Stop();
 	}
@@ -23,14 +27,16 @@ public class WateringCan : MonoBehaviour
 		if (IsTilted() && !particlesActive)
 		{
 			ps.Play();
-			audioSrc.Play();
+			StopCoroutine(StopSound());
+			StartCoroutine(PlaySound());
 			particlesActive = true;
 		}
 
 		if (!IsTilted() && particlesActive)
 		{
 			ps.Stop();
-			audioSrc.Stop();
+			StopCoroutine(PlaySound());
+			StartCoroutine(StopSound());
 			particlesActive = false;
 		}
 	}
@@ -43,5 +49,27 @@ public class WateringCan : MonoBehaviour
 	private bool InRange(float angle)
 	{
 		return angle > 45 && angle < 180;
+	}
+
+	private IEnumerator PlaySound()
+	{
+		audioSrc.Play();
+		float startVolume = audioSrc.volume;
+		for (float t = 0; t < soundFadeTime; t += Time.deltaTime)
+		{
+			audioSrc.volume = Mathf.Lerp(startVolume, maxVolume, t);
+			yield return new WaitForEndOfFrame();
+		}
+	}
+
+	private IEnumerator StopSound()
+	{
+		float startVolume = audioSrc.volume;
+		for (float t = 0; t < soundFadeTime; t += Time.deltaTime)
+		{
+			audioSrc.volume = Mathf.Lerp(startVolume, 0, t);
+			yield return new WaitForEndOfFrame();
+		}
+		audioSrc.Stop();
 	}
 }
