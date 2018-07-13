@@ -1,0 +1,364 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1828312225532444}
+  m_IsPrefabParent: 1
+--- !u!1 &1097090262227042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4297132737191968}
+  m_Layer: 0
+  m_Name: CornTrans2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1098353303653940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4385452511417348}
+  m_Layer: 0
+  m_Name: BeetleTransY2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1121927623992598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4377116243610030}
+  m_Layer: 0
+  m_Name: FruitTrans2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1194198060208862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4449944119855196}
+  m_Layer: 0
+  m_Name: FruitTrans3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1209393386987414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4706589829396646}
+  m_Layer: 0
+  m_Name: BeetleTransY1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1242082369697416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4685585525950530}
+  m_Layer: 0
+  m_Name: BeetleTransG1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1532903570500528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4978766334098532}
+  m_Layer: 0
+  m_Name: CornTrans1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1602310570073890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4702183755152058}
+  m_Layer: 0
+  m_Name: CornTrans3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1630608525397444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4549437221965688}
+  m_Layer: 0
+  m_Name: FruitTrans1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1828312225532444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4852168942216306}
+  - component: {fileID: 114178327677996460}
+  m_Layer: 0
+  m_Name: Corn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1863259678662834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4299728709657604}
+  m_Layer: 0
+  m_Name: BeetleTransG2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4297132737191968
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1097090262227042}
+  m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
+  m_LocalPosition: {x: -0.002, y: -0.05, z: -0.036999997}
+  m_LocalScale: {x: 0.31311375, y: 0.3, z: 0.31311378}
+  m_Children: []
+  m_Father: {fileID: 4852168942216306}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!4 &4299728709657604
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1863259678662834}
+  m_LocalRotation: {x: 0.72828054, y: 0.68484217, z: -0.01800385, w: 0.016569132}
+  m_LocalPosition: {x: 0.051, y: 0.543, z: -0.008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4852168942216306}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 2.7970002, y: 180.202, z: 93.526}
+--- !u!4 &4377116243610030
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1121927623992598}
+  m_LocalRotation: {x: 0.070863694, y: 0.96539587, z: -0.15983997, w: 0.19349524}
+  m_LocalPosition: {x: -0.01, y: 0.177, z: -0.101}
+  m_LocalScale: {x: 0.29999998, y: 0.29999995, z: 0.29999995}
+  m_Children: []
+  m_Father: {fileID: 4852168942216306}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 19.636002, y: 158.123, z: 4.565}
+--- !u!4 &4385452511417348
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098353303653940}
+  m_LocalRotation: {x: 0.72828054, y: 0.68484217, z: -0.01800385, w: 0.016569132}
+  m_LocalPosition: {x: 0.029, y: 0.258, z: -0.013}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_Children: []
+  m_Father: {fileID: 4852168942216306}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 2.7970002, y: 180.202, z: 93.526}
+--- !u!4 &4449944119855196
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1194198060208862}
+  m_LocalRotation: {x: -0.07658603, y: 0.9644013, z: 0.12873453, w: 0.21792728}
+  m_LocalPosition: {x: -0.037, y: 0.445, z: -0.005}
+  m_LocalScale: {x: 0.30000013, y: 0.29999998, z: 0.30000022}
+  m_Children: []
+  m_Father: {fileID: 4852168942216306}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: -16.361, y: 155.32101, z: -5.479}
+--- !u!4 &4549437221965688
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630608525397444}
+  m_LocalRotation: {x: 0.093353204, y: -0, z: -0, w: 0.99563307}
+  m_LocalPosition: {x: 0.05, y: 0.888, z: 0.071}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_Children: []
+  m_Father: {fileID: 4852168942216306}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 10.713, y: 0, z: 0}
+--- !u!4 &4685585525950530
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1242082369697416}
+  m_LocalRotation: {x: 0.27338973, y: 0.8199409, z: -0.17867549, w: -0.4701383}
+  m_LocalPosition: {x: -0.14297038, y: 1.0203662, z: 0.08221243}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4852168942216306}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 2.0600002, y: 240.36899, z: 38.078003}
+--- !u!4 &4702183755152058
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1602310570073890}
+  m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
+  m_LocalPosition: {x: -0.0059999996, y: 0, z: -0.037999995}
+  m_LocalScale: {x: 0.31311375, y: 0.3, z: 0.31311378}
+  m_Children: []
+  m_Father: {fileID: 4852168942216306}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!4 &4706589829396646
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1209393386987414}
+  m_LocalRotation: {x: 0.33755675, y: 0.9037495, z: -0.10166664, w: -0.24280888}
+  m_LocalPosition: {x: -0.06762862, y: 0.61557627, z: 0.040683404}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_Children: []
+  m_Father: {fileID: 4852168942216306}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 1.1370001, y: 210.50499, z: 41.272003}
+--- !u!4 &4852168942216306
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1828312225532444}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4978766334098532}
+  - {fileID: 4297132737191968}
+  - {fileID: 4702183755152058}
+  - {fileID: 4706589829396646}
+  - {fileID: 4385452511417348}
+  - {fileID: 4685585525950530}
+  - {fileID: 4299728709657604}
+  - {fileID: 4549437221965688}
+  - {fileID: 4377116243610030}
+  - {fileID: 4449944119855196}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4978766334098532
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532903570500528}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.1667957, y: 1.9022822, z: 1.4305902}
+  m_Children: []
+  m_Father: {fileID: 4852168942216306}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114178327677996460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1828312225532444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3a199c4bb21cb44aa8a04b20363418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growthStages:
+  - {fileID: 100000, guid: 8817fd15565684739b0b6ca3321c9e3a, type: 3}
+  - {fileID: 100000, guid: 7f0e7aa53c20e48258d98f0892e4c1de, type: 3}
+  - {fileID: 100000, guid: 9d069be2cb10541d9a8179be311c027b, type: 3}
+  growthStagesTrans:
+  - {fileID: 4978766334098532}
+  - {fileID: 4297132737191968}
+  - {fileID: 4702183755152058}
+  multiHarvest: 1
+  fruit: {fileID: 100000, guid: 3a383a05f8e084fbf8ca277442111b2d, type: 3}
+  fruitTrans:
+  - {fileID: 4549437221965688}
+  - {fileID: 4377116243610030}
+  - {fileID: 4449944119855196}
+  beetleTransYoung:
+  - {fileID: 4706589829396646}
+  - {fileID: 4385452511417348}
+  beetleTransGrown:
+  - {fileID: 4685585525950530}
+  - {fileID: 4299728709657604}
+  nonFruitingStages: 2
