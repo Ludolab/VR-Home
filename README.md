@@ -14,6 +14,8 @@
 - Vegetable plant models by Dexsoft Games: https://assetstore.unity.com/packages/3d/vegetation/plants/vegetable-plants-2394
 - Node Editor Framework by Seneral: https://github.com/Seneral/Node_Editor_Framework/tree/develop
 - Hanging plant models by Enaendea: https://3dwarehouse.sketchup.com/model/u8dfc1d61-9f63-4734-ab43-b62b47fe538b/hanging-plants?hl=en
+- Fence prefab by Jaroslav Grafskiy: https://assetstore.unity.com/packages/3d/props/exterior/mobile-wooden-fences-54772
+- Moving Tree prefab by Rakshi Games: https://assetstore.unity.com/packages/3d/vegetation/plants/realistic-tree1-44628
 
 ### Sounds
 - Thud sound by OtisJames: https://freesound.org/people/OtisJames/sounds/215162/
