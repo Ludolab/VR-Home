@@ -64,7 +64,7 @@ namespace NodeEditorFramework.Standard
 				}
 				else
 				{
-					menu.AddItem(new GUIContent("Save Canvas"), false, SaveCanvas);
+					menu.AddItem(new GUIContent("Save Canvas		Ctrl+S"), false, SaveCanvas);
 					menu.AddItem(new GUIContent("Save Canvas As"), false, SaveCanvasAs);
 				}
 				menu.AddSeparator("");
@@ -195,7 +195,7 @@ namespace NodeEditorFramework.Standard
 				ShowNotification(new GUIContent("Cannot reload canvas as it has not been saved yet!"));
 		}
 
-		private void SaveCanvas()
+		public void SaveCanvas()
 		{
 			string path = canvasCache.nodeCanvas.savePath;
 			if (!string.IsNullOrEmpty(path))
@@ -207,7 +207,7 @@ namespace NodeEditorFramework.Standard
 				ShowNotification(new GUIContent("Canvas Saved!"));
 			}
 			else
-				ShowNotification(new GUIContent("No save location found. Use 'Save As'!"));
+				SaveCanvasAs();
 		}
 
 		private void SaveCanvasAs()

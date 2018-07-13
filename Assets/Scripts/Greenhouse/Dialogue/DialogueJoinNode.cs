@@ -22,7 +22,7 @@ public class DialogueJoinNode : Node
 	[ConnectionKnob("Out", Direction.Out, "Flow", NodeSide.Right)]
 	public ConnectionKnob flowOut;
 
-	//TODO: condition
+	//TODO: color (same/similar to branch node)
 
 	public override void NodeGUI()
 	{

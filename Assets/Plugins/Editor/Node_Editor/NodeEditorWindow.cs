@@ -20,6 +20,8 @@ namespace NodeEditorFramework.Standard
 		// GUI
 		private Rect canvasWindowRect { get { return new Rect(0, editorInterface.toolbarHeight, position.width, position.height - editorInterface.toolbarHeight); } }
 
+		// Input
+		private bool ctrlHeld;
 
 		#region General 
 
@@ -162,6 +164,8 @@ namespace NodeEditorFramework.Standard
 
 			// END ROOT: End Overlay GUI and draw popups
 			OverlayGUI.EndOverlayGUI();
+
+			ProcessInput();
 		}
 
 		private void OnSceneGUI(SceneView sceneview)
@@ -170,6 +174,36 @@ namespace NodeEditorFramework.Standard
 			if (canvasCache.editorState != null && canvasCache.editorState.selectedNode != null)
 				canvasCache.editorState.selectedNode.OnSceneGUI();
 			SceneView.lastActiveSceneView.Repaint();
+		}
+
+		private void ProcessInput()
+		{
+			if (Event.current != null) {
+				Event e = Event.current;
+				if (e.type == EventType.KeyDown)
+				{
+					KeyCode k = e.keyCode;
+					if (k == KeyCode.LeftControl || k == KeyCode.RightControl)
+					{
+						ctrlHeld = true;
+					}
+				}
+				else if (e.type == EventType.KeyUp)
+				{
+					KeyCode k = e.keyCode;
+					if (k == KeyCode.S)
+					{
+						if (ctrlHeld)
+						{
+							editorInterface.SaveCanvas();
+						}
+					}
+					else if (k == KeyCode.LeftControl || k == KeyCode.RightControl)
+					{
+						ctrlHeld = false;
+					}
+				}
+			}
 		}
 
 		#endregion
