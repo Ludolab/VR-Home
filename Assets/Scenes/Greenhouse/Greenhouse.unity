@@ -7504,7 +7504,17 @@ Prefab:
     - target: {fileID: 82363822873220492, guid: 778d0d8f6645ff348aaf2cb8b9614f58,
         type: 2}
       propertyPath: m_Volume
-      value: 0.806
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82363822873220492, guid: 778d0d8f6645ff348aaf2cb8b9614f58,
+        type: 2}
+      propertyPath: BypassReverbZones
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82363822873220492, guid: 778d0d8f6645ff348aaf2cb8b9614f58,
+        type: 2}
+      propertyPath: Priority
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 778d0d8f6645ff348aaf2cb8b9614f58, type: 2}
