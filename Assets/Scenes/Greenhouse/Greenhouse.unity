@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: b8196c0eaa1b8a947b285f0c5607652c, type: 3}
   m_Sun: {fileID: 649030550}
-  m_IndirectSpecularColor: {r: 0.12944126, g: 0.2873758, b: 0.5510494, a: 1}
+  m_IndirectSpecularColor: {r: 0.12802261, g: 0.28767964, b: 0.5531581, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7467,12 +7467,12 @@ Prefab:
     - target: {fileID: 198244616038159182, guid: 778d0d8f6645ff348aaf2cb8b9614f58,
         type: 2}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.6525454
+      value: 0.44891423
       objectReference: {fileID: 0}
     - target: {fileID: 198244616038159182, guid: 778d0d8f6645ff348aaf2cb8b9614f58,
         type: 2}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.7814028
+      value: 0.69749916
       objectReference: {fileID: 0}
     - target: {fileID: 198244616038159182, guid: 778d0d8f6645ff348aaf2cb8b9614f58,
         type: 2}
@@ -9110,6 +9110,7 @@ GameObject:
   - component: {fileID: 1443325017}
   - component: {fileID: 1443325016}
   - component: {fileID: 1443325019}
+  - component: {fileID: 1443325020}
   m_Layer: 0
   m_Name: Dirt
   m_TagString: Untagged
@@ -9213,6 +9214,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirtParticles: {fileID: 239629042}
+--- !u!64 &1443325020
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1443325015}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1451273432
 Prefab:
   m_ObjectHideFlags: 0

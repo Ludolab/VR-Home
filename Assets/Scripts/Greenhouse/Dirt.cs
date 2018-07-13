@@ -11,7 +11,7 @@ public class Dirt : MonoBehaviour {
     float wetness;
     float waterTime = 0.5f;
     float waterIncrement = 0.01f;
-    float digTime = 1f;
+    float digTime = 0.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +32,11 @@ public class Dirt : MonoBehaviour {
         if (Input.GetKey("left") && digState == 1)
         {
             StartCoroutine(CoverHole());
+        }
+        if (Input.GetKey("left") && digState == 2)
+        {
+            skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
+            skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
         }
     }
 
