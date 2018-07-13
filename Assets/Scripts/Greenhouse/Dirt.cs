@@ -45,11 +45,11 @@ public class Dirt : MonoBehaviour {
         for (float t = 0; t < waterTime; t += Time.deltaTime)
         {
             wetness = Mathf.Lerp(oldValue, oldValue + waterIncrement, t / waterTime);
-            myMaterial.SetFloat("_Threshold", wetness);
+            myMaterial.SetFloat("_Wetness", wetness);
             yield return new WaitForEndOfFrame();
         }
         wetness = oldValue + waterIncrement;
-        myMaterial.SetFloat("_Threshold", wetness);
+        myMaterial.SetFloat("_Wetness", wetness);
     }
 
     private IEnumerator DigHole (){
@@ -82,10 +82,8 @@ public class Dirt : MonoBehaviour {
 
     void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Particle Collision!");
         if (other.transform.parent.gameObject.GetComponent<WateringCan>() != null)
         {
-            Debug.Log("We're being watered!");
             IncrementWetness();
         }
     }

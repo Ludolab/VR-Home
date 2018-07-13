@@ -719,7 +719,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.4528302, g: 0.417705, b: 0.37379852, a: 1}
+      maxColor: {r: 0.5377358, g: 0.5001958, b: 0.4438857, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -781,7 +781,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.03
+      scalar: 0.05
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -834,7 +834,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.05
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -887,7 +887,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.05
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1098,7 +1098,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     maxNumParticles: 1000
-    size3D: 0
+    size3D: 1
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
@@ -1414,7 +1414,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 80
+        scalar: 200
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -10732,17 +10732,17 @@ Prefab:
     - target: {fileID: 198882088644743572, guid: c71df3e0fe0394b759e223fc7f13e6da,
         type: 2}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.4528302
+      value: 0.5377358
       objectReference: {fileID: 0}
     - target: {fileID: 198882088644743572, guid: c71df3e0fe0394b759e223fc7f13e6da,
         type: 2}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.417705
+      value: 0.5001958
       objectReference: {fileID: 0}
     - target: {fileID: 198882088644743572, guid: c71df3e0fe0394b759e223fc7f13e6da,
         type: 2}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.37379852
+      value: 0.4438857
       objectReference: {fileID: 0}
     - target: {fileID: 198882088644743572, guid: c71df3e0fe0394b759e223fc7f13e6da,
         type: 2}
@@ -10767,12 +10767,12 @@ Prefab:
     - target: {fileID: 198882088644743572, guid: c71df3e0fe0394b759e223fc7f13e6da,
         type: 2}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.03
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 198882088644743572, guid: c71df3e0fe0394b759e223fc7f13e6da,
         type: 2}
       propertyPath: InitialModule.size3D
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 199129768866846754, guid: c71df3e0fe0394b759e223fc7f13e6da,
         type: 2}
@@ -10787,7 +10787,7 @@ Prefab:
     - target: {fileID: 198882088644743572, guid: c71df3e0fe0394b759e223fc7f13e6da,
         type: 2}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 80
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 198882088644743572, guid: c71df3e0fe0394b759e223fc7f13e6da,
         type: 2}
@@ -10833,6 +10833,21 @@ Prefab:
         type: 2}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value
       value: 0.97979736
+      objectReference: {fileID: 0}
+    - target: {fileID: 199129768866846754, guid: c71df3e0fe0394b759e223fc7f13e6da,
+        type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198882088644743572, guid: c71df3e0fe0394b759e223fc7f13e6da,
+        type: 2}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 198882088644743572, guid: c71df3e0fe0394b759e223fc7f13e6da,
+        type: 2}
+      propertyPath: InitialModule.startSizeZ.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
