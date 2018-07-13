@@ -13,11 +13,13 @@ public class SoundWhenHit : MonoBehaviour {
     {
         audioSrc = gameObject.GetComponent<AudioSource>();
         originalVolume = audioSrc.volume;
+        originalPitch = audioSrc.pitch;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         audioSrc.volume = collision.relativeVelocity.magnitude * SOUND_SCALE * originalVolume;
+        audioSrc.pitch = collision.relativeVelocity.magnitude * SOUND_SCALE * originalPitch;
         audioSrc.Play();
     }
 }

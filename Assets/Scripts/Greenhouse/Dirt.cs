@@ -82,8 +82,10 @@ public class Dirt : MonoBehaviour {
 
     void OnParticleCollision(GameObject other)
     {
+        Debug.Log("Particle Collision!");
         if (other.transform.parent.gameObject.GetComponent<WateringCan>() != null)
         {
+            Debug.Log("We're being watered!");
             IncrementWetness();
         }
     }
