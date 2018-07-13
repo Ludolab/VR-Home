@@ -95,6 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4918913722629870}
   - component: {fileID: 114129175171284734}
+  - component: {fileID: 135575547720223330}
   m_Layer: 0
   m_Name: Onion
   m_TagString: Untagged
@@ -212,3 +213,15 @@ MonoBehaviour:
   beetleTransGrown:
   - {fileID: 4468548189962110}
   nonFruitingStages: 2
+--- !u!135 &135575547720223330
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1950623421584832}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}

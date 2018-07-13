@@ -10,11 +10,12 @@ public class TimeManager : MonoBehaviour
 
 	public GameObject neighborsObj;
 	public Outbox[] outboxes;
+    public Plot[] plots;
 
 	private int day = 0;
 
 	private Neighbor[] neighbors;
-	private List<Plant> plants = new List<Plant>();
+	//private List<Plant> plants = new List<Plant>();
 	private List<GameObject> garbage = new List<GameObject>();
 
 	private void Awake()
@@ -65,9 +66,9 @@ public class TimeManager : MonoBehaviour
 			neighbor.StartDay(day);
 		}
 
-		foreach (Plant plant in plants)
+		foreach (Plot plot in plots)
 		{
-			plant.StartDay(day);
+			plot.StartDay(day);
 		}
 	}
 
@@ -84,10 +85,10 @@ public class TimeManager : MonoBehaviour
 		ProcessDay();
 	}
 
-	public void AddPlant(Plant plant)
+	/*public void AddPlant(Plant plant)
 	{
 		plants.Add(plant);
-	}
+	}*/
 
 	public void AddOutboxLabel(NeighborInfo info)
 	{
