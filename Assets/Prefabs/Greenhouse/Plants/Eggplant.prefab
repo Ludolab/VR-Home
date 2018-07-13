@@ -194,13 +194,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1655249607424764}
-  m_LocalRotation: {x: 0.086286545, y: -0.083652176, z: 0.7127781, w: 0.6910169}
-  m_LocalPosition: {x: 0.201, y: 0.434, z: 0.121}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalRotation: {x: 0.11531106, y: -0.9067164, z: 0.19071367, w: 0.3580461}
+  m_LocalPosition: {x: 0.0907443, y: 0.35915014, z: -0.13096079}
+  m_LocalScale: {x: 0.4, y: 0.40000004, z: 0.39999998}
   m_Children: []
   m_Father: {fileID: 4461824016689078}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 13.798, y: 0.43600002, z: 91.829}
+  m_LocalEulerAnglesHint: {x: 34.054, y: -2.8660002, z: -5.084}
 --- !u!4 &4461824016689078
 Transform:
   m_ObjectHideFlags: 1
@@ -294,13 +294,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1446019004022374}
-  m_LocalRotation: {x: -0.56384933, y: -0.73038614, z: 0.16532987, w: 0.3482473}
-  m_LocalPosition: {x: 0.044, y: 0.471, z: -0.04}
-  m_LocalScale: {x: 0.40000004, y: 0.4000001, z: 0.40000004}
+  m_LocalRotation: {x: -0.028824715, y: -0.92225873, z: -0.07013019, w: 0.37906417}
+  m_LocalPosition: {x: -0.029287353, y: 0.32463762, z: -0.30350325}
+  m_LocalScale: {x: 0.40000027, y: 0.40000007, z: 0.40000033}
   m_Children: []
   m_Father: {fileID: 4461824016689078}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -8.6970005, y: -135.313, z: 71.755005}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114162757856393234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,7 +321,7 @@ MonoBehaviour:
   - {fileID: 4817114324190446}
   - {fileID: 4760283170579102}
   multiHarvest: 1
-  fruit: {fileID: 100000, guid: b15697792aa094de0bdbdd41c6ca20a7, type: 3}
+  fruit: {fileID: 1746422679918174, guid: fb8cfa21f8c944422b2f2ade86165cb4, type: 2}
   fruitTrans:
   - {fileID: 4356196337036964}
   - {fileID: 4906549516718664}
