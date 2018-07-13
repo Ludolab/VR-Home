@@ -37,13 +37,15 @@ public class Dirt : MonoBehaviour {
         {
             skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
             skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
+            digState = 0;
         }
     }
 
     private IEnumerator IncrementWetness(){
+        Debug.Log("Wetness is " + wetness);
         if (wetness < 1){
             float oldValue = wetness;
-            Debug.Log("We're being incrementing wetness!");
+            Debug.Log("We're incrementing wetness!");
             for (float t = 0; t < waterTime; t += Time.deltaTime)
             {
                 wetness = Mathf.Lerp(oldValue, oldValue + waterIncrement, t / waterTime);
