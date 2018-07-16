@@ -14,8 +14,6 @@ public class SaveLoad : MonoBehaviour {
     public bool saveNew;
     public bool loadPrevious;
 
-    public static SaveLoad saveFile;
-
     private Room saveRoom;
     private Dictionary<int, ID> originalObjID = new Dictionary<int, ID>(); // Save reference to original objects (via instance IDs) and their IDs in the scene.
     private SaveObject[] objToSave;

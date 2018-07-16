@@ -54,9 +54,18 @@ public class Plant : MonoBehaviour
 
     public void setStage(int s) {
         stage = s;
+        UpdateModel();
     }
 
     public int getStage() {
         return stage;
+    }
+
+    public void setDayBorn(int db) {
+        dayBorn = db;
+    }
+
+    public int getDayBorn() {
+        return dayBorn;
     }
 }

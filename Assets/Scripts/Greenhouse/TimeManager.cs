@@ -33,7 +33,7 @@ public class TimeManager : MonoBehaviour
 		ProcessDay();
 	}
 
-	private void ProcessDay()
+    private void ProcessDay()
 	{
 		print("Day " + day);
 		foreach (Outbox outbox in outboxes)
@@ -49,7 +49,7 @@ public class TimeManager : MonoBehaviour
 				}
 			}
 
-			if (day == 1)
+			if (day >= 1)
 			{
 				outbox.gameObject.SetActive(true);
 			}
@@ -68,9 +68,14 @@ public class TimeManager : MonoBehaviour
 
 		foreach (Plot plot in plots)
 		{
-			plot.StartNextDay();
+            plot.StartDay();
 		}
 	}
+
+    public void SetDay(int d)
+    {
+        day = d;
+    }
 
 	public int GetDay()
 	{
