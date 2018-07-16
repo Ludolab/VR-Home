@@ -7,7 +7,7 @@ public class Dirt : MonoBehaviour {
     public GameObject dirtParticles;
     Material myMaterial;
     SkinnedMeshRenderer skinnedMeshRenderer;
-    int digState; // 0 = flat, 1 = hole, 2 = mound
+    int digState; // 0 = flat, 1 = hole, 2 = planted, 3 = mound
     float wetness;
     public float waterTime;
     public float waterIncrement;
@@ -35,7 +35,7 @@ public class Dirt : MonoBehaviour {
         {
             StartCoroutine(CoverHole());
         }
-        if (Input.GetKey("left") && digState == 2)
+        if (Input.GetKey("left") && digState >= 2)
         {
             skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
             skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
@@ -63,7 +63,7 @@ public class Dirt : MonoBehaviour {
         if (digState == 0 && !inTransition)
         {
             inTransition = true;
-            dirtParticles.GetComponent<ParticleSystem>().Play();
+            //dirtParticles.GetComponent<ParticleSystem>().Play();
             for (float t = 0; t < digTime; t += Time.deltaTime)
             {
                 skinnedMeshRenderer.SetBlendShapeWeight(0, Mathf.Lerp(0, 100, t / digTime));
@@ -71,16 +71,16 @@ public class Dirt : MonoBehaviour {
             }
             skinnedMeshRenderer.SetBlendShapeWeight(0, 100);
             digState = 1;
-            dirtParticles.GetComponent<ParticleSystem>().Stop();
+            //dirtParticles.GetComponent<ParticleSystem>().Stop();
             inTransition = false;
         }
     }
 
     public IEnumerator CoverHole()
     {
-        if (digState == 1 && !inTransition){
+        if (digState == 2 && !inTransition){
             inTransition = true;
-            dirtParticles.GetComponent<ParticleSystem>().Play();
+            //dirtParticles.GetComponent<ParticleSystem>().Play();
             for (float t = 0; t < digTime; t += Time.deltaTime)
             {
                 skinnedMeshRenderer.SetBlendShapeWeight(0, Mathf.Lerp(100, 0, t / digTime));
@@ -89,8 +89,8 @@ public class Dirt : MonoBehaviour {
             }
             skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
             skinnedMeshRenderer.SetBlendShapeWeight(1, 100);
-            digState = 2;
-            dirtParticles.GetComponent<ParticleSystem>().Stop();
+            digState = 3;
+            //dirtParticles.GetComponent<ParticleSystem>().Stop();
             inTransition = false;
         }
     }
