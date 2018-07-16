@@ -71,10 +71,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BackgroundSub: 0.8
+    - _BackgroundSub: 0.9
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DepthScale: 51.88
+    - _DepthScale: 20
     - _DespthScale: 100
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -82,7 +82,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _ModAmount: 18
+    - _ModAmount: 20
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02

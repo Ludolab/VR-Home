@@ -44,14 +44,14 @@ Shader "Custom/RSShader"
 			float4 tex = tex2Dlod(_DepthTex, float4(v.texcoord.xy, 0, 0));
 
 			//v.vertex.y -= smoothstep(0,1,tex.r * _ModAmount);
-			float d = clamp(tex.r * _DepthScale, 0, 1.);
+			float d = tex.r * _DepthScale;
 			if (d == 0){
 				
-				//discard;
+				v.vertex.y = -_DepthScale;
 			}
 
 			else{
-				v.vertex.y += (1-d) * _ModAmount;
+				v.vertex.y -= (d) * _ModAmount;
 			}
 		}
 		
@@ -62,27 +62,27 @@ Shader "Custom/RSShader"
 			o.Albedo = c.rgb;
 
 			float d = clamp((b.r) * _DepthScale, 0, 1.);
-			
+			float dd = b.r * _DepthScale;
 			o.Alpha = 1;
 
 			if(d > _BackgroundSub){
 				discard;
 				//o.Alpha = 0;
 			}
-			else if (d == 0){
+			else if (dd == 0){
 				//o.Alpha = 0;
 				discard;
 			
 			}
 			else{
-			if (d> _BackgroundSub ){
-				//discard;
-				o.Alpha = (1-d)/_BackgroundSub;
-			}
-			else{
-				o.Alpha = 1;
-			}
-			o.Alpha = 1;
+				if (d> _BackgroundSub ){
+					//discard;
+					o.Alpha = (1-d)/_BackgroundSub;
+				}
+				else{
+					o.Alpha = 1;
+				}
+				
 			}
 		}
 		ENDCG
