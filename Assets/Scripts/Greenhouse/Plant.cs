@@ -18,7 +18,7 @@ public class Plant : MonoBehaviour
 	private int stage;
 	private int dayBorn;
 
-	public void Planted()
+	public void PlantPlant()
 	{
         Debug.Log("Plant planted. Now growing.");
 		//TimeManager.instance.AddPlant(this);
@@ -43,15 +43,20 @@ public class Plant : MonoBehaviour
 		//TODO: spawn fruit- half ripe and half unripe (don't spawn unripe if last ripe one was not picked)
 	}
 
+    public void advanceStage() {
+        stage++;
+        if (stage >= growthStages.Length)
+        {
+            stage = nonFruitingStages;
+        }
+        UpdateModel();
+    }
+
     public void setStage(int s) {
         stage = s;
     }
 
     public int getStage() {
         return stage;
-    }
-
-    public int getDayBorn() {
-        return dayBorn;
     }
 }

@@ -68,7 +68,7 @@ public class TimeManager : MonoBehaviour
 
 		foreach (Plot plot in plots)
 		{
-			plot.StartDay(day);
+			plot.StartNextDay();
 		}
 	}
 
