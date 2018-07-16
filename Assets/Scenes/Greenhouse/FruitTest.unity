@@ -2640,6 +2640,24 @@ MonoBehaviour:
   - {x: -0.05474715, y: 0.01102949, z: 0.005800249}
   - {x: -0.027678918, y: -3.5527135e-16, z: -1.1324275e-16}
   - {x: -0.030591473, y: 9.992007e-17, z: 4.440892e-18}
+--- !u!95 &743192929
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 743192921}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 5413bab15c3dd4a4085a9fe254a17e96, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &752347564 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114245269363414434, guid: 2276723046d707c4f94d431ceb80ab92,
@@ -4165,7 +4183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1054384774
 Transform:
   m_ObjectHideFlags: 0
@@ -5051,6 +5069,24 @@ MonoBehaviour:
   - {x: 0.054747183, y: -0.0110294875, z: -0.0058002416}
   - {x: 0.027678946, y: 0.000000028804266, z: 0.0000000623105}
   - {x: 0.030591402, y: -0.000000005796997, z: -0.00000008704517}
+--- !u!95 &1346779301
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1346779293}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ce6112dd14179d448958c91c5b4e8de2, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1350008349
 GameObject:
   m_ObjectHideFlags: 0
