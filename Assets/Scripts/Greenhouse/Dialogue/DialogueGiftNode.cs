@@ -7,7 +7,7 @@ using NodeEditorFramework;
 
 [System.Serializable]
 [Node(false, "Dialogue/Gift Node")]
-public class DialogueGiftNode : Node
+public class DialogueGiftNode : DialogueNode
 {
 	public const string ID = "dialogueGiftNode";
 	public override string GetID { get { return ID; } }
@@ -30,5 +30,10 @@ public class DialogueGiftNode : Node
 		GUILayout.EndHorizontal();
 
 		//TODO: Gift
+	}
+
+	public override DialogueNode GetNext()
+	{
+		return GetConnection(flowOut);
 	}
 }

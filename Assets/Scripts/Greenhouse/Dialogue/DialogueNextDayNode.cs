@@ -7,7 +7,7 @@ using NodeEditorFramework;
 
 [System.Serializable]
 [Node(false, "Dialogue/Next Day Node")]
-public class DialogueNextDayNode : Node
+public class DialogueNextDayNode : DialogueNode
 {
 	public const string ID = "dialogueNextDayNode";
 	public override string GetID { get { return ID; } }
@@ -28,5 +28,10 @@ public class DialogueNextDayNode : Node
 		flowIn.DisplayLayout();
 		flowOut.DisplayLayout();
 		GUILayout.EndHorizontal();
+	}
+
+	public override DialogueNode GetNext()
+	{
+		return GetConnection(flowOut);
 	}
 }

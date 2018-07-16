@@ -8,7 +8,14 @@ public class Neighbor : MonoBehaviour
 	public NeighborInfo info;
 	public GameObject letterPrefab;
 
+	private DialogueParser parser;
 	private string[] todaysGift = new string[0];
+
+	private void Start()
+	{
+		parser = GetComponent<DialogueParser>();
+		parser.dialogueCanvas = info.dialogueCanvas;
+	}
 
 	public GameObject GenerateLetter(string text1, string text2, Vector3 position)
 	{
@@ -20,6 +27,8 @@ public class Neighbor : MonoBehaviour
 
 	public void StartDay(int day)
 	{
+		parser.NextDay(this);
+
 		if (day < info.letters.Length)
 		{
 			NeighborInfo.LetterInfo l = info.letters[day];

@@ -7,7 +7,7 @@ using NodeEditorFramework;
 
 [System.Serializable]
 [Node(false, "Dialogue/Branch Node")]
-public class DialogueBranchNode : Node
+public class DialogueBranchNode : DialogueNode
 {
 	public const string ID = "dialogueBranchNode";
 	public override string GetID { get { return ID; } }
@@ -37,5 +37,23 @@ public class DialogueBranchNode : Node
 		GUILayout.BeginHorizontal();
 		flowOutFalse.DisplayLayout();
 		GUILayout.EndHorizontal();
+	}
+
+	private bool CheckCondition()
+	{
+		//TODO
+		return true;
+	}
+
+	public override DialogueNode GetNext()
+	{
+		if (CheckCondition())
+		{
+			return GetConnection(flowOutTrue);
+		}
+		else
+		{
+			return GetConnection(flowOutTrue);
+		}
 	}
 }

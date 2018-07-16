@@ -7,7 +7,7 @@ using NodeEditorFramework;
 
 [System.Serializable]
 [Node(false, "Dialogue/Join Node")]
-public class DialogueJoinNode : Node
+public class DialogueJoinNode : DialogueNode
 {
 	public const string ID = "dialogueJoinNode";
 	public override string GetID { get { return ID; } }
@@ -37,5 +37,10 @@ public class DialogueJoinNode : Node
 		GUILayout.BeginHorizontal();
 		flowIn2.DisplayLayout();
 		GUILayout.EndHorizontal();
+	}
+
+	public override DialogueNode GetNext()
+	{
+		return GetConnection(flowOut);
 	}
 }
