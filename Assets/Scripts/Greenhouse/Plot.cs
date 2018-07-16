@@ -29,11 +29,11 @@ public class Plot : MonoBehaviour {
         if(plant == null && p != null) {
             Debug.Log("Found a plant.");
             setPlant(p);
-            //TODO: make it so plot cannot be dug anymore when it has a plant in it.
         }
 	}
 
     public void setPlant(Plant p) {
+        //TODO: make it so plot cannot be dug anymore when it has a plant in it.
         plant = p;
         // Snap plant to the center of the plot.
         plant.transform.position = center;
@@ -44,6 +44,12 @@ public class Plot : MonoBehaviour {
     public void StartDay()
     {
         // For temporary debuging purposes, clear everything automatically at the start of the day.
+        foreach(GameObject beetle in beetles.Keys) {
+            Destroy(beetle);
+        }
+        foreach(GameObject fruit in fruits.Keys) {
+            Destroy(fruit);
+        }
         beetles = new Dictionary<GameObject, int>();
         fruits = new Dictionary<GameObject, int>();
 
@@ -146,7 +152,7 @@ public class Plot : MonoBehaviour {
     }
 
     public int[] getFruitIDs() {
-        ICollection currentFruit = fruit.Values;
+        ICollection currentFruit = fruits.Values;
         int[] ids = new int[currentFruit.Count];
         currentFruit.CopyTo(ids, 0);
         return ids;
