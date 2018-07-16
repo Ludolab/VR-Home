@@ -4931,7 +4931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1054384774
 Transform:
   m_ObjectHideFlags: 0
@@ -5892,7 +5892,7 @@ Prefab:
         type: 2}
       propertyPath: ModelPool.Array.data[2].RightModel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 29971872}
     - target: {fileID: 114473456793702560, guid: dae2e2be31c98324eac460f702db97e9,
         type: 2}
       propertyPath: ModelPool.Array.data[2].IsEnabled
@@ -5902,7 +5902,7 @@ Prefab:
         type: 2}
       propertyPath: ModelPool.Array.data[2].LeftModel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 798510033}
     - target: {fileID: 114473456793702560, guid: dae2e2be31c98324eac460f702db97e9,
         type: 2}
       propertyPath: ModelPool.Array.data[3].GroupName
@@ -5926,7 +5926,7 @@ Prefab:
     - target: {fileID: 114473456793702560, guid: dae2e2be31c98324eac460f702db97e9,
         type: 2}
       propertyPath: ModelPool.Array.data[3].IsEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114473456793702560, guid: dae2e2be31c98324eac460f702db97e9,
         type: 2}
