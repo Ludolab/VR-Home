@@ -23,12 +23,12 @@ public class DirtDigger : MonoBehaviour
         Vector3 vel = myController.velocity;
         float relativeAngle = Vector3.Angle(relativePos, vel);
         Debug.Log("relative Angle is " + relativeAngle);
-        if (relativeAngle > 100 && vel.magnitude > motionThreshold)
+        if (relativeAngle > 90 && vel.magnitude > motionThreshold)
         {
             Debug.Log("Telling to Dig");
             StartCoroutine(myDirt.DigHole());
         }
-        if (relativeAngle < 50 && vel.magnitude > motionThreshold)
+        if (relativeAngle < 60 && vel.magnitude > motionThreshold)
         {
             Debug.Log("Telling to Cover");
             StartCoroutine(myDirt.CoverHole());
