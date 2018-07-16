@@ -6209,7 +6209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDirt: {fileID: 1443325019}
-  motionThreshold: 0.5
+  motionThreshold: 0.3
 --- !u!65 &428397076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9381,7 +9381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirtParticles: {fileID: 239629042}
-  waterTime: 0.1
+  waterTime: 0.15
   waterIncrement: 0.03
   digTime: 0.4
 --- !u!1001 &1451273432
