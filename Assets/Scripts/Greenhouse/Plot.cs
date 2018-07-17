@@ -10,7 +10,6 @@ public class Plot : MonoBehaviour {
     public SeedCollider mySeedCollider;
     public int maxWeeds;
 
-    private Vector3 center;
     private float radiusX;
     private float radiusZ;
     public Plant plant = null;
@@ -19,11 +18,10 @@ public class Plot : MonoBehaviour {
     private List<GameObject> weeds = new List<GameObject>(); //Keep track of weeds.
 
 	private void Start()
-	{
+    {
         // Store some info about the dirt plot area for spawning things in.
         Collider col = myDirt.SurfaceCollider.GetComponent<Collider>();
         if(col != null) {
-            center = gameObject.transform.position;
             radiusX = col.bounds.extents.x;
             radiusZ = col.bounds.extents.z;
         }
@@ -32,7 +30,7 @@ public class Plot : MonoBehaviour {
     public void AbsorbPlant(){
         GameObject planted = Instantiate(mySeedCollider.myStarter.GetComponent<Starter>().plant);
         plant = planted.GetComponent<Plant>();
-        planted.transform.position = center;
+        planted.transform.position = gameObject.transform.position;
         planted.transform.eulerAngles = new Vector3(0, 0, 0);
         planted.transform.localScale = new Vector3(1, 1, 1);
         plant.PlantPlant();
@@ -90,10 +88,10 @@ public class Plot : MonoBehaviour {
             for (int i = 0; i < numberWeeds; i++)
             {
                 GameObject weed = Instantiate(weedPrefab);
-                float xPos = Random.Range(-1 * radiusX, radiusX) + center.x;
-                float zPos = Random.Range(-1 * radiusZ, radiusZ) + center.z;
+                float xPos = Random.Range(-1 * radiusX, radiusX) + gameObject.transform.position.x;
+                float zPos = Random.Range(-1 * radiusZ, radiusZ) + gameObject.transform.position.z;
                 float scale = Random.Range(0.9f, 1.5f);
-                weed.transform.position = new Vector3(xPos, center.y, zPos);
+                weed.transform.position = new Vector3(xPos, gameObject.transform.position.y, zPos);
                 weed.transform.eulerAngles = new Vector3(Random.Range(-5f, 5), Random.Range(0f, 360f), Random.Range(-5f, 5));
                 weed.transform.localScale = new Vector3(scale, scale, scale);
 
