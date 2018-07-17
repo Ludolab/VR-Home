@@ -14,8 +14,8 @@ public class SeedCollider : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other)
 	{
-        if (other.gameObject.GetComponent<Starter>() != null && myStarter == null){
-            myStarter = other.gameObject;
+        if (other.gameObject.GetComponent<StarterCollider>() != null && myStarter == null){
+            myStarter = other.gameObject.GetComponent<StarterCollider>().myStarter;
             if (myDirt.digState == 1)
             {
                 StartCoroutine(myDirt.TakePlant());
@@ -25,7 +25,7 @@ public class SeedCollider : MonoBehaviour {
 
 	private void OnTriggerExit(Collider other)
 	{
-        if (other.gameObject.GetComponent<Starter>() != null)
+        if (other.gameObject.GetComponent<StarterCollider>() != null)
         {
             myStarter = null;
             myDirt.digState = 1;
