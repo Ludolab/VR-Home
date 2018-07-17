@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using NodeEditorFramework;
 
+//Is this actually useful?
+
 public class DialogueTraversal : NodeCanvasTraversal
 {
 	DialogueCanvasType Canvas;
@@ -14,6 +16,5 @@ public class DialogueTraversal : NodeCanvasTraversal
 	{
 		DialogueStartNode startNode = Canvas.startNode;
 		startNode.Calculate();
-		Debug.Log("TraverseAll");
 	}
 }

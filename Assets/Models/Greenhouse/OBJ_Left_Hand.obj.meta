@@ -11,6 +11,7 @@ ModelImporter:
     2300000: LoPoly_Hand_Mesh_Left_group
     3300000: LoPoly_Hand_Mesh_Left_group
     4300000: LoPoly_Hand_Mesh_Left_group
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -31,7 +32,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -86,7 +87,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

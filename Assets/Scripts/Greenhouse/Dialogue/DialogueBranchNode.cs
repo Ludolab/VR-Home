@@ -7,8 +7,24 @@ using NodeEditorFramework;
 
 [System.Serializable]
 [Node(false, "Dialogue/Branch Node")]
-public class DialogueBranchNode : Node
+public class DialogueBranchNode : DialogueNode
 {
+	/*public enum VarType
+	{
+		Bool,
+		Float,
+		Int,
+		String
+	}
+
+	public enum VarComparison
+	{
+		Equals,
+		NotEquals,
+		LessThan,
+		GreaterThan
+	}*/
+
 	public const string ID = "dialogueBranchNode";
 	public override string GetID { get { return ID; } }
 
@@ -23,6 +39,18 @@ public class DialogueBranchNode : Node
 	public ConnectionKnob flowOutFalse;
 
 	//TODO: condition
+	public string varName;
+	//public VarType varType;
+	//public VarComparison varComparison;
+	//value to check against- how?
+
+	//should be optional to check against a value for a bool
+	//just make subclasses?
+	//boolcheck
+	//boolcomparison
+	//intcomparison
+	//floatcomparison
+	//stringcomparison
 
 	public override void NodeGUI()
 	{
@@ -37,5 +65,28 @@ public class DialogueBranchNode : Node
 		GUILayout.BeginHorizontal();
 		flowOutFalse.DisplayLayout();
 		GUILayout.EndHorizontal();
+	}
+
+	public override void Process(Neighbor neighbor)
+	{
+		//TODO: cache dialogue vars so we can check in CheckCondition
+	}
+
+	private bool CheckCondition()
+	{
+		//TODO
+		return true;
+	}
+
+	public override DialogueNode GetNext()
+	{
+		if (CheckCondition())
+		{
+			return GetConnection(flowOutTrue);
+		}
+		else
+		{
+			return GetConnection(flowOutTrue);
+		}
 	}
 }

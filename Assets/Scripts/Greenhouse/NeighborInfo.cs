@@ -32,5 +32,7 @@ public class NeighborInfo : ScriptableObject
 	public LetterInfo[] letters;
 	//TODO: gifts with letters
 
+	public DialogueCanvasType dialogueCanvas;
+	
 	public int dayLabelUnlocked; //index of day on which this person's label becomes selectable in outbox
 }
