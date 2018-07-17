@@ -6,12 +6,14 @@ public class Plot : MonoBehaviour {
 
     public GameObject beetlePrefab;
     public GameObject weedPrefab;
+    public GameObject myDirt;
     public int maxWeeds;
 
     private Vector3 center;
     private Plant plant;
     private Dictionary<GameObject, int> beetles = new Dictionary<GameObject, int>(); //Keep track of beetles and which instance (of position) it is.
     private Dictionary<GameObject, int> fruits = new Dictionary<GameObject, int>(); //Keep track of fruit and which instance (of position) it is.
+
 
 	private void Start()
 	{
@@ -22,7 +24,7 @@ public class Plot : MonoBehaviour {
 	}
 
 	//TODO: change this to be after dirt planting action has been done.
-	void OnTriggerEnter(Collision other)
+	void OnTriggerEnter(Collider other)
 	{
         Debug.Log("Plot collided with.");
         Plant p = other.gameObject.GetComponent<Plant>();
