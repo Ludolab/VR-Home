@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-
+    public string plant;
 	public GameObject[] growthStages;
     public Transform[] growthStagesTrans; //List of transforms corresponding to the growth stages.
     public bool multiHarvest; //For plants that bear fruit that can be picked without taking the entire plant.

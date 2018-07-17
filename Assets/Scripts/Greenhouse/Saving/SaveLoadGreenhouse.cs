@@ -47,14 +47,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             plotID.objCoordZ = curr.transform.position.z;
             plotSave.plotID = plotID;
 
-            //Make sure we purely get the name of the prefab of the plant.
-            string plantName = curr.getPlant().name;
-            int truncateIndex = plantName.IndexOf(" ");
-            if(truncateIndex > 0) {
-                plantName = plantName.Substring(0, truncateIndex);
-            }
-            plotSave.plant = plantName;
-
+            plotSave.plant = curr.getPlant().plant;
             plotSave.plantDayBorn = curr.getPlant().getDayBorn();
             plotSave.plantStage = curr.getPlant().getStage();
             //TODO: save watering.
