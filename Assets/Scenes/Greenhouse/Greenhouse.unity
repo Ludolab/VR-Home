@@ -1180,10 +1180,10 @@ WindZone:
   m_Enabled: 1
   m_Mode: 0
   m_Radius: 20
-  m_WindMain: 0.8
+  m_WindMain: 0.5
   m_WindTurbulence: 2
-  m_WindPulseMagnitude: 0.3
-  m_WindPulseFrequency: 0.01
+  m_WindPulseMagnitude: 0.2
+  m_WindPulseFrequency: 0.03
 --- !u!4 &319710554
 Transform:
   m_ObjectHideFlags: 0
@@ -1869,7 +1869,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1557068671983392, guid: 90ee46af6a7de5e439be0bfdd530ab44, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90ee46af6a7de5e439be0bfdd530ab44, type: 2}
@@ -1931,7 +1931,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1557068671983392, guid: 90ee46af6a7de5e439be0bfdd530ab44, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90ee46af6a7de5e439be0bfdd530ab44, type: 2}
@@ -3523,7 +3523,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1557068671983392, guid: 90ee46af6a7de5e439be0bfdd530ab44, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90ee46af6a7de5e439be0bfdd530ab44, type: 2}
@@ -4277,7 +4277,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3923819acd9034b05842f4ce5eb8e63e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3923819acd9034b05842f4ce5eb8e63e, type: 3}
@@ -5150,7 +5150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1557068671983392, guid: 90ee46af6a7de5e439be0bfdd530ab44, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90ee46af6a7de5e439be0bfdd530ab44, type: 2}
@@ -6159,7 +6159,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3923819acd9034b05842f4ce5eb8e63e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3923819acd9034b05842f4ce5eb8e63e, type: 3}
