@@ -18,19 +18,21 @@ public class DirtDigger : MonoBehaviour
 	public void handTouching()
     {
         InteractionController myController = myIB.closestHoveringController;
-        Vector3 myPos = this.gameObject.transform.position - new Vector3(0, 0.001f, 0);
-        Vector3 relativePos = myPos - myController.transform.position;
+        Vector3 myPos = this.gameObject.transform.position;
+        Vector2 myPosFlat = new Vector2(myPos.x, myPos.z);
+        Vector2 relativePos = myPosFlat - new Vector2(myController.transform.position.x, myController.transform.position.z);
         Vector3 vel = myController.velocity;
-        float relativeAngle = Vector3.Angle(relativePos, vel);
+        Vector2 velFlat = new Vector2(vel.x, vel.z);
+        float relativeAngle = Vector2.Angle(relativePos, velFlat);
         Debug.Log("relative Angle is " + relativeAngle);
-        if (relativeAngle > 100 && vel.magnitude > motionThreshold)
+        if (relativeAngle > 140 && vel.magnitude > motionThreshold)
         {
-            Debug.Log("Telling to Dig");
+            //Debug.Log("Telling to Dig");
             StartCoroutine(myDirt.DigHole());
         }
-        if (relativeAngle < 50 && vel.magnitude > motionThreshold)
+        if (relativeAngle < 40 && vel.magnitude > motionThreshold)
         {
-            Debug.Log("Telling to Cover");
+            //Debug.Log("Telling to Cover");
             StartCoroutine(myDirt.CoverHole());
         }
     }
