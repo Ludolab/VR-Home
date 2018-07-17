@@ -23,6 +23,8 @@ public class Plot : MonoBehaviour {
         }
 	}
 
+
+
 	//TODO: change this to be after dirt planting action has been done.
 	void OnTriggerEnter(Collider other)
 	{
