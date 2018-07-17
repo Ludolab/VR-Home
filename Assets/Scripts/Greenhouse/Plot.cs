@@ -10,23 +10,27 @@ public class Plot : MonoBehaviour {
     public int maxWeeds;
 
     private Vector3 center;
+    private float radiusX;
+    private float radiusZ;
     private Plant plant;
     private Dictionary<GameObject, int> beetles = new Dictionary<GameObject, int>(); //Keep track of beetles and which instance (of position) it is.
     private Dictionary<GameObject, int> fruits = new Dictionary<GameObject, int>(); //Keep track of fruit and which instance (of position) it is.
+    private List<GameObject> weeds = new List<GameObject>(); //Keep track of weeds.
 
 
 	private void Start()
 	{
+        // Store some info about the dirt plot area for spawning things in.
         Collider col = GetComponent<Collider>();
         if(col != null) {
             center = col.bounds.center;
+            radiusX = col.bounds.extents.x;
+            radiusZ = col.bounds.extents.z;
         }
 	}
 
-
-
 	//TODO: change this to be after dirt planting action has been done.
-	void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
 	{
         Debug.Log("Plot collided with.");
         Plant p = other.gameObject.GetComponent<Plant>();
@@ -54,20 +58,35 @@ public class Plot : MonoBehaviour {
         foreach(GameObject fruit in fruits.Keys) {
             Destroy(fruit);
         }
+        foreach(GameObject weed in weeds) {
+            Destroy(weed);
+        }
         beetles = new Dictionary<GameObject, int>();
         fruits = new Dictionary<GameObject, int>();
+        weeds = new List<GameObject>();
 
-        // TODO: condition on stage based on watering, weeds.
+        // TODO: condition on stage based on watering.
         // TODO: update when beetles/weeds/fruit have been squished/pulled up/picked.
         // Q: update only at end of day (self-contained in Plot) or in real-time (beetle/weed/fruit removes itself from Plot
         // as it is squished/pulled up/picked)? Is there relevance in tracking the state of a plot beyond when a day is ended or loaded?
-        if (plant != null && beetles.Count == 0)
+        if (plant != null && beetles.Count == 0 && weeds.Count == 0)
         {
             Debug.Log("Advancing stage on plant.");
             plant.advanceStage();
         }
 
-        //TODO: add weed spawning.
+        // Spawn in weeds.
+        if(weeds.Count < maxWeeds) {
+            int numberWeeds = (int)(Random.Range(0f, maxWeeds - weeds.Count));
+            for (int i = 0; i < numberWeeds; i++)
+            {
+                //TODO: make it so weeds don't spawn too close to each other.
+                GameObject weed = Instantiate(weedPrefab);
+                float xPos = Random.Range(-1 * radiusX, radiusX) + center.x;
+                float zPos = Random.Range(-1 * radiusZ, radiusZ) + center.z;
+                weed.transform.position = new Vector3(xPos, center.y, zPos);
+            }
+        }
 
         // Check for the young stage.
         if(plant != null && plant.getStage() == 1)
