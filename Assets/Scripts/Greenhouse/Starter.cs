@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Starter : MonoBehaviour {
 
-    public GameObject plant;
+    public string plantName;
 
     //TODO: render the seed of the plant at the top of the starter.
 }
