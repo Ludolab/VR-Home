@@ -78,6 +78,7 @@ public class Plot : MonoBehaviour {
 
         // Spawn in weeds.
         if(weeds.Count < maxWeeds) {
+            Debug.Log("Spawning in new weeds.");
             int numberWeeds = (int)(Random.Range(0f, maxWeeds - weeds.Count));
             for (int i = 0; i < numberWeeds; i++)
             {
