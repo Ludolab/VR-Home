@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23055388273368348}
   - component: {fileID: 136350230297940336}
   - component: {fileID: 54717481660593190}
-  - component: {fileID: 114235441733295896}
+  - component: {fileID: 114486153806789026}
   m_Layer: 0
   m_Name: Onion_grown
   m_TagString: Untagged
@@ -101,7 +101,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114235441733295896
+--- !u!114 &114486153806789026
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,12 +109,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1901268303434446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22dba5ee526fb7e4b9b99763d1c104a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineEnabled: 1
-  hoverColor: {r: 0, g: 0, b: 0, a: 0}
-  heldColor: {r: 0, g: 0, b: 0, a: 0}
+  _manager: {fileID: 0}
+  _ignoreHoverMode: 0
+  _isIgnoringAllHoverState: 0
+  _ignorePrimaryHover: 0
+  _ignoreContact: 0
+  _ignoreGrasping: 0
+  _contactForceMode: 0
+  _allowMultiGrasp: 0
+  _moveObjectWhenGrasped: 1
+  graspedMovementType: 0
+  _overrideInteractionLayer: 0
+  _interactionLayer:
+    layerIndex: 0
+  _overrideNoContactLayer: 0
+  _noContactLayer:
+    layerIndex: 0
+  _eventTable:
+    _entries: []
 --- !u!136 &136350230297940336
 CapsuleCollider:
   m_ObjectHideFlags: 1
