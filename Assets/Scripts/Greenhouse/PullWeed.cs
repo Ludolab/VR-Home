@@ -30,6 +30,7 @@ public class PullWeed : MonoBehaviour
 	private Vector3 startScale;
 	private Quaternion startRotation;
 	private Vector3 grabbedPosition;
+    private Plot plotIn;
 
 	private void Start()
 	{
@@ -106,6 +107,7 @@ public class PullWeed : MonoBehaviour
 		 */
 		
 		SpawnParticles();
+        plotIn.removeFromWeeds(gameObject);
 		Destroy(gameObject);
 	}
 
@@ -139,4 +141,8 @@ public class PullWeed : MonoBehaviour
 		AudioSource aud = particles.GetComponent<AudioSource>();
 		aud.clip = pickSound;
 	}
+
+    public void setPlot(Plot plot) {
+        plotIn = plot;
+    }
 }

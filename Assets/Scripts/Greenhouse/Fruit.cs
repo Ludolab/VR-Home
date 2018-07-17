@@ -22,7 +22,7 @@ public struct Genome
 
 public class Fruit : MonoBehaviour
 {
-
+    public string fruitName;
 	public Color unripeColor;
 	public GameObject particlePrefab;
 	public AudioClip[] pickSound;
@@ -33,6 +33,8 @@ public class Fruit : MonoBehaviour
 	private Material mat;
 
 	private Genome genome;
+
+    private Plot plotIn;
 	
 	private void Awake()
 	{
@@ -59,6 +61,7 @@ public class Fruit : MonoBehaviour
 	{
 		SpawnParticles();
 		Destroy(joint);
+        plotIn.removeFromFruits(gameObject);
 		StartCoroutine(RefreshLocked());
 		TimeManager.instance.AddGarbage(gameObject);
 	}
@@ -155,4 +158,8 @@ public class Fruit : MonoBehaviour
 	{
 		return genome.name;
 	}
+
+    public void setPlot(Plot plot) {
+        plotIn = plot;
+    }
 }

@@ -16,6 +16,8 @@ public class Beetle : MonoBehaviour
 
 	private bool isFlicked;
 
+    private Plot plotIn;
+
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -51,6 +53,7 @@ public class Beetle : MonoBehaviour
 	public void Squish()
 	{
 		SpawnParticles();
+        plotIn.removeFromBeetles(gameObject);
 		Destroy(gameObject);
 	}
 
@@ -63,4 +66,8 @@ public class Beetle : MonoBehaviour
 		AudioSource aud = particles.GetComponent<AudioSource>();
 		aud.clip = squishSound;
 	}
+
+    public void setPlot(Plot plot) {
+        plotIn = plot;
+    }
 }

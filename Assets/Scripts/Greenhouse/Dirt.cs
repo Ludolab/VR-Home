@@ -17,6 +17,8 @@ public class Dirt : MonoBehaviour {
     public float plantTime;
     bool inTransition;
 
+    public bool noWeeds; // Won't let people dig if any weeds are in the dirt.
+
 	// Use this for initialization
 	void Start () {
         myMaterial = GetComponent<Renderer>().material;
@@ -66,7 +68,7 @@ public class Dirt : MonoBehaviour {
     public IEnumerator DigHole (){
         Debug.Log("digState is " + digState);
         Debug.Log("inTransition is " + inTransition);
-        if (digState == 0 && !inTransition)
+        if (digState == 0 && !inTransition && noWeeds)
         {
             inTransition = true;
             //dirtParticles.GetComponent<ParticleSystem>().Play();
@@ -110,6 +112,10 @@ public class Dirt : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         digState = 2;
+    }
+
+    public float getWetness() {
+        return wetness;
     }
 
 }
