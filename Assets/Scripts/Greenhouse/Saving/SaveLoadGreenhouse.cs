@@ -12,7 +12,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
     public bool saveNew;
     public bool loadPrevious;
     public string pathToPlantPrefabs;
-    public string pathToWeedPrefab;
 
 	private void Start () {
         if (loadPrevious) Load();
@@ -58,7 +57,25 @@ public class SaveLoadGreenhouse : MonoBehaviour {
 
             plotSave.plantDayBorn = curr.getPlant().getDayBorn();
             plotSave.plantStage = curr.getPlant().getStage();
-            //TODO: save watering, weeds.
+            //TODO: save watering.
+
+            List<SaveObject> weeds = new List<SaveObject>();
+            foreach(GameObject weed in curr.getWeeds()) {
+                SaveObject saveWeed = new SaveObject();
+                saveWeed.xPosition = weed.transform.position.x;
+                saveWeed.yPosition = weed.transform.position.y;
+                saveWeed.zPosition = weed.transform.position.z;
+                saveWeed.xRotation = weed.transform.eulerAngles.x;
+                saveWeed.yRotation = weed.transform.eulerAngles.y;
+                saveWeed.zRotation = weed.transform.eulerAngles.z;
+                saveWeed.xScale = weed.transform.localScale.x;
+                saveWeed.yScale = weed.transform.localScale.y;
+                saveWeed.zScale = weed.transform.localScale.z;
+
+                weeds.Add(saveWeed);
+            }
+            plotSave.weeds = weeds.ToArray();
+
             plotSave.beetles = curr.getBeetleIDs();
             plotSave.fruits = curr.getFruitIDs();
         }
@@ -81,6 +98,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 TimeManager.instance.SetDay(saved.previousDay);
                 LoadPlots(saved.plots);
                 //TODO: load in state of in/outboxes from the previous session for processing.
+                //TODO: save where picked but unsent fruits are?
 
                 //After restoring the state of the previous play session, advance to the next day.
                 TimeManager.instance.NextDay();
@@ -111,36 +129,47 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                     } else if (savedData.plantStage >= 2) {
                         beetles = plant.beetleTransGrown;
                     }
-                    if (beetles != null) {
-                        if (savedData.beetles != null)
+                    if (beetles != null && savedData.beetles != null)
+                    {
+                        foreach (int beetleID in savedData.beetles)
                         {
-                            foreach (int beetleID in savedData.beetles)
-                            {
-                                GameObject beetle = Instantiate(plot.beetlePrefab);
-                                beetle.transform.position = plant.transform.position + plant.beetleTransGrown[beetleID].localPosition;
-                                beetle.transform.eulerAngles = plant.transform.eulerAngles + plant.beetleTransGrown[beetleID].localEulerAngles;
-                                beetle.transform.localScale = plant.beetleTransGrown[beetleID].localScale;
-                                plot.addToBeetles(beetle, beetleID);
-                            }
+                            GameObject beetle = Instantiate(plot.beetlePrefab);
+                            beetle.transform.position = plant.transform.position + plant.beetleTransGrown[beetleID].localPosition;
+                            beetle.transform.eulerAngles = plant.transform.eulerAngles + plant.beetleTransGrown[beetleID].localEulerAngles;
+                            beetle.transform.localScale = plant.beetleTransGrown[beetleID].localScale;
+
+                            plot.addToBeetles(beetle, beetleID);
                         }
                     }
-                    if(savedData.plantStage >= 2) {
-                        if(savedData.fruits != null)
+                    if(savedData.plantStage >= 2 && savedData.fruits != null)
+                    {
+                        foreach (int fruitID in savedData.fruits)
                         {
-                            foreach (int fruitID in savedData.fruits)
-                            {
-                                GameObject fruit = Instantiate(plant.fruit);
-                                fruit.transform.position = plant.transform.position + plant.fruitTrans[fruitID].localPosition;
-                                fruit.transform.eulerAngles = plant.transform.eulerAngles + plant.fruitTrans[fruitID].localEulerAngles;
-                                fruit.transform.localScale = plant.fruitTrans[fruitID].localScale;
-                                plot.addToFruit(fruit, fruitID);
-                            }
+                            GameObject fruit = Instantiate(plant.fruit);
+                            fruit.transform.position = plant.transform.position + plant.fruitTrans[fruitID].localPosition;
+                            fruit.transform.eulerAngles = plant.transform.eulerAngles + plant.fruitTrans[fruitID].localEulerAngles;
+                            fruit.transform.localScale = plant.fruitTrans[fruitID].localScale;
+
+                            plot.addToFruit(fruit, fruitID);
                         }
                     }
                 }
             }
 
-            //TODO: load in weeds, set if previous watered or not.
+            //Set weeds left in plot.
+            if(savedData.weeds != null) {
+                foreach(SaveObject savedWeed in savedData.weeds) {
+                    GameObject weed = Instantiate(plot.weedPrefab);
+                    weed.transform.position = new Vector3(savedWeed.xPosition, savedWeed.yPosition, savedWeed.zPosition);
+                    weed.transform.eulerAngles = new Vector3(savedWeed.xRotation, savedWeed.yRotation, savedWeed.zRotation);
+                    weed.transform.localScale = new Vector3(savedWeed.xScale, savedWeed.yScale, savedWeed.zScale);
+
+                    plot.addToWeeds(weed);
+                }
+            }
+
+            //TODO: set if previously watered or not.
+
         }
     }
 

@@ -17,7 +17,6 @@ public class Plot : MonoBehaviour {
     private Dictionary<GameObject, int> fruits = new Dictionary<GameObject, int>(); //Keep track of fruit and which instance (of position) it is.
     private List<GameObject> weeds = new List<GameObject>(); //Keep track of weeds.
 
-
 	private void Start()
 	{
         // Store some info about the dirt plot area for spawning things in.
@@ -30,20 +29,24 @@ public class Plot : MonoBehaviour {
 	}
 
 	//TODO: change this to be after dirt planting action has been done.
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
 	{
         Debug.Log("Plot collided with.");
         Plant p = other.gameObject.GetComponent<Plant>();
-        if(plant == null && p != null) {
-            Debug.Log("Found a plant.");
+        if(plant == null && p != null && p.getStage() == 0) {
+            Debug.Log("Found a new plant.");
+            //TODO: make it so plot cannot be dug anymore when it has a plant in it.
             setPlant(p);
         }
 	}
 
-    public void setPlant(Plant p) {
-        //TODO: make it so plot cannot be dug anymore when it has a plant in it.
+    // TODO: picking a plant.
+
+    // This needs to be revised later.
+	public void setPlant(Plant p) {
         plant = p;
         // Snap plant to the center of the plot.
+        // TODO: disable gravity on object (seed starter?) with plant component.
         plant.transform.position = center;
         plant.transform.eulerAngles = new Vector3(0, 0, 0);
         plant.transform.localScale = new Vector3(1, 1, 1);
@@ -66,9 +69,7 @@ public class Plot : MonoBehaviour {
         weeds = new List<GameObject>();
 
         // TODO: condition on stage based on watering.
-        // TODO: update when beetles/weeds/fruit have been squished/pulled up/picked.
-        // Q: update only at end of day (self-contained in Plot) or in real-time (beetle/weed/fruit removes itself from Plot
-        // as it is squished/pulled up/picked)? Is there relevance in tracking the state of a plot beyond when a day is ended or loaded?
+        // TODO: update plot lists/dictionaries when beetles/weeds/fruit have been squished/pulled up/picked.
         if (plant != null && beetles.Count == 0 && weeds.Count == 0)
         {
             Debug.Log("Advancing stage on plant.");
@@ -84,7 +85,13 @@ public class Plot : MonoBehaviour {
                 GameObject weed = Instantiate(weedPrefab);
                 float xPos = Random.Range(-1 * radiusX, radiusX) + center.x;
                 float zPos = Random.Range(-1 * radiusZ, radiusZ) + center.z;
+                float scale = Random.Range(0.9f, 1.5f);
                 weed.transform.position = new Vector3(xPos, center.y, zPos);
+                weed.transform.eulerAngles = new Vector3(Random.Range(-5f, 5), Random.Range(0f, 360f), Random.Range(-5f, 5));
+                weed.transform.localScale = new Vector3(scale, scale, scale);
+
+                // Keep track of spawned weeds.
+                weeds.Add(weed);
             }
         }
 
@@ -103,7 +110,7 @@ public class Plot : MonoBehaviour {
                     beetle.transform.position = plant.transform.position + plant.beetleTransYoung[i].localPosition;
                     beetle.transform.eulerAngles = plant.transform.eulerAngles + plant.beetleTransYoung[i].localEulerAngles;
                     beetle.transform.localScale = plant.beetleTransYoung[i].localScale;
-                    //Keep track of spawned beetles.
+
                     beetles.Add(beetle, i);
                 }
             }
@@ -124,6 +131,7 @@ public class Plot : MonoBehaviour {
                     beetle.transform.position = plant.transform.position + plant.beetleTransGrown[i].localPosition;
                     beetle.transform.eulerAngles = plant.transform.eulerAngles + plant.beetleTransGrown[i].localEulerAngles;
                     beetle.transform.localScale = plant.beetleTransGrown[i].localScale;
+
                     beetles.Add(beetle, i);
                 }
             }
@@ -141,6 +149,7 @@ public class Plot : MonoBehaviour {
                         fruit.transform.position = plant.transform.position + plant.fruitTrans[i].localPosition;
                         fruit.transform.eulerAngles = plant.transform.eulerAngles + plant.fruitTrans[i].localEulerAngles;
                         fruit.transform.localScale = plant.fruitTrans[i].localScale;
+
                         fruits.Add(fruit, i);
                     }
                 }
@@ -148,6 +157,23 @@ public class Plot : MonoBehaviour {
         }
     }
 
+    //Keep states of plot up-to-date.
+    public void removeFromWeeds(GameObject weed)
+    {
+        weeds.Remove(weed);
+    }
+
+    public void removeFromBeetles(GameObject beetle)
+    {
+        beetles.Remove(beetle);
+    }
+
+    public void removeFromFruits(GameObject fruit)
+    {
+        fruits.Remove(fruit);
+    }
+
+    //Following are all data modification functions to be used by saving/loading (primarily).
     public void setPlant(Plant p, int stage) {
         plant = p;
         plant.setStage(stage);
@@ -157,13 +183,20 @@ public class Plot : MonoBehaviour {
         return plant;
     }
 
-    //For when loading the next day from new play session, keep track of beetles/weeds/fruit that weren't squished/pulled up/picked previously.
+    public void addToWeeds(GameObject weed) {
+        weeds.Add(weed);
+    }
+
     public void addToBeetles(GameObject beetle, int instance) {
         beetles.Add(beetle, instance);
     }
 
     public void addToFruit(GameObject fruit, int instance) {
         fruits.Add(fruit, instance);
+    }
+
+    public List<GameObject> getWeeds() {
+        return weeds;
     }
 
     public int[] getBeetleIDs() {
@@ -179,13 +212,5 @@ public class Plot : MonoBehaviour {
         int[] ids = new int[currentFruit.Count];
         currentFruit.CopyTo(ids, 0);
         return ids;
-    }
-
-    public void removeFromBeetles(GameObject beetle) {
-        beetles.Remove(beetle);
-    }
-
-    public void removeFromFruits(GameObject fruit) {
-        fruits.Remove(fruit);
     }
 }
