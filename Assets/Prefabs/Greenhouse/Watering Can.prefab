@@ -137,6 +137,9 @@ GameObject:
   - component: {fileID: 114888469353815614}
   - component: {fileID: 82754553291340654}
   - component: {fileID: 65239993716828434}
+  - component: {fileID: 65332875725550884}
+  - component: {fileID: 65356096591885204}
+  - component: {fileID: 135273267693137768}
   m_Layer: 0
   m_Name: Watering Can
   m_TagString: Untagged
@@ -220,14 +223,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1688219852839992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4449806238929676}
   - {fileID: 4294781969174534}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -239.387, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4942567781975636
 Transform:
   m_ObjectHideFlags: 1
@@ -329,6 +332,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.4, z: 0.3}
   m_Center: {x: -0.03, y: 0.2, z: 0}
+--- !u!65 &65332875725550884
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688219852839992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.3, z: 0.05}
+  m_Center: {x: 0.25, y: 0.22, z: 0}
+--- !u!65 &65356096591885204
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688219852839992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.33, z: 0.35}
+  m_Center: {x: -0.03, y: 0.55, z: 0}
 --- !u!82 &82754553291340654
 AudioSource:
   m_ObjectHideFlags: 1
@@ -590,6 +617,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c442e399461c2f74fba6c23d546ea47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135273267693137768
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688219852839992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05
+  m_Center: {x: -0.475, y: 0.475, z: 0}
 --- !u!135 &135423107832548448
 SphereCollider:
   m_ObjectHideFlags: 1
