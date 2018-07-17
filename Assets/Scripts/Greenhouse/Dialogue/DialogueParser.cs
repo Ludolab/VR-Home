@@ -14,7 +14,6 @@ public class DialogueParser : MonoBehaviour
 	private void Start()
 	{
 		currentNode = dialogueCanvas.startNode;
-		ProcessDay();
 	}
 
 	public void NextDay(Neighbor neighbor)

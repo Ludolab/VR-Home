@@ -17,8 +17,9 @@ public class Neighbor : MonoBehaviour
 		parser.dialogueCanvas = info.dialogueCanvas;
 	}
 
-	public GameObject GenerateLetter(string text1, string text2, Vector3 position)
+	public GameObject GenerateLetter(string text1, string text2)
 	{
+		Vector3 position = new Vector3(0, 1f, 0); //TODO: position in their mailbox
 		GameObject letterObj = Instantiate(letterPrefab, position, Quaternion.identity);
 		Letter letter = letterObj.GetComponent<Letter>();
 		letter.SetContents(text1, text2, info.font, info.fontMaterial);
@@ -37,7 +38,7 @@ public class Neighbor : MonoBehaviour
 				//print("[Day " + day + "] Requires gift: " + l.dependsOnGift + ", gift: " + todaysGift);
 				if (!l.dependsOnGift || todaysGift.Length > 0) //TODO: type of gift
 				{
-					GenerateLetter(l.text1, l.text2, new Vector3(0, 1f, 0)); //TODO: position
+					GenerateLetter(l.text1, l.text2);
 				}
 			}
 		}
