@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Dirt : MonoBehaviour {
 
+    public Plot myPlot;
     public GameObject dirtParticles;
     public GameObject SurfaceCollider;
     Material myMaterial;
     SkinnedMeshRenderer skinnedMeshRenderer;
-    int digState; // 0 = flat, 1 = hole, 2 = planted, 3 = mound
+    public int digState; // 0 = flat, 1 = hole, 2 = planted, 3 = mound, 4 = flat on later day (no digging)
     float wetness;
     public float waterTime;
     public float waterIncrement;
     public float digTime;
+    public float plantTime;
     bool inTransition;
 
 	// Use this for initialization
@@ -28,7 +30,7 @@ public class Dirt : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        /* MANUAL DIGGING: FOR DEBUGGING */
+        /* MANUAL DIGGING: FOR DEBUGGING 
         if (Input.GetKey("right") && digState == 0)
         {
             StartCoroutine(DigHole());
@@ -42,7 +44,7 @@ public class Dirt : MonoBehaviour {
             skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
             skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
             digState = 0;
-        }
+        } */
     }
 
     public IEnumerator IncrementWetness(){
@@ -62,6 +64,8 @@ public class Dirt : MonoBehaviour {
     }
 
     public IEnumerator DigHole (){
+        Debug.Log("digState is " + digState);
+        Debug.Log("inTransition is " + inTransition);
         if (digState == 0 && !inTransition)
         {
             inTransition = true;
@@ -96,7 +100,16 @@ public class Dirt : MonoBehaviour {
             SurfaceCollider.layer = 0;
             //dirtParticles.GetComponent<ParticleSystem>().Stop();
             inTransition = false;
+            myPlot.AbsorbPlant();
         }
+    }
+
+    public IEnumerator TakePlant(){
+        for (float t = 0; t < plantTime; t += Time.deltaTime)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        digState = 2;
     }
 
 }

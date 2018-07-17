@@ -6,13 +6,14 @@ public class Plot : MonoBehaviour {
 
     public GameObject beetlePrefab;
     public GameObject weedPrefab;
-    public GameObject myDirt;
+    public Dirt myDirt;
+    public SeedCollider mySeedCollider;
     public int maxWeeds;
 
     private Vector3 center;
     private float radiusX;
     private float radiusZ;
-    private Plant plant = null;
+    public Plant plant = null;
     private Dictionary<GameObject, int> beetles = new Dictionary<GameObject, int>(); //Keep track of beetles and which instance (of position) it is.
     private Dictionary<GameObject, int> fruits = new Dictionary<GameObject, int>(); //Keep track of fruit and which instance (of position) it is.
     private List<GameObject> weeds = new List<GameObject>(); //Keep track of weeds.
@@ -20,7 +21,7 @@ public class Plot : MonoBehaviour {
 	private void Start()
 	{
         // Store some info about the dirt plot area for spawning things in.
-        Collider col = GetComponent<Collider>();
+        Collider col = myDirt.SurfaceCollider.GetComponent<Collider>();
         if(col != null) {
             center = col.bounds.center;
             radiusX = col.bounds.extents.x;
@@ -28,20 +29,30 @@ public class Plot : MonoBehaviour {
         }
 	}
 
+    public void AbsorbPlant(){
+        plant = mySeedCollider.myStarter.GetComponent<Starter>().plant;
+        plant.transform.position = center;
+        plant.transform.eulerAngles = new Vector3(0, 0, 0);
+        plant.transform.localScale = new Vector3(1, 1, 1);
+        plant.PlantPlant();
+        mySeedCollider.myStarter.SetActive(false);
+    }
+
+    /* EVERYTHING BELOW WAS REPLACED BY "absorbPlant". I am commenting it in case we need any of it later.
 	//TODO: change this to be after dirt planting action has been done.
     private void OnTriggerEnter(Collider other)
 	{
         Plant p = other.gameObject.GetComponent<Plant>();
         if(plant == null && p != null && p.getStage() == 0) {
             //TODO: make it so plot cannot be dug anymore when it has a plant in it.
-            setPlant(p);
+            absorbPlant(p);
         }
 	}
 
     // TODO: picking a plant.
 
     // This needs to be revised later.
-	public void setPlant(Plant p) {
+	public void absorbPlant(Plant p) {
         plant = p;
         // Snap plant to the center of the plot.
         // TODO: disable gravity on object (seed starter?) with plant component.
@@ -49,7 +60,7 @@ public class Plot : MonoBehaviour {
         plant.transform.eulerAngles = new Vector3(0, 0, 0);
         plant.transform.localScale = new Vector3(1, 1, 1);
         plant.PlantPlant();
-    }
+    } */
 
     public void StartDay()
     {
