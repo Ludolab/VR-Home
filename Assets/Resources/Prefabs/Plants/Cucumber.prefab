@@ -313,14 +313,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3a199c4bb21cb44aa8a04b20363418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plant: Cucumber
   growthStages:
   - {fileID: 100000, guid: 788f6ac5b560f4c76922079b1d038e36, type: 3}
-  - {fileID: 100000, guid: e932ad7a351704575bda567e6eeeae39, type: 3}
   - {fileID: 100000, guid: ae204e56006634dd4883fe1569f9e3ce, type: 3}
   growthStagesTrans:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4340789329332864}
+  - {fileID: 4098274019082312}
   multiHarvest: 1
   fruit: {fileID: 1611017636726436, guid: 318548b167e66429eb44b71aeeceb3c9, type: 2}
   fruitTrans:
@@ -328,11 +327,12 @@ MonoBehaviour:
   - {fileID: 4586566410947798}
   - {fileID: 4224791769625948}
   beetleTransYoung:
-  - {fileID: 4482806831803494}
+  - {fileID: 4005963043596706}
+  - {fileID: 4258894441157868}
   beetleTransGrown:
   - {fileID: 4005963043596706}
   - {fileID: 4258894441157868}
-  nonFruitingStages: 2
+  nonFruitingStages: 1
 --- !u!135 &135888064442394226
 SphereCollider:
   m_ObjectHideFlags: 1

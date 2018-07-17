@@ -226,23 +226,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3a199c4bb21cb44aa8a04b20363418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plant: Tulip
   growthStages:
   - {fileID: 100000, guid: daa497daeadd341a296fd87fe88b8b92, type: 3}
-  - {fileID: 100008, guid: d931dbac8ba6344a184d3957aaf7d119, type: 3}
-  - {fileID: 100048, guid: 33e711028a4ba418484f261e20bea61b, type: 3}
+  - {fileID: 1661020486744174, guid: cf05589db117547caaf3553bfdaa2f4a, type: 2}
   growthStagesTrans:
   - {fileID: 4191950966617474}
-  - {fileID: 4972165116807556}
   - {fileID: 4791124063611146}
   multiHarvest: 0
   fruit: {fileID: 0}
   fruitTrans: []
   beetleTransYoung:
-  - {fileID: 4105674957626136}
+  - {fileID: 4650459984577364}
+  - {fileID: 4603520191582194}
   beetleTransGrown:
   - {fileID: 4650459984577364}
   - {fileID: 4603520191582194}
-  nonFruitingStages: 2
+  nonFruitingStages: 1
 --- !u!135 &135473736291402558
 SphereCollider:
   m_ObjectHideFlags: 1

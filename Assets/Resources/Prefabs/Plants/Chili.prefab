@@ -371,13 +371,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3a199c4bb21cb44aa8a04b20363418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plant: Chili
   growthStages:
   - {fileID: 100000, guid: 15ebf977ddd8a40b9ad561c283fc7fef, type: 3}
-  - {fileID: 100000, guid: bf1ddde963c3441bfa9982d73c287544, type: 3}
   - {fileID: 100000, guid: b52cc497c56bc440ca7bc613049ce46b, type: 3}
   growthStagesTrans:
   - {fileID: 4572290436307526}
-  - {fileID: 4426999638733878}
   - {fileID: 4892282684459616}
   multiHarvest: 1
   fruit: {fileID: 1320748229465608, guid: f1b6541c4969647f3a92626b461f6ef4, type: 2}
@@ -387,12 +386,12 @@ MonoBehaviour:
   - {fileID: 4917195382568406}
   - {fileID: 4756205116867552}
   beetleTransYoung:
-  - {fileID: 4559915150014846}
-  - {fileID: 4786072733795516}
+  - {fileID: 4812271243237696}
+  - {fileID: 4485211820038074}
   beetleTransGrown:
   - {fileID: 4812271243237696}
   - {fileID: 4485211820038074}
-  nonFruitingStages: 2
+  nonFruitingStages: 1
 --- !u!135 &135354091263769686
 SphereCollider:
   m_ObjectHideFlags: 1

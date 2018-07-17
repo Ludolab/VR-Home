@@ -65,7 +65,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4468548189962110}
   m_Layer: 0
-  m_Name: BeetleTransY2
+  m_Name: BeetleTransG1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,22 +197,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3a199c4bb21cb44aa8a04b20363418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plant: Onion
   growthStages:
   - {fileID: 100000, guid: c1927206f444e4b09b0136554208f700, type: 3}
-  - {fileID: 100000, guid: 1f9a06cd24a7a40ba94489c324b25284, type: 3}
-  - {fileID: 100000, guid: abe5447bde963497480ec92949bd38d7, type: 3}
+  - {fileID: 1901268303434446, guid: e3711615d84f2460e9c93eed4be5f9c9, type: 2}
   growthStagesTrans:
   - {fileID: 4176330153733894}
-  - {fileID: 4889750938889406}
   - {fileID: 4197678462341174}
   multiHarvest: 0
   fruit: {fileID: 0}
-  fruitTrans: []
-  beetleTransYoung:
-  - {fileID: 4503696113261600}
-  beetleTransGrown:
+  fruitTrans:
   - {fileID: 4468548189962110}
-  nonFruitingStages: 2
+  beetleTransYoung:
+  - {fileID: 4468548189962110}
+  beetleTransGrown: []
+  nonFruitingStages: 1
 --- !u!135 &135575547720223330
 SphereCollider:
   m_ObjectHideFlags: 1

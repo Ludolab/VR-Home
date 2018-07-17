@@ -255,10 +255,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3a199c4bb21cb44aa8a04b20363418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plant: Lettuce
   growthStages:
   - {fileID: 100000, guid: 8ddfc6f87549c4a45a331b098456748b, type: 3}
   - {fileID: 100000, guid: ce19ecc302b7a4314921bc6a2bd50eef, type: 3}
-  - {fileID: 100000, guid: 45bad7dc062e145ba839b7fd09987f1e, type: 3}
+  - {fileID: 1430092742940860, guid: 4ec61d12bd8894fa5b4f9560b86587ab, type: 2}
   growthStagesTrans:
   - {fileID: 4107875913964210}
   - {fileID: 4589640072615218}

@@ -226,23 +226,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3a199c4bb21cb44aa8a04b20363418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plant: Leek
   growthStages:
   - {fileID: 100000, guid: 6ce4a23310eff4415b86b19b15dbab8f, type: 3}
-  - {fileID: 100000, guid: 51ae7c6c3f1194118aba152c187d2ef9, type: 3}
-  - {fileID: 100000, guid: addd3d31d19fb4c91a21768c115180d5, type: 3}
+  - {fileID: 1237470853414342, guid: 73ba520b086c349b4b9944f7daf045b9, type: 2}
   growthStagesTrans:
   - {fileID: 4664831041593812}
-  - {fileID: 4551146226015566}
   - {fileID: 4256250954172268}
   multiHarvest: 0
   fruit: {fileID: 0}
-  fruitTrans: []
-  beetleTransYoung:
-  - {fileID: 4230341666907934}
-  beetleTransGrown:
+  fruitTrans:
   - {fileID: 4720567766089342}
   - {fileID: 4514630196111018}
-  nonFruitingStages: 2
+  beetleTransYoung:
+  - {fileID: 4720567766089342}
+  - {fileID: 4514630196111018}
+  beetleTransGrown: []
+  nonFruitingStages: 1
 --- !u!135 &135904194206777768
 SphereCollider:
   m_ObjectHideFlags: 1

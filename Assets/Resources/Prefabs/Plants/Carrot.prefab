@@ -226,23 +226,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3a199c4bb21cb44aa8a04b20363418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plant: Carrot
   growthStages:
   - {fileID: 100000, guid: 02f3cad014fc246b9ae0190d79ed6de1, type: 3}
-  - {fileID: 100000, guid: 735da09292bb44523aaa8a496b29a69e, type: 3}
-  - {fileID: 100000, guid: c68d31ed0bc0441eab2456d20604a48d, type: 3}
+  - {fileID: 1224723703114848, guid: 86ef0dd2798074291bb909a903610f32, type: 2}
   growthStagesTrans:
   - {fileID: 4435773768935292}
-  - {fileID: 4615092099198280}
   - {fileID: 4552333634747994}
   multiHarvest: 0
   fruit: {fileID: 0}
   fruitTrans: []
   beetleTransYoung:
-  - {fileID: 4819590054031006}
+  - {fileID: 4319899636840210}
+  - {fileID: 4137143385509674}
   beetleTransGrown:
   - {fileID: 4319899636840210}
   - {fileID: 4137143385509674}
-  nonFruitingStages: 2
+  nonFruitingStages: 1
 --- !u!135 &135320227183332812
 SphereCollider:
   m_ObjectHideFlags: 1

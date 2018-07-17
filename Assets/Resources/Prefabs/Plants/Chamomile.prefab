@@ -226,23 +226,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3a199c4bb21cb44aa8a04b20363418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plant: Chamomile
   growthStages:
   - {fileID: 100000, guid: 906585d32ca0e484589a96c6292d8091, type: 3}
-  - {fileID: 100000, guid: edaabc776964f46d29fb3f8f3d89a281, type: 3}
-  - {fileID: 100000, guid: 7e25ab568bbfe4dbcac48df502707657, type: 3}
+  - {fileID: 1098652301733852, guid: 2f21d9aa608144ad2ab6e9f4783f33e2, type: 2}
   growthStagesTrans:
   - {fileID: 4122989280178486}
-  - {fileID: 4075847550706882}
   - {fileID: 4731870405005300}
   multiHarvest: 0
   fruit: {fileID: 0}
   fruitTrans: []
   beetleTransYoung:
-  - {fileID: 4660960997059814}
+  - {fileID: 4273647161764240}
+  - {fileID: 4373155671848456}
   beetleTransGrown:
   - {fileID: 4273647161764240}
   - {fileID: 4373155671848456}
-  nonFruitingStages: 2
+  nonFruitingStages: 1
 --- !u!135 &135993387249587994
 SphereCollider:
   m_ObjectHideFlags: 1
