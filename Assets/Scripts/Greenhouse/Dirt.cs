@@ -64,6 +64,8 @@ public class Dirt : MonoBehaviour {
     }
 
     public IEnumerator DigHole (){
+        Debug.Log("digState is " + digState);
+        Debug.Log("inTransition is " + inTransition);
         if (digState == 0 && !inTransition)
         {
             inTransition = true;
