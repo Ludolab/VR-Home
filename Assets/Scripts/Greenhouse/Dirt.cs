@@ -30,7 +30,7 @@ public class Dirt : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        /* MANUAL DIGGING: FOR DEBUGGING */
+        /* MANUAL DIGGING: FOR DEBUGGING 
         if (Input.GetKey("right") && digState == 0)
         {
             StartCoroutine(DigHole());
@@ -44,7 +44,7 @@ public class Dirt : MonoBehaviour {
             skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
             skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
             digState = 0;
-        }
+        } */
     }
 
     public IEnumerator IncrementWetness(){

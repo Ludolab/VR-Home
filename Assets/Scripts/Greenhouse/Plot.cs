@@ -21,7 +21,7 @@ public class Plot : MonoBehaviour {
 	private void Start()
 	{
         // Store some info about the dirt plot area for spawning things in.
-        Collider col = GetComponent<Collider>();
+        Collider col = myDirt.SurfaceCollider.GetComponent<Collider>();
         if(col != null) {
             center = col.bounds.center;
             radiusX = col.bounds.extents.x;
