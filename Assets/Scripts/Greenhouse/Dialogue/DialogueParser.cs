@@ -5,15 +5,16 @@ using UnityEngine;
 public class DialogueParser : MonoBehaviour
 {
 
-	//TODO: dialogueVars
-
-	public DialogueCanvasType dialogueCanvas;
-
+	private DialogueCanvasType dialogueCanvas;
 	private DialogueNode currentNode;
 
-	private void Start()
+	public void SetCanvas(DialogueCanvasType canvas)
 	{
-		currentNode = dialogueCanvas.startNode;
+		dialogueCanvas = canvas;
+		if (dialogueCanvas != null)
+		{
+			currentNode = dialogueCanvas.startNode;
+		}
 	}
 
 	public void NextDay(Neighbor neighbor)
@@ -23,6 +24,8 @@ public class DialogueParser : MonoBehaviour
 
 	private void ProcessDay(Neighbor neighbor)
 	{
+		if (currentNode == null) return;
+
 		while (!(currentNode is DialogueNextDayNode))
 		{
 			currentNode.Process(neighbor);

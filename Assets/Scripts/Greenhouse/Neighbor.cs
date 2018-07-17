@@ -11,10 +11,10 @@ public class Neighbor : MonoBehaviour
 	private DialogueParser parser;
 	private string[] todaysGift = new string[0];
 
-	private void Start()
+	private void Awake()
 	{
 		parser = GetComponent<DialogueParser>();
-		parser.dialogueCanvas = info.dialogueCanvas;
+		parser.SetCanvas(info.dialogueCanvas);
 	}
 
 	public GameObject GenerateLetter(string text1, string text2)
