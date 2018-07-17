@@ -15,7 +15,7 @@ public class Plant : MonoBehaviour
 	public int nonFruitingStages; //1 for seed only, 2 for seed and one non-fruiting young stage, etc.
 
 	private GameObject model;
-	private int stage;
+	private int stage = 0;
 	private int dayBorn;
 
 	public void PlantPlant()

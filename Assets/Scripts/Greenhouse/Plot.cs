@@ -12,7 +12,7 @@ public class Plot : MonoBehaviour {
     private Vector3 center;
     private float radiusX;
     private float radiusZ;
-    private Plant plant;
+    private Plant plant = null;
     private Dictionary<GameObject, int> beetles = new Dictionary<GameObject, int>(); //Keep track of beetles and which instance (of position) it is.
     private Dictionary<GameObject, int> fruits = new Dictionary<GameObject, int>(); //Keep track of fruit and which instance (of position) it is.
     private List<GameObject> weeds = new List<GameObject>(); //Keep track of weeds.
@@ -32,7 +32,9 @@ public class Plot : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
 	{
         Debug.Log("Plot collided with.");
+        Debug.Log(other.gameObject.name);
         Plant p = other.gameObject.GetComponent<Plant>();
+        if(p == null) Debug.Log("Not a plant...");
         if(plant == null && p != null && p.getStage() == 0) {
             Debug.Log("Found a new plant.");
             //TODO: make it so plot cannot be dug anymore when it has a plant in it.
@@ -50,6 +52,7 @@ public class Plot : MonoBehaviour {
         plant.transform.position = center;
         plant.transform.eulerAngles = new Vector3(0, 0, 0);
         plant.transform.localScale = new Vector3(1, 1, 1);
+        plant.PlantPlant();
     }
 
     public void StartDay()
