@@ -31,12 +31,8 @@ public class Plot : MonoBehaviour {
 	//TODO: change this to be after dirt planting action has been done.
     private void OnTriggerEnter(Collider other)
 	{
-        Debug.Log("Plot collided with.");
-        Debug.Log(other.gameObject.name);
         Plant p = other.gameObject.GetComponent<Plant>();
-        if(p == null) Debug.Log("Not a plant...");
         if(plant == null && p != null && p.getStage() == 0) {
-            Debug.Log("Found a new plant.");
             //TODO: make it so plot cannot be dug anymore when it has a plant in it.
             setPlant(p);
         }
@@ -57,31 +53,15 @@ public class Plot : MonoBehaviour {
 
     public void StartDay()
     {
-        // For temporary debuging purposes, clear everything automatically at the start of the day.
-        foreach(GameObject beetle in beetles.Keys) {
-            Destroy(beetle);
-        }
-        foreach(GameObject fruit in fruits.Keys) {
-            Destroy(fruit);
-        }
-        foreach(GameObject weed in weeds) {
-            Destroy(weed);
-        }
-        beetles = new Dictionary<GameObject, int>();
-        fruits = new Dictionary<GameObject, int>();
-        weeds = new List<GameObject>();
-
         // TODO: condition on stage based on watering.
         // TODO: update plot lists/dictionaries when beetles/weeds/fruit have been squished/pulled up/picked.
         if (plant != null && beetles.Count == 0 && weeds.Count == 0)
         {
-            Debug.Log("Advancing stage on plant.");
             plant.advanceStage();
         }
 
         // Spawn in weeds.
         if(weeds.Count < maxWeeds) {
-            Debug.Log("Spawning in new weeds.");
             int numberWeeds = (int)(Random.Range(0f, maxWeeds - weeds.Count));
             for (int i = 0; i < numberWeeds; i++)
             {
@@ -102,8 +82,6 @@ public class Plot : MonoBehaviour {
         // Check for the young stage.
         if(plant != null && plant.getStage() == 1)
         {
-            Debug.Log("Young stage. Adding beetles.");
-
             //Range from no beetles (-1) to maximum placements.
             int numberBeetles = (int)(Random.Range(-1f, plant.beetleTransYoung.Length - 1));
             for (int i = 0; i <= numberBeetles; i++)
@@ -124,8 +102,6 @@ public class Plot : MonoBehaviour {
         // Note should not be proceeded to if any beetles remained on the young stage, so shouldn't have conflicts with beetle spawning.
         if(plant != null && plant.getStage() >= 2)
         {
-            Debug.Log("Grown stage. Adding beetles.");
-
             int numberBeetles = (int)(Random.Range(-1f, plant.beetleTransGrown.Length - 1));
             for (int i = 0; i <= numberBeetles; i++)
             {
@@ -142,8 +118,6 @@ public class Plot : MonoBehaviour {
 
             // Check if we should spawn in fruit.
             if(plant.multiHarvest) {
-                Debug.Log("Grown stage on multiharvest plant. Adding fruit to harvest.");
-
                 //Range from one fruit to maximum placements.
                 int numberFruit = (int)(Random.Range(0f, plant.fruitTrans.Length - 1));
                 for (int i = 0; i <= numberFruit; i++)

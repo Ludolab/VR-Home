@@ -20,7 +20,6 @@ public class Plant : MonoBehaviour
 
 	public void PlantPlant()
 	{
-        Debug.Log("Plant planted. Now growing.");
 		//TimeManager.instance.AddPlant(this);
 		dayBorn = TimeManager.instance.GetDay();
 		stage = 0;
@@ -29,7 +28,6 @@ public class Plant : MonoBehaviour
 	
 	public void UpdateModel()
 	{
-        Debug.Log("Updating plant model.");
 		if (model != null)
 		{
 			Destroy(model);
