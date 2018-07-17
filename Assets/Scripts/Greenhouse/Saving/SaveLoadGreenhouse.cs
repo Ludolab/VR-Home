@@ -110,9 +110,8 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 GameObject loadPlant = (GameObject)Instantiate(Resources.Load(pathToPlantPrefabs + savedData.plant));
                 Plant plant = loadPlant.GetComponent<Plant>();
                 if(plant != null) {
-                    plot.setPlant(plant);
+                    plot.setPlant(plant, savedData.plantStage);
                     plant.setDayBorn(savedData.plantDayBorn);
-                    plant.setStage(savedData.plantStage);
 
                     //Load in beetles and fruit leftover from previous session.
                     Transform[] beetles = null;
