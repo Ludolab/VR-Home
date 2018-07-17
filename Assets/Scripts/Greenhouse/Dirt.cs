@@ -5,6 +5,7 @@ using UnityEngine;
 public class Dirt : MonoBehaviour {
 
     public GameObject dirtParticles;
+    public GameObject SurfaceCollider;
     Material myMaterial;
     SkinnedMeshRenderer skinnedMeshRenderer;
     int digState; // 0 = flat, 1 = hole, 2 = planted, 3 = mound
@@ -18,6 +19,7 @@ public class Dirt : MonoBehaviour {
 	void Start () {
         myMaterial = GetComponent<Renderer>().material;
         skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+        SurfaceCollider.layer = 0;
         wetness = 0;
         digState = 0;
         inTransition = false;
@@ -71,6 +73,7 @@ public class Dirt : MonoBehaviour {
             }
             skinnedMeshRenderer.SetBlendShapeWeight(0, 100);
             digState = 1;
+            SurfaceCollider.layer = 8;
             //dirtParticles.GetComponent<ParticleSystem>().Stop();
             inTransition = false;
         }
@@ -90,6 +93,7 @@ public class Dirt : MonoBehaviour {
             skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
             skinnedMeshRenderer.SetBlendShapeWeight(1, 100);
             digState = 3;
+            SurfaceCollider.layer = 0;
             //dirtParticles.GetComponent<ParticleSystem>().Stop();
             inTransition = false;
         }
