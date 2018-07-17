@@ -421,11 +421,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6b09b40a14546589416bd12cbec189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPlot: {fileID: 0}
   dirtParticles: {fileID: 1635725425186996}
   SurfaceCollider: {fileID: 1988722788908456}
+  digState: 0
   waterTime: 0.15
   waterIncrement: 0.03
   digTime: 0.4
+  plantTime: 0
 --- !u!114 &114789244483059250
 MonoBehaviour:
   m_ObjectHideFlags: 1
