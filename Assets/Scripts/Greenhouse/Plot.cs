@@ -137,7 +137,7 @@ public class Plot : MonoBehaviour {
             // Check if we should spawn in fruit.
             if(plant.multiHarvest) {
                 //Range from one fruit to maximum placements.
-                int numberFruit = (int)(Random.Range(0f, plant.fruitTrans.Length - 1));
+                int numberFruit = (int)(Random.Range(1f, plant.fruitTrans.Length - 1));
                 for (int i = 0; i <= numberFruit; i++)
                 {
                     if(!fruits.ContainsValue(i)) {
