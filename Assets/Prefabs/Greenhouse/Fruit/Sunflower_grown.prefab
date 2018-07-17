@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 4978754509457958}
   - component: {fileID: 136830957442775660}
   - component: {fileID: 54942761317492872}
-  - component: {fileID: 114614302012111090}
+  - component: {fileID: 114482136114184002}
   m_Layer: 0
   m_Name: Sunflower_grown
   m_TagString: Untagged
@@ -713,7 +713,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114614302012111090
+--- !u!114 &114482136114184002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -721,12 +721,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1129183959382664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22dba5ee526fb7e4b9b99763d1c104a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineEnabled: 1
-  hoverColor: {r: 0, g: 0, b: 0, a: 0}
-  heldColor: {r: 0, g: 0, b: 0, a: 0}
+  _manager: {fileID: 0}
+  _ignoreHoverMode: 0
+  _isIgnoringAllHoverState: 0
+  _ignorePrimaryHover: 0
+  _ignoreContact: 0
+  _ignoreGrasping: 0
+  _contactForceMode: 0
+  _allowMultiGrasp: 0
+  _moveObjectWhenGrasped: 1
+  graspedMovementType: 0
+  _overrideInteractionLayer: 0
+  _interactionLayer:
+    layerIndex: 0
+  _overrideNoContactLayer: 0
+  _noContactLayer:
+    layerIndex: 0
+  _eventTable:
+    _entries: []
 --- !u!136 &136830957442775660
 CapsuleCollider:
   m_ObjectHideFlags: 1

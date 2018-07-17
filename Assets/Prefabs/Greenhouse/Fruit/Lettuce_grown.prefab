@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 136543352131456472}
   - component: {fileID: 136578647795391850}
   - component: {fileID: 54095850528289192}
-  - component: {fileID: 114667205326292782}
+  - component: {fileID: 114497983045218920}
   m_Layer: 0
   m_Name: Lettuce_grown
   m_TagString: Untagged
@@ -121,7 +121,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114667205326292782
+--- !u!114 &114497983045218920
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -129,12 +129,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1430092742940860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22dba5ee526fb7e4b9b99763d1c104a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineEnabled: 1
-  hoverColor: {r: 0, g: 0, b: 0, a: 0}
-  heldColor: {r: 0, g: 0, b: 0, a: 0}
+  _manager: {fileID: 0}
+  _ignoreHoverMode: 0
+  _isIgnoringAllHoverState: 0
+  _ignorePrimaryHover: 0
+  _ignoreContact: 0
+  _ignoreGrasping: 0
+  _contactForceMode: 0
+  _allowMultiGrasp: 0
+  _moveObjectWhenGrasped: 1
+  graspedMovementType: 0
+  _overrideInteractionLayer: 0
+  _interactionLayer:
+    layerIndex: 0
+  _overrideNoContactLayer: 0
+  _noContactLayer:
+    layerIndex: 0
+  _eventTable:
+    _entries: []
 --- !u!136 &136543352131456472
 CapsuleCollider:
   m_ObjectHideFlags: 1

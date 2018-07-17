@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 111692343772233524}
   - component: {fileID: 136461452488997350}
   - component: {fileID: 54480228810727294}
-  - component: {fileID: 114906455373828580}
+  - component: {fileID: 114365297308491212}
   m_Layer: 0
   m_Name: Carrot_grown
   m_TagString: Untagged
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1224723703114848}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -117,7 +117,7 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114906455373828580
+--- !u!114 &114365297308491212
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -125,12 +125,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1224723703114848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22dba5ee526fb7e4b9b99763d1c104a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineEnabled: 1
-  hoverColor: {r: 0, g: 0, b: 0, a: 0}
-  heldColor: {r: 0, g: 0, b: 0, a: 0}
+  _manager: {fileID: 0}
+  _ignoreHoverMode: 0
+  _isIgnoringAllHoverState: 0
+  _ignorePrimaryHover: 0
+  _ignoreContact: 0
+  _ignoreGrasping: 0
+  _contactForceMode: 0
+  _allowMultiGrasp: 0
+  _moveObjectWhenGrasped: 1
+  graspedMovementType: 0
+  _overrideInteractionLayer: 0
+  _interactionLayer:
+    layerIndex: 0
+  _overrideNoContactLayer: 0
+  _noContactLayer:
+    layerIndex: 0
+  _eventTable:
+    _entries: []
 --- !u!136 &136461452488997350
 CapsuleCollider:
   m_ObjectHideFlags: 1
