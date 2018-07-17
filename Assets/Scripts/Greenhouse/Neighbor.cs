@@ -22,7 +22,7 @@ public class Neighbor : MonoBehaviour
 		Vector3 position = new Vector3(0, 1f, 0); //TODO: position in their mailbox
 		GameObject letterObj = Instantiate(letterPrefab, position, Quaternion.identity);
 		Letter letter = letterObj.GetComponent<Letter>();
-		letter.SetContents(text1, text2, info.font, info.fontMaterial);
+		letter.SetContents(text1, text2, info.font, info.fontMaterial, info.paperTexture, info.textColor);
 		return letterObj;
 	}
 

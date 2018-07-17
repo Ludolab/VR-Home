@@ -13,44 +13,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fontMaterial: {fileID: 2100000, guid: bdc2005ff350fbd4eb6bd55d1dfe10a8, type: 2}
   font: {fileID: 12800000, guid: 65f5e1d3ea189b14d88af0c733ffdb2b, type: 3}
+  paperTexture: {fileID: 2800000, guid: 812b4ca7d720c3346bf79dbd6082e4ea, type: 3}
+  textColor: {r: 0, g: 0.00016903877, b: 1, a: 1}
   letters:
-  - exists: 1
-    text1: 'Welcome to the
+  - text1: 'Welcome! Me and
 
-      neighborhood!'
-    text2: 'Here''s some seeds to
+      Cara are delighted
 
-      get you started.
-
-
-      -Sanjay'
+      to meet you.'
+    text2: "We\u2019re sending you\nsome chamomile\nseeds, they\u2019re a\ngreat addition
+      to\nany garden!\n\n - Sanjay"
     dependsOnGift: 0
-  - exists: 1
-    text1: 'I asked the mailman to
-
-      set up some outboxes for
-
-      you. Just change the label
-
-      and leave something in
-
-      there overnight, he''ll
-
-      take care of the rest.'
-    text2: 'If you''re feeling generous,
-
-      maybe you could test it
-
-      out by sending me one of
-
-      those fruits you''re growing
-
-      =^)
-
-      -Sanjay'
-    dependsOnGift: 0
-  - exists: 1
-    text1: Hey... thanks for the gift
-    text2: -Sanjay
-    dependsOnGift: 1
+  dialogueCanvas: {fileID: 0}
   dayLabelUnlocked: 0

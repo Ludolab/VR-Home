@@ -27,7 +27,8 @@ public class NeighborInfo : ScriptableObject
 
 	public Material fontMaterial;
 	public Font font;
-	//TODO: paper texture
+	public Texture paperTexture;
+	public Color textColor;
 
 	public LetterInfo[] letters;
 	//TODO: gifts with letters
