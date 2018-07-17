@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 82453984291491096}
   - component: {fileID: 114015844812487408}
   - component: {fileID: 136514706729475712}
+  - component: {fileID: 114380528631140128}
   m_Layer: 0
   m_Name: CucumberFruit
   m_TagString: Untagged
@@ -237,7 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a2a434b848e8441a6823305b19c1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unripeColor: {r: 0.08784264, g: 0.8867924, b: 0.24378105, a: 1}
+  fruitName: Cucumber
+  unripeColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
   particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
     type: 2}
   pickSound:
@@ -353,6 +355,21 @@ MonoBehaviour:
             m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+--- !u!114 &114380528631140128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611017636726436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a2a434b848e8441a6823305b19c1e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruitName: 
+  unripeColor: {r: 0, g: 0, b: 0, a: 0}
+  particlePrefab: {fileID: 0}
+  pickSound: []
 --- !u!136 &136514706729475712
 CapsuleCollider:
   m_ObjectHideFlags: 1

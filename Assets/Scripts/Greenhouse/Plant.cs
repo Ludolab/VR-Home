@@ -26,7 +26,7 @@ public class Plant : MonoBehaviour
 		UpdateModel();
 	}
 	
-	public void UpdateModel()
+	private void UpdateModel()
 	{
 		if (model != null)
 		{
@@ -65,5 +65,9 @@ public class Plant : MonoBehaviour
 
     public int getDayBorn() {
         return dayBorn;
+    }
+
+    public GameObject getModel() {
+        return model;
     }
 }

@@ -30,13 +30,16 @@ public class Plot : MonoBehaviour {
 	}
 
     public void AbsorbPlant(){
-        plant = mySeedCollider.myStarter.GetComponent<Starter>().plant;
-        plant.transform.position = center;
-        plant.transform.eulerAngles = new Vector3(0, 0, 0);
-        plant.transform.localScale = new Vector3(1, 1, 1);
+        GameObject planted = Instantiate(mySeedCollider.myStarter.GetComponent<Starter>().plant);
+        plant = planted.GetComponent<Plant>();
+        planted.transform.position = center;
+        planted.transform.eulerAngles = new Vector3(0, 0, 0);
+        planted.transform.localScale = new Vector3(1, 1, 1);
         plant.PlantPlant();
         mySeedCollider.myStarter.SetActive(false);
     }
+
+    // TODO: picking a plant that's non-multiharvest. Don't let people take the plant if any beetles remain.
 
     /* EVERYTHING BELOW WAS REPLACED BY "absorbPlant". I am commenting it in case we need any of it later.
 	//TODO: change this to be after dirt planting action has been done.
@@ -48,8 +51,6 @@ public class Plot : MonoBehaviour {
             absorbPlant(p);
         }
 	}
-
-    // TODO: picking a plant.
 
     // This needs to be revised later.
 	public void absorbPlant(Plant p) {
@@ -64,7 +65,7 @@ public class Plot : MonoBehaviour {
 
     public void StartDay()
     {
-        // For temporary debuging purposes, clear everything automatically at the start of the day.
+        /*// For temporary debuging purposes, clear everything automatically at the start of the day.
         // Mostly, since we have yet to add tracking when beetles and weeds are removed.
         foreach (GameObject beetle in beetles.Keys)
         {
@@ -80,21 +81,18 @@ public class Plot : MonoBehaviour {
         }
         beetles = new Dictionary<GameObject, int>();
         fruits = new Dictionary<GameObject, int>();
-        weeds = new List<GameObject>();
+        weeds = new List<GameObject>();*/
 
         // TODO: condition on stage based on watering.
-        // TODO: update plot lists/dictionaries when beetles/weeds/fruit have been squished/pulled up/picked.
-        if (plant != null && beetles.Count == 0 && weeds.Count == 0)
+        if (plant != null && beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f)
         {
             plant.advanceStage();
         }
 
-        // Spawn in weeds.
         if(weeds.Count < maxWeeds) {
-            int numberWeeds = (int)(Random.Range(0f, maxWeeds - weeds.Count));
+            int numberWeeds = (int)(Random.Range(1f, maxWeeds - weeds.Count));
             for (int i = 0; i < numberWeeds; i++)
             {
-                //TODO: make it so weeds don't spawn too close to each other.
                 GameObject weed = Instantiate(weedPrefab);
                 float xPos = Random.Range(-1 * radiusX, radiusX) + center.x;
                 float zPos = Random.Range(-1 * radiusZ, radiusZ) + center.z;
@@ -104,8 +102,11 @@ public class Plot : MonoBehaviour {
                 weed.transform.localScale = new Vector3(scale, scale, scale);
 
                 // Keep track of spawned weeds.
+                weed.GetComponent<PullWeed>().setPlot(this);
                 weeds.Add(weed);
             }
+            // Don't let people dig dirt until all weeds are gone.
+            myDirt.noWeeds = false;
         }
 
         // Check for the young stage.
@@ -122,6 +123,7 @@ public class Plot : MonoBehaviour {
                     beetle.transform.eulerAngles = plant.transform.eulerAngles + plant.beetleTransYoung[i].localEulerAngles;
                     beetle.transform.localScale = plant.beetleTransYoung[i].localScale;
 
+                    beetle.GetComponent<Beetle>().setPlot(this);
                     beetles.Add(beetle, i);
                 }
             }
@@ -141,6 +143,7 @@ public class Plot : MonoBehaviour {
                     beetle.transform.eulerAngles = plant.transform.eulerAngles + plant.beetleTransGrown[i].localEulerAngles;
                     beetle.transform.localScale = plant.beetleTransGrown[i].localScale;
 
+                    beetle.GetComponent<Beetle>().setPlot(this);
                     beetles.Add(beetle, i);
                 }
             }
@@ -157,6 +160,7 @@ public class Plot : MonoBehaviour {
                         fruit.transform.eulerAngles = plant.transform.eulerAngles + plant.fruitTrans[i].localEulerAngles;
                         fruit.transform.localScale = plant.fruitTrans[i].localScale;
 
+                        fruit.GetComponent<Fruit>().setPlot(this);
                         fruits.Add(fruit, i);
                     }
                 }
@@ -168,6 +172,7 @@ public class Plot : MonoBehaviour {
     public void removeFromWeeds(GameObject weed)
     {
         weeds.Remove(weed);
+        if (weeds.Count == 0) myDirt.noWeeds = true;
     }
 
     public void removeFromBeetles(GameObject beetle)
