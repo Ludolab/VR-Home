@@ -3405,6 +3405,10 @@ Prefab:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1db66a26d99504243be2f32ed265fa2b, type: 3}
+      propertyPath: m_Name
+      value: Starter
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1db66a26d99504243be2f32ed265fa2b, type: 3}
   m_IsPrefabParent: 0
@@ -3470,6 +3474,10 @@ MeshCollider:
   m_CookingOptions: -1
   m_SkinWidth: 0.001
   m_Mesh: {fileID: 4300000, guid: 1db66a26d99504243be2f32ed265fa2b, type: 3}
+--- !u!4 &1054833079 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 1db66a26d99504243be2f32ed265fa2b, type: 3}
+  m_PrefabInternal: {fileID: 1054833072}
 --- !u!1001 &1056539678
 Prefab:
   m_ObjectHideFlags: 0
@@ -3779,6 +3787,10 @@ Prefab:
     - target: {fileID: 4131529110845198, guid: 820e3ae56891f4733a6358feb6ce0b1b, type: 2}
       propertyPath: m_RootOrder
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266337494645368, guid: 820e3ae56891f4733a6358feb6ce0b1b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.000009
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 820e3ae56891f4733a6358feb6ce0b1b, type: 2}
@@ -5077,6 +5089,22 @@ Prefab:
         type: 2}
       propertyPath: m_ClearFlags
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737387208963926, guid: dae2e2be31c98324eac460f702db97e9, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702709150791350, guid: dae2e2be31c98324eac460f702db97e9, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177759486552826, guid: dae2e2be31c98324eac460f702db97e9, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742147843867732, guid: dae2e2be31c98324eac460f702db97e9, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dae2e2be31c98324eac460f702db97e9, type: 2}
@@ -6400,6 +6428,48 @@ MonoBehaviour:
     The OpenVR SDK provides a better controller mesh that can easily be imported into
     Unity and dragged into this controller's hierarchy.
   _isEditing: 0
+--- !u!1001 &2002294770
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1054833079}
+    m_Modifications:
+    - target: {fileID: 4923450594630390, guid: 26ceef91c903c4540be2bfc270a8833e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923450594630390, guid: 26ceef91c903c4540be2bfc270a8833e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.0107
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923450594630390, guid: 26ceef91c903c4540be2bfc270a8833e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923450594630390, guid: 26ceef91c903c4540be2bfc270a8833e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923450594630390, guid: 26ceef91c903c4540be2bfc270a8833e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923450594630390, guid: 26ceef91c903c4540be2bfc270a8833e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923450594630390, guid: 26ceef91c903c4540be2bfc270a8833e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923450594630390, guid: 26ceef91c903c4540be2bfc270a8833e, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 26ceef91c903c4540be2bfc270a8833e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &2016346964
 Prefab:
   m_ObjectHideFlags: 0
