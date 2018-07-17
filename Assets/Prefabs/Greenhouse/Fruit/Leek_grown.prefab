@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 136671320011291974}
   - component: {fileID: 54682620351590396}
   - component: {fileID: 114130985681783742}
-  - component: {fileID: 114768275634712578}
   m_Layer: 0
   m_Name: Leek_grown
   m_TagString: Untagged
@@ -116,26 +115,6 @@ MonoBehaviour:
   outlineEnabled: 1
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   heldColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &114768275634712578
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237470853414342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a2a434b848e8441a6823305b19c1e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fruitName: Leek
-  unripeColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
-  particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
-    type: 2}
-  pickSound:
-  - {fileID: 8300000, guid: 7383e9a8f73064e71bfc248e71da8aba, type: 3}
-  - {fileID: 8300000, guid: 957ba31a9137d4079bb57e90d57943bc, type: 3}
-  - {fileID: 8300000, guid: ec941f546044945b39c7c349d290220a, type: 3}
-  - {fileID: 8300000, guid: 68810c78ecaa84754b97d90b86cf6ec3, type: 3}
 --- !u!136 &136671320011291974
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -1192,7 +1192,7 @@ MonoBehaviour:
   - {fileID: 430756300}
   - {fileID: 516417769}
   plots:
-  - {fileID: 0}
+  - {fileID: 1290501773}
 --- !u!1 &619567118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,6 +2337,12 @@ Transform:
   m_Father: {fileID: 1865898601}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1290501773 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114663747702454246, guid: cc6c1e925dcc24884b30188bc2c5dede,
+    type: 2}
+  m_PrefabInternal: {fileID: 1852623798}
+  m_Script: {fileID: 11500000, guid: 3e7f102bd4ad642cea7dccd89f823c5c, type: 3}
 --- !u!1001 &1303677496
 Prefab:
   m_ObjectHideFlags: 0

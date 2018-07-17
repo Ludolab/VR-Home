@@ -42,12 +42,10 @@ public class Plot : MonoBehaviour {
     // TODO: picking a plant that's non-multiharvest. Don't let people take the plant if any beetles remain.
 
     /* EVERYTHING BELOW WAS REPLACED BY "absorbPlant". I am commenting it in case we need any of it later.
-	//TODO: change this to be after dirt planting action has been done.
     private void OnTriggerEnter(Collider other)
 	{
         Plant p = other.gameObject.GetComponent<Plant>();
         if(plant == null && p != null && p.getStage() == 0) {
-            //TODO: make it so plot cannot be dug anymore when it has a plant in it.
             absorbPlant(p);
         }
 	}
@@ -56,7 +54,6 @@ public class Plot : MonoBehaviour {
 	public void absorbPlant(Plant p) {
         plant = p;
         // Snap plant to the center of the plot.
-        // TODO: disable gravity on object (seed starter?) with plant component.
         plant.transform.position = center;
         plant.transform.eulerAngles = new Vector3(0, 0, 0);
         plant.transform.localScale = new Vector3(1, 1, 1);
@@ -83,7 +80,6 @@ public class Plot : MonoBehaviour {
         fruits = new Dictionary<GameObject, int>();
         weeds = new List<GameObject>();*/
 
-        // TODO: condition on stage based on watering.
         if (plant != null && beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f)
         {
             plant.advanceStage();
