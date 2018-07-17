@@ -10,22 +10,14 @@ public class Plot : MonoBehaviour {
     public SeedCollider mySeedCollider;
     public int maxWeeds;
 
-    private float radiusX;
-    private float radiusZ;
+    //Currently hard-coded since there's issues with pulling collider bound radius for some reason.
+    public float radiusX;
+    public float radiusZ;
+
     public Plant plant = null;
     private Dictionary<GameObject, int> beetles = new Dictionary<GameObject, int>(); //Keep track of beetles and which instance (of position) it is.
     private Dictionary<GameObject, int> fruits = new Dictionary<GameObject, int>(); //Keep track of fruit and which instance (of position) it is.
     private List<GameObject> weeds = new List<GameObject>(); //Keep track of weeds.
-
-	private void Start()
-    {
-        // Store some info about the dirt plot area for spawning things in.
-        Collider col = myDirt.SurfaceCollider.GetComponent<Collider>();
-        if(col != null) {
-            radiusX = col.bounds.extents.x;
-            radiusZ = col.bounds.extents.z;
-        }
-	}
 
     public void AbsorbPlant(){
         GameObject planted = Instantiate(mySeedCollider.myStarter.GetComponent<Starter>().plant);
