@@ -8,13 +8,11 @@ public class Outbox : MonoBehaviour
 	public GameObject labelPrefab;
 	public Transform labelTransform;
 
-	private List<GameObject> labels = new List<GameObject>();
-	private int labelIndex = 0;
-	private GameObject activeLabel;
+	private GameObject label;
 
-	private List<Fruit> fruits = new List<Fruit>();
+	private List<Giftable> gifts = new List<Giftable>();
 
-	public void AddLabel(NeighborInfo info)
+	public void SetLabel(NeighborInfo info)
 	{
 		GameObject label = Instantiate(labelPrefab, labelTransform);
 		GameObject labelText = label.transform.Find("text").gameObject;
@@ -25,73 +23,35 @@ public class Outbox : MonoBehaviour
 		labelMesh.font = info.font;
 		labelRend.material = info.fontMaterial;
 
-		label.SetActive(false);
-		labels.Add(label);
-
-		UpdateLabel(); //in case this is the first
+		this.label = label;
+	}
+	
+	public void AddGift(Giftable g)
+	{
+		gifts.Add(g);
 	}
 
-	[ContextMenu("Next Label")]
-	public void NextLabel()
+	public void RemoveGift(Giftable g)
 	{
-		ChangeLabel(1);
-	}
-
-	[ContextMenu("Prev Label")]
-	public void PrevLabel()
-	{
-		ChangeLabel(-1);
-	}
-
-	private void ChangeLabel(int addition)
-	{
-		labelIndex = (labelIndex + addition) % labels.Count;
-		if (labelIndex < 0)
-		{
-			labelIndex += labels.Count;
-		}
-		UpdateLabel();
-	}
-
-	private void UpdateLabel()
-	{
-		if (activeLabel != null)
-		{
-			activeLabel.SetActive(false);
-		}
-		if (labelIndex < labels.Count)
-		{
-			activeLabel = labels[labelIndex];
-			activeLabel.SetActive(true);
-		}
-	}
-
-	public void AddFruit(Fruit f)
-	{
-		fruits.Add(f);
-	}
-
-	public void RemoveFruit(Fruit f)
-	{
-		fruits.Remove(f);
+		gifts.Remove(g);
 	}
 
 	public string[] ClearFruit()
 	{
-		List<string> fruitNames = new List<string>();
-		foreach (Fruit f in fruits)
+		List<string> giftNames = new List<string>();
+		foreach (Giftable g in gifts)
 		{
-			fruitNames.Add(f.GetName()); 
-			//Destroy(f.gameObject);
+			giftNames.Add(g.name);
+			//Destroy(g.gameObject);
 		}
-		fruits.Clear();
-		return fruitNames.ToArray();
+		gifts.Clear();
+		return giftNames.ToArray();
 	}
 
 	public string GetLabel()
 	{
-		if (activeLabel == null) return null;
+		if (label == null) return null;
 
-		return activeLabel.transform.Find("text").GetComponent<TextMesh>().text;
+		return label.transform.Find("text").GetComponent<TextMesh>().text;
 	}
 }

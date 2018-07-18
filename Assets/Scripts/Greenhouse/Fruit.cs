@@ -89,23 +89,8 @@ public class Fruit : MonoBehaviour
 		{
 			PlantInPot(pot);
 		}
-
-		if (other.gameObject.CompareTag("Outbox"))
-		{
-			Outbox o = other.transform.parent.GetComponent<Outbox>();
-			o.AddFruit(this);
-		}
 	}
-
-	private void OnTriggerExit(Collider other)
-	{
-		if (other.gameObject.CompareTag("Outbox"))
-		{
-			Outbox o = other.transform.parent.GetComponent<Outbox>();
-			o.RemoveFruit(this);
-		}
-	}
-
+	
 	private void PlantInPot(Pot pot)
 	{
 		pot.PlantFruit(this);

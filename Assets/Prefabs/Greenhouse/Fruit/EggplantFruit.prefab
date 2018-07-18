@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 136167850570993564}
   - component: {fileID: 114384189569472842}
   - component: {fileID: 114599741470608102}
+  - component: {fileID: 114788420293587972}
   m_Layer: 0
   m_Name: EggplantFruit
   m_TagString: Untagged
@@ -365,6 +366,17 @@ MonoBehaviour:
     layerIndex: 0
   _eventTable:
     _entries: []
+--- !u!114 &114788420293587972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746422679918174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114959752761969672
 MonoBehaviour:
   m_ObjectHideFlags: 1

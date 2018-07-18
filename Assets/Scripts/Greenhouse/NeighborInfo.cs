@@ -7,6 +7,13 @@ using UnityEngine;
 public class NeighborInfo : ScriptableObject
 {
 	
+	public enum SpawnOption
+	{
+		Always,
+		RequireGift,
+		RequireNoGift
+	}
+
 	[Serializable]
 	public struct LetterInfo
 	{
@@ -16,13 +23,10 @@ public class NeighborInfo : ScriptableObject
 		[TextArea(3, 10)]
 		public string text2;
 
-		public bool dependsOnGift;
-		//TODO: type of gift required
+		public int day;
 
-		public bool Exists()
-		{
-			return (text1 != null && text1 != "") || (text2 != null && text2 != "");
-		}
+		public SpawnOption spawnOption;
+		//TODO: type of gift required?
 	}
 
 	public Material fontMaterial;
@@ -31,9 +35,8 @@ public class NeighborInfo : ScriptableObject
 	public Color textColor;
 
 	public LetterInfo[] letters;
-	//TODO: gifts with letters
+
+	//TODO: daily gifts
 
 	public DialogueCanvasType dialogueCanvas;
-	
-	public int dayLabelUnlocked; //index of day on which this person's label becomes selectable in outbox
 }

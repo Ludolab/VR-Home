@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 54756411796227502}
   - component: {fileID: 114410051453357390}
   - component: {fileID: 114954865235175682}
+  - component: {fileID: 114178500995070082}
   m_Layer: 0
   m_Name: Tulip_grown
   m_TagString: Untagged
@@ -1150,6 +1151,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114178500995070082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1661020486744174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114410051453357390
 MonoBehaviour:
   m_ObjectHideFlags: 1

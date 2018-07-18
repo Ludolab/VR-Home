@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 54962072422553438}
   - component: {fileID: 114314028727094490}
   - component: {fileID: 114796227727650598}
+  - component: {fileID: 114928357006474732}
   m_Layer: 0
   m_Name: Chamomile_grown
   m_TagString: Untagged
@@ -2172,6 +2173,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3249a8008b414a818d377c6d68a7d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114928357006474732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098652301733852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136148497835386830

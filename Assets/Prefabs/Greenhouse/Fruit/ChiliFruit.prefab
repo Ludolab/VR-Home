@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 136825023969338478}
   - component: {fileID: 114073406538561192}
   - component: {fileID: 114157715358184506}
+  - component: {fileID: 114156153989728584}
   m_Layer: 0
   m_Name: ChiliFruit
   m_TagString: Untagged
@@ -217,6 +218,17 @@ MonoBehaviour:
   unripeColor: {r: 0, g: 0, b: 0, a: 0}
   particlePrefab: {fileID: 0}
   pickSound: []
+--- !u!114 &114156153989728584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320748229465608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114157715358184506
 MonoBehaviour:
   m_ObjectHideFlags: 1
