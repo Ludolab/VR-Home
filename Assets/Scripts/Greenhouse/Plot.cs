@@ -72,7 +72,7 @@ public class Plot : MonoBehaviour {
         {
             myDirt.makeFlat(false);
 
-            if (/*beetles.Count == 0*/ && weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.advanceStage();
+            if (/*beetles.Count == 0 &&*/ weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.advanceStage();
 
             // Check for the young stage.
             if (plant.getStage() == 1)
