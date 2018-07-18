@@ -72,7 +72,7 @@ public class Plot : MonoBehaviour {
         {
             myDirt.makeFlat(false);
 
-            if (/*beetles.Count == 0 &&*/ weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.advanceStage();
+            if (beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.advanceStage();
 
             // Check for the young stage.
             if (plant.getStage() == 1)
@@ -117,7 +117,7 @@ public class Plot : MonoBehaviour {
             }
 
             // Check if we should spawn in fruit.
-            if (plant.getStage() > plant.nonFruitingStages)
+            if (plant.getStage() >= plant.nonFruitingStages)
             {
                 if (plant.multiHarvest)
                 {
@@ -181,8 +181,9 @@ public class Plot : MonoBehaviour {
 
     public void removeFromBeetles(GameObject beetle)
     {
+        Debug.Log("Removing beetle from plot");
         beetles.Remove(beetle);
-        if (plant.getStage() > plant.nonFruitingStages && !plant.multiHarvest && beetles.Count == 0)
+        if (plant.getStage() >= plant.nonFruitingStages && !plant.multiHarvest && beetles.Count == 0)
             plant.GetComponent<HarvestFruit>().setNoBeetles(true);
     }
 

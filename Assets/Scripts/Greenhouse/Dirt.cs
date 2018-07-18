@@ -10,6 +10,7 @@ public class Dirt : MonoBehaviour {
     public GameObject SurfaceCollider;
     Material myMaterial;
     public SkinnedMeshRenderer skinnedMeshRenderer;
+    public bool starterPresent = false;
     public int digState; // 0 = flat, 1 = hole, 2 = planted, 3 = mound, 4 = flat on later day (no digging)
     float wetness;
     public float waterTime;
@@ -124,7 +125,9 @@ public class Dirt : MonoBehaviour {
         {
             yield return new WaitForEndOfFrame();
         }
-        digState = 2;
+        if (starterPresent){
+            digState = 2;
+        }
     }
 
     public float getWetness() {
