@@ -50,7 +50,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             plotSave.plant = curr.getPlant().plant;
             plotSave.plantDayBorn = curr.getPlant().getDayBorn();
             plotSave.plantStage = curr.getPlant().getStage();
-            //TODO: save watering.
+            plotSave.watered = curr.myDirt.getWetness();
 
             List<SaveObject> weeds = new List<SaveObject>();
             foreach(GameObject weed in curr.getWeeds()) {
@@ -91,7 +91,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 TimeManager.instance.SetDay(saved.previousDay);
                 LoadPlots(saved.plots);
                 //TODO: load in state of in/outboxes from the previous session for processing.
-                //TODO: save where picked but unsent fruits are?
 
                 //After restoring the state of the previous play session, advance to the next day.
                 TimeManager.instance.NextDay();
@@ -160,7 +159,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 }
             }
 
-            //TODO: set if previously watered or not.
+            plot.myDirt.setWetness(savedData.watered);
 
         }
     }
