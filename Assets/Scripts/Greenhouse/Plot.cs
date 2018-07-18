@@ -92,6 +92,8 @@ public class Plot : MonoBehaviour {
 
         if (plant != null)
         {
+            myDirt.makeFlat(false);
+
             Debug.Log("Beetles: " + beetles.Count);
             Debug.Log("Weeds: " + weeds.Count);
             Debug.Log("Watering: " + myDirt.getWetness());
@@ -165,6 +167,8 @@ public class Plot : MonoBehaviour {
                 }
             }
 
+        } else {
+            myDirt.makeFlat(true);
         }
     }
 

@@ -47,6 +47,7 @@ public class Dirt : MonoBehaviour {
             skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
             digState = 0;
         } */
+        Debug.Log(noWeeds);
     }
 
     public IEnumerator IncrementWetness(){
