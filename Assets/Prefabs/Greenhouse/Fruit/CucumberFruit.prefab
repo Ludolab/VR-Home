@@ -27,10 +27,10 @@ GameObject:
   - component: {fileID: 114173692167105376}
   - component: {fileID: 114053364053308056}
   - component: {fileID: 82453984291491096}
-  - component: {fileID: 136514706729475712}
   - component: {fileID: 114380528631140128}
   - component: {fileID: 114508748649608792}
   - component: {fileID: 114266305092151714}
+  - component: {fileID: 65555972456088376}
   m_Layer: 0
   m_Name: CucumberFruit
   m_TagString: Untagged
@@ -108,6 +108,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65555972456088376
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611017636726436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2755978, y: 1.2377214, z: 0.2805291}
+  m_Center: {x: -0.002469726, y: 0.13023522, z: -0.0152436495}
 --- !u!82 &82453984291491096
 AudioSource:
   m_ObjectHideFlags: 1
@@ -397,19 +409,6 @@ MonoBehaviour:
     layerIndex: 0
   _eventTable:
     _entries: []
---- !u!136 &136514706729475712
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1611017636726436}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.14026456
-  m_Height: 1.2377214
-  m_Direction: 1
-  m_Center: {x: -0.002469726, y: 0.13023522, z: -0.0152436495}
 --- !u!153 &153114023626285806
 ConfigurableJoint:
   m_ObjectHideFlags: 1

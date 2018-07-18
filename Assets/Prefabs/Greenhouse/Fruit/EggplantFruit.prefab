@@ -27,10 +27,10 @@ GameObject:
   - component: {fileID: 114959752761969672}
   - component: {fileID: 114475321575156680}
   - component: {fileID: 82154878496206194}
-  - component: {fileID: 136167850570993564}
   - component: {fileID: 114384189569472842}
   - component: {fileID: 114599741470608102}
   - component: {fileID: 114788420293587972}
+  - component: {fileID: 65186371890848638}
   m_Layer: 0
   m_Name: EggplantFruit
   m_TagString: Untagged
@@ -108,6 +108,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65186371890848638
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746422679918174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3785645, y: 0.96347946, z: 0.37855083}
+  m_Center: {x: 0.08747427, y: 0.23176357, z: -0.040344797}
 --- !u!82 &82154878496206194
 AudioSource:
   m_ObjectHideFlags: 1
@@ -397,19 +409,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 957ba31a9137d4079bb57e90d57943bc, type: 3}
   - {fileID: 8300000, guid: ec941f546044945b39c7c349d290220a, type: 3}
   - {fileID: 8300000, guid: 68810c78ecaa84754b97d90b86cf6ec3, type: 3}
---- !u!136 &136167850570993564
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746422679918174}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.18928225
-  m_Height: 0.96347946
-  m_Direction: 1
-  m_Center: {x: 0.08747427, y: 0.23176357, z: -0.040344797}
 --- !u!153 &153395930034300900
 ConfigurableJoint:
   m_ObjectHideFlags: 1
