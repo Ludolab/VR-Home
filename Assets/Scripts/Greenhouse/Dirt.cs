@@ -66,8 +66,8 @@ public class Dirt : MonoBehaviour {
     }
 
     public IEnumerator DigHole (){
-        Debug.Log("digState is " + digState);
-        Debug.Log("inTransition is " + inTransition);
+        //Debug.Log("digState is " + digState);
+        //Debug.Log("inTransition is " + inTransition);
         if (digState == 0 && !inTransition && noWeeds)
         {
             inTransition = true;
@@ -102,7 +102,7 @@ public class Dirt : MonoBehaviour {
             SurfaceCollider.layer = 0;
             //dirtParticles.GetComponent<ParticleSystem>().Stop();
             inTransition = false;
-            Debug.Log("Abosring plant (dirt)");
+            //Debug.Log("Abosring plant (dirt)");
             myPlot.AbsorbPlant();
         }
     }
