@@ -207,7 +207,7 @@ public class Plot : MonoBehaviour {
 
     public void addToBeetles(GameObject beetle, int instance) {
         beetles.Add(beetle, instance);
-        if (beetles.Count == 0 && plant.getStage() == plant.nonFruitingStages && !plant.multiHarvest)
+        if (beetles.Count == 0 && plant.getStage() > plant.nonFruitingStages && !plant.multiHarvest)
             plant.getModel().GetComponent<HarvestFruit>().setNoBeetles(true);
     }
 

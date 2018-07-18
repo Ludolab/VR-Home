@@ -53,7 +53,7 @@ public class Beetle : MonoBehaviour
 	public void Squish()
 	{
 		SpawnParticles();
-        plotIn.removeFromBeetles(gameObject);
+        if(plotIn != null) plotIn.removeFromBeetles(gameObject);
 		Destroy(gameObject);
 	}
 
