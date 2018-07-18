@@ -58,24 +58,6 @@ public class Plot : MonoBehaviour {
 
 	public void StartDay()
     {
-        /*// For temporary debuging purposes, clear everything automatically at the start of the day.
-        // Mostly, since we have yet to add tracking when beetles and weeds are removed.
-        foreach (GameObject beetle in beetles.Keys)
-        {
-            Destroy(beetle);
-        }
-        foreach (GameObject fruit in fruits.Keys)
-        {
-            Destroy(fruit);
-        }
-        foreach (GameObject weed in weeds)
-        {
-            Destroy(weed);
-        }
-        beetles = new Dictionary<GameObject, int>();
-        fruits = new Dictionary<GameObject, int>();
-        weeds = new List<GameObject>();*/
-
         if (plant != null)
         {
             myDirt.makeFlat(false);
