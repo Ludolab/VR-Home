@@ -135,10 +135,15 @@ public class Plot : MonoBehaviour {
                         Debug.Log("Adding multiharvest fruit.");
                         if (!fruits.ContainsValue(i))
                         {
+                            Debug.Log("plant position: " + plant.transform.position.x + ", " + plant.transform.position.y + ", " + plant.transform.position.z);
+                            Debug.Log("fruit local position: " + plant.fruitTrans[i].localPosition.x + ", " + plant.fruitTrans[i].localPosition.y + ", " + plant.fruitTrans[i].localPosition.z);
+
                             GameObject fruit = Instantiate(plant.fruit);
                             fruit.transform.position = plant.transform.position + plant.fruitTrans[i].localPosition;
                             fruit.transform.eulerAngles = plant.transform.eulerAngles + plant.fruitTrans[i].localEulerAngles;
                             fruit.transform.localScale = plant.fruitTrans[i].localScale;
+
+                            Debug.Log("fruit final position: " + fruit.transform.position.x + ", " + fruit.transform.position.y + ", " + fruit.transform.position.z);
 
                             fruit.GetComponent<Fruit>().setPlot(this);
                             fruits.Add(fruit, i);

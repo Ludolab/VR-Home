@@ -37,8 +37,6 @@ public class Plant : MonoBehaviour
         model.transform.position = transform.position + growthStagesTrans[stage].localPosition;
         model.transform.eulerAngles = transform.eulerAngles + growthStagesTrans[stage].localEulerAngles;
         model.transform.localScale = growthStagesTrans[stage].localScale;
-
-		//TODO: spawn fruit- half ripe and half unripe (don't spawn unripe if last ripe one was not picked)
 	}
 
     public void advanceStage() {
