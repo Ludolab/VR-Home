@@ -22,17 +22,16 @@ public class Plot : MonoBehaviour {
     public void AbsorbPlant(){
         if(mySeedCollider == null) Debug.Log("Seed collider null");
         if (mySeedCollider.myStarter == null) Debug.Log("Seed collider starter null");
-        if(mySeedCollider.myStarter.GetComponent<Starter>() == null) Debug.Log("Seed collider starter script null");
-        if(mySeedCollider.myStarter.GetComponent<Starter>().plantName == null)Debug.Log("Seed collider started script plant name reference");
-        if(Resources.Load("Prefabs/Plants" + mySeedCollider.myStarter.GetComponent<Starter>().plantName) == null) Debug.Log("Prefab to load null");
+        if(mySeedCollider.myStarter.plantName == null)Debug.Log("Seed collider started script plant name reference");
+        if(Resources.Load("Prefabs/Plants" + mySeedCollider.myStarter.plantName) == null) Debug.Log("Prefab to load null");
 
-        GameObject planted = (GameObject)Instantiate(Resources.Load("Prefabs/Plants" + mySeedCollider.myStarter.GetComponent<Starter>().plantName));
+        GameObject planted = (GameObject)Instantiate(Resources.Load("Prefabs/Plants" + mySeedCollider.myStarter.plantName));
         plant = planted.GetComponent<Plant>();
         planted.transform.position = gameObject.transform.position;
         planted.transform.eulerAngles = new Vector3(0, 0, 0);
         planted.transform.localScale = new Vector3(1, 1, 1);
         plant.PlantPlant();
-        mySeedCollider.myStarter.SetActive(false);
+        Destroy(mySeedCollider.myStarter.gameObject);
     }
 
 	/* EVERYTHING BELOW WAS REPLACED BY "absorbPlant". I am commenting it in case we need any of it later.

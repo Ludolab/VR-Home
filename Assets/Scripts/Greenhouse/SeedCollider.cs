@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SeedCollider : MonoBehaviour {
     
-    public GameObject myStarter;
+    public Starter myStarter;
     public Dirt myDirt;
 
 	// Use this for initialization
@@ -15,7 +15,7 @@ public class SeedCollider : MonoBehaviour {
 	private void OnTriggerEnter(Collider other)
 	{
         if (other.gameObject.GetComponent<StarterCollider>() != null && myStarter == null){
-            myStarter = other.gameObject.GetComponent<StarterCollider>().myStarter;
+            myStarter = other.gameObject.GetComponent<StarterCollider>().myStarter.GetComponent<Starter>();
             if (myDirt.digState == 1)
             {
                 StartCoroutine(myDirt.TakePlant());
