@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 136957439159556152}
   - component: {fileID: 54756411796227502}
   - component: {fileID: 114410051453357390}
+  - component: {fileID: 114954865235175682}
   m_Layer: 0
   m_Name: Tulip_grown
   m_TagString: Untagged
@@ -1178,6 +1179,17 @@ MonoBehaviour:
     layerIndex: 0
   _eventTable:
     _entries: []
+--- !u!114 &114954865235175682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1661020486744174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3249a8008b414a818d377c6d68a7d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136957439159556152
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1185,7 +1197,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1661020486744174}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.14447834
   m_Height: 0.5037031

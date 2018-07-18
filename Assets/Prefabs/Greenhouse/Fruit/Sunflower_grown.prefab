@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 136830957442775660}
   - component: {fileID: 54942761317492872}
   - component: {fileID: 114482136114184002}
+  - component: {fileID: 114916933801262808}
   m_Layer: 0
   m_Name: Sunflower_grown
   m_TagString: Untagged
@@ -742,6 +743,17 @@ MonoBehaviour:
     layerIndex: 0
   _eventTable:
     _entries: []
+--- !u!114 &114916933801262808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129183959382664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3249a8008b414a818d377c6d68a7d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136830957442775660
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -749,7 +761,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129183959382664}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.16788676
   m_Height: 0.89837086
