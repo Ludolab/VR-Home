@@ -141,11 +141,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4476846312275876}
-  - component: {fileID: 136148497835386830}
   - component: {fileID: 54962072422553438}
   - component: {fileID: 114314028727094490}
   - component: {fileID: 114796227727650598}
   - component: {fileID: 114928357006474732}
+  - component: {fileID: 65759886659445820}
   m_Layer: 0
   m_Name: Chamomile_grown
   m_TagString: Untagged
@@ -1581,7 +1581,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1098652301733852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.059, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4391801217887718}
@@ -2135,6 +2135,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65759886659445820
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098652301733852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0887295, y: 0.42841494, z: 0.08931431}
+  m_Center: {x: 0.15218309, y: 0.21548766, z: 0.004621342}
 --- !u!114 &114314028727094490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2186,16 +2198,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &136148497835386830
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1098652301733852}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.12430358
-  m_Height: 0.5475533
-  m_Direction: 1
-  m_Center: {x: 0.18, y: 0.25104707, z: 0.03}

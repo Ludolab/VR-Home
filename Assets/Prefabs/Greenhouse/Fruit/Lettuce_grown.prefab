@@ -22,12 +22,12 @@ GameObject:
   - component: {fileID: 33850235283526352}
   - component: {fileID: 23530463616166862}
   - component: {fileID: 95271974605438786}
-  - component: {fileID: 136543352131456472}
   - component: {fileID: 136578647795391850}
   - component: {fileID: 54095850528289192}
   - component: {fileID: 114497983045218920}
   - component: {fileID: 114565509438257256}
   - component: {fileID: 114036179849338246}
+  - component: {fileID: 65936916027813440}
   m_Layer: 0
   m_Name: Lettuce_grown
   m_TagString: Untagged
@@ -105,6 +105,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65936916027813440
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1430092742940860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.939789, y: 0.58506864, z: 1.6212649}
+  m_Center: {x: -0.020678043, y: -0.08659431, z: -0.060757667}
 --- !u!95 &95271974605438786
 Animator:
   serializedVersion: 3
@@ -174,19 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3249a8008b414a818d377c6d68a7d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &136543352131456472
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1430092742940860}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.9698945
-  m_Height: 0.9284705
-  m_Direction: 1
-  m_Center: {x: -0.020678014, y: -0.12999348, z: -0.08158183}
 --- !u!136 &136578647795391850
 CapsuleCollider:
   m_ObjectHideFlags: 1

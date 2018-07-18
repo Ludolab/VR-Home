@@ -49,11 +49,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4978754509457958}
-  - component: {fileID: 136830957442775660}
   - component: {fileID: 54942761317492872}
   - component: {fileID: 114482136114184002}
   - component: {fileID: 114916933801262808}
   - component: {fileID: 114549424132885528}
+  - component: {fileID: 65681098521010410}
   m_Layer: 0
   m_Name: Sunflower_grown
   m_TagString: Untagged
@@ -715,6 +715,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65681098521010410
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129183959382664}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08088297, y: 0.77108175, z: 0.07671511}
+  m_Center: {x: -0.009677023, y: 0.36364433, z: -0.0030044615}
 --- !u!114 &114482136114184002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -766,16 +778,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3249a8008b414a818d377c6d68a7d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &136830957442775660
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1129183959382664}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.16788676
-  m_Height: 0.89837086
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.4, z: 0}
