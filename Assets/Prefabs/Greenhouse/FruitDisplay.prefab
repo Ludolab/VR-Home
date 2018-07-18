@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114410864502032436}
   - component: {fileID: 82679755564569618}
   - component: {fileID: 114951180911778752}
+  - component: {fileID: 114508231255409052}
   m_Layer: 0
   m_Name: Fruit
   m_TagString: Untagged
@@ -437,6 +438,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c442e399461c2f74fba6c23d546ea47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114508231255409052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1073349052461862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114533338955435050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -448,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a2a434b848e8441a6823305b19c1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruitName: 
   unripeColor: {r: 0.08784264, g: 0.8867924, b: 0.24378105, a: 1}
   particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
     type: 2}

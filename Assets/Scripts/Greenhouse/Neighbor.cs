@@ -6,6 +6,7 @@ public class Neighbor : MonoBehaviour
 {
 
 	public NeighborInfo info;
+	public Outbox outbox;
 	public GameObject letterPrefab;
 
 	private DialogueParser parser;
@@ -19,7 +20,7 @@ public class Neighbor : MonoBehaviour
 
 	public GameObject GenerateLetter(string text1, string text2)
 	{
-		Vector3 position = new Vector3(0, 1f, 0); //TODO: position in their mailbox
+		Vector3 position = outbox.transform.position; //TODO: offset?
 		GameObject letterObj = Instantiate(letterPrefab, position, Quaternion.identity);
 		Letter letter = letterObj.GetComponent<Letter>();
 		letter.SetContents(text1, text2, info.font, info.fontMaterial, info.paperTexture, info.textColor);
@@ -28,24 +29,19 @@ public class Neighbor : MonoBehaviour
 
 	public void StartDay(int day)
 	{
+		outbox.SetLabel(info);
 		parser.NextDay(this);
 
-		if (day < info.letters.Length)
+		foreach (NeighborInfo.LetterInfo l in info.letters)
 		{
-			NeighborInfo.LetterInfo l = info.letters[day];
-			if (l.Exists())
+			if (l.day == day)
 			{
 				//print("[Day " + day + "] Requires gift: " + l.dependsOnGift + ", gift: " + todaysGift);
-				if (!l.dependsOnGift || todaysGift.Length > 0) //TODO: type of gift
+				if (CanSpawn(l))
 				{
 					GenerateLetter(l.text1, l.text2);
 				}
 			}
-		}
-
-		if (day == info.dayLabelUnlocked)
-		{
-			TimeManager.instance.AddOutboxLabel(info);
 		}
 
 		todaysGift = new string[0];
@@ -54,5 +50,25 @@ public class Neighbor : MonoBehaviour
 	public void GiveGift(string[] gift)
 	{
 		todaysGift = gift;
+	}
+
+	private bool CanSpawn(NeighborInfo.LetterInfo letter)
+	{
+		if (letter.spawnOption == NeighborInfo.SpawnOption.Always)
+		{
+			return true;
+		}
+
+		if (letter.spawnOption == NeighborInfo.SpawnOption.RequireGift && todaysGift.Length > 0)
+		{
+			return true;
+		}
+
+		if (letter.spawnOption == NeighborInfo.SpawnOption.RequireNoGift && todaysGift.Length == 0)
+		{
+			return true;
+		}
+
+		return false;
 	}
 }

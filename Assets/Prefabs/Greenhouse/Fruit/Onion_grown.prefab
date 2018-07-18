@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54717481660593190}
   - component: {fileID: 114486153806789026}
   - component: {fileID: 114094011248932948}
+  - component: {fileID: 114611338935419908}
   m_Layer: 0
   m_Name: Onion_grown
   m_TagString: Untagged
@@ -142,6 +143,17 @@ MonoBehaviour:
     layerIndex: 0
   _eventTable:
     _entries: []
+--- !u!114 &114611338935419908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901268303434446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136350230297940336
 CapsuleCollider:
   m_ObjectHideFlags: 1

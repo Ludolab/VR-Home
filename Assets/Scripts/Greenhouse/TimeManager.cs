@@ -41,17 +41,13 @@ public class TimeManager : MonoBehaviour
 			string[] contents = outbox.ClearFruit();
 			if (contents.Length > 0)
 			{
+				//TODO: make this outbox.GetOwner()
 				string name = outbox.GetLabel();
 				if (name != null)
 				{
 					Neighbor receiver = GetNeighborByName(name);
 					receiver.GiveGift(contents);
 				}
-			}
-
-			if (day >= 1)
-			{
-				outbox.gameObject.SetActive(true);
 			}
 		}
 
@@ -94,14 +90,6 @@ public class TimeManager : MonoBehaviour
 	{
 		plants.Add(plant);
 	}*/
-
-	public void AddOutboxLabel(NeighborInfo info)
-	{
-		foreach (Outbox outbox in outboxes)
-		{
-			outbox.AddLabel(info);
-		}
-	}
 
 	private Neighbor GetNeighborByName(string name)
 	{
