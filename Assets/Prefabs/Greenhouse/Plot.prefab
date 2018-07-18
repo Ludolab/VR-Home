@@ -153,15 +153,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1179825248719212}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.124931894, y: 0.88307035, z: 0.5206297}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.037, y: 0.732, z: -1.128}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4169089108033402}
   - {fileID: 4314579991853436}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4169089108033402
 Transform:
   m_ObjectHideFlags: 1
@@ -511,6 +511,7 @@ MonoBehaviour:
   myPlot: {fileID: 114663747702454246}
   dirtParticles: {fileID: 1899965833764542}
   SurfaceCollider: {fileID: 1657234571544182}
+  skinnedMeshRenderer: {fileID: 137236350483076772}
   digState: 0
   waterTime: 0.15
   waterIncrement: 0.03

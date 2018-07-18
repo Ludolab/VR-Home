@@ -8,7 +8,7 @@ public class Dirt : MonoBehaviour {
     public GameObject dirtParticles;
     public GameObject SurfaceCollider;
     Material myMaterial;
-    SkinnedMeshRenderer skinnedMeshRenderer;
+    public SkinnedMeshRenderer skinnedMeshRenderer;
     public int digState; // 0 = flat, 1 = hole, 2 = planted, 3 = mound, 4 = flat on later day (no digging)
     float wetness;
     public float waterTime;
@@ -22,7 +22,6 @@ public class Dirt : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myMaterial = GetComponent<Renderer>().material;
-        skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
         SurfaceCollider.layer = 0;
         wetness = 0;
         digState = 0;
