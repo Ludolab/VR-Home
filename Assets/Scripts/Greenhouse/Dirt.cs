@@ -106,6 +106,19 @@ public class Dirt : MonoBehaviour {
         }
     }
 
+    public void makeFlat(bool digable){
+        skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
+        skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
+        if (digable)
+        {
+            digState = 0;
+        }
+        else
+        {
+            digState = 4;
+        }
+    }
+
     public IEnumerator TakePlant(){
         for (float t = 0; t < plantTime; t += Time.deltaTime)
         {
