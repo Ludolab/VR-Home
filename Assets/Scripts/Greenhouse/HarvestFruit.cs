@@ -36,7 +36,9 @@ public class HarvestFruit : MonoBehaviour {
 
 	private void OnTriggerExit(Collider other)
 	{
-        if(other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>()) {
+        if(plotIn != null
+           && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>()
+           && other.gameObject.transform.position.y <= gameObject.transform.position.y ) {
             Debug.Log("Leaving dirt.");
             rb.useGravity = true;
             col.isTrigger = false;

@@ -117,7 +117,7 @@ public class Plot : MonoBehaviour {
             }
 
             // Check if we should spawn in fruit.
-            if (plant.getStage() >= plant.nonFruitingStages)
+            if (plant.getStage() == plant.nonFruitingStages)
             {
                 if (plant.multiHarvest)
                 {
@@ -138,7 +138,8 @@ public class Plot : MonoBehaviour {
                     }
                 } else
                 {
-                    plant.GetComponent<HarvestFruit>().setPlot(this);
+                    HarvestFruit harvestable = plant.GetComponent<HarvestFruit>();
+                    if(harvestable != null) harvestable.setPlot(this);
                 }
             }
 
@@ -183,7 +184,11 @@ public class Plot : MonoBehaviour {
     {
         Debug.Log("Removing beetle from plot");
         beetles.Remove(beetle);
-        if (plant.getStage() >= plant.nonFruitingStages && !plant.multiHarvest && beetles.Count == 0)
+        HarvestFruit harvestable = plant.GetComponent<HarvestFruit>();
+        if (plant.getStage() == plant.nonFruitingStages
+            && !plant.multiHarvest
+            && plant.GetComponent<HarvestFruit>() != null
+            && beetles.Count == 0)
             plant.GetComponent<HarvestFruit>().setNoBeetles(true);
     }
 
