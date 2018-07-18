@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114853607511455784}
   - component: {fileID: 114696508818603622}
   m_Layer: 0
-  m_Name: Dirt_Starter
+  m_Name: Starter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,4 +213,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9781663fbca448bad73ed9419bd3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plant: {fileID: 1873419038802774, guid: 8e8ab004da84f8f41827c28d32e393d9, type: 2}
+  plantName: 
