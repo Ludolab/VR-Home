@@ -16,13 +16,10 @@ MonoBehaviour:
   paperTexture: {fileID: 2800000, guid: 812b4ca7d720c3346bf79dbd6082e4ea, type: 3}
   textColor: {r: 0, g: 0.00016903877, b: 1, a: 1}
   letters:
-  - text1: 'Welcome! Me and
-
-      Cara are delighted
-
-      to meet you.'
-    text2: "We\u2019re sending you\nsome chamomile\nseeds, they\u2019re a\ngreat addition
-      to\nany garden!\n\n - Sanjay"
-    dependsOnGift: 0
+  - text1: "Welcome! Me and\nCara are delighted\nto meet you.\n\nWe\u2019re sending
+      you\nsome chamomile\nseeds, they\u2019re a\ngreat addition to\nany garden!\n\n
+      - Sanjay"
+    text2: 
+    day: 0
+    spawnOption: 0
   dialogueCanvas: {fileID: 0}
-  dayLabelUnlocked: 0

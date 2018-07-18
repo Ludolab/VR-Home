@@ -17,11 +17,8 @@ public class NeighborInfo : ScriptableObject
 	[Serializable]
 	public struct LetterInfo
 	{
-		[TextArea(3, 10)]
+		[TextArea(3, 15)]
 		public string text1;
-
-		[TextArea(3, 10)]
-		public string text2;
 
 		public int day;
 

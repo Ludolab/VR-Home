@@ -7,7 +7,7 @@ public class Neighbor : MonoBehaviour
 
 	public NeighborInfo info;
 	public Outbox outbox;
-	public GameObject letterPrefab;
+	public GameObject pagePrefab;
 
 	private DialogueParser parser;
 	private string[] todaysGift = new string[0];
@@ -24,13 +24,13 @@ public class Neighbor : MonoBehaviour
 		outbox.SetLabel(info);
 	}
 
-	public GameObject GenerateLetter(string text1, string text2)
+	public GameObject GeneratePage(string text)
 	{
 		Vector3 position = outbox.transform.position; //TODO: offset?
-		GameObject letterObj = Instantiate(letterPrefab, position, Quaternion.identity);
-		Letter letter = letterObj.GetComponent<Letter>();
-		letter.SetContents(text1, text2, info.font, info.fontMaterial, info.paperTexture);
-		return letterObj;
+		GameObject pageObj = Instantiate(pagePrefab, position, pagePrefab.transform.rotation);
+		Page page = pageObj.GetComponent<Page>();
+		page.SetContents(text, info.font, info.fontMaterial, info.paperTexture);
+		return pageObj;
 	}
 
 	public void StartDay(int day)
@@ -44,7 +44,7 @@ public class Neighbor : MonoBehaviour
 				//print("[Day " + day + "] Requires gift: " + l.dependsOnGift + ", gift: " + todaysGift);
 				if (CanSpawn(l))
 				{
-					GenerateLetter(l.text1, l.text2);
+					GeneratePage(l.text1);
 				}
 			}
 		}

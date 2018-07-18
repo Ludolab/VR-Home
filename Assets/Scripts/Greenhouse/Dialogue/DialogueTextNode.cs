@@ -88,7 +88,6 @@ public class DialogueTextNode : DialogueNode
 
 	public override void Process(Neighbor neighbor)
 	{
-		//TODO spawn letter
-		neighbor.GenerateLetter(text, ""); //TODO: split text into text1, text2
+		neighbor.GeneratePage(text);
 	}
 }

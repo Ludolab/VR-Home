@@ -17,15 +17,15 @@ MonoBehaviour:
   textColor: {r: 0.14150941, g: 0.07272012, b: 0, a: 1}
   letters:
   - text1: "Hi, it seems I was last to \nhear about your arrival. \nWelcome to our
-      community!"
-    text2: "I hear that you\u2019ve got a \ngreenhouse, so I\u2019m attaching\nsome
+      community!\n\nI hear that you\u2019ve got a \ngreenhouse, so I\u2019m attaching\nsome
       seeds I found in my shed.\nNot sure what they are?\n\n - Elin"
+    text2: 
     day: 1
     spawnOption: 2
   - text1: "Hi, thanks for the gift \nand welcome to our \ncommunity! I hear that
       \nyou\u2019ve got a greenhouse, \nso I\u2019m attaching some \nseeds I found
-      in my shed."
-    text2: "Not sure what they are?\n\n - Elin"
+      in my shed.\nNot sure what they are?\n\n - Elin"
+    text2: 
     day: 1
     spawnOption: 1
   dialogueCanvas: {fileID: 0}

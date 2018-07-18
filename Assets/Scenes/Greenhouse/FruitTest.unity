@@ -585,10 +585,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace43e0aac3f0644daeb12650404b11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: eecc189d68757e140b8f8a310471d0bb, type: 2}
+  info: {fileID: 0}
   outbox: {fileID: 0}
-  letterPrefab: {fileID: 1222026405788626, guid: 13f1eb970f6979c44bdd3662887a7c4c,
-    type: 2}
+  pagePrefab: {fileID: 0}
 --- !u!114 &224395556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,7 +1569,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1481472235845832, guid: c4426d86db80c8548934c6b9b9723dd4, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4426d86db80c8548934c6b9b9723dd4, type: 2}
@@ -2004,7 +2003,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1481472235845832, guid: c4426d86db80c8548934c6b9b9723dd4, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4426d86db80c8548934c6b9b9723dd4, type: 2}
@@ -2121,8 +2120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 0a4a435e00ddcff44b4ac55ade23a23f, type: 2}
   outbox: {fileID: 0}
-  letterPrefab: {fileID: 1222026405788626, guid: 13f1eb970f6979c44bdd3662887a7c4c,
-    type: 2}
+  pagePrefab: {fileID: 0}
 --- !u!114 &1156262064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2656,7 +2654,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1481472235845832, guid: c4426d86db80c8548934c6b9b9723dd4, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4426d86db80c8548934c6b9b9723dd4, type: 2}
@@ -3884,6 +3882,53 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90ee46af6a7de5e439be0bfdd530ab44, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1922610881
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4701025696595790, guid: ff704f242b2683342aff3b02e39231ee, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701025696595790, guid: ff704f242b2683342aff3b02e39231ee, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701025696595790, guid: ff704f242b2683342aff3b02e39231ee, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701025696595790, guid: ff704f242b2683342aff3b02e39231ee, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701025696595790, guid: ff704f242b2683342aff3b02e39231ee, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701025696595790, guid: ff704f242b2683342aff3b02e39231ee, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701025696595790, guid: ff704f242b2683342aff3b02e39231ee, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701025696595790, guid: ff704f242b2683342aff3b02e39231ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 65359618980488338, guid: ff704f242b2683342aff3b02e39231ee,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ff704f242b2683342aff3b02e39231ee, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1929762442
 GameObject:
