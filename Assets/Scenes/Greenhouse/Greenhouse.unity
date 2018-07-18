@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: b8196c0eaa1b8a947b285f0c5607652c, type: 3}
   m_Sun: {fileID: 649030550}
-  m_IndirectSpecularColor: {r: 0.12802261, g: 0.28767964, b: 0.5531581, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -506,6 +506,11 @@ Prefab:
       propertyPath: m_Name
       value: Andie
       objectReference: {fileID: 0}
+    - target: {fileID: 114996682659775674, guid: 9672d8ff7eec7b748b86e6fe83f8baee,
+        type: 2}
+      propertyPath: outbox
+      value: 
+      objectReference: {fileID: 2090674467}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9672d8ff7eec7b748b86e6fe83f8baee, type: 2}
   m_IsPrefabParent: 0
@@ -2706,6 +2711,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 735414354}
   m_Script: {fileID: 11500000, guid: dceb2697f19927449b4730b9b8a65900, type: 3}
+--- !u!1 &735414357 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1481472235845832, guid: c4426d86db80c8548934c6b9b9723dd4,
+    type: 2}
+  m_PrefabInternal: {fileID: 735414354}
 --- !u!1001 &736433280
 Prefab:
   m_ObjectHideFlags: 0
@@ -5193,6 +5203,11 @@ Prefab:
       propertyPath: m_Name
       value: Cara
       objectReference: {fileID: 0}
+    - target: {fileID: 114996682659775674, guid: 9672d8ff7eec7b748b86e6fe83f8baee,
+        type: 2}
+      propertyPath: outbox
+      value: 
+      objectReference: {fileID: 332008578}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9672d8ff7eec7b748b86e6fe83f8baee, type: 2}
   m_IsPrefabParent: 0
@@ -6678,6 +6693,11 @@ Prefab:
       propertyPath: m_Name
       value: Elin
       objectReference: {fileID: 0}
+    - target: {fileID: 114996682659775674, guid: 9672d8ff7eec7b748b86e6fe83f8baee,
+        type: 2}
+      propertyPath: letterPrefab
+      value: 
+      objectReference: {fileID: 735414357}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9672d8ff7eec7b748b86e6fe83f8baee, type: 2}
   m_IsPrefabParent: 0
@@ -7417,6 +7437,11 @@ Prefab:
       propertyPath: m_Name
       value: Sanjay
       objectReference: {fileID: 0}
+    - target: {fileID: 114996682659775674, guid: 9672d8ff7eec7b748b86e6fe83f8baee,
+        type: 2}
+      propertyPath: outbox
+      value: 
+      objectReference: {fileID: 332008578}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9672d8ff7eec7b748b86e6fe83f8baee, type: 2}
   m_IsPrefabParent: 0
