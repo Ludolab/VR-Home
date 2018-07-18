@@ -14,7 +14,7 @@ public class Pot : MonoBehaviour
 		{
 			plant = Instantiate(plantPrefab, transform.position, Quaternion.identity);
 			GrowingPlant plantScript = plant.GetComponent<GrowingPlant>();
-			plantScript.SetGenome(fruit.GetGenome());
+			//plantScript.SetGenome(fruit.GetGenome());
 		}
 	}
 }

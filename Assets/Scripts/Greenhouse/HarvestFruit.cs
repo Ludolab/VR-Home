@@ -23,7 +23,6 @@ public class HarvestFruit : MonoBehaviour {
     public void setNoBeetles(bool nb) {
         noBeetles = nb;
         if (noBeetles) {
-            Debug.Log("Can now pick fruit");
             ib.enabled = true;
         } else {
             ib.enabled = false;
@@ -39,7 +38,6 @@ public class HarvestFruit : MonoBehaviour {
         if(plotIn != null
            && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>()
            && other.gameObject.transform.position.y <= gameObject.transform.position.y ) {
-            Debug.Log("Leaving dirt.");
             rb.useGravity = true;
             col.isTrigger = false;
             plotIn.RemovePlant();

@@ -40,7 +40,7 @@ public class Fruit : MonoBehaviour
 	{
 		joint = GetComponent<ConfigurableJoint>();
 		ib = GetComponent<InteractionBehaviour>();
-		mat = GetComponent<Renderer>().materials[1];
+		//mat = GetComponent<Renderer>().materials[1];
 	}
 
 	public void SetGenome(Genome g)
@@ -48,13 +48,13 @@ public class Fruit : MonoBehaviour
 		genome = g;
 
 		//apply genome properties to gameobject
-		ApplyProperties(genome.color1, genome.color2, genome.scale, genome.stretchScale);
+		//ApplyProperties(genome.color1, genome.color2, genome.scale, genome.stretchScale);
 	}
 
-	public Genome GetGenome()
+	/*public Genome GetGenome()
 	{
 		return genome;
-	}
+	}*/
 
 	[ContextMenu("Pick")]
 	public void Pick()
@@ -82,7 +82,7 @@ public class Fruit : MonoBehaviour
 		ib.RefreshPositionLockedState();
 	}
 
-	private void OnTriggerEnter(Collider other)
+	/* private void OnTriggerEnter(Collider other)
 	{
 		Pot pot = other.GetComponent<Pot>();
 		if (pot != null)
@@ -95,7 +95,7 @@ public class Fruit : MonoBehaviour
 	{
 		pot.PlantFruit(this);
 		Destroy(gameObject);
-	}
+	}*/
 
 	public void SetAge(float age)
 	{
@@ -106,10 +106,10 @@ public class Fruit : MonoBehaviour
 		Color c2 = Color.Lerp(unripeColor, genome.color2, age);
 		float s = Mathf.Lerp(0, genome.scale, age);
 		float ss = Mathf.Lerp(0, genome.stretchScale, age);
-		ApplyProperties(c1, c2, s, ss);
+		//ApplyProperties(c1, c2, s, ss);
 	}
 
-	private void ApplyProperties(Color color1, Color color2, float scale, float stretchScale)
+	/*private void ApplyProperties(Color color1, Color color2, float scale, float stretchScale)
 	{
 		mat.SetColor("_Color1", color1);
 		mat.SetColor("_Color2", color2);
@@ -119,7 +119,7 @@ public class Fruit : MonoBehaviour
 		Vector3 anchor = joint.anchor;
 		anchor.y = 0.5f;
 		joint.anchor = anchor;
-	}
+	}*/
 
 	public void SetMutatedGenome(Genome g)
 	{
@@ -139,10 +139,10 @@ public class Fruit : MonoBehaviour
 		return g;
 	}
 
-	public string GetName()
+	/*public string GetName()
 	{
 		return genome.name;
-	}
+	}*/
 
     public void setPlot(Plot plot) {
         plotIn = plot;
