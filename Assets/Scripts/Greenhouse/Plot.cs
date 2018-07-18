@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using Leap.Unity.Interaction;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Plot : MonoBehaviour {
 
+    public InteractionManager manager;
     public GameObject beetlePrefab;
     public GameObject weedPrefab;
     public Dirt myDirt;
@@ -143,13 +145,17 @@ public class Plot : MonoBehaviour {
                             Debug.Log("fruit final position: " + fruit.transform.position.x + ", " + fruit.transform.position.y + ", " + fruit.transform.position.z);
 
                             fruit.GetComponent<Fruit>().setPlot(this);
+                            fruit.GetComponent<InteractionBehaviour>().manager = manager;
                             fruits.Add(fruit, i);
                         }
                     }
                 } else
                 {
                     HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
-                    if(harvestable != null) harvestable.setPlot(this);
+                    if(harvestable != null) {
+                        harvestable.setPlot(this);
+                        harvestable.gameObject.GetComponent<InteractionBehaviour>().manager = manager;
+                    }
                 }
             }
 
