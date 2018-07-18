@@ -18,18 +18,23 @@ public class Neighbor : MonoBehaviour
 		parser.SetCanvas(info.dialogueCanvas);
 	}
 
+	private void Start()
+	{
+		info.fontMaterial.color = info.textColor;
+		outbox.SetLabel(info);
+	}
+
 	public GameObject GenerateLetter(string text1, string text2)
 	{
 		Vector3 position = outbox.transform.position; //TODO: offset?
 		GameObject letterObj = Instantiate(letterPrefab, position, Quaternion.identity);
 		Letter letter = letterObj.GetComponent<Letter>();
-		letter.SetContents(text1, text2, info.font, info.fontMaterial, info.paperTexture, info.textColor);
+		letter.SetContents(text1, text2, info.font, info.fontMaterial, info.paperTexture);
 		return letterObj;
 	}
 
 	public void StartDay(int day)
 	{
-		outbox.SetLabel(info);
 		parser.NextDay(this);
 
 		foreach (NeighborInfo.LetterInfo l in info.letters)

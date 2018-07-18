@@ -18,7 +18,7 @@ public class Letter : MonoBehaviour
 		TimeManager.instance.AddGarbage(gameObject);
 	}
 
-	public void SetContents(string text1, string text2, Font font, Material fontMaterial, Texture paperTexture, Color textColor)
+	public void SetContents(string text1, string text2, Font font, Material fontMaterial, Texture paperTexture)
 	{
 		TextMesh textMesh1 = textObj1.GetComponent<TextMesh>();
 		TextMesh textMesh2 = textObj2.GetComponent<TextMesh>();
@@ -31,8 +31,6 @@ public class Letter : MonoBehaviour
 		textRend1.material = fontMaterial;
 		textMesh2.font = font;
 		textRend2.material = fontMaterial;
-		textMesh1.color = textColor;
-		textMesh2.color = textColor;
 
 		paperObj1.GetComponent<Renderer>().material.mainTexture = paperTexture;
 		paperObj2.GetComponent<Renderer>().material.mainTexture = paperTexture;
