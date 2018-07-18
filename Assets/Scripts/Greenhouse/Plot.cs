@@ -69,27 +69,6 @@ public class Plot : MonoBehaviour {
         fruits = new Dictionary<GameObject, int>();
         weeds = new List<GameObject>();*/
 
-        if(weeds.Count < maxWeeds) {
-            int numberWeeds = (int)(Random.Range(1f, maxWeeds - weeds.Count));
-            for (int i = 0; i < numberWeeds; i++)
-            {
-                GameObject weed = Instantiate(weedPrefab);
-                float xPos = Random.Range(-1 * radiusX, radiusX) + gameObject.transform.position.x;
-                float zPos = Random.Range(-1 * radiusZ, radiusZ) + gameObject.transform.position.z;
-                float scale = Random.Range(0.9f, 1.5f);
-                weed.transform.position = new Vector3(xPos, gameObject.transform.position.y, zPos);
-                weed.transform.eulerAngles = new Vector3(Random.Range(-5f, 5), Random.Range(0f, 360f), Random.Range(-5f, 5));
-                weed.transform.localScale = new Vector3(scale, scale, scale);
-
-                // Keep track of spawned weeds.
-                weed.GetComponent<PullWeed>().setPlot(this);
-                weeds.Add(weed);
-            }
-            // Don't let people dig dirt until all weeds are gone.
-            myDirt.noWeeds = false;
-        }
-
-
         if (plant != null)
         {
             myDirt.makeFlat(false);
@@ -169,6 +148,28 @@ public class Plot : MonoBehaviour {
 
         } else {
             myDirt.makeFlat(true);
+        }
+
+        // Add new weeds.
+        if (weeds.Count < maxWeeds)
+        {
+            int numberWeeds = (int)(Random.Range(1f, maxWeeds - weeds.Count));
+            for (int i = 0; i < numberWeeds; i++)
+            {
+                GameObject weed = Instantiate(weedPrefab);
+                float xPos = Random.Range(-1 * radiusX, radiusX) + gameObject.transform.position.x;
+                float zPos = Random.Range(-1 * radiusZ, radiusZ) + gameObject.transform.position.z;
+                float scale = Random.Range(0.9f, 1.5f);
+                weed.transform.position = new Vector3(xPos, gameObject.transform.position.y, zPos);
+                weed.transform.eulerAngles = new Vector3(Random.Range(-5f, 5), Random.Range(0f, 360f), Random.Range(-5f, 5));
+                weed.transform.localScale = new Vector3(scale, scale, scale);
+
+                // Keep track of spawned weeds.
+                weed.GetComponent<PullWeed>().setPlot(this);
+                weeds.Add(weed);
+            }
+            // Don't let people dig dirt until all weeds are gone.
+            myDirt.noWeeds = false;
         }
     }
 
