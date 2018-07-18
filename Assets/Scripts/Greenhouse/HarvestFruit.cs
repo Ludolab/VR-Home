@@ -15,7 +15,7 @@ public class HarvestFruit : MonoBehaviour {
         rb = this.gameObject.GetComponent<Rigidbody>();
         ib = this.gameObject.GetComponent<InteractionBehaviour>();
         col = this.gameObject.GetComponent<Collider>();
-        ib.moveObjectWhenGrasped = false;
+        ib.enabled = false;
         rb.useGravity = false;
         col.isTrigger = true;
     }
@@ -24,9 +24,9 @@ public class HarvestFruit : MonoBehaviour {
         noBeetles = nb;
         if (noBeetles) {
             Debug.Log("Can now pick fruit");
-            ib.moveObjectWhenGrasped = true;
+            ib.enabled = true;
         } else {
-            ib.moveObjectWhenGrasped = false;
+            ib.enabled = false;
         }
     }
 
