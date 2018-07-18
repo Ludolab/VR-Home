@@ -20,10 +20,6 @@ public class Plot : MonoBehaviour {
     private List<GameObject> weeds = new List<GameObject>(); //Keep track of weeds.
 
     public void AbsorbPlant(){
-        Debug.Log(mySeedCollider == null);
-        Debug.Log(mySeedCollider.myStarter == null);
-        Debug.Log(mySeedCollider.myStarter.plantName == null);
-
         Debug.Log("Prefabs/Plants/" + mySeedCollider.myStarter.plantName);
         GameObject planted = (GameObject)Instantiate(Resources.Load("Prefabs/Plants/" + mySeedCollider.myStarter.plantName));
         plant = planted.GetComponent<Plant>();
@@ -96,6 +92,9 @@ public class Plot : MonoBehaviour {
 
         if (plant != null)
         {
+            Debug.Log("Beetles: " + beetles.Count);
+            Debug.Log("Weeds: " + weeds.Count);
+            Debug.Log("Watering: " + myDirt.getWetness());
             if (beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.advanceStage();
 
             // Check for the young stage.
@@ -160,12 +159,12 @@ public class Plot : MonoBehaviour {
                             fruits.Add(fruit, i);
                         }
                     }
+                } else
+                {
+                    plant.GetComponent<HarvestFruit>().setPlot(this);
                 }
             }
-            else
-            {
-                plant.GetComponent<HarvestFruit>().setPlot(this);
-            }
+
         }
     }
 
