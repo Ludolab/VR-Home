@@ -8,7 +8,7 @@ public class SavePlot {
     [SerializeField] public string plant; //if plant == "", then no plant.
     [SerializeField] public int plantDayBorn;
     [SerializeField] public int plantStage;
-    [SerializeField] public bool watered;
+    [SerializeField] public float watered;
     [SerializeField] public SaveObject[] weeds;
     [SerializeField] public int[] beetles;
     [SerializeField] public int[] fruits;

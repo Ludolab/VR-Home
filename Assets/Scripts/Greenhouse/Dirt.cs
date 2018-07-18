@@ -134,9 +134,8 @@ public class Dirt : MonoBehaviour {
         return wetness;
     }
 
-    public void resetWetness()
-    {
-        wetness = 0f;
+    public void setWetness(float w) {
+        wetness = w;
         myMaterial.SetFloat("_Wetness", wetness);
     }
 }

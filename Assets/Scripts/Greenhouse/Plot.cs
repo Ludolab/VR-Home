@@ -72,7 +72,7 @@ public class Plot : MonoBehaviour {
         {
             myDirt.makeFlat(false);
 
-            if (beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.advanceStage();
+            if (beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.advanceStage(); Debug.Log("Crreunt plant stage: " + plant.getStage());
 
             // Check for the young stage.
             if (plant.getStage() == 1)
@@ -119,12 +119,14 @@ public class Plot : MonoBehaviour {
             // Check if we should spawn in fruit.
             if (plant.getStage() == plant.nonFruitingStages)
             {
+                Debug.Log("Adding fruits");
                 if (plant.multiHarvest)
                 {
                     //Range from one fruit to maximum placements.
                     int numberFruit = (int)(Random.Range(1f, plant.fruitTrans.Length - 1));
                     for (int i = 0; i <= numberFruit; i++)
                     {
+                        Debug.Log("Adding multiharvest fruit.");
                         if (!fruits.ContainsValue(i))
                         {
                             GameObject fruit = Instantiate(plant.fruit);
@@ -170,7 +172,7 @@ public class Plot : MonoBehaviour {
         }
 
         // Reset watering.
-        myDirt.resetWetness();
+        myDirt.setWetness(0f);
     }
 
     //Keep states of plot up-to-date.
