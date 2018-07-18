@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: b8196c0eaa1b8a947b285f0c5607652c, type: 3}
   m_Sun: {fileID: 649030550}
-  m_IndirectSpecularColor: {r: 0.12958537, g: 0.28737637, b: 0.55095816, a: 1}
+  m_IndirectSpecularColor: {r: 0.12802261, g: 0.28767964, b: 0.5531581, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1286,6 +1286,11 @@ Transform:
   m_Father: {fileID: 1549931185}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &428045384 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1858355348589930, guid: 0810fea227ba64671b52c7a255f94123,
+    type: 2}
+  m_PrefabInternal: {fileID: 1129758616}
 --- !u!1 &428191427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4719,9 +4724,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114853607511455784, guid: 0810fea227ba64671b52c7a255f94123,
         type: 2}
-      propertyPath: plantName
-      value: Corn
-      objectReference: {fileID: 0}
+      propertyPath: myTape
+      value: 
+      objectReference: {fileID: 428045384}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0810fea227ba64671b52c7a255f94123, type: 2}
   m_IsPrefabParent: 0
