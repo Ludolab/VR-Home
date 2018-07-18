@@ -29,6 +29,12 @@ public class Plot : MonoBehaviour {
         Destroy(mySeedCollider.myStarter.gameObject);
     }
 
+    public void RemovePlant() {
+        Destroy(plant);
+        plant = null;
+        myDirt.makeFlat(true);
+    }
+
 	/* EVERYTHING BELOW WAS REPLACED BY "absorbPlant". I am commenting it in case we need any of it later.
     private void OnTriggerEnter(Collider other)
 	{

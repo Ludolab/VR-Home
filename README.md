@@ -8,14 +8,19 @@
 - Skybox Fading Shader by Aras Pranckevicius: http://wiki.unity3d.com/index.php?title=SkyboxBlended
 - Letter spacing script by Andrew Pavlovich: https://bitbucket.org/AcornGame/adjustable-character-spacing/downloads/
 - RealSense SDK by Intel: https://github.com/IntelRealSense/librealsense/tree/master/wrappers/unity
-- Record player by VIS Games: https://assetstore.unity.com/packages/3d/props/interior/record-player-4249
 - Texture Transition Shader by Professor Snake: https://answers.unity.com/questions/569528/making-specific-shader-for-texture-transition-effe.html
 - Iridescent Shader (for cloth water) by Minions Art: https://www.patreon.com/posts/quick-game-art-15466787
-- Vegetable plant models by Dexsoft Games: https://assetstore.unity.com/packages/3d/vegetation/plants/vegetable-plants-2394
 - Node Editor Framework by Seneral: https://github.com/Seneral/Node_Editor_Framework/tree/develop
+
+### Models
+- Record player by VIS Games: https://assetstore.unity.com/packages/3d/props/interior/record-player-4249
+- Vegetable plant models by Dexsoft Games: https://assetstore.unity.com/packages/3d/vegetation/plants/vegetable-plants-2394
 - Hanging plant models by Enaendea: https://3dwarehouse.sketchup.com/model/u8dfc1d61-9f63-4734-ab43-b62b47fe538b/hanging-plants?hl=en
 - Fence prefab by Jaroslav Grafskiy: https://assetstore.unity.com/packages/3d/props/exterior/mobile-wooden-fences-54772
 - Moving Tree prefab by Rakshi Games: https://assetstore.unity.com/packages/3d/vegetation/plants/realistic-tree1-44628
+- Decorative Plants by Yugues: https://assetstore.unity.com/packages/3d/props/interior/yughues-free-decorative-plants-13283
+- Foliage by Jake Sullivan: https://assetstore.unity.com/packages/3d/vegetation/foliage-pack-free-66155
+- Small Plants by Keilbaum: https://assetstore.unity.com/packages/3d/vegetation/plants/small-plants-6930
 
 ### Sounds
 - Thud sound by OtisJames: https://freesound.org/people/OtisJames/sounds/215162/

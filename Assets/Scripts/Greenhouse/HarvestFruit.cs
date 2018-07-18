@@ -42,6 +42,7 @@ public class HarvestFruit : MonoBehaviour {
             Debug.Log("Leaving dirt.");
             rb.useGravity = true;
             col.isTrigger = false;
+            plotIn.RemovePlant();
         }
 	}
 }
