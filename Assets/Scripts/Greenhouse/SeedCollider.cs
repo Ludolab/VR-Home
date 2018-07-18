@@ -19,6 +19,7 @@ public class SeedCollider : MonoBehaviour {
             if (myDirt.digState == 1)
             {
                 StartCoroutine(myDirt.TakePlant());
+                Debug.Log(myStarter == null);
             }
         }
 	}

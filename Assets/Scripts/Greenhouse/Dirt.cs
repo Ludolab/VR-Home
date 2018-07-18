@@ -102,7 +102,6 @@ public class Dirt : MonoBehaviour {
             SurfaceCollider.layer = 0;
             //dirtParticles.GetComponent<ParticleSystem>().Stop();
             inTransition = false;
-            //Debug.Log("Abosring plant (dirt)");
             myPlot.AbsorbPlant();
         }
     }

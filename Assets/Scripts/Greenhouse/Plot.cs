@@ -20,9 +20,6 @@ public class Plot : MonoBehaviour {
     private List<GameObject> weeds = new List<GameObject>(); //Keep track of weeds.
 
     public void AbsorbPlant(){
-        Debug.Log("Absorbing plant (plot)");
-        if (mySeedCollider.myStarter == null || mySeedCollider.myStarter.GetComponent<Starter>() == null) Debug.Log("seed collider not found");
-        if (Resources.Load("Prefabs/Plants" + mySeedCollider.myStarter.GetComponent<Starter>().plantName) == null) Debug.Log("prefab not found");
         GameObject planted = (GameObject)Instantiate(Resources.Load("Prefabs/Plants" + mySeedCollider.myStarter.GetComponent<Starter>().plantName));
         plant = planted.GetComponent<Plant>();
         planted.transform.position = gameObject.transform.position;
