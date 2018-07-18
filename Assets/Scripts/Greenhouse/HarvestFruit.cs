@@ -23,6 +23,7 @@ public class HarvestFruit : MonoBehaviour {
     public void setNoBeetles(bool nb) {
         noBeetles = nb;
         if (noBeetles) {
+            Debug.Log("Can now pick fruit");
             ib.enabled = true;
         } else {
             ib.enabled = false;
