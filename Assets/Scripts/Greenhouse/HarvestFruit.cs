@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HarvestFruit : MonoBehaviour {
 
+    public string fruitName;
+
     private bool noBeetles;
     private Plot plotIn;
     private Rigidbody rb;
