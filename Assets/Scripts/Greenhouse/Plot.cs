@@ -167,6 +167,9 @@ public class Plot : MonoBehaviour {
             // Don't let people dig dirt until all weeds are gone.
             myDirt.noWeeds = false;
         }
+
+        // Reset watering.
+        myDirt.
     }
 
     //Keep states of plot up-to-date.
@@ -179,7 +182,8 @@ public class Plot : MonoBehaviour {
     public void removeFromBeetles(GameObject beetle)
     {
         beetles.Remove(beetle);
-        if (plant.getStage() > plant.nonFruitingStages && !plant.multiHarvest) plant.GetComponent<HarvestFruit>().setNoBeetles(true);
+        if (plant.getStage() > plant.nonFruitingStages && !plant.multiHarvest && beetles.Count == 0)
+            plant.GetComponent<HarvestFruit>().setNoBeetles(true);
     }
 
     public void removeFromFruits(GameObject fruit)
@@ -203,11 +207,6 @@ public class Plot : MonoBehaviour {
 
     public void addToBeetles(GameObject beetle, int instance) {
         beetles.Add(beetle, instance);
-        Debug.Log(beetles.Count);
-        Debug.Log(plant.getStage() > plant.nonFruitingStages);
-        Debug.Log(!plant.multiHarvest);
-        if (beetles.Count == 0 && plant.getStage() > plant.nonFruitingStages && !plant.multiHarvest)
-            plant.getModel().GetComponent<HarvestFruit>().setNoBeetles(true);
     }
 
     public void addToFruit(GameObject fruit, int instance) {

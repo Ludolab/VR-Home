@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -130,4 +131,9 @@ public class Dirt : MonoBehaviour {
         return wetness;
     }
 
+    public void resetWetness()
+    {
+        wetness = 0f;
+        myMaterial.SetFloat("_Wetness", wetness);
+    }
 }
