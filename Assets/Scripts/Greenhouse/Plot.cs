@@ -138,7 +138,7 @@ public class Plot : MonoBehaviour {
                     }
                 } else
                 {
-                    HarvestFruit harvestable = plant.GetComponent<HarvestFruit>();
+                    HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
                     if(harvestable != null) harvestable.setPlot(this);
                 }
             }
@@ -184,12 +184,12 @@ public class Plot : MonoBehaviour {
     {
         Debug.Log("Removing beetle from plot");
         beetles.Remove(beetle);
-        HarvestFruit harvestable = plant.GetComponent<HarvestFruit>();
+        HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
         if (plant.getStage() == plant.nonFruitingStages
             && !plant.multiHarvest
-            && plant.GetComponent<HarvestFruit>() != null
+            && harvestable != null
             && beetles.Count == 0)
-            plant.GetComponent<HarvestFruit>().setNoBeetles(true);
+            harvestable.setNoBeetles(true);
     }
 
     public void removeFromFruits(GameObject fruit)
