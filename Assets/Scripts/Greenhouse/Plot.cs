@@ -210,10 +210,6 @@ public class Plot : MonoBehaviour {
         plant.transform.localScale = new Vector3(1, 1, 1);
     }
 
-    public Plant getPlant() {
-        return plant;
-    }
-
     public void addToWeeds(GameObject weed) {
         weeds.Add(weed);
     }
@@ -224,6 +220,11 @@ public class Plot : MonoBehaviour {
 
     public void addToFruit(GameObject fruit, int instance) {
         fruits.Add(fruit, instance);
+    }
+
+    public Plant getPlant()
+    {
+        return plant;
     }
 
     public List<GameObject> getWeeds() {
