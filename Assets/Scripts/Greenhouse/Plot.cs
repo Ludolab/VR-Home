@@ -201,13 +201,13 @@ public class Plot : MonoBehaviour {
 
 
     //Following are all data modification functions to be used by saving/loading (primarily).
-    public void setPlant(Plant p, int stage) {
+    public void setPlant(Plant p, int stage)
+    {
         plant = p;
         plant.setStage(stage);
-    }
-
-    public Plant getPlant() {
-        return plant;
+        plant.transform.position = gameObject.transform.position;
+        plant.transform.eulerAngles = new Vector3(0, 0, 0);
+        plant.transform.localScale = new Vector3(1, 1, 1);
     }
 
     public void addToWeeds(GameObject weed) {
@@ -220,6 +220,11 @@ public class Plot : MonoBehaviour {
 
     public void addToFruit(GameObject fruit, int instance) {
         fruits.Add(fruit, instance);
+    }
+
+    public Plant getPlant()
+    {
+        return plant;
     }
 
     public List<GameObject> getWeeds() {
