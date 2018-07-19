@@ -19,19 +19,21 @@ MonoBehaviour:
   - text1: "Hi neighbor!\nHeard you\u2019d just\nmoved in.\n\nI make essential oils\nwhich
       is only a little\nfarther off, so let me\nknow if there\u2019s anything\nI can
       help you with.\n\n - Andie"
-    text2: 
+    gifts: []
     day: 0
     spawnOption: 0
   - text1: "Came across some \ncucumber seeds and \nfigured you\u2019d make \nbetter
       use of them.\n\nOn that note, if you \never find that you\u2019d \nmade a little
       more of \nanything in your garden \nand want to send it over, \nI could look
       into making \nan oil.\n\n - Andie"
-    text2: 
+    gifts:
+    - Cucumber
+    - Cucumber
     day: 1
     spawnOption: 0
   - text1: "Thanks for the gift! I\u2019ll get to work on that oil I promised you.\n\nLook
       out for it in a few days!\n\n - Andie"
-    text2: 
+    gifts: []
     day: 2
     spawnOption: 1
   dialogueCanvas: {fileID: 0}

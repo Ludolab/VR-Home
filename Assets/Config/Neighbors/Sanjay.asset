@@ -19,7 +19,12 @@ MonoBehaviour:
   - text1: "Welcome! Me and\nCara are delighted\nto meet you.\n\nWe\u2019re sending
       you\nsome chamomile\nseeds, they\u2019re a\ngreat addition to\nany garden!\n\n
       - Sanjay"
-    gifts: []
+    gifts:
+    - Carrot
+    - Chili
+    - Corn
+    - Lettuce
+    - Sunflower
     day: 0
     spawnOption: 0
   dialogueCanvas: {fileID: 0}
