@@ -25,7 +25,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
 
 	private void Save() {
         GreenhouseSave current = new GreenhouseSave();
-        Debug.Log("Now saving Day " + TimeManager.instance.GetDay());
         current.previousDay = TimeManager.instance.GetDay();
         current.plots = SavePlots();
         current.outboxes = SaveOutboxes();
@@ -43,7 +42,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
         for (int i = 0; i < toSave.Length; i++)
         {
             Plot curr = toSave[i];
-            Debug.Log("Processing plot " + curr.gameObject.name);
             SavePlot plotSave = new SavePlot();
 
             ID plotID = new ID();
@@ -52,7 +50,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             plotSave.plotID = plotID;
 
             if(curr.getPlant() != null) {
-                Debug.Log("Found plant " + curr.getPlant().plant + ". Now saving its data.");
                 plotSave.plant = curr.getPlant().plant;
                 plotSave.plantDayBorn = curr.getPlant().getDayBorn();
                 plotSave.plantStage = curr.getPlant().getStage();
@@ -118,11 +115,16 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 TimeManager.instance.SetDay(saved.previousDay);
                 LoadPlots(saved.plots);
                 LoadOutboxes(saved.outboxes);
+
+                //After restoring the state of the previous play session, advance to the next day.
+                TimeManager.instance.NextDay();
+            } else {
+                TimeManager.instance.ProcessDay();
             }
+        } else {
+            TimeManager.instance.ProcessDay();
         }
 
-        //After restoring the state of the previous play session, advance to the next day.
-        TimeManager.instance.NextDay();
     }
 
     private void LoadPlots(SavePlot[] savedPlots) {
@@ -137,8 +139,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 GameObject loadPlant = (GameObject)Instantiate(Resources.Load(pathToPlantPrefabs + savedData.plant));
                 Plant plant = loadPlant.GetComponent<Plant>();
                 if(plant != null) {
-                    Debug.Log("Found a plant of type " + savedData.plant + "! Now restoring previous day data.");
-                    Debug.Log("Plant is of stage " + savedData.plantStage + " previously");
                     plot.setPlant(plant, savedData.plantStage);
                     plant.setDayBorn(savedData.plantDayBorn);
 

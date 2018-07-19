@@ -34,7 +34,7 @@ public class TimeManager : MonoBehaviour
         if(!saveLoad.loadPrevious) ProcessDay();
 	}
 
-    private void ProcessDay()
+    public void ProcessDay()
 	{
 		print("Day " + day);
 		foreach (Outbox outbox in outboxes)
