@@ -24,11 +24,11 @@ public class SaveLoadGreenhouse : MonoBehaviour {
 	}
 
 	private void Save() {
-        SavePlot[] plots = SavePlots();
-        SaveOutbox[] outboxes = SaveOutboxes();
         GreenhouseSave current = new GreenhouseSave();
+        Debug.Log("Now saving Day " + TimeManager.instance.GetDay());
         current.previousDay = TimeManager.instance.GetDay();
-        current.plots = plots;
+        current.plots = SavePlots();
+        current.outboxes = SaveOutboxes();
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedRoom" + SceneManager.GetActiveScene().name + userToLoad + ".gh");
@@ -40,8 +40,10 @@ public class SaveLoadGreenhouse : MonoBehaviour {
     private SavePlot[] SavePlots() {
         Plot[] toSave = TimeManager.instance.plots;
         SavePlot[] plots = new SavePlot[toSave.Length];
-        for (int i = 0; i < toSave.Length; i++) {
+        for (int i = 0; i < toSave.Length; i++)
+        {
             Plot curr = toSave[i];
+            Debug.Log("Processing plot " + curr.gameObject.name);
             SavePlot plotSave = new SavePlot();
 
             ID plotID = new ID();
@@ -49,10 +51,13 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             plotID.objCoordZ = curr.transform.position.z;
             plotSave.plotID = plotID;
 
-            plotSave.plant = curr.getPlant().plant;
-            plotSave.plantDayBorn = curr.getPlant().getDayBorn();
-            plotSave.plantStage = curr.getPlant().getStage();
-            plotSave.watered = curr.myDirt.getWetness();
+            if(curr.getPlant() != null) {
+                Debug.Log("Found plant " + curr.getPlant().plant + ". Now saving its data.");
+                plotSave.plant = curr.getPlant().plant;
+                plotSave.plantDayBorn = curr.getPlant().getDayBorn();
+                plotSave.plantStage = curr.getPlant().getStage();
+                plotSave.watered = curr.myDirt.getWetness();
+            }
 
             List<SaveObject> weeds = new List<SaveObject>();
             foreach(GameObject weed in curr.getWeeds()) {
@@ -109,6 +114,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             // Otherwise, we'll start with the original, default scene.
             if (saved != null)
             {
+                Debug.Log("Found saved data. Now loading Day " + saved.previousDay);
                 TimeManager.instance.SetDay(saved.previousDay);
                 LoadPlots(saved.plots);
                 LoadOutboxes(saved.outboxes);
@@ -123,6 +129,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
         Plot[] plots = TimeManager.instance.plots;
         foreach (Plot plot in plots)
         {
+            Debug.Log("Processing plot " + plot.gameObject.name);
             SavePlot savedData = FindSavedPlot(plot, savedPlots);
 
             //Load in data for plant in plot.
@@ -130,6 +137,8 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 GameObject loadPlant = (GameObject)Instantiate(Resources.Load(pathToPlantPrefabs + savedData.plant));
                 Plant plant = loadPlant.GetComponent<Plant>();
                 if(plant != null) {
+                    Debug.Log("Found a plant of type " + savedData.plant + "! Now restoring previous day data.");
+                    Debug.Log("Plant is of stage " + savedData.plantStage + " previously");
                     plot.setPlant(plant, savedData.plantStage);
                     plant.setDayBorn(savedData.plantDayBorn);
 
