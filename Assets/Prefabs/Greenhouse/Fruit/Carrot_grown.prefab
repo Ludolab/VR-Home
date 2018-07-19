@@ -9,36 +9,37 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1237470853414342}
+  m_RootGameObject: {fileID: 1224723703114848}
   m_IsPrefabParent: 1
---- !u!1 &1237470853414342
+--- !u!1 &1224723703114848
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4179703091173570}
-  - component: {fileID: 33213372827335186}
-  - component: {fileID: 23399403386033808}
-  - component: {fileID: 54682620351590396}
-  - component: {fileID: 114240570494297200}
-  - component: {fileID: 114621957542942862}
-  - component: {fileID: 114729522974533034}
-  - component: {fileID: 65218894398264490}
+  - component: {fileID: 4131697357523930}
+  - component: {fileID: 33072559184510954}
+  - component: {fileID: 23421487582768648}
+  - component: {fileID: 111692343772233524}
+  - component: {fileID: 54480228810727294}
+  - component: {fileID: 114365297308491212}
+  - component: {fileID: 114157379765319516}
+  - component: {fileID: 114182461010010938}
+  - component: {fileID: 65951995120646514}
   m_Layer: 0
-  m_Name: Leek_grown
+  m_Name: Carrot_grown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4179703091173570
+--- !u!4 &4131697357523930
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237470853414342}
+  m_GameObject: {fileID: 1224723703114848}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -46,12 +47,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23399403386033808
+--- !u!23 &23421487582768648
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237470853414342}
+  m_GameObject: {fileID: 1224723703114848}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +62,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: b13e20fa0a15f425f9ac04ff346873a7, type: 2}
+  - {fileID: 2100000, guid: 2687a40939a2b49f6b0752fce0336a36, type: 2}
+  - {fileID: 2100000, guid: 19b2b0395703343eea14ccd9e24744ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,19 +83,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33213372827335186
+--- !u!33 &33072559184510954
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237470853414342}
-  m_Mesh: {fileID: 4300000, guid: addd3d31d19fb4c91a21768c115180d5, type: 3}
---- !u!54 &54682620351590396
+  m_GameObject: {fileID: 1224723703114848}
+  m_Mesh: {fileID: 4300000, guid: c68d31ed0bc0441eab2456d20604a48d, type: 3}
+--- !u!54 &54480228810727294
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237470853414342}
+  m_GameObject: {fileID: 1224723703114848}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -103,24 +105,61 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65218894398264490
+--- !u!65 &65951995120646514
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237470853414342}
+  m_GameObject: {fileID: 1224723703114848}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.37518626, y: 1.7423679, z: 0.276794}
-  m_Center: {x: -0.080855906, y: 0.002831161, z: -0.049066853}
---- !u!114 &114240570494297200
+  m_Size: {x: 0.16725686, y: 1.8309598, z: 0.2831242}
+  m_Center: {x: 0.046639338, y: -0.16335666, z: -0.11919373}
+--- !u!111 &111692343772233524
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224723703114848}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &114157379765319516
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237470853414342}
+  m_GameObject: {fileID: 1224723703114848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3249a8008b414a818d377c6d68a7d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114182461010010938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224723703114848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  giftName: Carrot_grown
+--- !u!114 &114365297308491212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224723703114848}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
@@ -144,26 +183,3 @@ MonoBehaviour:
     layerIndex: 0
   _eventTable:
     _entries: []
---- !u!114 &114621957542942862
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237470853414342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3249a8008b414a818d377c6d68a7d81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114729522974533034
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237470853414342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  giftPrefabPath: Prefabs/Fruit/Leek_grown

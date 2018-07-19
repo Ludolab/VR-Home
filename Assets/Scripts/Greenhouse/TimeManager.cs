@@ -8,6 +8,7 @@ public class TimeManager : MonoBehaviour
 
 	public static TimeManager instance;
 
+    public SaveLoadGreenhouse saveLoad;
 	public GameObject neighborsObj;
 	public Outbox[] outboxes;
     public Plot[] plots;
@@ -30,7 +31,7 @@ public class TimeManager : MonoBehaviour
 	private void Start()
 	{
 		neighbors = neighborsObj.GetComponentsInChildren<Neighbor>();
-		ProcessDay();
+        if(!saveLoad.loadPrevious) ProcessDay();
 	}
 
     private void ProcessDay()

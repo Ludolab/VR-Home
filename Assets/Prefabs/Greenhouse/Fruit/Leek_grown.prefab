@@ -9,36 +9,36 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1901268303434446}
+  m_RootGameObject: {fileID: 1237470853414342}
   m_IsPrefabParent: 1
---- !u!1 &1901268303434446
+--- !u!1 &1237470853414342
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4859418776313032}
-  - component: {fileID: 33944740298084154}
-  - component: {fileID: 23055388273368348}
-  - component: {fileID: 54717481660593190}
-  - component: {fileID: 114486153806789026}
-  - component: {fileID: 114094011248932948}
-  - component: {fileID: 114611338935419908}
-  - component: {fileID: 65891811813185402}
+  - component: {fileID: 4179703091173570}
+  - component: {fileID: 33213372827335186}
+  - component: {fileID: 23399403386033808}
+  - component: {fileID: 54682620351590396}
+  - component: {fileID: 114240570494297200}
+  - component: {fileID: 114621957542942862}
+  - component: {fileID: 114729522974533034}
+  - component: {fileID: 65218894398264490}
   m_Layer: 0
-  m_Name: Onion_grown
+  m_Name: Leek_grown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4859418776313032
+--- !u!4 &4179703091173570
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901268303434446}
+  m_GameObject: {fileID: 1237470853414342}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -46,12 +46,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23055388273368348
+--- !u!23 &23399403386033808
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901268303434446}
+  m_GameObject: {fileID: 1237470853414342}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +61,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: db76b5dac61f04a6dbfed3858b5b21bb, type: 2}
+  - {fileID: 2100000, guid: b13e20fa0a15f425f9ac04ff346873a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,19 +81,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33944740298084154
+--- !u!33 &33213372827335186
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901268303434446}
-  m_Mesh: {fileID: 4300000, guid: abe5447bde963497480ec92949bd38d7, type: 3}
---- !u!54 &54717481660593190
+  m_GameObject: {fileID: 1237470853414342}
+  m_Mesh: {fileID: 4300000, guid: addd3d31d19fb4c91a21768c115180d5, type: 3}
+--- !u!54 &54682620351590396
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901268303434446}
+  m_GameObject: {fileID: 1237470853414342}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -103,35 +103,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65891811813185402
+--- !u!65 &65218894398264490
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901268303434446}
+  m_GameObject: {fileID: 1237470853414342}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.41221142, y: 0.5468993, z: 0.4011456}
-  m_Center: {x: 0.00999999, y: 0.22249979, z: -0.002745077}
---- !u!114 &114094011248932948
+  m_Size: {x: 0.37518626, y: 1.7423679, z: 0.276794}
+  m_Center: {x: -0.080855906, y: 0.002831161, z: -0.049066853}
+--- !u!114 &114240570494297200
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901268303434446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3249a8008b414a818d377c6d68a7d81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114486153806789026
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901268303434446}
+  m_GameObject: {fileID: 1237470853414342}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
@@ -155,15 +144,26 @@ MonoBehaviour:
     layerIndex: 0
   _eventTable:
     _entries: []
---- !u!114 &114611338935419908
+--- !u!114 &114621957542942862
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901268303434446}
+  m_GameObject: {fileID: 1237470853414342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3249a8008b414a818d377c6d68a7d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114729522974533034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237470853414342}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  giftPrefabPath: Prefabs/Fruit/Onion_grown
+  giftName: Leek_grown
