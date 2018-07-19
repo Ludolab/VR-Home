@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 65332875725550884}
   - component: {fileID: 65356096591885204}
   - component: {fileID: 135273267693137768}
+  - component: {fileID: 114560790908085744}
   m_Layer: 0
   m_Name: Watering Can
   m_TagString: Untagged
@@ -222,8 +223,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1688219852839992}
-  m_LocalRotation: {x: -0, y: 0.16993174, z: -0, w: -0.9854558}
-  m_LocalPosition: {x: 1.1940796, y: 0.824, z: 0.43854806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4449806238929676}
@@ -593,6 +594,17 @@ MonoBehaviour:
     layerIndex: 0
   _eventTable:
     _entries: []
+--- !u!114 &114560790908085744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688219852839992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41799214b05282742abdfa2f4867f36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114857027905380832
 MonoBehaviour:
   m_ObjectHideFlags: 1
