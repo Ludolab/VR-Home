@@ -107,7 +107,7 @@ public class PullWeed : MonoBehaviour
 		 */
 		
 		SpawnParticles();
-        plotIn.removeFromWeeds(gameObject);
+        if(plotIn != null) plotIn.removeFromWeeds(gameObject);
 		Destroy(gameObject);
 	}
 

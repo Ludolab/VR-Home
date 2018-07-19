@@ -217,6 +217,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             weed.transform.eulerAngles = new Vector3(savedWeed.xRotation, savedWeed.yRotation, savedWeed.zRotation);
             weed.transform.localScale = new Vector3(savedWeed.xScale, savedWeed.yScale, savedWeed.zScale);
 
+            weed.GetComponent<PullWeed>().setPlot(plot);
             plot.addToWeeds(weed);
         }
     }
