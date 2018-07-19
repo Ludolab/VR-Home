@@ -204,10 +204,10 @@ public class Plot : MonoBehaviour {
     public void setPlant(Plant p, int stage)
     {
         plant = p;
-        plant.setStage(stage);
         plant.transform.position = gameObject.transform.position;
         plant.transform.eulerAngles = new Vector3(0, 0, 0);
         plant.transform.localScale = new Vector3(1, 1, 1);
+        plant.setStage(stage);
     }
 
     public void addToWeeds(GameObject weed) {
