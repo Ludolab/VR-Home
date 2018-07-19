@@ -8,6 +8,7 @@ public class Neighbor : MonoBehaviour
 	public NeighborInfo info;
 	public Outbox outbox;
 	public GameObject pagePrefab;
+	public GameObject seedPrefab;
 
 	private DialogueParser parser;
 	private string[] todaysGift = new string[0];
@@ -33,6 +34,24 @@ public class Neighbor : MonoBehaviour
 		return pageObj;
 	}
 
+	public GameObject GenerateSeed(string seedName)
+	{
+		Vector3 position = outbox.transform.position; //TODO: offset?
+		GameObject seedObj = Instantiate(seedPrefab, position, seedPrefab.transform.rotation);
+		Starter starter = seedObj.GetComponent<Starter>();
+		starter.plantName = seedName;
+		starter.RefreshLabel();
+		return seedObj;
+	}
+
+	public void GenerateSeeds(string[] seedNames)
+	{
+		foreach (string seedName in seedNames)
+		{
+			GenerateSeed(seedName);
+		}
+	}
+
 	public void StartDay(int day)
 	{
 		parser.NextDay(this);
@@ -45,6 +64,7 @@ public class Neighbor : MonoBehaviour
 				if (CanSpawn(l))
 				{
 					GeneratePage(l.text1);
+					GenerateSeeds(l.gifts);
 				}
 			}
 		}

@@ -11,6 +11,11 @@ public class Starter : MonoBehaviour {
 
 	private void Start()
 	{
+		RefreshLabel();
+	}
+
+	public void RefreshLabel()
+	{
         Material tapeMaterial = myTape.GetComponent<Renderer>().material;
         tapeMaterial.mainTexture = (Texture)Resources.Load("Textures/Starter_Labels/" + plantName);
 	}

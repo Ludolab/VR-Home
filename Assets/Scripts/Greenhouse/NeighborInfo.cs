@@ -20,6 +20,8 @@ public class NeighborInfo : ScriptableObject
 		[TextArea(3, 15)]
 		public string text1;
 
+		public string[] gifts;
+
 		public int day;
 
 		public SpawnOption spawnOption;
