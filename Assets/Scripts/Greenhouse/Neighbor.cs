@@ -30,7 +30,7 @@ public class Neighbor : MonoBehaviour
 		Vector3 position = outbox.transform.position; //TODO: offset?
 		GameObject pageObj = Instantiate(pagePrefab, position, pagePrefab.transform.rotation);
 		Page page = pageObj.GetComponent<Page>();
-		page.SetContents(text, info.font, info.fontMaterial, info.paperTexture);
+		page.SetContents(text, info.font, info.fontMaterial, info.paperTexture, info.fontSize);
 		return pageObj;
 	}
 

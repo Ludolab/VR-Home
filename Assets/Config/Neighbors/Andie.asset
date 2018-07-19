@@ -15,6 +15,7 @@ MonoBehaviour:
   font: {fileID: 12800000, guid: 3004dd33c198f2a4da6889e801c6b881, type: 3}
   paperTexture: {fileID: 2800000, guid: 374f0be1e93ba4fe89baffbabd2ed833, type: 3}
   textColor: {r: 0.14150941, g: 0.07272012, b: 0, a: 1}
+  fontSize: 50
   letters:
   - text1: "Hi neighbor!\nHeard you\u2019d just\nmoved in.\n\nI make essential oils\nwhich
       is only a little\nfarther off, so let me\nknow if there\u2019s anything\nI can
@@ -31,8 +32,8 @@ MonoBehaviour:
     - Cucumber
     day: 1
     spawnOption: 0
-  - text1: "Thanks for the gift! I\u2019ll get to work on that oil I promised you.\n\nLook
-      out for it in a few days!\n\n - Andie"
+  - text1: "Thanks for the gift!\nI\u2019ll get to work on that\noil I promised you.\n\nLook
+      out for it in a few\ndays!\n\n - Andie"
     gifts: []
     day: 2
     spawnOption: 1

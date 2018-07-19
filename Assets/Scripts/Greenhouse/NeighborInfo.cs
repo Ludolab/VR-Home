@@ -32,6 +32,7 @@ public class NeighborInfo : ScriptableObject
 	public Font font;
 	public Texture paperTexture;
 	public Color textColor;
+	public int fontSize;
 
 	public LetterInfo[] letters;
 

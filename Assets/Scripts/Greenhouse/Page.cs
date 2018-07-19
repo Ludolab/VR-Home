@@ -16,7 +16,7 @@ public class Page : MonoBehaviour
 		TimeManager.instance.AddGarbage(gameObject);
 	}
 
-	public void SetContents(string text, Font font, Material fontMaterial, Texture paperTexture)
+	public void SetContents(string text, Font font, Material fontMaterial, Texture paperTexture, int fontSize)
 	{
 		TextMesh textMesh = textObj.GetComponent<TextMesh>();
 		Renderer textRend = textObj.GetComponent<Renderer>();
@@ -25,6 +25,7 @@ public class Page : MonoBehaviour
 
 		textMesh.text = text;
 		textMesh.font = font;
+		textMesh.fontSize = fontSize;
 		textRend.material = fontMaterial;
 
 		paperRend.material.mainTexture = paperTexture;
