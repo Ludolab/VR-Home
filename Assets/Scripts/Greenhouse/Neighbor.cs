@@ -22,7 +22,10 @@ public class Neighbor : MonoBehaviour
 	private void Start()
 	{
 		info.fontMaterial.color = info.textColor;
-		outbox.SetLabel(info);
+		if (info.ownsOutbox)
+		{
+			outbox.SetOwner(this);
+		}
 	}
 
 	public GameObject GeneratePage(string text)

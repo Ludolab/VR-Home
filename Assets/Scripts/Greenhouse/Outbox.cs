@@ -9,24 +9,35 @@ public class Outbox : MonoBehaviour
 	public Transform labelTransform;
 
 	private GameObject label;
+	private Neighbor owner;
 
 	private List<Giftable> gifts = new List<Giftable>();
     // TODO: save a reference of seed starters sent to the player, in order to save unremoved seed starters when going to next day in separate play-sessions.
 
-	public void SetLabel(NeighborInfo info)
+	public void SetOwner(Neighbor neighbor)
 	{
+		owner = neighbor;
+
+		NeighborInfo info = neighbor.info;
+		string text = string.IsNullOrEmpty(info.labelOverride) ? info.name : info.labelOverride;
+
 		GameObject label = Instantiate(labelPrefab, labelTransform);
 		GameObject labelText = label.transform.Find("text").gameObject;
 		TextMesh labelMesh = labelText.GetComponent<TextMesh>();
 		Renderer labelRend = labelText.GetComponent<Renderer>();
 
-		labelMesh.text = info.name;
+		labelMesh.text = text;
 		labelMesh.font = info.font;
 		labelRend.material = info.fontMaterial;
 
 		this.label = label;
 	}
-	
+
+	public Neighbor GetOwner()
+	{
+		return owner;
+	}
+
 	public void AddGift(Giftable g)
 	{
 		gifts.Add(g);

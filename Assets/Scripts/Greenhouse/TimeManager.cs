@@ -42,13 +42,7 @@ public class TimeManager : MonoBehaviour
 			string[] contents = outbox.ClearFruit();
 			if (contents.Length > 0)
 			{
-				//TODO: make this outbox.GetOwner()
-				string name = outbox.GetLabel();
-				if (name != null)
-				{
-					Neighbor receiver = GetNeighborByName(name);
-					receiver.GiveGift(contents);
-				}
+				outbox.GetOwner().GiveGift(contents);
 			}
 		}
 
@@ -91,12 +85,7 @@ public class TimeManager : MonoBehaviour
 	{
 		plants.Add(plant);
 	}*/
-
-	private Neighbor GetNeighborByName(string name)
-	{
-		return neighbors.First(n => n.info.name == name);
-	}
-
+	
 	public void AddGarbage(GameObject obj)
 	{
 		garbage.Add(obj);

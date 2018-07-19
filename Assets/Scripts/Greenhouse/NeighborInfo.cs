@@ -33,10 +33,10 @@ public class NeighborInfo : ScriptableObject
 	public Texture paperTexture;
 	public Color textColor;
 	public int fontSize;
+	public bool ownsOutbox = true;
+	public string labelOverride;
 
 	public LetterInfo[] letters;
-
-	//TODO: daily gifts
 
 	public DialogueCanvasType dialogueCanvas;
 }

@@ -1,7 +1,5 @@
-﻿using Leap.Unity.Interaction;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Page : MonoBehaviour
