@@ -22,7 +22,6 @@ public struct Genome
 
 public class Fruit : MonoBehaviour
 {
-    public string fruitName;
 	public Color unripeColor;
 	public GameObject particlePrefab;
 	public AudioClip[] pickSound;

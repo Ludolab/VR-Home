@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Leap.Unity.Interaction;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -24,7 +25,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
 
 	private void Save() {
         SavePlot[] plots = SavePlots();
-        //TODO: save state of in/outboxes.
+        SaveOutbox[] outboxes = SaveOutboxes();
         GreenhouseSave current = new GreenhouseSave();
         current.previousDay = TimeManager.instance.GetDay();
         current.plots = plots;
@@ -35,6 +36,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
         file.Close();
     }
 
+    // Save data of plots (plant in it, remaining weeds/beetles/fruits, watered amount, etc.)
     private SavePlot[] SavePlots() {
         Plot[] toSave = TimeManager.instance.plots;
         SavePlot[] plots = new SavePlot[toSave.Length];
@@ -71,9 +73,28 @@ public class SaveLoadGreenhouse : MonoBehaviour {
 
             plotSave.beetles = curr.getBeetleIDs();
             plotSave.fruits = curr.getFruitIDs();
+
+            plots[i] = plotSave;
         }
 
         return plots;
+    }
+
+    // Save outboxes, including gifts the player is sending, remaining stuff from the neighbor, etc.
+    private SaveOutbox[] SaveOutboxes() {
+        Outbox[] toSave = TimeManager.instance.outboxes;
+        SaveOutbox[] outboxes = new SaveOutbox[toSave.Length];
+        for (int i = 0; i < toSave.Length; i++) {
+            Outbox curr = toSave[i];
+            SaveOutbox outboxSave = new SaveOutbox();
+
+            outboxSave.neighbor = curr.GetLabel();
+            outboxSave.givenGifts = curr.GetGiftNames();
+
+            outboxes[i] = outboxSave;
+        }
+
+        return outboxes;
     }
 
     private void Load() {
@@ -90,7 +111,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             {
                 TimeManager.instance.SetDay(saved.previousDay);
                 LoadPlots(saved.plots);
-                //TODO: load in state of in/outboxes from the previous session for processing.
+                LoadOutboxes(saved.outboxes);
 
                 //After restoring the state of the previous play session, advance to the next day.
                 TimeManager.instance.NextDay();
@@ -105,60 +126,39 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             SavePlot savedData = FindSavedPlot(plot, savedPlots);
 
             //Load in data for plant in plot.
-            if(savedData.plant != "") {
+            if(savedData.plant != null && savedData.plant != "") {
                 GameObject loadPlant = (GameObject)Instantiate(Resources.Load(pathToPlantPrefabs + savedData.plant));
                 Plant plant = loadPlant.GetComponent<Plant>();
                 if(plant != null) {
                     plot.setPlant(plant, savedData.plantStage);
                     plant.setDayBorn(savedData.plantDayBorn);
 
-                    //Load in beetles and fruit leftover from previous session.
-                    Transform[] beetles = null;
-                    if (savedData.plantStage == 1)
-                    {
-                        beetles = plant.beetleTransYoung;
-                    } else if (savedData.plantStage >= 2) {
-                        beetles = plant.beetleTransGrown;
-                    }
-                    if (beetles != null && savedData.beetles != null)
-                    {
-                        foreach (int beetleID in savedData.beetles)
+                    //Load in beetles leftover from previous session.
+                    if(savedData.beetles != null) {
+                        if (savedData.plantStage == 1)
                         {
-                            GameObject beetle = Instantiate(plot.beetlePrefab);
-                            beetle.transform.position = plant.transform.position + plant.beetleTransGrown[beetleID].localPosition;
-                            beetle.transform.eulerAngles = plant.transform.eulerAngles + plant.beetleTransGrown[beetleID].localEulerAngles;
-                            beetle.transform.localScale = plant.beetleTransGrown[beetleID].localScale;
-
-                            plot.addToBeetles(beetle, beetleID);
+                            SetBeetles(plot, savedData.beetles, plant.beetleTrans1);
+                        }
+                        else if (savedData.plantStage >= 2)
+                        {
+                            SetBeetles(plot, savedData.beetles, plant.beetleTrans2);
                         }
                     }
-                    if(savedData.plantStage >= 2 && savedData.fruits != null)
-                    {
-                        foreach (int fruitID in savedData.fruits)
-                        {
-                            GameObject fruit = Instantiate(plant.fruit);
-                            fruit.transform.position = plant.transform.position + plant.fruitTrans[fruitID].localPosition;
-                            fruit.transform.eulerAngles = plant.transform.eulerAngles + plant.fruitTrans[fruitID].localEulerAngles;
-                            fruit.transform.localScale = plant.fruitTrans[fruitID].localScale;
 
-                            plot.addToFruit(fruit, fruitID);
-                        }
+                    //Load in unpicked fruits leftover from previous session.
+                    if(savedData.plantStage == plant.nonFruitingStages && savedData.fruits != null)
+                    {
+                        SetFruits(plot, savedData.fruits, plant.fruitTrans);
                     }
                 }
             }
 
             //Set weeds left in plot.
             if(savedData.weeds != null) {
-                foreach(SaveObject savedWeed in savedData.weeds) {
-                    GameObject weed = Instantiate(plot.weedPrefab);
-                    weed.transform.position = new Vector3(savedWeed.xPosition, savedWeed.yPosition, savedWeed.zPosition);
-                    weed.transform.eulerAngles = new Vector3(savedWeed.xRotation, savedWeed.yRotation, savedWeed.zRotation);
-                    weed.transform.localScale = new Vector3(savedWeed.xScale, savedWeed.yScale, savedWeed.zScale);
-
-                    plot.addToWeeds(weed);
-                }
+                SetWeeds(plot, savedData.weeds);
             }
 
+            //Set how watered the plot was.
             plot.myDirt.setWetness(savedData.watered);
 
         }
@@ -170,6 +170,68 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                && (int)(toFind.transform.position.z * 100) == (int)(saved.plotID.objCoordZ * 100)) {
                 return saved;
             }
+        }
+        return null;
+    }
+
+    private void SetBeetles(Plot plot, int[] beetleIDs, Transform[] transforms) {
+        foreach (int beetleID in beetleIDs)
+        {
+            GameObject beetle = Instantiate(plot.beetlePrefab);
+            beetle.transform.position = plot.plant.transform.position + transforms[beetleID].localPosition;
+            beetle.transform.eulerAngles = plot.plant.transform.eulerAngles + transforms[beetleID].localEulerAngles;
+            beetle.transform.localScale = transforms[beetleID].localScale;
+
+            beetle.GetComponent<Beetle>().setPlot(plot);
+            plot.addToBeetles(beetle, beetleID);
+        }
+    }
+
+    private void SetFruits(Plot plot, int[] fruitIDs, Transform[] transforms) {
+        foreach (int fruitID in fruitIDs)
+        {
+            GameObject fruit = Instantiate(plot.plant.fruit, plot.plant.transform.position + transforms[fruitID].localPosition, Quaternion.identity);
+            fruit.transform.eulerAngles = plot.plant.transform.eulerAngles + transforms[fruitID].localEulerAngles;
+            fruit.transform.localScale = transforms[fruitID].localScale;
+
+            fruit.GetComponent<Fruit>().setPlot(plot);
+            fruit.GetComponent<InteractionBehaviour>().manager = plot.manager;
+            plot.addToFruit(fruit, fruitID);
+        }
+    }
+
+    private void SetWeeds(Plot plot, SaveObject[] weeds) {
+        foreach (SaveObject savedWeed in weeds)
+        {
+            GameObject weed = Instantiate(plot.weedPrefab);
+            weed.transform.position = new Vector3(savedWeed.xPosition, savedWeed.yPosition, savedWeed.zPosition);
+            weed.transform.eulerAngles = new Vector3(savedWeed.xRotation, savedWeed.yRotation, savedWeed.zRotation);
+            weed.transform.localScale = new Vector3(savedWeed.xScale, savedWeed.yScale, savedWeed.zScale);
+
+            plot.addToWeeds(weed);
+        }
+    }
+
+    private void LoadOutboxes(SaveOutbox[] savedOutboxes) {
+        Outbox[] outboxes = TimeManager.instance.outboxes;
+        foreach(Outbox outbox in outboxes) {
+            SaveOutbox savedData = FindSavedOutbox(outbox, savedOutboxes);
+
+            // Set previously given gifts for each outbox
+            if(savedData != null && savedData.givenGifts != null) {
+                foreach(string given in savedData.givenGifts) {
+                    Giftable gift = new Giftable();
+                    gift.giftName = given;
+
+                    outbox.AddGift(gift);
+                }
+            }
+        }
+    }
+
+    private SaveOutbox FindSavedOutbox(Outbox toFind, SaveOutbox[] savedOutboxes) {
+        foreach(SaveOutbox saved in savedOutboxes) {
+            if (saved.neighbor == toFind.GetLabel()) return saved;
         }
         return null;
     }

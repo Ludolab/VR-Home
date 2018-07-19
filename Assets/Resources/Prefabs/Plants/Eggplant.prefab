@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4760283170579102}
   m_Layer: 0
-  m_Name: EggplantTrans3
+  m_Name: EggplantTrans2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4347735377312466}
   m_Layer: 0
-  m_Name: BeetleTransG2
+  m_Name: BeetleTrans2.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4768465852166936}
   m_Layer: 0
-  m_Name: BeetleTransY2
+  m_Name: BeetleTrans1.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4022121481725826}
   m_Layer: 0
-  m_Name: EggplantTrans1
+  m_Name: EggplantTrans0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4668366377333320}
   m_Layer: 0
-  m_Name: BeetleTransG1
+  m_Name: BeetleTrans2.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4817114324190446}
   m_Layer: 0
-  m_Name: EggplantTrans2
+  m_Name: EggplantTrans1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4680263233017004}
   m_Layer: 0
-  m_Name: BeetleTransY1
+  m_Name: BeetleTrans1.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,10 +327,10 @@ MonoBehaviour:
   fruitTrans:
   - {fileID: 4356196337036964}
   - {fileID: 4906549516718664}
-  beetleTransYoung:
+  beetleTrans1:
   - {fileID: 4680263233017004}
   - {fileID: 4768465852166936}
-  beetleTransGrown:
+  beetleTrans2:
   - {fileID: 4668366377333320}
   - {fileID: 4347735377312466}
   nonFruitingStages: 2

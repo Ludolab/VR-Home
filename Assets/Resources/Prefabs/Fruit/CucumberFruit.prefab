@@ -9,41 +9,41 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1320748229465608}
+  m_RootGameObject: {fileID: 1611017636726436}
   m_IsPrefabParent: 1
---- !u!1 &1320748229465608
+--- !u!1 &1611017636726436
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4592937525905440}
-  - component: {fileID: 33697143736989578}
-  - component: {fileID: 23148218833293124}
-  - component: {fileID: 54191138519096524}
-  - component: {fileID: 114160365523278242}
-  - component: {fileID: 153900950381376414}
-  - component: {fileID: 114221376846092818}
-  - component: {fileID: 114969373118506564}
-  - component: {fileID: 82475323936194438}
-  - component: {fileID: 114073406538561192}
-  - component: {fileID: 114157715358184506}
-  - component: {fileID: 114156153989728584}
-  - component: {fileID: 65992083732261312}
+  - component: {fileID: 4382520514832902}
+  - component: {fileID: 33109005038246536}
+  - component: {fileID: 23106601765016856}
+  - component: {fileID: 54467195955627562}
+  - component: {fileID: 114263187265434778}
+  - component: {fileID: 153114023626285806}
+  - component: {fileID: 114173692167105376}
+  - component: {fileID: 114053364053308056}
+  - component: {fileID: 82453984291491096}
+  - component: {fileID: 114380528631140128}
+  - component: {fileID: 114508748649608792}
+  - component: {fileID: 114266305092151714}
+  - component: {fileID: 65555972456088376}
   m_Layer: 0
-  m_Name: ChiliFruit
+  m_Name: CucumberFruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4592937525905440
+--- !u!4 &4382520514832902
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
+  m_GameObject: {fileID: 1611017636726436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -51,12 +51,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23148218833293124
+--- !u!23 &23106601765016856
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
+  m_GameObject: {fileID: 1611017636726436}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,7 +66,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 19b2b0395703343eea14ccd9e24744ab, type: 2}
+  - {fileID: 2100000, guid: a7c4d70bb82894ef0b89faef0ecc7a94, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,19 +86,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33697143736989578
+--- !u!33 &33109005038246536
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
-  m_Mesh: {fileID: 4300000, guid: 289c855f4787e49989510d1b0b382f1e, type: 3}
---- !u!54 &54191138519096524
+  m_GameObject: {fileID: 1611017636726436}
+  m_Mesh: {fileID: 4300000, guid: d00af8b99ee4d4509911158808bc14ba, type: 3}
+--- !u!54 &54467195955627562
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
+  m_GameObject: {fileID: 1611017636726436}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -108,24 +108,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65992083732261312
+--- !u!65 &65555972456088376
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
+  m_GameObject: {fileID: 1611017636726436}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.096025385, y: 0.6495999, z: 0.10673889}
-  m_Center: {x: -0.048012692, y: -0.2351352, z: -0.008465957}
---- !u!82 &82475323936194438
+  m_Size: {x: 0.2755978, y: 1.2377214, z: 0.2805291}
+  m_Center: {x: -0.002469726, y: 0.13023522, z: -0.0152436495}
+--- !u!82 &82453984291491096
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
+  m_GameObject: {fileID: 1611017636726436}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -139,7 +139,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 3.6608853
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -215,19 +215,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114073406538561192
+--- !u!114 &114053364053308056
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
+  m_GameObject: {fileID: 1611017636726436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c442e399461c2f74fba6c23d546ea47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114173692167105376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611017636726436}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6a2a434b848e8441a6823305b19c1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitName: Chili
-  unripeColor: {r: 0.08784264, g: 0.8867924, b: 0.24378105, a: 1}
+  unripeColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
   particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
     type: 2}
   pickSound:
@@ -235,23 +245,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 957ba31a9137d4079bb57e90d57943bc, type: 3}
   - {fileID: 8300000, guid: ec941f546044945b39c7c349d290220a, type: 3}
   - {fileID: 8300000, guid: 68810c78ecaa84754b97d90b86cf6ec3, type: 3}
---- !u!114 &114156153989728584
+--- !u!114 &114263187265434778
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114157715358184506
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
+  m_GameObject: {fileID: 1611017636726436}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
@@ -274,41 +273,12 @@ MonoBehaviour:
   _noContactLayer:
     layerIndex: 0
   _eventTable:
-    _entries: []
---- !u!114 &114160365523278242
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _manager: {fileID: 0}
-  _ignoreHoverMode: 0
-  _isIgnoringAllHoverState: 0
-  _ignorePrimaryHover: 0
-  _ignoreContact: 0
-  _ignoreGrasping: 0
-  _contactForceMode: 0
-  _allowMultiGrasp: 0
-  _moveObjectWhenGrasped: 1
-  graspedMovementType: 0
-  _overrideInteractionLayer: 0
-  _interactionLayer:
-    layerIndex: 0
-  _overrideNoContactLayer: 1
-  _noContactLayer:
-    layerIndex: 0
-  _eventTable:
     _entries:
     - enumValue: 140
       callback:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 114221376846092818}
+          - m_Target: {fileID: 114173692167105376}
             m_MethodName: Pick
             m_Mode: 1
             m_Arguments:
@@ -383,19 +353,30 @@ MonoBehaviour:
             m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
---- !u!114 &114221376846092818
+--- !u!114 &114266305092151714
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
+  m_GameObject: {fileID: 1611017636726436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  giftPrefabPath: Prefabs/Fruit/CucumberFruit
+--- !u!114 &114380528631140128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1611017636726436}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6a2a434b848e8441a6823305b19c1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitName: Chili
-  unripeColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+  unripeColor: {r: 0.08784264, g: 0.8867924, b: 0.24378105, a: 1}
   particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
     type: 2}
   pickSound:
@@ -403,28 +384,46 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 957ba31a9137d4079bb57e90d57943bc, type: 3}
   - {fileID: 8300000, guid: ec941f546044945b39c7c349d290220a, type: 3}
   - {fileID: 8300000, guid: 68810c78ecaa84754b97d90b86cf6ec3, type: 3}
---- !u!114 &114969373118506564
+--- !u!114 &114508748649608792
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
+  m_GameObject: {fileID: 1611017636726436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c442e399461c2f74fba6c23d546ea47c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f10fa40360571247a7ca806d6859557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!153 &153900950381376414
+  _manager: {fileID: 0}
+  _ignoreHoverMode: 0
+  _isIgnoringAllHoverState: 0
+  _ignorePrimaryHover: 0
+  _ignoreContact: 0
+  _ignoreGrasping: 0
+  _contactForceMode: 0
+  _allowMultiGrasp: 0
+  _moveObjectWhenGrasped: 1
+  graspedMovementType: 0
+  _overrideInteractionLayer: 0
+  _interactionLayer:
+    layerIndex: 0
+  _overrideNoContactLayer: 0
+  _noContactLayer:
+    layerIndex: 0
+  _eventTable:
+    _entries: []
+--- !u!153 &153114023626285806
 ConfigurableJoint:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
+  m_GameObject: {fileID: 1611017636726436}
   m_ConnectedBody: {fileID: 0}
-  m_Anchor: {x: -0.02, y: 0, z: -0.02}
+  m_Anchor: {x: 0.02, y: 0.75, z: -0.05}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.02, y: 0.399, z: -0.02}
+  m_ConnectedAnchor: {x: 0.02, y: 0.75, z: -0.05}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0

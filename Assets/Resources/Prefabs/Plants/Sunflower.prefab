@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4631070203175920}
   m_Layer: 0
-  m_Name: SunflowerTrans3
+  m_Name: SunflowerTrans2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4028007619279694}
   m_Layer: 0
-  m_Name: BeetleTransY2
+  m_Name: BeetleTrans1.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4805924138668666}
   m_Layer: 0
-  m_Name: BeetleTransG1
+  m_Name: BeetleTrans2.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4401201417156058}
   m_Layer: 0
-  m_Name: SunflowerTrans2
+  m_Name: SunflowerTrans1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4850200090716952}
   m_Layer: 0
-  m_Name: BeetleTransG2
+  m_Name: BeetleTrans2.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4415166382702154}
   m_Layer: 0
-  m_Name: SunflowerTrans1
+  m_Name: SunflowerTrans0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4528020882427884}
   m_Layer: 0
-  m_Name: BeetleTransY1
+  m_Name: BeetleTrans1.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   growthStages:
   - {fileID: 100000, guid: 6ca6ac24081fa472ab1148f2204caf1c, type: 3}
   - {fileID: 100016, guid: 83d34757fd20d413489634f2ebc58831, type: 3}
-  - {fileID: 100024, guid: ac0c87f5282d94d8d92eeaf2bdec728c, type: 3}
+  - {fileID: 1129183959382664, guid: 92a3cde5e92e244d799270e73e054218, type: 2}
   growthStagesTrans:
   - {fileID: 4415166382702154}
   - {fileID: 4401201417156058}
@@ -267,10 +267,10 @@ MonoBehaviour:
   multiHarvest: 0
   fruit: {fileID: 0}
   fruitTrans: []
-  beetleTransYoung:
+  beetleTrans1:
   - {fileID: 4528020882427884}
   - {fileID: 4028007619279694}
-  beetleTransGrown:
+  beetleTrans2:
   - {fileID: 4805924138668666}
   - {fileID: 4850200090716952}
   nonFruitingStages: 2

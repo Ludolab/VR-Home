@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4297132737191968}
   m_Layer: 0
-  m_Name: CornTrans2
+  m_Name: CornTrans1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4385452511417348}
   m_Layer: 0
-  m_Name: BeetleTransY2
+  m_Name: BeetleTrans1.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4706589829396646}
   m_Layer: 0
-  m_Name: BeetleTransY1
+  m_Name: BeetleTrans1.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4685585525950530}
   m_Layer: 0
-  m_Name: BeetleTransG1
+  m_Name: BeetleTrans2.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4978766334098532}
   m_Layer: 0
-  m_Name: CornTrans1
+  m_Name: CornTrans0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4702183755152058}
   m_Layer: 0
-  m_Name: CornTrans3
+  m_Name: CornTrans2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4299728709657604}
   m_Layer: 0
-  m_Name: BeetleTransG2
+  m_Name: BeetleTrans2.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852168942216306}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 2.7970002, y: 180.202, z: 93.526}
 --- !u!4 &4377116243610030
 Transform:
@@ -215,7 +215,7 @@ Transform:
   m_LocalScale: {x: 0.29999998, y: 0.29999995, z: 0.29999995}
   m_Children: []
   m_Father: {fileID: 4852168942216306}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 19.636002, y: 158.123, z: 4.565}
 --- !u!4 &4385452511417348
 Transform:
@@ -228,7 +228,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 4852168942216306}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 2.7970002, y: 180.202, z: 93.526}
 --- !u!4 &4449944119855196
 Transform:
@@ -241,7 +241,7 @@ Transform:
   m_LocalScale: {x: 0.30000013, y: 0.29999998, z: 0.30000022}
   m_Children: []
   m_Father: {fileID: 4852168942216306}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -16.361, y: 155.32101, z: -5.479}
 --- !u!4 &4549437221965688
 Transform:
@@ -254,7 +254,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 4852168942216306}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 10.713, y: 0, z: 0}
 --- !u!4 &4685585525950530
 Transform:
@@ -267,7 +267,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852168942216306}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 2.0600002, y: 240.36899, z: 38.078003}
 --- !u!4 &4702183755152058
 Transform:
@@ -293,7 +293,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 4852168942216306}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 1.1370001, y: 210.50499, z: 41.272003}
 --- !u!4 &4852168942216306
 Transform:
@@ -308,13 +308,13 @@ Transform:
   - {fileID: 4978766334098532}
   - {fileID: 4297132737191968}
   - {fileID: 4702183755152058}
+  - {fileID: 4549437221965688}
+  - {fileID: 4377116243610030}
+  - {fileID: 4449944119855196}
   - {fileID: 4706589829396646}
   - {fileID: 4385452511417348}
   - {fileID: 4685585525950530}
   - {fileID: 4299728709657604}
-  - {fileID: 4549437221965688}
-  - {fileID: 4377116243610030}
-  - {fileID: 4449944119855196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -357,10 +357,10 @@ MonoBehaviour:
   - {fileID: 4549437221965688}
   - {fileID: 4377116243610030}
   - {fileID: 4449944119855196}
-  beetleTransYoung:
+  beetleTrans1:
   - {fileID: 4706589829396646}
   - {fileID: 4385452511417348}
-  beetleTransGrown:
+  beetleTrans2:
   - {fileID: 4685585525950530}
   - {fileID: 4299728709657604}
   nonFruitingStages: 2

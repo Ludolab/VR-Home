@@ -48,6 +48,14 @@ public class Outbox : MonoBehaviour
 		return giftNames.ToArray();
 	}
 
+    public string[] GetGiftNames() {
+        List<string> g = new List<string>();
+        foreach(Giftable gift in gifts) {
+            g.Add(gift.giftName);
+        }
+        return g.ToArray();
+    }
+
 	public string GetLabel()
 	{
 		if (label == null) return null;

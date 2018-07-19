@@ -60,50 +60,19 @@ public class Plot : MonoBehaviour {
     {
         if (plant != null)
         {
+            // Make sure we can't plant again in this dirt so long as the plant remains.
             myDirt.makeFlat(false);
 
             if (beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.advanceStage();
 
-            // Check for the young stage.
-            if (plant.getStage() == 1)
+            // Check for stage and spawn in appropriate beetles.
+            // Note since the plant won't grow if any beetles remained, we shouldn't have conflicts.
+            if (plant.getStage() == 1 && plant.beetleTrans1 != null)
             {
-                //Range from no beetles (-1) to maximum placements.
-                int numberBeetles = (int)(Random.Range(-1f, plant.beetleTransYoung.Length - 1));
-                for (int i = 0; i <= numberBeetles; i++)
-                {
-                    //Make sure we don't spawn in duplicates.
-                    if (!beetles.ContainsValue(i))
-                    {
-                        GameObject beetle = Instantiate(beetlePrefab);
-                        beetle.transform.position = plant.transform.position + plant.beetleTransYoung[i].localPosition;
-                        beetle.transform.eulerAngles = plant.transform.eulerAngles + plant.beetleTransYoung[i].localEulerAngles;
-                        beetle.transform.localScale = plant.beetleTransYoung[i].localScale;
-
-                        beetle.GetComponent<Beetle>().setPlot(this);
-                        beetles.Add(beetle, i);
-                    }
-                }
-            }
-
-            // Check for the grown stage.
-            // Note should not be proceeded to if any beetles remained on the young stage, so shouldn't have conflicts with beetle spawning.
-            if (plant.getStage() >= 2)
+                SpawnBeetles(plant.beetleTrans1);
+            } else if (plant.getStage() == 2 && plant.beetleTrans2 != null)
             {
-                int numberBeetles = (int)(Random.Range(-1f, plant.beetleTransGrown.Length - 1));
-                for (int i = 0; i <= numberBeetles; i++)
-                {
-                    if (!beetles.ContainsValue(i))
-                    {
-                        GameObject beetle = Instantiate(beetlePrefab);
-                        beetle.transform.position = plant.transform.position + plant.beetleTransGrown[i].localPosition;
-                        beetle.transform.eulerAngles = plant.transform.eulerAngles + plant.beetleTransGrown[i].localEulerAngles;
-                        beetle.transform.localScale = plant.beetleTransGrown[i].localScale;
-
-                        beetle.GetComponent<Beetle>().setPlot(this);
-                        beetles.Add(beetle, i);
-                    }
-                    if (numberBeetles > -1 && !plant.multiHarvest) plant.getModel().GetComponent<HarvestFruit>().setNoBeetles(false);
-                }
+                SpawnBeetles(plant.beetleTrans2);
             }
 
             // Check if we should spawn in fruit.
@@ -111,65 +80,100 @@ public class Plot : MonoBehaviour {
             {
                 if (plant.multiHarvest)
                 {
-                    //Range from one fruit to maximum placements.
-                    int numberFruit = (int)(Random.Range(1f, plant.fruitTrans.Length - 1));
-                    for (int i = 0; i <= numberFruit; i++)
-                    {
-                        if (!fruits.ContainsValue(i))
-                        {
-                            Debug.Log("plant position: " + plant.transform.position.x + ", " + plant.transform.position.y + ", " + plant.transform.position.z);
-                            Debug.Log("fruit local position: " + plant.fruitTrans[i].localPosition.x + ", " + plant.fruitTrans[i].localPosition.y + ", " + plant.fruitTrans[i].localPosition.z);
-
-                            GameObject fruit = Instantiate(plant.fruit, plant.transform.position + plant.fruitTrans[i].localPosition, Quaternion.identity);
-                            fruit.transform.eulerAngles = plant.transform.eulerAngles + plant.fruitTrans[i].localEulerAngles;
-                            fruit.transform.localScale = plant.fruitTrans[i].localScale;
-
-                            Debug.Log("fruit final position: " + fruit.transform.position.x + ", " + fruit.transform.position.y + ", " + fruit.transform.position.z);
-
-                            fruit.GetComponent<Fruit>().setPlot(this);
-                            fruit.GetComponent<InteractionBehaviour>().manager = manager;
-                            fruits.Add(fruit, i);
-                        }
-                    }
+                    SpawnFruit(plant.fruitTrans);
                 } else
                 {
                     HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
                     if(harvestable != null) {
                         harvestable.setPlot(this);
                         harvestable.gameObject.GetComponent<InteractionBehaviour>().manager = manager;
+                        // Make sure we can't pick the plant until there are no more beetles.
+                        if (beetles.Count > 0)
+                        {
+                            harvestable.setNoBeetles(false);
+                        }
+                        else
+                        {
+                            harvestable.setNoBeetles(true);
+                        }
                     }
                 }
             }
-
         } else {
+            // If there's no plant left in the plot, make it replantable the next day.
             myDirt.makeFlat(true);
         }
 
         // Add new weeds.
         if (weeds.Count < maxWeeds)
         {
-            int numberWeeds = (int)(Random.Range(1f, maxWeeds - weeds.Count));
-            for (int i = 0; i < numberWeeds; i++)
-            {
-                GameObject weed = Instantiate(weedPrefab);
-                float xPos = Random.Range(-1 * radiusX, radiusX) + gameObject.transform.position.x;
-                float zPos = Random.Range(-1 * radiusZ, radiusZ) + gameObject.transform.position.z;
-                float scale = Random.Range(0.9f, 1.5f);
-                weed.transform.position = new Vector3(xPos, gameObject.transform.position.y, zPos);
-                weed.transform.eulerAngles = new Vector3(Random.Range(-5f, 5), Random.Range(0f, 360f), Random.Range(-5f, 5));
-                weed.transform.localScale = new Vector3(scale, scale, scale);
-
-                // Keep track of spawned weeds.
-                weed.GetComponent<PullWeed>().setPlot(this);
-                weeds.Add(weed);
-            }
-            // Don't let people dig dirt until all weeds are gone.
-            myDirt.noWeeds = false;
+            SpawnWeeds();
         }
 
         // Reset watering.
         myDirt.setWetness(0f);
     }
+
+
+
+    private void SpawnBeetles(Transform[] transforms) {
+        //Range from no beetles (-1) to maximum placements.
+        int numberBeetles = (int)(Random.Range(-1f, transforms.Length - 1));
+        for (int i = 0; i <= numberBeetles; i++)
+        {
+            //Make sure we don't spawn in duplicates.
+            if (!beetles.ContainsValue(i))
+            {
+                GameObject beetle = Instantiate(beetlePrefab);
+                beetle.transform.position = plant.transform.position + transforms[i].localPosition;
+                beetle.transform.eulerAngles = plant.transform.eulerAngles + transforms[i].localEulerAngles;
+                beetle.transform.localScale = transforms[i].localScale;
+
+                beetle.GetComponent<Beetle>().setPlot(this);
+                beetles.Add(beetle, i);
+            }
+        }
+    }
+
+    private void SpawnFruit(Transform[] transforms) {
+        //Range from one fruit to maximum placements.
+        int numberFruit = (int)(Random.Range(1f, transforms.Length - 1));
+        for (int i = 0; i <= numberFruit; i++)
+        {
+            if (!fruits.ContainsValue(i))
+            {
+                GameObject fruit = Instantiate(plant.fruit, plant.transform.position + transforms[i].localPosition, Quaternion.identity);
+                fruit.transform.eulerAngles = plant.transform.eulerAngles + transforms[i].localEulerAngles;
+                fruit.transform.localScale = transforms[i].localScale;
+
+                fruit.GetComponent<Fruit>().setPlot(this);
+                fruit.GetComponent<InteractionBehaviour>().manager = manager;
+                fruits.Add(fruit, i);
+            }
+        }
+    }
+
+    private void SpawnWeeds() {
+        int numberWeeds = (int)(Random.Range(1f, maxWeeds - weeds.Count));
+        for (int i = 0; i < numberWeeds; i++)
+        {
+            GameObject weed = Instantiate(weedPrefab);
+            float xPos = Random.Range(-1 * radiusX, radiusX) + gameObject.transform.position.x;
+            float zPos = Random.Range(-1 * radiusZ, radiusZ) + gameObject.transform.position.z;
+            float scale = Random.Range(0.9f, 1.5f);
+            weed.transform.position = new Vector3(xPos, gameObject.transform.position.y, zPos);
+            weed.transform.eulerAngles = new Vector3(Random.Range(-5f, 5), Random.Range(0f, 360f), Random.Range(-5f, 5));
+            weed.transform.localScale = new Vector3(scale, scale, scale);
+
+            // Keep track of spawned weeds.
+            weed.GetComponent<PullWeed>().setPlot(this);
+            weeds.Add(weed);
+        }
+        // Don't let people dig dirt until all weeds are gone.
+        myDirt.noWeeds = false;
+    }
+
+
 
     //Keep states of plot up-to-date.
     public void removeFromWeeds(GameObject weed)
@@ -193,6 +197,8 @@ public class Plot : MonoBehaviour {
     {
         fruits.Remove(fruit);
     }
+
+
 
     //Following are all data modification functions to be used by saving/loading (primarily).
     public void setPlant(Plant p, int stage) {

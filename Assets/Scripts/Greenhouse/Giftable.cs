@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Giftable : MonoBehaviour
 {
+    public string giftName;
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Outbox"))

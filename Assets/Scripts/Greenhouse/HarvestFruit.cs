@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class HarvestFruit : MonoBehaviour {
 
-    public string fruitName;
-
     private bool noBeetles;
     private Plot plotIn;
     private Rigidbody rb;
@@ -43,6 +41,7 @@ public class HarvestFruit : MonoBehaviour {
             rb.useGravity = true;
             col.isTrigger = false;
             plotIn.RemovePlant();
+            TimeManager.instance.AddGarbage(gameObject);
         }
 	}
 }
