@@ -112,11 +112,11 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 TimeManager.instance.SetDay(saved.previousDay);
                 LoadPlots(saved.plots);
                 LoadOutboxes(saved.outboxes);
-
-                //After restoring the state of the previous play session, advance to the next day.
-                TimeManager.instance.NextDay();
             }
         }
+
+        //After restoring the state of the previous play session, advance to the next day.
+        TimeManager.instance.NextDay();
     }
 
     private void LoadPlots(SavePlot[] savedPlots) {
