@@ -53,7 +53,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
         for (int i = 0; i < toSave.Length; i++)
         {
             Plot curr = toSave[i];
-            Debug.Log("Now saving plot " + curr.gameObject.name);
             SavePlot plotSave = new SavePlot();
 
             ID plotID = new ID();
@@ -62,7 +61,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             plotSave.plotID = plotID;
 
             if(curr.GetPlant() != null) {
-                Debug.Log("Found plant " + curr.GetPlant().plant + " in plot. Now processing.");
                 plotSave.plant = curr.GetPlant().plant;
                 plotSave.plantDayBorn = curr.GetPlant().GetDayBorn();
                 plotSave.plantStage = curr.GetPlant().GetStage();
@@ -142,7 +140,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             // Otherwise, we'll start with the original, default scene.
             if (saved != null)
             {
-                Debug.Log("Found saved data. Now loading Day " + saved.previousDay);
                 TimeManager.instance.SetDay(saved.previousDay);
                 if (saved.previousDay >= 0)
                 {
@@ -176,12 +173,10 @@ public class SaveLoadGreenhouse : MonoBehaviour {
         Plot[] plots = TimeManager.instance.plots;
         foreach (Plot plot in plots)
         {
-            Debug.Log("Loading plot " + plot.gameObject.name);
             SavePlot savedData = FindSavedPlot(plot, savedPlots);
 
             //Load in data for plant in plot.
             if(savedData.plant != null && savedData.plant != "") {
-                Debug.Log("Found plant " + savedData.plant + " in plot. Now resetting to stage " + savedData.plantStage);
 
                 GameObject loadPlant = (GameObject)Instantiate(Resources.Load(pathToPlantPrefabs + savedData.plant));
                 Plant plant = loadPlant.GetComponent<Plant>();

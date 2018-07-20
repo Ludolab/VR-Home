@@ -33,8 +33,7 @@ public class Plant : MonoBehaviour
 			Destroy(model);
         }
 
-        model = Instantiate(growthStages[stage]);
-        model.transform.position = transform.position + growthStagesTrans[stage].localPosition;
+        model = Instantiate(growthStages[stage], transform.position + growthStagesTrans[stage].localPosition, Quaternion.identity);
         model.transform.eulerAngles = transform.eulerAngles + growthStagesTrans[stage].localEulerAngles;
         model.transform.localScale = growthStagesTrans[stage].localScale;
 	}
