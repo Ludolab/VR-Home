@@ -43,7 +43,6 @@ public class HarvestFruit : MonoBehaviour {
 
 	private void Update()
 	{
-
         if (rbikPrevFrame == false && rb.isKinematic == true) Debug.Log("rb activated again");
         rbikPrevFrame = rb.isKinematic;
 	}
