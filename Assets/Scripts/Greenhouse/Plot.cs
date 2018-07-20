@@ -191,14 +191,18 @@ public class Plot : MonoBehaviour {
 
     public void removeFromBeetles(GameObject beetle)
     {
-        Debug.Log("Removin beetle from plot");
+        Debug.Log("Removing beetle from plot");
         beetles.Remove(beetle);
         HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
         if (plant.getStage() == plant.nonFruitingStages
             && !plant.multiHarvest
             && harvestable != null
             && beetles.Count == 0)
-            harvestable.setNoBeetles(true); Debug.Log("Now no beetles on pickable plant.");
+        {
+            harvestable.setNoBeetles(true);
+            Debug.Log("Now no beetles on pickable plant.");
+        }
+            
     }
 
     public void removeFromFruits(GameObject fruit)
