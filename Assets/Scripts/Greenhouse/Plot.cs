@@ -95,12 +95,12 @@ public class Plot : MonoBehaviour {
                         if (beetles.Count > 0)
                         {
                             Debug.Log("Found beetles. Making plant unharvestable.");
-                            harvestable.setNoBeetles(false, manager);
+                            harvestable.setManager(manager);
                         }
                         else
                         {
                             Debug.Log("Found no beetles. Making plant harvestable.");
-                            harvestable.setNoBeetles(true, manager);
+                            harvestable.setManager(manager);
                         }
                     }
                 }
@@ -201,10 +201,17 @@ public class Plot : MonoBehaviour {
             && harvestable != null
             && beetles.Count == 0)
         {
-            harvestable.setNoBeetles(true, manager);
+            harvestable.setPlot(this);
+            harvestable.setManager(manager);
             Debug.Log("Now no beetles on pickable plant.");
         }
             
+    }
+
+    public void SquishBeetles() {
+        foreach (GameObject beetle in beetles.Keys) {
+            beetle.GetComponent<Beetle>().Squish();
+        }
     }
 
     public void removeFromFruits(GameObject fruit)

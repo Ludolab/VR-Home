@@ -15,26 +15,29 @@ public class HarvestFruit : MonoBehaviour {
         rb = this.gameObject.GetComponent<Rigidbody>();
         ib = this.gameObject.GetComponent<InteractionBehaviour>();
         col = this.gameObject.GetComponent<Collider>();
-        ib.enabled = false;
+        ib.enabled = true;
         rb.useGravity = false;
         col.isTrigger = true;
     }
 
-    public void setNoBeetles(bool nb, InteractionManager m) {
+    /*public void setNoBeetles(bool nb, InteractionManager m) {
         Debug.Log("Setting if plot plant is in has beetles. Value is: " + nb);
         noBeetles = nb;
         if (noBeetles) {
             ib.enabled = true;
             ib.manager = m;
         } else {
-            ib.manager = null;
             ib.enabled = false;
         }
-    }
+    }*/
 
     public void setPlot(Plot plot) {
         Debug.Log("Setting plot of pickable plant.");
         plotIn = plot;
+    }
+
+    public void setManager(InteractionManager m) {
+        ib.manager = m;
     }
 
 	private void OnTriggerExit(Collider other)
@@ -42,6 +45,7 @@ public class HarvestFruit : MonoBehaviour {
         if(plotIn != null
            && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>()
            && other.gameObject.transform.position.y <= gameObject.transform.position.y) {
+            plotIn.SquishBeetles();
             rb.useGravity = true;
             col.isTrigger = false;
             plotIn.RemovePlant();
