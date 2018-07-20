@@ -28,6 +28,8 @@ public class Plot : MonoBehaviour {
         planted.transform.eulerAngles = new Vector3(0, 0, 0);
         planted.transform.localScale = new Vector3(1, 1, 1);
         plant.PlantPlant();
+
+        TimeManager.instance.RemoveStarter(mySeedCollider.myStarter);
         Destroy(mySeedCollider.myStarter.gameObject);
     }
 

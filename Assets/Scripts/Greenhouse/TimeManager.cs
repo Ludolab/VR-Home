@@ -18,6 +18,7 @@ public class TimeManager : MonoBehaviour
 	private Neighbor[] neighbors;
 	//private List<Plant> plants = new List<Plant>();
 	private List<GameObject> garbage = new List<GameObject>();
+    private List<Starter> seedStarters = new List<Starter>();
 
 	private void Awake()
 	{
@@ -90,4 +91,19 @@ public class TimeManager : MonoBehaviour
 	{
 		garbage.Add(obj);
 	}
+
+    public void AddStarter(Starter starter)
+    {
+        seedStarters.Add(starter);
+    }
+
+    public void RemoveStarter(Starter starter)
+    {
+        seedStarters.Remove(starter);
+    }
+
+    public Starter[] GetStarters()
+    {
+        return seedStarters.ToArray();
+    }
 }

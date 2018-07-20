@@ -12,7 +12,9 @@ public class SaveLoadGreenhouse : MonoBehaviour {
     public string userToLoad;
     public bool saveNew;
     public bool loadPrevious;
+    public bool doNotGoToNextDay;
     public string pathToPlantPrefabs;
+    public GameObject[] day0Starters;
 
 	private void Start () {
         if (loadPrevious) Load();
@@ -28,6 +30,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
         current.previousDay = TimeManager.instance.GetDay();
         current.plots = SavePlots();
         current.outboxes = SaveOutboxes();
+        current.seedStarters = SaveStarters();
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedRoom" + SceneManager.GetActiveScene().name + userToLoad + ".gh");
@@ -99,6 +102,24 @@ public class SaveLoadGreenhouse : MonoBehaviour {
         return outboxes;
     }
 
+    private SaveStarter[] SaveStarters() {
+        Starter[] toSave = TimeManager.instance.GetStarters();
+        SaveStarter[] starters = new SaveStarter[toSave.Length];
+        for (int i = 0; i < toSave.Length; i++) {
+            Starter curr = toSave[i];
+            SaveStarter starterSave = new SaveStarter();
+
+            starterSave.plantType = curr.plantName;
+            starterSave.xPos = curr.gameObject.transform.position.x;
+            starterSave.yPos = curr.gameObject.transform.position.y;
+            starterSave.zPos = curr.gameObject.transform.position.z;
+
+            starters[i] = starterSave;
+        }
+
+        return starters;
+    }
+
     private void Load() {
         if (File.Exists(Application.persistentDataPath + "/savedRoom" + SceneManager.GetActiveScene().name + userToLoad + ".gh"))
         {
@@ -113,11 +134,25 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             {
                 Debug.Log("Found saved data. Now loading Day " + saved.previousDay);
                 TimeManager.instance.SetDay(saved.previousDay);
+                if (saved.previousDay > 0)
+                {
+                    foreach (GameObject starter in day0Starters)
+                    {
+                        Destroy(starter);
+                    }
+                } else {
+                    foreach (GameObject starter in day0Starters)
+                    {
+                        Starter starterComp = starter.GetComponent<Starter>();
+                        if (starterComp != null) TimeManager.instance.AddStarter(starterComp);
+                    }
+                }
                 LoadPlots(saved.plots);
                 LoadOutboxes(saved.outboxes);
+                LoadSeedStarters(saved.seedStarters);
 
                 //After restoring the state of the previous play session, advance to the next day.
-                TimeManager.instance.NextDay();
+                if(!doNotGoToNextDay) TimeManager.instance.NextDay();
             } else {
                 TimeManager.instance.ProcessDay();
             }
@@ -244,5 +279,17 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             if (saved.neighbor == toFind.GetLabel()) return saved;
         }
         return null;
+    }
+
+    private void LoadSeedStarters(SaveStarter[] starters) {
+        foreach(SaveStarter saved in starters) {
+            GameObject starter = (GameObject)Instantiate(Resources.Load("Prefabs/Starter"));
+            Starter starterComp = starter.GetComponent<Starter>();
+            starterComp.plantName = saved.plantType;
+            starterComp.RefreshLabel();
+            starter.transform.position = new Vector3(saved.xPos, saved.yPos, saved.zPos);
+
+            TimeManager.instance.AddStarter(starterComp);
+        }
     }
 }

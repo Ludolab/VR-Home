@@ -43,7 +43,8 @@ public class Neighbor : MonoBehaviour
 		GameObject seedObj = Instantiate(seedPrefab, position, seedPrefab.transform.rotation);
 		Starter starter = seedObj.GetComponent<Starter>();
 		starter.plantName = seedName;
-		starter.RefreshLabel();
+        starter.RefreshLabel();
+        TimeManager.instance.AddStarter(starter);
 		return seedObj;
 	}
 

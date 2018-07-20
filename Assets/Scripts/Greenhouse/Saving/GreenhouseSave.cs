@@ -36,7 +36,7 @@ public class SaveOutbox
 public class SaveStarter
 {
     [SerializeField] public string plantType;
-    [SerializeField] public int xPos;
-    [SerializeField] public int yPos;
-    [SerializeField] public int zPos;
+    [SerializeField] public float xPos;
+    [SerializeField] public float yPos;
+    [SerializeField] public float zPos;
 }
