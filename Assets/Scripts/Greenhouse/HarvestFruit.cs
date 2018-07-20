@@ -10,6 +10,8 @@ public class HarvestFruit : MonoBehaviour {
     private Rigidbody rb;
     private Collider col;
 
+    private bool rbikPrevFrame;
+
     private void Awake() {
         rb = this.gameObject.GetComponent<Rigidbody>();
         col = this.gameObject.GetComponent<Collider>();
@@ -37,5 +39,12 @@ public class HarvestFruit : MonoBehaviour {
 
             TimeManager.instance.AddGarbage(gameObject);
         }
+	}
+
+	private void Update()
+	{
+
+        if (rbikPrevFrame == false && rb.isKinematic == true) Debug.Log("rb activated again");
+        rbikPrevFrame = rb.isKinematic;
 	}
 }
