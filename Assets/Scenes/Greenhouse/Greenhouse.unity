@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: b8196c0eaa1b8a947b285f0c5607652c, type: 3}
   m_Sun: {fileID: 649030550}
-  m_IndirectSpecularColor: {r: 0.12944126, g: 0.2873758, b: 0.5510494, a: 1}
+  m_IndirectSpecularColor: {r: 0.12958537, g: 0.28737637, b: 0.55095816, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -845,6 +845,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0810fea227ba64671b52c7a255f94123, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &287803483 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1005245795807104, guid: 0810fea227ba64671b52c7a255f94123,
+    type: 2}
+  m_PrefabInternal: {fileID: 287803482}
 --- !u!1001 &289579471
 Prefab:
   m_ObjectHideFlags: 0
@@ -2934,6 +2939,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0810fea227ba64671b52c7a255f94123, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &808188096 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1005245795807104, guid: 0810fea227ba64671b52c7a255f94123,
+    type: 2}
+  m_PrefabInternal: {fileID: 808188095}
 --- !u!1001 &816504924
 Prefab:
   m_ObjectHideFlags: 0
@@ -4577,7 +4587,12 @@ MonoBehaviour:
   userToLoad: test
   saveNew: 1
   loadPrevious: 1
+  doNotGoToNextDay: 0
   pathToPlantPrefabs: Prefabs/Plants/
+  day0Starters:
+  - {fileID: 808188096}
+  - {fileID: 1587705401}
+  - {fileID: 287803483}
 --- !u!4 &1092318745
 Transform:
   m_ObjectHideFlags: 0
@@ -6797,6 +6812,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0810fea227ba64671b52c7a255f94123, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1587705401 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1005245795807104, guid: 0810fea227ba64671b52c7a255f94123,
+    type: 2}
+  m_PrefabInternal: {fileID: 1587705400}
 --- !u!1001 &1589090819
 Prefab:
   m_ObjectHideFlags: 0

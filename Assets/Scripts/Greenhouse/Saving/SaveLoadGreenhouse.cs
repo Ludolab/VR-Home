@@ -17,7 +17,15 @@ public class SaveLoadGreenhouse : MonoBehaviour {
     public GameObject[] day0Starters;
 
 	private void Start () {
-        if (loadPrevious) Load();
+        if (loadPrevious) {
+            Load();
+        } else {
+            foreach (GameObject starter in day0Starters)
+            {
+                Starter starterComp = starter.GetComponent<Starter>();
+                if (starterComp != null) TimeManager.instance.AddStarter(starterComp);
+            }
+        }
 	}
 
 	private void OnApplicationQuit()
