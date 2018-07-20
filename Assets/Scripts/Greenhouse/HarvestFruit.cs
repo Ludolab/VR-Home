@@ -29,8 +29,8 @@ public class HarvestFruit : MonoBehaviour {
            && other.gameObject.transform.position.y <= gameObject.transform.position.y) {
             Debug.Log("Plant now exiting plot");
             plotIn.SquishBeetles();
-            rb.useGravity = true;
             rb.isKinematic = false;
+            rb.useGravity = true;
             col.isTrigger = false;
             plotIn.RemovePlant();
             TimeManager.instance.AddGarbage(gameObject);
