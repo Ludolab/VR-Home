@@ -21,6 +21,7 @@ public class HarvestFruit : MonoBehaviour {
     }
 
     public void setNoBeetles(bool nb) {
+        Debug.Log("Setting if plot plant is in has beetles. Value is: " + nb);
         noBeetles = nb;
         if (noBeetles) {
             ib.enabled = true;
@@ -30,6 +31,7 @@ public class HarvestFruit : MonoBehaviour {
     }
 
     public void setPlot(Plot plot) {
+        Debug.Log("Setting plot of pickable plant.");
         plotIn = plot;
     }
 
@@ -37,7 +39,7 @@ public class HarvestFruit : MonoBehaviour {
 	{
         if(plotIn != null
            && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>()
-           && other.gameObject.transform.position.y <= gameObject.transform.position.y ) {
+           && other.gameObject.transform.position.y <= gameObject.transform.position.y) {
             rb.useGravity = true;
             col.isTrigger = false;
             plotIn.RemovePlant();
