@@ -20,7 +20,6 @@ public class Plant : MonoBehaviour
 
 	public void PlantPlant()
 	{
-        Debug.Log("Now spawning plant " + plant);
 		//TimeManager.instance.AddPlant(this);
 		dayBorn = TimeManager.instance.GetDay();
 		stage = 0;

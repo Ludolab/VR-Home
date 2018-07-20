@@ -7,13 +7,13 @@ public class HarvestFruit : MonoBehaviour {
 
     private bool noBeetles;
     private Plot plotIn;
-    private Rigidbody rb;
     private InteractionBehaviour ib;
+    private Rigidbody rb;
     private Collider col;
 
     private void Start() {
         rb = this.gameObject.GetComponent<Rigidbody>();
-        ib = this.gameObject.GetComponent<InteractionBehaviour>();
+
         col = this.gameObject.GetComponent<Collider>();
         ib.enabled = true;
         rb.useGravity = false;
@@ -32,12 +32,7 @@ public class HarvestFruit : MonoBehaviour {
     }*/
 
     public void setPlot(Plot plot) {
-        Debug.Log("Setting plot of pickable plant.");
         plotIn = plot;
-    }
-
-    public void setManager(InteractionManager m) {
-        ib.manager = m;
     }
 
 	private void OnTriggerExit(Collider other)

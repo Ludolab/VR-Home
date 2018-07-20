@@ -22,7 +22,6 @@ public class Plot : MonoBehaviour {
     private List<GameObject> weeds = new List<GameObject>(); //Keep track of weeds.
 
     public void AbsorbPlant(){
-        Debug.Log("Now planting plant: " + mySeedCollider.myStarter.plantName);
         GameObject planted = (GameObject)Instantiate(Resources.Load("Prefabs/Plants/" + mySeedCollider.myStarter.plantName));
         plant = planted.GetComponent<Plant>();
         planted.transform.position = gameObject.transform.position;
@@ -59,10 +58,8 @@ public class Plot : MonoBehaviour {
 
 	public void StartDay()
     {
-        Debug.Log("Starting day on plot: " + this.gameObject.name);
         if (plant != null)
         {
-            Debug.Log("Recognizing plot " + this.gameObject.name + " has a plant " + plant.plant + ". Now processing.");
             // Make sure we can't plant again in this dirt so long as the plant remains.
             myDirt.makeFlat(false);
 
@@ -81,27 +78,14 @@ public class Plot : MonoBehaviour {
             // Check if we should spawn in fruit.
             if (plant.getStage() == plant.nonFruitingStages)
             {
-                if (plant.multiHarvest)
+                if (plant.multiHarvest && beetles.Count == 0)
                 {
                     SpawnFruit(plant.fruitTrans);
                 } else
                 {
-                    Debug.Log("Found single harvest plant.");
                     HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
                     if(harvestable != null) {
                         harvestable.setPlot(this);
-                        Debug.Log(beetles.Count);
-                        // Make sure we can't pick the plant until there are no more beetles.
-                        if (beetles.Count > 0)
-                        {
-                            Debug.Log("Found beetles. Making plant unharvestable.");
-                            harvestable.setManager(manager);
-                        }
-                        else
-                        {
-                            Debug.Log("Found no beetles. Making plant harvestable.");
-                            harvestable.setManager(manager);
-                        }
                     }
                 }
             }
@@ -138,7 +122,6 @@ public class Plot : MonoBehaviour {
                 beetle.GetComponent<Beetle>().setPlot(this);
                 beetles.Add(beetle, i);
             }
-            Debug.Log("adding beetle.");
         }
     }
 
@@ -157,7 +140,6 @@ public class Plot : MonoBehaviour {
                 fruit.GetComponent<InteractionBehaviour>().manager = manager;
                 fruits.Add(fruit, i);
             }
-            Debug.Log("adding fruit.");
         }
     }
 
@@ -176,7 +158,6 @@ public class Plot : MonoBehaviour {
             // Keep track of spawned weeds.
             weed.GetComponent<PullWeed>().setPlot(this);
             weeds.Add(weed);
-            Debug.Log("adding weed.");
         }
         // Don't let people dig dirt until all weeds are gone.
         myDirt.noWeeds = false;
@@ -193,19 +174,7 @@ public class Plot : MonoBehaviour {
 
     public void removeFromBeetles(GameObject beetle)
     {
-        Debug.Log("Removing beetle from plot");
         beetles.Remove(beetle);
-        HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
-        if (plant.getStage() == plant.nonFruitingStages
-            && !plant.multiHarvest
-            && harvestable != null
-            && beetles.Count == 0)
-        {
-            harvestable.setPlot(this);
-            harvestable.setManager(manager);
-            Debug.Log("Now no beetles on pickable plant.");
-        }
-            
     }
 
     public void SquishBeetles() {
