@@ -139,6 +139,7 @@ public class Plot : MonoBehaviour {
                 beetle.GetComponent<Beetle>().setPlot(this);
                 beetles.Add(beetle, i);
             }
+            Debug.Log("adding beetle.");
         }
     }
 
@@ -157,6 +158,7 @@ public class Plot : MonoBehaviour {
                 fruit.GetComponent<InteractionBehaviour>().manager = manager;
                 fruits.Add(fruit, i);
             }
+            Debug.Log("adding fruit.");
         }
     }
 
@@ -175,6 +177,7 @@ public class Plot : MonoBehaviour {
             // Keep track of spawned weeds.
             weed.GetComponent<PullWeed>().setPlot(this);
             weeds.Add(weed);
+            Debug.Log("adding weed.");
         }
         // Don't let people dig dirt until all weeds are gone.
         myDirt.noWeeds = false;
