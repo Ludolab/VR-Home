@@ -9,6 +9,7 @@ public class HarvestFruit : MonoBehaviour {
     private Plot plotIn;
     private Rigidbody rb;
     private Collider col;
+    private bool pulledUp = false;
 
     private bool rbikPrevFrame;
 
@@ -32,14 +33,19 @@ public class HarvestFruit : MonoBehaviour {
             plotIn.SquishBeetles();
             col.isTrigger = false;
             rb.useGravity = true;
-            rb.isKinematic = false;
+            pulledUp = true;
             plotIn.RemovePlant();
 
             Debug.Log(rb.isKinematic);
 
             TimeManager.instance.AddGarbage(gameObject);
         }
+        if(other.gameObject.name.StartsWith("Contact") && pulledUp == true) {
+            rb.isKinematic = false;
+        }
 	}
+
+
 
 	private void Update()
 	{
