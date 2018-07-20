@@ -90,18 +90,17 @@ public class Plot : MonoBehaviour {
                     HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
                     if(harvestable != null) {
                         harvestable.setPlot(this);
-                        harvestable.gameObject.GetComponent<InteractionBehaviour>().manager = manager;
                         Debug.Log(beetles.Count);
                         // Make sure we can't pick the plant until there are no more beetles.
                         if (beetles.Count > 0)
                         {
                             Debug.Log("Found beetles. Making plant unharvestable.");
-                            harvestable.setNoBeetles(false);
+                            harvestable.setNoBeetles(false, manager);
                         }
                         else
                         {
                             Debug.Log("Found no beetles. Making plant harvestable.");
-                            harvestable.setNoBeetles(true);
+                            harvestable.setNoBeetles(true, manager);
                         }
                     }
                 }
@@ -202,7 +201,7 @@ public class Plot : MonoBehaviour {
             && harvestable != null
             && beetles.Count == 0)
         {
-            harvestable.setNoBeetles(true);
+            harvestable.setNoBeetles(true, manager);
             Debug.Log("Now no beetles on pickable plant.");
         }
             

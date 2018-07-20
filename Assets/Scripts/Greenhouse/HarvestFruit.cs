@@ -20,12 +20,14 @@ public class HarvestFruit : MonoBehaviour {
         col.isTrigger = true;
     }
 
-    public void setNoBeetles(bool nb) {
+    public void setNoBeetles(bool nb, InteractionManager m) {
         Debug.Log("Setting if plot plant is in has beetles. Value is: " + nb);
         noBeetles = nb;
         if (noBeetles) {
             ib.enabled = true;
+            ib.manager = m;
         } else {
+            ib.manager = null;
             ib.enabled = false;
         }
     }
