@@ -7,6 +7,7 @@ public class GreenhouseSave {
     [SerializeField] public int previousDay;
     [SerializeField] public SavePlot[] plots;
     [SerializeField] public SaveOutbox[] outboxes;
+    [SerializeField] public SaveStarter[] seedStarters;
     //TODO: add saving of seeds in seed tray.
 }
 
@@ -29,4 +30,13 @@ public class SaveOutbox
     [SerializeField] public string neighbor;
     [SerializeField] public string[] givenGifts; //What the player has put into the box.
     [SerializeField] public string[] received; //What the player has received and not yet taken out of the box.
+}
+
+[System.Serializable]
+public class SaveStarter
+{
+    [SerializeField] public string plantType;
+    [SerializeField] public int xPos;
+    [SerializeField] public int yPos;
+    [SerializeField] public int zPos;
 }

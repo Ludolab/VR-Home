@@ -12,7 +12,6 @@ public class Outbox : MonoBehaviour
 	private Neighbor owner;
 
 	private List<Giftable> gifts = new List<Giftable>();
-    // TODO: save a reference of seed starters sent to the player, in order to save unremoved seed starters when going to next day in separate play-sessions.
 
 	public void SetOwner(Neighbor neighbor)
 	{
