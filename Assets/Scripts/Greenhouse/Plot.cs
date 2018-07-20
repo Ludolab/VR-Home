@@ -22,6 +22,7 @@ public class Plot : MonoBehaviour {
     private List<GameObject> weeds = new List<GameObject>(); //Keep track of weeds.
 
     public void AbsorbPlant(){
+        Debug.Log("Now planting plant: " + mySeedCollider.myStarter.plantName);
         GameObject planted = (GameObject)Instantiate(Resources.Load("Prefabs/Plants/" + mySeedCollider.myStarter.plantName));
         plant = planted.GetComponent<Plant>();
         planted.transform.position = gameObject.transform.position;
@@ -83,17 +84,21 @@ public class Plot : MonoBehaviour {
                     SpawnFruit(plant.fruitTrans);
                 } else
                 {
+                    Debug.Log("Found single harvest plant.");
                     HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
                     if(harvestable != null) {
                         harvestable.setPlot(this);
                         harvestable.gameObject.GetComponent<InteractionBehaviour>().manager = manager;
+                        Debug.Log(beetles.Count);
                         // Make sure we can't pick the plant until there are no more beetles.
                         if (beetles.Count > 0)
                         {
+                            Debug.Log("Found beetles. Making plant unharvestable.");
                             harvestable.setNoBeetles(false);
                         }
                         else
                         {
+                            Debug.Log("Found no beetles. Making plant harvestable.");
                             harvestable.setNoBeetles(true);
                         }
                     }
@@ -184,13 +189,14 @@ public class Plot : MonoBehaviour {
 
     public void removeFromBeetles(GameObject beetle)
     {
+        Debug.Log("Removin beetle from plot");
         beetles.Remove(beetle);
         HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
         if (plant.getStage() == plant.nonFruitingStages
             && !plant.multiHarvest
             && harvestable != null
             && beetles.Count == 0)
-            harvestable.setNoBeetles(true);
+            harvestable.setNoBeetles(true); Debug.Log("Now no beetles on pickable plant.");
     }
 
     public void removeFromFruits(GameObject fruit)
