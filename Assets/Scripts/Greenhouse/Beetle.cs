@@ -52,7 +52,6 @@ public class Beetle : MonoBehaviour
 
 	public void Squish()
 	{
-        Debug.Log("Squished beetle");
 		SpawnParticles();
         if(plotIn != null) plotIn.RemoveFromBeetles(gameObject);
 		Destroy(gameObject);

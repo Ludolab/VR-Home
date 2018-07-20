@@ -27,12 +27,14 @@ public class HarvestFruit : MonoBehaviour {
         if(plotIn != null
            && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>()
            && other.gameObject.transform.position.y <= gameObject.transform.position.y) {
-            Debug.Log("Plant now exiting plot");
             plotIn.SquishBeetles();
-            rb.isKinematic = false;
-            rb.useGravity = true;
             col.isTrigger = false;
+            rb.useGravity = true;
+            rb.isKinematic = false;
             plotIn.RemovePlant();
+
+            Debug.Log(rb.isKinematic);
+
             TimeManager.instance.AddGarbage(gameObject);
         }
 	}
