@@ -65,6 +65,23 @@ public class Plot : MonoBehaviour {
 
             if (beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.advanceStage();
 
+            // Check if we should spawn in fruit.
+            if (plant.getStage() == plant.nonFruitingStages)
+            {
+                if (plant.multiHarvest && beetles.Count == 0)
+                {
+                    SpawnFruit(plant.fruitTrans);
+                }
+                else
+                {
+                    HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
+                    if (harvestable != null)
+                    {
+                        harvestable.setPlot(this);
+                    }
+                }
+            }
+
             // Check for stage and spawn in appropriate beetles.
             // Note since the plant won't grow if any beetles remained, we shouldn't have conflicts.
             if (plant.getStage() == 1 && plant.beetleTrans1 != null)
@@ -75,20 +92,7 @@ public class Plot : MonoBehaviour {
                 SpawnBeetles(plant.beetleTrans2);
             }
 
-            // Check if we should spawn in fruit.
-            if (plant.getStage() == plant.nonFruitingStages)
-            {
-                if (plant.multiHarvest && beetles.Count == 0)
-                {
-                    SpawnFruit(plant.fruitTrans);
-                } else
-                {
-                    HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
-                    if(harvestable != null) {
-                        harvestable.setPlot(this);
-                    }
-                }
-            }
+
         } else {
             // If there's no plant left in the plot, make it replantable the next day.
             myDirt.makeFlat(true);

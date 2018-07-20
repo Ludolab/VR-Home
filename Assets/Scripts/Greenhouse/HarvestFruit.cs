@@ -15,7 +15,6 @@ public class HarvestFruit : MonoBehaviour {
         rb = this.gameObject.GetComponent<Rigidbody>();
 
         col = this.gameObject.GetComponent<Collider>();
-        ib.enabled = true;
         rb.useGravity = false;
         col.isTrigger = true;
     }
