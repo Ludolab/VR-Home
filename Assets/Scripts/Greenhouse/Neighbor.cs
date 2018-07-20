@@ -30,7 +30,8 @@ public class Neighbor : MonoBehaviour
 
 	public GameObject GeneratePage(string text)
 	{
-		Vector3 position = outbox.transform.position; //TODO: offset?
+		Vector3 anchorPos = outbox.paperTransform.position;
+		Vector3 position = anchorPos + pagePrefab.transform.localScale.y / 2 * Vector3.down; //move half down to anchor at hook
 		GameObject pageObj = Instantiate(pagePrefab, position, pagePrefab.transform.rotation);
 		Page page = pageObj.GetComponent<Page>();
 		page.SetContents(text, info.font, info.fontMaterial, info.paperTexture, info.fontSize);

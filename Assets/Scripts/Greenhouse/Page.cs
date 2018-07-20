@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Leap.Unity.Interaction;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,15 @@ public class Page : MonoBehaviour
 	public GameObject textObj;
 	public GameObject paperObj;
 	public GameObject paperBackObj;
+
+	private ConfigurableJoint joint;
+	private InteractionBehaviour ib;
+
+	private void Awake()
+	{
+		joint = GetComponent<ConfigurableJoint>();
+		ib = GetComponent<InteractionBehaviour>();
+	}
 
 	private void Start()
 	{
@@ -29,4 +39,17 @@ public class Page : MonoBehaviour
 		paperRend.material.mainTexture = paperTexture;
 		paperBackRend.material.mainTexture = paperTexture;
 	}
+
+	public void Grab()
+	{
+		Destroy(joint);
+		StartCoroutine(RefreshLocked());
+	}
+
+	private IEnumerator RefreshLocked()
+	{
+		yield return null;
+		ib.RefreshPositionLockedState();
+	}
+
 }

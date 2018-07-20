@@ -7,6 +7,7 @@ public class Outbox : MonoBehaviour
 
 	public GameObject labelPrefab;
 	public Transform labelTransform;
+	public Transform paperTransform;
 
 	private GameObject label;
 	private Neighbor owner;
