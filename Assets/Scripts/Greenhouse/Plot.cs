@@ -59,8 +59,10 @@ public class Plot : MonoBehaviour {
 
 	public void StartDay()
     {
+        Debug.Log("Starting day on plot: " + this.gameObject.name);
         if (plant != null)
         {
+            Debug.Log("Recognizing plot " + this.gameObject.name + " has a plant " + plant.plant + ". Now processing.");
             // Make sure we can't plant again in this dirt so long as the plant remains.
             myDirt.makeFlat(false);
 
