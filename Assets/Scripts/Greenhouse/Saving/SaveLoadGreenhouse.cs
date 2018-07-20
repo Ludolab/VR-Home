@@ -49,15 +49,15 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             plotID.objCoordZ = curr.transform.position.z;
             plotSave.plotID = plotID;
 
-            if(curr.getPlant() != null) {
-                plotSave.plant = curr.getPlant().plant;
-                plotSave.plantDayBorn = curr.getPlant().getDayBorn();
-                plotSave.plantStage = curr.getPlant().getStage();
+            if(curr.GetPlant() != null) {
+                plotSave.plant = curr.GetPlant().plant;
+                plotSave.plantDayBorn = curr.GetPlant().GetDayBorn();
+                plotSave.plantStage = curr.GetPlant().GetStage();
                 plotSave.watered = curr.myDirt.getWetness();
             }
 
             List<SaveObject> weeds = new List<SaveObject>();
-            foreach(GameObject weed in curr.getWeeds()) {
+            foreach(GameObject weed in curr.GetWeeds()) {
                 SaveObject saveWeed = new SaveObject();
                 saveWeed.xPosition = weed.transform.position.x;
                 saveWeed.yPosition = weed.transform.position.y;
@@ -73,8 +73,8 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             }
             plotSave.weeds = weeds.ToArray();
 
-            plotSave.beetles = curr.getBeetleIDs();
-            plotSave.fruits = curr.getFruitIDs();
+            plotSave.beetles = curr.GetBeetleIDs();
+            plotSave.fruits = curr.GetFruitIDs();
 
             plots[i] = plotSave;
         }
@@ -139,8 +139,8 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 GameObject loadPlant = (GameObject)Instantiate(Resources.Load(pathToPlantPrefabs + savedData.plant));
                 Plant plant = loadPlant.GetComponent<Plant>();
                 if(plant != null) {
-                    plot.setPlant(plant, savedData.plantStage);
-                    plant.setDayBorn(savedData.plantDayBorn);
+                    plot.SetPlant(plant, savedData.plantStage);
+                    plant.SetDayBorn(savedData.plantDayBorn);
 
                     //Load in beetles leftover from previous session.
                     if(savedData.beetles != null) {
@@ -192,7 +192,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             beetle.transform.localScale = transforms[beetleID].localScale;
 
             beetle.GetComponent<Beetle>().setPlot(plot);
-            plot.addToBeetles(beetle, beetleID);
+            plot.AddToBeetles(beetle, beetleID);
         }
     }
 
@@ -205,7 +205,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
 
             fruit.GetComponent<Fruit>().setPlot(plot);
             fruit.GetComponent<InteractionBehaviour>().manager = plot.manager;
-            plot.addToFruit(fruit, fruitID);
+            plot.AddToFruit(fruit, fruitID);
         }
     }
 
@@ -218,7 +218,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             weed.transform.localScale = new Vector3(savedWeed.xScale, savedWeed.yScale, savedWeed.zScale);
 
             weed.GetComponent<PullWeed>().setPlot(plot);
-            plot.addToWeeds(weed);
+            plot.AddToWeeds(weed);
         }
     }
 

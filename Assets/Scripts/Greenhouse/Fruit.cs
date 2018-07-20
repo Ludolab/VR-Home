@@ -60,7 +60,7 @@ public class Fruit : MonoBehaviour
 	{
 		SpawnParticles();
 		Destroy(joint);
-        plotIn.removeFromFruits(gameObject);
+        plotIn.RemoveFromFruits(gameObject);
 		StartCoroutine(RefreshLocked());
 		TimeManager.instance.AddGarbage(gameObject);
 	}

@@ -63,10 +63,10 @@ public class Plot : MonoBehaviour {
             // Make sure we can't plant again in this dirt so long as the plant remains.
             myDirt.makeFlat(false);
 
-            if (beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.advanceStage();
+            if (beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f) plant.AdvanceStage();
 
             // Check if we should spawn in fruit.
-            if (plant.getStage() == plant.nonFruitingStages)
+            if (plant.GetStage() == plant.nonFruitingStages)
             {
                 if (plant.multiHarvest && beetles.Count == 0)
                 {
@@ -74,20 +74,20 @@ public class Plot : MonoBehaviour {
                 }
                 else
                 {
-                    HarvestFruit harvestable = plant.getModel().GetComponent<HarvestFruit>();
+                    HarvestFruit harvestable = plant.GetModel().GetComponent<HarvestFruit>();
                     if (harvestable != null)
                     {
-                        harvestable.setPlot(this);
+                        harvestable.SetPlot(this);
                     }
                 }
             }
 
             // Check for stage and spawn in appropriate beetles.
             // Note since the plant won't grow if any beetles remained, we shouldn't have conflicts.
-            if (plant.getStage() == 1 && plant.beetleTrans1 != null)
+            if (plant.GetStage() == 1 && plant.beetleTrans1 != null)
             {
                 SpawnBeetles(plant.beetleTrans1);
-            } else if (plant.getStage() == 2 && plant.beetleTrans2 != null)
+            } else if (plant.GetStage() == 2 && plant.beetleTrans2 != null)
             {
                 SpawnBeetles(plant.beetleTrans2);
             }
@@ -170,13 +170,13 @@ public class Plot : MonoBehaviour {
 
 
     //Keep states of plot up-to-date.
-    public void removeFromWeeds(GameObject weed)
+    public void RemoveFromWeeds(GameObject weed)
     {
         weeds.Remove(weed);
         if (weeds.Count == 0) myDirt.noWeeds = true;
     }
 
-    public void removeFromBeetles(GameObject beetle)
+    public void RemoveFromBeetles(GameObject beetle)
     {
         beetles.Remove(beetle);
     }
@@ -187,7 +187,7 @@ public class Plot : MonoBehaviour {
         }
     }
 
-    public void removeFromFruits(GameObject fruit)
+    public void RemoveFromFruits(GameObject fruit)
     {
         fruits.Remove(fruit);
     }
@@ -195,37 +195,37 @@ public class Plot : MonoBehaviour {
 
 
     //Following are all data modification functions to be used by saving/loading (primarily).
-    public void setPlant(Plant p, int stage)
+    public void SetPlant(Plant p, int stage)
     {
         plant = p;
         plant.transform.position = gameObject.transform.position;
         plant.transform.eulerAngles = new Vector3(0, 0, 0);
         plant.transform.localScale = new Vector3(1, 1, 1);
-        plant.setStage(stage);
+        plant.SetStage(stage);
     }
 
-    public void addToWeeds(GameObject weed) {
+    public void AddToWeeds(GameObject weed) {
         weeds.Add(weed);
     }
 
-    public void addToBeetles(GameObject beetle, int instance) {
+    public void AddToBeetles(GameObject beetle, int instance) {
         beetles.Add(beetle, instance);
     }
 
-    public void addToFruit(GameObject fruit, int instance) {
+    public void AddToFruit(GameObject fruit, int instance) {
         fruits.Add(fruit, instance);
     }
 
-    public Plant getPlant()
+    public Plant GetPlant()
     {
         return plant;
     }
 
-    public List<GameObject> getWeeds() {
+    public List<GameObject> GetWeeds() {
         return weeds;
     }
 
-    public int[] getBeetleIDs() {
+    public int[] GetBeetleIDs() {
         ICollection currentBeetles = beetles.Values;
         int[] ids = new int[currentBeetles.Count];
         currentBeetles.CopyTo(ids, 0);
@@ -233,7 +233,7 @@ public class Plot : MonoBehaviour {
 
     }
 
-    public int[] getFruitIDs() {
+    public int[] GetFruitIDs() {
         ICollection currentFruit = fruits.Values;
         int[] ids = new int[currentFruit.Count];
         currentFruit.CopyTo(ids, 0);

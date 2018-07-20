@@ -39,7 +39,7 @@ public class Plant : MonoBehaviour
         model.transform.localScale = growthStagesTrans[stage].localScale;
 	}
 
-    public void advanceStage() {
+    public void AdvanceStage() {
         stage++;
         if (stage >= growthStages.Length)
         {
@@ -48,24 +48,24 @@ public class Plant : MonoBehaviour
         UpdateModel();
     }
 
-    public void setStage(int s) {
+    public void SetStage(int s) {
         stage = s;
         UpdateModel();
     }
 
-    public int getStage() {
+    public int GetStage() {
         return stage;
     }
 
-    public void setDayBorn(int db) {
+    public void SetDayBorn(int db) {
         dayBorn = db;
     }
 
-    public int getDayBorn() {
+    public int GetDayBorn() {
         return dayBorn;
     }
 
-    public GameObject getModel() {
+    public GameObject GetModel() {
         return model;
     }
 }
