@@ -11,6 +11,7 @@
 - Texture Transition Shader by Professor Snake: https://answers.unity.com/questions/569528/making-specific-shader-for-texture-transition-effe.html
 - Iridescent Shader (for cloth water) by Minions Art: https://www.patreon.com/posts/quick-game-art-15466787
 - Node Editor Framework by Seneral: https://github.com/Seneral/Node_Editor_Framework/tree/develop
+- Water Fx Particles by All VR Education: https://assetstore.unity.com/packages/vfx/particles/environment/water-fx-particles-48580
 
 ### Models
 - Record player by VIS Games: https://assetstore.unity.com/packages/3d/props/interior/record-player-4249
