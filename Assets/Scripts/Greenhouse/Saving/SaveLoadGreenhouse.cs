@@ -273,7 +273,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             if(savedData != null && savedData.givenGifts != null) {
                 foreach(string given in savedData.givenGifts) {
                     GameObject gift = (GameObject)Instantiate(Resources.Load("Prefabs/Fruit/" + given), outbox.transform);
-                    gift.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    gift.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                     ConfigurableJoint joint = gift.GetComponent<ConfigurableJoint>();
                     if (joint != null) Destroy(joint);
                 }
