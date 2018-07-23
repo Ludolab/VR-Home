@@ -9,8 +9,6 @@ public class Beetle : MonoBehaviour
 	public float flickMultiplier;
 
 	public GameObject particlePrefab;
-	public AudioClip squishSound;
-	public Color squishColor;
 
 	private Rigidbody rb;
 
@@ -50,6 +48,7 @@ public class Beetle : MonoBehaviour
 		rb.AddForce(vel * flickMultiplier, ForceMode.Impulse);
 	}
 
+	[ContextMenu("Squish")]
 	public void Squish()
 	{
 		SpawnParticles();
@@ -59,12 +58,7 @@ public class Beetle : MonoBehaviour
 
 	private void SpawnParticles()
 	{
-		GameObject particles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
-		ParticleSystem ps = particles.GetComponent<ParticleSystem>();
-		ParticleSystem.MainModule main = ps.main;
-		main.startColor = squishColor;
-		AudioSource aud = particles.GetComponent<AudioSource>();
-		aud.clip = squishSound;
+		Instantiate(particlePrefab, transform.position, Quaternion.identity);
 	}
 
     public void setPlot(Plot plot) {

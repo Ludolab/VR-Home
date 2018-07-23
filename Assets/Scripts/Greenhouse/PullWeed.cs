@@ -12,8 +12,6 @@ public class PullWeed : MonoBehaviour
 	public GameObject modelObj;
 
 	public GameObject particlePrefab;
-	public AudioClip pickSound;
-	public Color particleColor;
 
 	/*private InteractionBehaviour ib;
 	private Rigidbody rb;
@@ -134,12 +132,7 @@ public class PullWeed : MonoBehaviour
 
 	private void SpawnParticles()
 	{
-		GameObject particles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
-		ParticleSystem ps = particles.GetComponent<ParticleSystem>();
-		ParticleSystem.MainModule main = ps.main;
-		main.startColor = particleColor;
-		AudioSource aud = particles.GetComponent<AudioSource>();
-		aud.clip = pickSound;
+		Instantiate(particlePrefab, transform.position, Quaternion.identity);
 	}
 
     public void setPlot(Plot plot) {
