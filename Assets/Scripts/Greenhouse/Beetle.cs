@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Leap.Unity.Interaction;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class Beetle : MonoBehaviour
 	public GameObject particlePrefab;
 
 	private Rigidbody rb;
+	private InteractionBehaviour ib;
 
 	private bool isFlicked;
 
@@ -19,13 +21,14 @@ public class Beetle : MonoBehaviour
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+		ib = GetComponent<InteractionBehaviour>();
 		isFlicked = false;
 	}
 
 	private void OnCollisionStay(Collision collision)
 	{
 		bool isLeapHand = collision.gameObject.name.StartsWith("Contact");
-		print("collision stay with " + collision.gameObject.name + ", ishand = " + isLeapHand);
+		/*print("collision stay with " + collision.gameObject.name + ", ishand = " + isLeapHand);
 		if (!isFlicked && isLeapHand)
 		{
 			Vector3 vel = collision.gameObject.GetComponent<Rigidbody>().velocity;
@@ -35,10 +38,26 @@ public class Beetle : MonoBehaviour
 				isFlicked = true;
 				Flick(vel);
 			}
-		}
+		}*/
 		if (isFlicked && !isLeapHand)
 		{
 			Squish();
+		}
+	}
+
+	public void ContactStay()
+	{
+		InteractionController closestController = ib.closestHoveringController;
+		print("contact stay with " + closestController);
+		if (!isFlicked)
+		{
+			Vector3 vel = closestController.velocity;
+			print("speed: " + vel.magnitude);
+			if (vel.magnitude > flickThreshold)
+			{
+				isFlicked = true;
+				Flick(vel);
+			}
 		}
 	}
 
