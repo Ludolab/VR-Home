@@ -22,6 +22,6 @@ public class SoundWhenHit : MonoBehaviour {
     {
         audioSrc.volume = collision.relativeVelocity.magnitude * SOUND_SCALE * originalVolume;
         audioSrc.pitch = collision.relativeVelocity.magnitude * SOUND_SCALE * originalPitch;
-        audioSrc.Play();
+		audioSrc.PlayOneShot(audioSrc.clip);
     }
 }
