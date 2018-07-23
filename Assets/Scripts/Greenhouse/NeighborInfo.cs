@@ -11,7 +11,8 @@ public class NeighborInfo : ScriptableObject
 	{
 		Always,
 		RequireGift,
-		RequireNoGift
+		RequireNoGift,
+		RequireGiftType
 	}
 
 	[Serializable]
@@ -25,7 +26,8 @@ public class NeighborInfo : ScriptableObject
 		public int day;
 
 		public SpawnOption spawnOption;
-		//TODO: type of gift required?
+
+		public string requiredGiftType; //only used if spawnOption == RequireGiftType
 	}
 
 	public Material fontMaterial;

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Neighbor : MonoBehaviour
@@ -97,6 +98,11 @@ public class Neighbor : MonoBehaviour
 		if (letter.spawnOption == NeighborInfo.SpawnOption.RequireNoGift && todaysGift.Length == 0)
 		{
 			return true;
+		}
+
+		if (letter.spawnOption == NeighborInfo.SpawnOption.RequireGiftType)
+		{
+			return todaysGift.Any(s => s == letter.requiredGiftType);
 		}
 
 		return false;

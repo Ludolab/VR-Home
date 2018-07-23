@@ -53,7 +53,7 @@ public class Outbox : MonoBehaviour
 		List<string> giftNames = new List<string>();
 		foreach (Giftable g in gifts)
 		{
-			giftNames.Add(g.name);
+			giftNames.Add(g.giftName);
 			//Destroy(g.gameObject);
 		}
 		gifts.Clear();
