@@ -185,7 +185,7 @@ public class Plot : MonoBehaviour {
 
     public void SquishBeetles() {
         GameObject[] toSquish = new GameObject[beetles.Keys.Count];
-        beetles.Keys.CopyTo(toSquish, beetles.Keys.Count);
+        beetles.Keys.CopyTo(toSquish, 0);
         foreach (GameObject beetle in toSquish) {
             beetle.GetComponent<Beetle>().Squish();
         }
