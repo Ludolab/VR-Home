@@ -34,11 +34,9 @@ public class Plot : MonoBehaviour {
     }
 
     public void RemovePlant() {
-        Debug.Log("Removing plant from plot.");
         Destroy(plant);
         plant = null;
         myDirt.makeFlat(true);
-        Debug.Log(plant == null);
     }
 
 	/* EVERYTHING BELOW WAS REPLACED BY "absorbPlant". I am commenting it in case we need any of it later.
@@ -186,7 +184,9 @@ public class Plot : MonoBehaviour {
     }
 
     public void SquishBeetles() {
-        foreach (GameObject beetle in beetles.Keys) {
+        GameObject[] toSquish = new GameObject[beetles.Keys.Count];
+        beetles.Keys.CopyTo(toSquish, beetles.Keys.Count);
+        foreach (GameObject beetle in toSquish) {
             beetle.GetComponent<Beetle>().Squish();
         }
     }

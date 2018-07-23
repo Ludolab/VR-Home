@@ -31,10 +31,10 @@ public class HarvestFruit : MonoBehaviour
         if (plotIn != null
             && other.gameObject.name == "Surface Collider")
         {
-            plotIn.SquishBeetles();
             rb.useGravity = true;
             rb.isKinematic = false;
             pulledUp = true;
+            plotIn.SquishBeetles();
             plotIn.RemovePlant();
 
             TimeManager.instance.AddGarbage(gameObject);
