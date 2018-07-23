@@ -28,6 +28,7 @@ public class HarvestFruit : MonoBehaviour
 
 	private void OnCollisionExit(Collision other)
 	{
+        Debug.Log("Exiting collision");
         if (plotIn != null
             && other.gameObject.name == "Surface Collider")
         {
