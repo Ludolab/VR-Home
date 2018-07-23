@@ -43,7 +43,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1343712615588854}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -92,7 +92,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1343712615588854}
-  m_Mesh: {fileID: 4300004, guid: 3a383a05f8e084fbf8ca277442111b2d, type: 3}
+  m_Mesh: {fileID: 4300006, guid: 3a383a05f8e084fbf8ca277442111b2d, type: 3}
 --- !u!54 &54324934409717334
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -388,10 +388,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.088381484
-  m_Height: 0.25139028
+  m_Radius: 0.07070518
+  m_Height: 0.20111224
   m_Direction: 1
-  m_Center: {x: 0, y: 0.000000052154064, z: 0.039616052}
+  m_Center: {x: 0, y: -0.0000000037252903, z: 0.044492584}
 --- !u!153 &153192489307571882
 ConfigurableJoint:
   m_ObjectHideFlags: 1

@@ -43,7 +43,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611017636726436}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -91,7 +91,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611017636726436}
-  m_Mesh: {fileID: 4300002, guid: d00af8b99ee4d4509911158808bc14ba, type: 3}
+  m_Mesh: {fileID: 4300004, guid: d00af8b99ee4d4509911158808bc14ba, type: 3}
 --- !u!54 &54467195955627562
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -387,10 +387,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.042079367
-  m_Height: 0.3713164
+  m_Radius: 0.033663493
+  m_Height: 0.29705313
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.043588698}
+  m_Center: {x: 0, y: 0, z: -0.023329845}
 --- !u!153 &153114023626285806
 ConfigurableJoint:
   m_ObjectHideFlags: 1
@@ -398,10 +398,10 @@ ConfigurableJoint:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611017636726436}
   m_ConnectedBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0.17, z: 0.03}
+  m_Anchor: {x: 0, y: 0.14, z: -0.03}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.17, z: 0.03}
+  m_ConnectedAnchor: {x: 0.22180127, y: 0.7046846, z: -0.123692274}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
