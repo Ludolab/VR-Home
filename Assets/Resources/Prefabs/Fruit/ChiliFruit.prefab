@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114073406538561192}
   - component: {fileID: 114157715358184506}
   - component: {fileID: 114156153989728584}
-  - component: {fileID: 65992083732261312}
+  - component: {fileID: 136828215406542104}
   m_Layer: 0
   m_Name: ChiliFruit
   m_TagString: Untagged
@@ -91,7 +91,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1320748229465608}
-  m_Mesh: {fileID: 4300000, guid: 289c855f4787e49989510d1b0b382f1e, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 289c855f4787e49989510d1b0b382f1e, type: 3}
 --- !u!54 &54191138519096524
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -107,18 +107,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65992083732261312
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.096025385, y: 0.6495999, z: 0.10673889}
-  m_Center: {x: -0.048012692, y: -0.2351352, z: -0.008465957}
 --- !u!82 &82475323936194438
 AudioSource:
   m_ObjectHideFlags: 1
@@ -390,6 +378,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c442e399461c2f74fba6c23d546ea47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &136828215406542104
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320748229465608}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.02134778
+  m_Height: 0.25983995
+  m_Direction: 1
+  m_Center: {x: 0.016001828, y: 0.000000007450581, z: 0.006730847}
 --- !u!153 &153900950381376414
 ConfigurableJoint:
   m_ObjectHideFlags: 1
@@ -397,10 +398,10 @@ ConfigurableJoint:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1320748229465608}
   m_ConnectedBody: {fileID: 0}
-  m_Anchor: {x: -0.02, y: 0, z: -0.02}
+  m_Anchor: {x: 0.02, y: 0.15, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.02, y: 0.399, z: -0.02}
+  m_ConnectedAnchor: {x: 0.02, y: 0.15, z: 0}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0

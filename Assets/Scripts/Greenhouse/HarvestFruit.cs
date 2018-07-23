@@ -31,7 +31,6 @@ public class HarvestFruit : MonoBehaviour
         if (plotIn != null
             && other.gameObject.name == "Surface Collider")
         {
-            Debug.Log("Picked fruit");
             plotIn.SquishBeetles();
             col.isTrigger = false;
             rb.useGravity = true;

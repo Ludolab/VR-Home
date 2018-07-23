@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114384189569472842}
   - component: {fileID: 114599741470608102}
   - component: {fileID: 114788420293587972}
-  - component: {fileID: 65186371890848638}
+  - component: {fileID: 136931287587454980}
   m_Layer: 0
   m_Name: EggplantFruit
   m_TagString: Untagged
@@ -91,7 +91,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1746422679918174}
-  m_Mesh: {fileID: 4300000, guid: b15697792aa094de0bdbdd41c6ca20a7, type: 3}
+  m_Mesh: {fileID: 4300002, guid: b15697792aa094de0bdbdd41c6ca20a7, type: 3}
 --- !u!54 &54144554657570636
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -107,18 +107,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65186371890848638
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746422679918174}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3785645, y: 0.96347946, z: 0.37855083}
-  m_Center: {x: 0.08747427, y: 0.23176357, z: -0.040344797}
 --- !u!82 &82154878496206194
 AudioSource:
   m_ObjectHideFlags: 1
@@ -390,6 +378,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   giftName: EggplantFruit
+--- !u!136 &136931287587454980
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746422679918174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.075712904
+  m_Height: 0.3853918
+  m_Direction: 1
+  m_Center: {x: -0.12501742, y: 0, z: 0}
 --- !u!153 &153395930034300900
 ConfigurableJoint:
   m_ObjectHideFlags: 1
@@ -397,10 +398,10 @@ ConfigurableJoint:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1746422679918174}
   m_ConnectedBody: {fileID: 0}
-  m_Anchor: {x: 0.1, y: 0.7, z: -0.05}
+  m_Anchor: {x: -0.13, y: 0.19, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.1, y: 2.178, z: -0.05}
+  m_ConnectedAnchor: {x: -0.13, y: 0.19, z: 0}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
