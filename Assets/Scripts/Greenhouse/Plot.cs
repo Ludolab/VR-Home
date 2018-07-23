@@ -70,7 +70,7 @@ public class Plot : MonoBehaviour {
             // Check if we should spawn in fruit.
             if (plant.GetStage() == plant.nonFruitingStages)
             {
-                if (plant.multiHarvest && beetles.Count == 0)
+                if (plant.multiHarvest && beetles.Count == 0 && beetles.Count == 0 && weeds.Count == 0 && myDirt.getWetness() > 0.7f)
                 {
                     SpawnFruit(plant.fruitTrans);
                 }
