@@ -19,7 +19,7 @@ public class NeighborInfo : ScriptableObject
 	public struct LetterInfo
 	{
 		[TextArea(3, 15)]
-		public string text1;
+		public string text;
 
 		public string[] gifts;
 

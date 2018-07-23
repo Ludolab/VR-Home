@@ -69,7 +69,7 @@ public class Neighbor : MonoBehaviour
 				//print("[Day " + day + "] Requires gift: " + l.dependsOnGift + ", gift: " + todaysGift);
 				if (CanSpawn(l))
 				{
-					GeneratePage(l.text1);
+					GeneratePage(l.text);
 					GenerateSeeds(l.gifts);
 				}
 			}
