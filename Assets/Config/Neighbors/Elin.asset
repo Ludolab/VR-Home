@@ -19,7 +19,7 @@ MonoBehaviour:
   ownsOutbox: 1
   labelOverride: 
   letters:
-  - text1: "Hi, it seems I was last to \nhear about your arrival. \nWelcome to our
+  - text: "Hi, it seems I was last to \nhear about your arrival. \nWelcome to our
       community!\n\nI hear that you\u2019ve got a \ngreenhouse, so I\u2019m attaching\nsome
       seeds I found in my shed.\nNot sure what they are?\n\n - Elin"
     gifts:
@@ -27,7 +27,7 @@ MonoBehaviour:
     - Lettuce
     day: 1
     spawnOption: 0
-  - text1: "Sending some more seeds.\nAnything come of the last ones?\n\n - Elin"
+  - text: "Sending some more seeds.\nAnything come of the last ones?\n\n - Elin"
     gifts:
     - Leek
     - Onion
