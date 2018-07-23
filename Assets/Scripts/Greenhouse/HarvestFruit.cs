@@ -31,6 +31,7 @@ public class HarvestFruit : MonoBehaviour
         if (plotIn != null
             && other.gameObject.name == "Surface Collider")
         {
+            Debug.Log("Picked fruit");
             plotIn.SquishBeetles();
             col.isTrigger = false;
             rb.useGravity = true;
@@ -40,10 +41,11 @@ public class HarvestFruit : MonoBehaviour
 
             TimeManager.instance.AddGarbage(gameObject);
         }
-
-        if(pulledUp && other.gameObject.name.StartsWith("Contact")) {
-            rb.useGravity = true;
-            rb.isKinematic = false;
-        }
 	}
+
+    [ContextMenu("Drop")]
+    public void Drop() {
+        rb.useGravity = true;
+        rb.isKinematic = false;
+    }
 }

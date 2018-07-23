@@ -276,6 +276,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                     gift.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                     ConfigurableJoint joint = gift.GetComponent<ConfigurableJoint>();
                     if (joint != null) Destroy(joint);
+                    TimeManager.instance.AddGarbage(gift);
                 }
             }
         }
