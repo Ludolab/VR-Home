@@ -18,7 +18,7 @@ public class HarvestFruit : MonoBehaviour
         col = this.gameObject.GetComponent<Collider>();
         rb.useGravity = false;
         rb.isKinematic = true;
-        col.isTrigger = true;
+        col.isTrigger = false;
     }
 
     public void SetPlot(Plot plot)
@@ -34,7 +34,6 @@ public class HarvestFruit : MonoBehaviour
         {
             Debug.Log("Removing plant");
             plotIn.SquishBeetles();
-            col.isTrigger = false;
             rb.useGravity = true;
             rb.isKinematic = false;
             pulledUp = true;
