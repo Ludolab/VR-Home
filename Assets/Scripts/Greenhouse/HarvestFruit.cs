@@ -26,10 +26,10 @@ public class HarvestFruit : MonoBehaviour
         plotIn = plot;
     }
 
-    private void OnTriggerExit(Collider other)
-    {
+	private void OnCollisionExit(Collision other)
+	{
         if (plotIn != null
-           && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>())
+            && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collision>())
         {
             plotIn.SquishBeetles();
             col.isTrigger = false;
@@ -40,5 +40,10 @@ public class HarvestFruit : MonoBehaviour
 
             TimeManager.instance.AddGarbage(gameObject);
         }
-    }
+
+        if(pulledUp && other.gameObject.name.StartsWith("Contact")) {
+            rb.useGravity = true;
+            rb.isKinematic = false;
+        }
+	}
 }
