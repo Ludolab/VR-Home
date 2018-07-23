@@ -41,15 +41,4 @@ public class HarvestFruit : MonoBehaviour
             TimeManager.instance.AddGarbage(gameObject);
         }
     }
-
-	private void OnCollisionExit(Collision other)
-	{
-        Debug.Log("Detected collision exit.");
-        if (other.gameObject.name.StartsWith("Contact") && pulledUp == true)
-        {
-            Debug.Log("Detected exiting leap hand.");
-            rb.isKinematic = false;
-        }
-	}
-
 }
