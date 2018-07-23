@@ -27,18 +27,7 @@ public class Beetle : MonoBehaviour
 
 	private void OnCollisionStay(Collision collision)
 	{
-		bool isLeapHand = collision.gameObject.name.StartsWith("Contact");
-		/*print("collision stay with " + collision.gameObject.name + ", ishand = " + isLeapHand);
-		if (!isFlicked && isLeapHand)
-		{
-			Vector3 vel = collision.gameObject.GetComponent<Rigidbody>().velocity;
-			print("speed: " + vel.magnitude);
-			if (vel.magnitude > flickThreshold)
-			{
-				isFlicked = true;
-				Flick(vel);
-			}
-		}*/
+		bool isLeapHand = collision.gameObject.name.StartsWith("Contact"); //may not be fully accurate but doesn't really matter
 		if (isFlicked && !isLeapHand)
 		{
 			Squish();
@@ -48,11 +37,9 @@ public class Beetle : MonoBehaviour
 	public void ContactStay()
 	{
 		InteractionController closestController = ib.closestHoveringController;
-		print("contact stay with " + closestController);
 		if (!isFlicked)
 		{
 			Vector3 vel = closestController.velocity;
-			print("speed: " + vel.magnitude);
 			if (vel.magnitude > flickThreshold)
 			{
 				isFlicked = true;
@@ -66,6 +53,7 @@ public class Beetle : MonoBehaviour
 		rb.isKinematic = false;
 		rb.useGravity = true;
 		rb.AddForce(vel * flickMultiplier, ForceMode.Impulse);
+		if (plotIn != null) plotIn.RemoveFromBeetles(gameObject); //do this here too in case it doesn't land on anything
 	}
 
 	[ContextMenu("Squish")]
