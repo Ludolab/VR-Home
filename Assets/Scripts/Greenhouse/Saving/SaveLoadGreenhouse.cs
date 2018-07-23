@@ -272,10 +272,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             // Set previously given gifts for each outbox
             if(savedData != null && savedData.givenGifts != null) {
                 foreach(string given in savedData.givenGifts) {
-                    Giftable gift = new Giftable();
-                    gift.giftName = given;
-
-                    outbox.AddGift(gift);
+                    GameObject gift = (GameObject)Instantiate(Resources.Load("Prefabs/Fruit/" + given), outbox.transform);
                 }
             }
         }
