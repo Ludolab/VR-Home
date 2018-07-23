@@ -449,6 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befc05765ce6e6345bce4866373770aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  giftName: 
 --- !u!114 &114533338955435050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -460,15 +461,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a2a434b848e8441a6823305b19c1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitName: 
   unripeColor: {r: 0.08784264, g: 0.8867924, b: 0.24378105, a: 1}
-  particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
+  particlePrefab: {fileID: 1203994084319694, guid: 975ca475aaa96954d9123cb3bcd83f12,
     type: 2}
-  pickSound:
-  - {fileID: 8300000, guid: 7383e9a8f73064e71bfc248e71da8aba, type: 3}
-  - {fileID: 8300000, guid: 957ba31a9137d4079bb57e90d57943bc, type: 3}
-  - {fileID: 8300000, guid: ec941f546044945b39c7c349d290220a, type: 3}
-  - {fileID: 8300000, guid: 68810c78ecaa84754b97d90b86cf6ec3, type: 3}
+  squishy: 1
+  grabSounds: []
 --- !u!114 &114951180911778752
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -24,12 +24,14 @@ public class Fruit : MonoBehaviour
 {
 	public Color unripeColor;
 	public GameObject particlePrefab;
-	public AudioClip[] pickSound;
+	public bool squishy; //whether to make a squishing sound when grabbing
+	public AudioClip[] grabSounds;
 
-
+	private bool picked = false;
 	private ConfigurableJoint joint;
 	private InteractionBehaviour ib;
 	private Material mat;
+	private AudioSource audioSrc;
 
 	private Genome genome;
 
@@ -37,6 +39,7 @@ public class Fruit : MonoBehaviour
 	
 	private void Awake()
 	{
+		audioSrc = GetComponent<AudioSource>();
 		joint = GetComponent<ConfigurableJoint>();
 		ib = GetComponent<InteractionBehaviour>();
 		//mat = GetComponent<Renderer>().materials[1];
@@ -55,24 +58,31 @@ public class Fruit : MonoBehaviour
 		return genome;
 	}*/
 
+	[ContextMenu("Grab")]
+	public void Grab()
+	{
+		if (squishy)
+		{
+			audioSrc.PlayOneShot(grabSounds[Random.Range(0, grabSounds.Length)]);
+		}
+	}
+
 	[ContextMenu("Pick")]
 	public void Pick()
 	{
-		SpawnParticles();
-		Destroy(joint);
-        plotIn.RemoveFromFruits(gameObject);
-		StartCoroutine(RefreshLocked());
-		TimeManager.instance.AddGarbage(gameObject);
+		if (!picked)
+		{
+			SpawnParticles();
+			Destroy(joint);
+			if (plotIn != null) plotIn.RemoveFromFruits(gameObject);
+			StartCoroutine(RefreshLocked());
+			TimeManager.instance.AddGarbage(gameObject);
+		}
 	}
 
 	private void SpawnParticles()
 	{
-		GameObject particles = Instantiate(particlePrefab, transform.position, Quaternion.identity); //TODO: at anchor position?
-		ParticleSystem ps = particles.GetComponent<ParticleSystem>();
-		ParticleSystem.MainModule main = ps.main;
-		main.startColor = genome.color1;
-		AudioSource aud = particles.GetComponent<AudioSource>();
-		aud.clip = pickSound[Random.Range(0, pickSound.Length)];
+		Instantiate(particlePrefab, transform.position, Quaternion.identity); //TODO: at anchor position?
 	}
 
 	private IEnumerator RefreshLocked()
