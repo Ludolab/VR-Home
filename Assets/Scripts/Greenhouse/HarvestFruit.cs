@@ -35,19 +35,17 @@ public class HarvestFruit : MonoBehaviour
             plotIn.SquishBeetles();
             col.isTrigger = false;
             rb.useGravity = true;
+            rb.isKinematic = false;
             pulledUp = true;
             plotIn.RemovePlant();
 
             TimeManager.instance.AddGarbage(gameObject);
         }
-    }
 
-	private void OnCollisionExit(Collision other)
-	{
         if (other.gameObject.name.StartsWith("Contact") && pulledUp == true)
         {
             rb.isKinematic = false;
         }
-	}
+    }
 
 }
