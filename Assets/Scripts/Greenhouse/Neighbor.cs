@@ -102,7 +102,13 @@ public class Neighbor : MonoBehaviour
 
 		if (letter.spawnOption == NeighborInfo.SpawnOption.RequireGiftType)
 		{
-			return todaysGift.Any(s => s == letter.requiredGiftType);
+			print("gift: ");
+			foreach(string s in todaysGift)
+			{
+				print(s);
+			}
+			print("required: " + letter.requiredGiftType);
+			return todaysGift.Contains(letter.requiredGiftType);
 		}
 
 		return false;
