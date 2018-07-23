@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 54324934409717334}
   - component: {fileID: 114935306993239138}
   - component: {fileID: 153192489307571882}
-  - component: {fileID: 114097786977567428}
   - component: {fileID: 114547780859226980}
   - component: {fileID: 82200104563067928}
   - component: {fileID: 114128609851270792}
@@ -216,25 +215,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114097786977567428
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1343712615588854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a2a434b848e8441a6823305b19c1e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unripeColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
-  particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
-    type: 2}
-  pickSound:
-  - {fileID: 8300000, guid: 7383e9a8f73064e71bfc248e71da8aba, type: 3}
-  - {fileID: 8300000, guid: 957ba31a9137d4079bb57e90d57943bc, type: 3}
-  - {fileID: 8300000, guid: ec941f546044945b39c7c349d290220a, type: 3}
-  - {fileID: 8300000, guid: 68810c78ecaa84754b97d90b86cf6ec3, type: 3}
 --- !u!114 &114128609851270792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,13 +227,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unripeColor: {r: 0.08784264, g: 0.8867924, b: 0.24378105, a: 1}
-  particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
+  particlePrefab: {fileID: 1203994084319694, guid: 975ca475aaa96954d9123cb3bcd83f12,
     type: 2}
-  pickSound:
-  - {fileID: 8300000, guid: 7383e9a8f73064e71bfc248e71da8aba, type: 3}
-  - {fileID: 8300000, guid: 957ba31a9137d4079bb57e90d57943bc, type: 3}
-  - {fileID: 8300000, guid: ec941f546044945b39c7c349d290220a, type: 3}
-  - {fileID: 8300000, guid: 68810c78ecaa84754b97d90b86cf6ec3, type: 3}
+  squishy: 0
+  grabSounds: []
 --- !u!114 &114184968709459334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,7 +316,7 @@ MonoBehaviour:
       callback:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 114097786977567428}
+          - m_Target: {fileID: 0}
             m_MethodName: Pick
             m_Mode: 1
             m_Arguments:

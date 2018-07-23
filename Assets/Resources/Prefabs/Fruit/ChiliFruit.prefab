@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 54191138519096524}
   - component: {fileID: 114160365523278242}
   - component: {fileID: 153900950381376414}
-  - component: {fileID: 114221376846092818}
   - component: {fileID: 114969373118506564}
   - component: {fileID: 82475323936194438}
   - component: {fileID: 114073406538561192}
@@ -227,13 +226,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unripeColor: {r: 0.08784264, g: 0.8867924, b: 0.24378105, a: 1}
-  particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
+  particlePrefab: {fileID: 1203994084319694, guid: 975ca475aaa96954d9123cb3bcd83f12,
     type: 2}
-  pickSound:
-  - {fileID: 8300000, guid: 7383e9a8f73064e71bfc248e71da8aba, type: 3}
-  - {fileID: 8300000, guid: 957ba31a9137d4079bb57e90d57943bc, type: 3}
-  - {fileID: 8300000, guid: ec941f546044945b39c7c349d290220a, type: 3}
-  - {fileID: 8300000, guid: 68810c78ecaa84754b97d90b86cf6ec3, type: 3}
+  squishy: 0
+  grabSounds: []
 --- !u!114 &114156153989728584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,7 +304,7 @@ MonoBehaviour:
       callback:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 114221376846092818}
+          - m_Target: {fileID: 0}
             m_MethodName: Pick
             m_Mode: 1
             m_Arguments:
@@ -383,25 +379,6 @@ MonoBehaviour:
             m_CallState: 2
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
---- !u!114 &114221376846092818
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320748229465608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a2a434b848e8441a6823305b19c1e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unripeColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
-  particlePrefab: {fileID: 1203994084319694, guid: 598f01d7909263b44889cf88a3156be2,
-    type: 2}
-  pickSound:
-  - {fileID: 8300000, guid: 7383e9a8f73064e71bfc248e71da8aba, type: 3}
-  - {fileID: 8300000, guid: 957ba31a9137d4079bb57e90d57943bc, type: 3}
-  - {fileID: 8300000, guid: ec941f546044945b39c7c349d290220a, type: 3}
-  - {fileID: 8300000, guid: 68810c78ecaa84754b97d90b86cf6ec3, type: 3}
 --- !u!114 &114969373118506564
 MonoBehaviour:
   m_ObjectHideFlags: 1
