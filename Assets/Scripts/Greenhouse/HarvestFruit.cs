@@ -47,7 +47,7 @@ public class HarvestFruit : MonoBehaviour
         Debug.Log("Detected collision exit.");
         if (other.gameObject.name.StartsWith("Contact") && pulledUp == true)
         {
-            Debug.Log("Detected exiting leap hand.")
+            Debug.Log("Detected exiting leap hand.");
             rb.isKinematic = false;
         }
 	}

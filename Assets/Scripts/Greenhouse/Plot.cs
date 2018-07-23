@@ -34,7 +34,6 @@ public class Plot : MonoBehaviour {
     }
 
     public void RemovePlant() {
-        Debug.Log("Now removing plant from plot.");
         Destroy(plant);
         plant = null;
         myDirt.makeFlat(true);
