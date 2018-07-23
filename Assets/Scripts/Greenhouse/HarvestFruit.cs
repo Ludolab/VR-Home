@@ -23,7 +23,6 @@ public class HarvestFruit : MonoBehaviour
 
     public void SetPlot(Plot plot)
     {
-        Debug.Log("Now setting plot plant is in.");
         plotIn = plot;
     }
 
@@ -32,7 +31,6 @@ public class HarvestFruit : MonoBehaviour
         if (plotIn != null
            && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>())
         {
-            Debug.Log("Plant now leaving plot.");
             plotIn.SquishBeetles();
             col.isTrigger = false;
             rb.useGravity = true;
@@ -46,8 +44,10 @@ public class HarvestFruit : MonoBehaviour
 
 	private void OnCollisionExit(Collision other)
 	{
+        Debug.Log("Detected collision exit.");
         if (other.gameObject.name.StartsWith("Contact") && pulledUp == true)
         {
+            Debug.Log("Detected exiting leap hand.")
             rb.isKinematic = false;
         }
 	}
