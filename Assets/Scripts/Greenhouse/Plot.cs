@@ -34,9 +34,11 @@ public class Plot : MonoBehaviour {
     }
 
     public void RemovePlant() {
+        Debug.Log("Removing plant from plot.");
         Destroy(plant);
         plant = null;
         myDirt.makeFlat(true);
+        Debug.Log(plant == null);
     }
 
 	/* EVERYTHING BELOW WAS REPLACED BY "absorbPlant". I am commenting it in case we need any of it later.

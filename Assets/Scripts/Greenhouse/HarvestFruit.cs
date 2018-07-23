@@ -28,11 +28,9 @@ public class HarvestFruit : MonoBehaviour
 
 	private void OnCollisionExit(Collision other)
 	{
-        Debug.Log("Exiting collision");
         if (plotIn != null
             && other.gameObject.name == "Surface Collider")
         {
-            Debug.Log("Removing plant");
             plotIn.SquishBeetles();
             rb.useGravity = true;
             rb.isKinematic = false;
