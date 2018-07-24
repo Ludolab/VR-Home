@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 4909234785289416}
   - component: {fileID: 95956537090356592}
   - component: {fileID: 114857027905380832}
-  - component: {fileID: 135423107832548448}
+  - component: {fileID: 136436776345332220}
   - component: {fileID: 54900771138156644}
   - component: {fileID: 114508250864048364}
   - component: {fileID: 114888469353815614}
@@ -223,15 +223,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1688219852839992}
-  m_LocalRotation: {x: 0, y: 0.86868775, z: 0, w: 0.49536017}
-  m_LocalPosition: {x: 1.199, y: 0.827, z: 0.479}
+  m_LocalRotation: {x: -0, y: 0.9881621, z: -0, w: 0.1534138}
+  m_LocalPosition: {x: 1.205, y: 0.824, z: 0.369}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4449806238929676}
   - {fileID: 4294781969174534}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 120.61301, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 162.35, z: 0}
 --- !u!4 &4942567781975636
 Transform:
   m_ObjectHideFlags: 1
@@ -641,8 +641,8 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.021130083
   m_Center: {x: -0.43535027, y: 0.42911932, z: 0}
---- !u!135 &135423107832548448
-SphereCollider:
+--- !u!136 &136436776345332220
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -650,9 +650,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.35
-  m_Center: {x: 0, y: 0.3, z: 0}
+  m_Radius: 0.20565383
+  m_Height: 0.7016747
+  m_Direction: 1
+  m_Center: {x: -0.028626889, y: 0.2887832, z: -0.0010482076}
 --- !u!198 &198244616038159182
 ParticleSystem:
   m_ObjectHideFlags: 1
