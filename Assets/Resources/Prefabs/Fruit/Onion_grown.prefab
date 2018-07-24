@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114486153806789026}
   - component: {fileID: 114094011248932948}
   - component: {fileID: 114611338935419908}
-  - component: {fileID: 65891811813185402}
+  - component: {fileID: 136640357742443256}
   m_Layer: 0
   m_Name: Onion_grown
   m_TagString: Untagged
@@ -103,18 +103,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65891811813185402
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901268303434446}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.41221142, y: 0.5468993, z: 0.4011456}
-  m_Center: {x: 0.00999999, y: 0.22249979, z: -0.002745077}
 --- !u!114 &114094011248932948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -184,3 +172,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   giftName: Onion_grown
+--- !u!136 &136640357742443256
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901268303434446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.21221888
+  m_Height: 0.42443776
+  m_Direction: 1
+  m_Center: {x: 0.00999999, y: 0.13961583, z: -0.0061131716}
