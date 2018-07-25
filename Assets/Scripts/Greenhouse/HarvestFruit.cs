@@ -26,25 +26,25 @@ public class HarvestFruit : MonoBehaviour
         plotIn = plot;
     }
 
-	private void OnTriggerExit(Collider other)
-	{
-        if (plotIn != null
-            && other.gameObject.name == "Surface Collider")
-        {
+    [ContextMenu("Pick")]
+    public void Pick() {
+        if (!pulledUp) {
             rb.useGravity = true;
             rb.isKinematic = false;
             col.isTrigger = false;
             pulledUp = true;
-            plotIn.SquishBeetles();
-            plotIn.RemovePlant();
+            if(plotIn != null) {
+                plotIn.SquishBeetles();
+                plotIn.RemovePlant();
+            }
 
             TimeManager.instance.AddGarbage(gameObject);
         }
-	}
+    }
 
     [ContextMenu("Drop")]
     public void Drop() {
-        if(pulledUp == true) {
+        if(pulledUp) {
             rb.useGravity = true;
             rb.isKinematic = false;
         }
