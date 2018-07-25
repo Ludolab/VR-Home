@@ -23,6 +23,7 @@
 - Foliage by Jake Sullivan: https://assetstore.unity.com/packages/3d/vegetation/foliage-pack-free-66155
 - Small Plants by Keilbaum: https://assetstore.unity.com/packages/3d/vegetation/plants/small-plants-6930
 - Fire extinguisher by KrazyFX: https://assetstore.unity.com/packages/3d/props/fire-extinguisher-21147
+- Logs by Mikołaj Spychał: https://assetstore.unity.com/packages/3d/props/tools-and-logs-43971
 
 ### Sounds
 - Thud sound by OtisJames: https://freesound.org/people/OtisJames/sounds/215162/
