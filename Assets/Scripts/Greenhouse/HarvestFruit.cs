@@ -18,7 +18,7 @@ public class HarvestFruit : MonoBehaviour
         col = this.gameObject.GetComponent<Collider>();
         rb.useGravity = false;
         rb.isKinematic = true;
-        col.isTrigger = false;
+        col.isTrigger = true;
     }
 
     public void SetPlot(Plot plot)
@@ -26,13 +26,14 @@ public class HarvestFruit : MonoBehaviour
         plotIn = plot;
     }
 
-	private void OnCollisionExit(Collision other)
+	private void OnTriggerExit(Collider other)
 	{
         if (plotIn != null
             && other.gameObject.name == "Surface Collider")
         {
             rb.useGravity = true;
             rb.isKinematic = false;
+            col.isTrigger = false;
             pulledUp = true;
             plotIn.SquishBeetles();
             plotIn.RemovePlant();
@@ -43,7 +44,9 @@ public class HarvestFruit : MonoBehaviour
 
     [ContextMenu("Drop")]
     public void Drop() {
-        rb.useGravity = true;
-        rb.isKinematic = false;
+        if(pulledUp == true) {
+            rb.useGravity = true;
+            rb.isKinematic = false;
+        }
     }
 }
