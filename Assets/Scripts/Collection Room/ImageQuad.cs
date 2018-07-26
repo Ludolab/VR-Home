@@ -6,6 +6,8 @@ public class ImageQuad : MediaQuad
 {
 
     public GameObject rendObject;
+    public bool loadOnStart;
+    public Texture2D image;
 
     private Renderer rend;
 
@@ -18,6 +20,8 @@ public class ImageQuad : MediaQuad
             rendObject = gameObject;
         }
         rend = rendObject.GetComponent<Renderer>();
+
+        if (loadOnStart) SetTexture(image);
     }
 
     public void SetTexture(Texture2D texture)
