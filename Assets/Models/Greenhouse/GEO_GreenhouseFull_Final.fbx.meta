@@ -24,7 +24,22 @@ ModelImporter:
     4300002: GEO_Door
     4300004: GEO_Floor
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert14SG1
+    second: {fileID: 2100000, guid: 3494a07bf0cc40a4b949fe928cb140a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert15
+    second: {fileID: 2100000, guid: 8a72190f332a39c42bd3c61728f9d1c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert17
+    second: {fileID: 2100000, guid: 7d5cdf83f84c4ce40b2b129ec23e96cc, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
