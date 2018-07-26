@@ -25,6 +25,9 @@
 - Elemental Tomes by Inner Drive Studios: https://assetstore.unity.com/packages/3d/props/elemental-tomes-112086
 - Big Furniture Pack by Vertex Studio: https://assetstore.unity.com/packages/3d/props/furniture/big-furniture-pack-7717
 - Picture frames with photos by 3DFRK: https://assetstore.unity.com/packages/3d/props/interior/picture-frames-with-photos-106907
+- HQ Lion Statue by NOT_Lonely: https://assetstore.unity.com/packages/3d/props/exterior/hq-lion-statue-50736
+- YGS Mugs by YGS Assets: https://assetstore.unity.com/packages/3d/props/interior/ygs-mugs-96665
+- Horse Statue by Chermandirkun: https://assetstore.unity.com/packages/3d/environments/fantasy/horse-statue-52025
 
 ### Shaders
 - Outline shader by Luke Kabat: https://github.com/Shrimpey/Outlined-Diffuse-Shader-Fixed
