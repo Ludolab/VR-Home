@@ -23,6 +23,8 @@
 - Books by VIS Games: https://assetstore.unity.com/packages/3d/props/interior/books-3356
 - HQ Old Books by Totsamiydanya: https://assetstore.unity.com/packages/3d/props/hq-old-books-96841
 - Elemental Tomes by Inner Drive Studios: https://assetstore.unity.com/packages/3d/props/elemental-tomes-112086
+- Big Furniture Pack by Vertex Studio: https://assetstore.unity.com/packages/3d/props/furniture/big-furniture-pack-7717
+- Picture frames with photos by 3DFRK: https://assetstore.unity.com/packages/3d/props/interior/picture-frames-with-photos-106907
 
 ### Shaders
 - Outline shader by Luke Kabat: https://github.com/Shrimpey/Outlined-Diffuse-Shader-Fixed
