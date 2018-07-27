@@ -11,19 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16d0d31cba4db345998894e889f9ec6, type: 3}
   m_Name: Sanjay
   m_EditorClassIdentifier: 
-  fontMaterial: {fileID: 2100000, guid: bdc2005ff350fbd4eb6bd55d1dfe10a8, type: 2}
-  font: {fileID: 12800000, guid: 65f5e1d3ea189b14d88af0c733ffdb2b, type: 3}
+  fontMaterial: {fileID: 2100000, guid: 9a444590b3a44cf46a556b100696c1f1, type: 2}
+  font: {fileID: 12800000, guid: 6e7c148662300fd46b2f433bff4f4fbc, type: 3}
   paperTexture: {fileID: 2800000, guid: 812b4ca7d720c3346bf79dbd6082e4ea, type: 3}
   textColor: {r: 0, g: 0, b: 0.5660378, a: 1}
   fontSize: 60
   ownsOutbox: 0
   labelOverride: 
   letters:
-  - text: "Welcome! Cara and I are\ndelighted to meet you.\n\nWe\u2019re sending
-      you some\nchamomile seeds; they\u2019re a\ngreat addition to any garden!\n\n
-      - Sanjay"
+  - text: "Welcome! Delighted to \nmeet you.\n\nWe\u2019re sending you some\nchamomile
+      seeds; they\u2019re\na great addition to any\ngarden!\n\n - Sanjay"
     gifts:
     - Chamomile
     day: 0
     spawnOption: 0
+    requiredGiftType: 
   dialogueCanvas: {fileID: 0}

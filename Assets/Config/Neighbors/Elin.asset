@@ -11,26 +11,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16d0d31cba4db345998894e889f9ec6, type: 3}
   m_Name: Elin
   m_EditorClassIdentifier: 
-  fontMaterial: {fileID: 2100000, guid: 34d4032934d87b54794549afdc1779e9, type: 2}
-  font: {fileID: 12800000, guid: de8d83abb23dcdb49996f2350595b268, type: 3}
+  fontMaterial: {fileID: 2100000, guid: 4c2e483286031f3488829ea17fc3547b, type: 2}
+  font: {fileID: 12800000, guid: 3fc972a8a3d00544983a180b4454b56d, type: 3}
   paperTexture: {fileID: 2800000, guid: 374f0be1e93ba4fe89baffbabd2ed833, type: 3}
   textColor: {r: 0.14150941, g: 0.07272012, b: 0, a: 1}
   fontSize: 30
   ownsOutbox: 1
   labelOverride: 
   letters:
-  - text: "Hi, it seems I was last to \nhear about your arrival. \nWelcome to our
-      community!\n\nI hear that you\u2019ve got a \ngreenhouse, so I\u2019m attaching\nsome
-      seeds I found in my shed.\nNot sure what they are?\n\n - Elin"
+  - text: "WELCOME TO OUR\nCOMMUNITY!\n\nI HEAR THAT YOU\u2019VE GOT A\nGREENHOUSE,
+      SO I\u2019M\nATTACHING SEEDS I FOUND\nIN MY SHED.\n\n - ELIN"
     gifts:
     - Tulip
     - Lettuce
     day: 1
     spawnOption: 0
-  - text: "Sending some more seeds.\nAnything come of the last ones?\n\n - Elin"
+    requiredGiftType: 
+  - text: "SENDING MORE SEEDS.\n\nANYTHING COME OF THE\nLAST ONES?\n\n - ELIN"
     gifts:
     - Leek
     - Onion
     day: 2
     spawnOption: 0
+    requiredGiftType: 
   dialogueCanvas: {fileID: 0}

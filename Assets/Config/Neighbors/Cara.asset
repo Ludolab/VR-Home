@@ -11,24 +11,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16d0d31cba4db345998894e889f9ec6, type: 3}
   m_Name: Cara
   m_EditorClassIdentifier: 
-  fontMaterial: {fileID: 2100000, guid: f4acc328c110a1d40a3e8925aa6bf0bc, type: 2}
-  font: {fileID: 12800000, guid: 96ca9d14de1951140966227fdcda1e2c, type: 3}
+  fontMaterial: {fileID: 2100000, guid: 4771e5c64c503a54a8e48b32977f3524, type: 2}
+  font: {fileID: 12800000, guid: 3b5f174dbf7e2094fb1b69902890f691, type: 3}
   paperTexture: {fileID: 2800000, guid: 812b4ca7d720c3346bf79dbd6082e4ea, type: 3}
   textColor: {r: 0, g: 0, b: 0.5660378, a: 1}
-  fontSize: 50
+  fontSize: 60
   ownsOutbox: 1
   labelOverride: Sanjay & Cara
   letters:
-  - text: "Hey neighbor, could\nI trouble you for\nsome chamomile?\n\nI\u2019ve been
-      having some\ntrouble sleeping, and\nit\u2019d make for some\nwonderful tea.\n\n
-      - Cara"
+  - text: "Hey neighbor, could\nI trouble you for\nsome chamomile?\n\nIt\u2019d make
+      for some\nwonderful tea.\n\n - Cara"
     gifts: []
     day: 1
     spawnOption: 0
     requiredGiftType: 
-  - text: "Thank you, dear. Here\u2019s some\neggplant seeds for your trouble.\n\nLet
-      me see if Sanjay can also\nsend you a few tea packets,\nI hear they work wonders\non
-      the plants when they\u2019re\nfirst potted.\n\n - Cara"
+  - text: "Thank you, dear.\nI got you some \neggplant seeds.\n\n - Cara"
     gifts:
     - Eggplant
     day: 2
