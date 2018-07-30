@@ -33,6 +33,9 @@
 - Winter Zone by meshzone3d: https://assetstore.unity.com/packages/3d/environments/landscapes/winter-zone-mini-107583
 - Simple Wall Lamp by Flatriver: https://assetstore.unity.com/packages/3d/props/simple-wall-lamp-69411
 - Bronze Bear Statue by Samuel Snow: https://assetstore.unity.com/packages/3d/props/bronze-bear-statue-65904
+- Electrical Outlet Model by apocalypse_67: https://free3d.com/3d-model/electrical-outlet-98260.html
+- Light Switch Model by apocalypse_67: https://free3d.com/3d-model/light-switch-22023.html
+- Nonla Design Lamps Models by Lukas Filip: https://flyingarchitecture.com/models/nonla-design-lamps
 
 ### Shaders
 - Outline shader by Luke Kabat: https://github.com/Shrimpey/Outlined-Diffuse-Shader-Fixed
