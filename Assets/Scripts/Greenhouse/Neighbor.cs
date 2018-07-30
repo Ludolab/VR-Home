@@ -58,7 +58,7 @@ public class Neighbor : MonoBehaviour
 		}
 	}
 
-	public void StartDay(int day)
+	public void StartDay(int day, bool initializeDay /*Know if this is the first time the day has been started*/)
 	{
 		parser.NextDay(this);
 
@@ -70,7 +70,7 @@ public class Neighbor : MonoBehaviour
 				if (CanSpawn(l))
 				{
 					GeneratePage(l.text);
-					GenerateSeeds(l.gifts);
+                    if(initializeDay) GenerateSeeds(l.gifts); //Only want to spawn seeds the first time the day is started.
 				}
 			}
 		}
