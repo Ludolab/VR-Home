@@ -21,8 +21,8 @@ public class Dirt : MonoBehaviour {
 
     public bool noWeeds; // Won't let people dig if any weeds are in the dirt.
 
-	// Use this for initialization
-	void Start () {
+	void Awake()
+	{
         myMaterial = GetComponent<Renderer>().material;
         SurfaceCollider.layer = 0;
         wetness = 0;
