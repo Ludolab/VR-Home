@@ -31,6 +31,8 @@
 - Clock by Websadabra: https://assetstore.unity.com/packages/3d/props/interior/clock-free-44164
 - Kitchen Props by Jake Sullivan: https://assetstore.unity.com/packages/3d/props/interior/kitchen-props-free-80208
 - Winter Zone by meshzone3d: https://assetstore.unity.com/packages/3d/environments/landscapes/winter-zone-mini-107583
+- Simple Wall Lamp by Flatriver: https://assetstore.unity.com/packages/3d/props/simple-wall-lamp-69411
+- Bronze Bear Statue by Samuel Snow: https://assetstore.unity.com/packages/3d/props/bronze-bear-statue-65904
 
 ### Shaders
 - Outline shader by Luke Kabat: https://github.com/Shrimpey/Outlined-Diffuse-Shader-Fixed
