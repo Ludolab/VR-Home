@@ -1201,7 +1201,6 @@ GameObject:
   m_Component:
   - component: {fileID: 100653616}
   - component: {fileID: 100653615}
-  - component: {fileID: 100653614}
   m_Layer: 0
   m_Name: Kitchen Light (1)
   m_TagString: Untagged
@@ -1209,22 +1208,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &100653614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 100653613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da5c6ff1f934e842b493a4b6df287f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseColor: {r: 1, g: 0.6079833, b: 0, a: 1}
-  maxFactor: 1.3
-  minFactor: 1
-  moveRange: 0
-  speed: 0.6
 --- !u!108 &100653615
 Light:
   m_ObjectHideFlags: 0
@@ -9827,7 +9810,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1655442346}
   - component: {fileID: 1655442345}
-  - component: {fileID: 1655442344}
   m_Layer: 0
   m_Name: Kitchen Light
   m_TagString: Untagged
@@ -9835,22 +9817,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1655442344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1655442343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da5c6ff1f934e842b493a4b6df287f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseColor: {r: 1, g: 0.6079833, b: 0, a: 1}
-  maxFactor: 1.3
-  minFactor: 1
-  moveRange: 0
-  speed: 0.6
 --- !u!108 &1655442345
 Light:
   m_ObjectHideFlags: 0
