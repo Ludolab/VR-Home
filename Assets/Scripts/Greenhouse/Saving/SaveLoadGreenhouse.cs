@@ -159,7 +159,11 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 LoadSeedStarters(saved.seedStarters);
 
                 //After restoring the state of the previous play session, advance to the next day.
-                if(!doNotGoToNextDay) TimeManager.instance.NextDay();
+                if(!doNotGoToNextDay) {
+                    TimeManager.instance.NextDay();
+                } else {
+                    TimeManager.instance.NeighborStart(false);
+                }
             } else {
                 TimeManager.instance.ProcessDay();
             }

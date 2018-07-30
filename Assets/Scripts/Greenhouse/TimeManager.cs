@@ -53,16 +53,20 @@ public class TimeManager : MonoBehaviour
 		}
 		garbage.Clear();
 
-		foreach (Neighbor neighbor in neighbors)
-		{
-			neighbor.StartDay(day);
-		}
+        NeighborStart(true);
 
 		foreach (Plot plot in plots)
 		{
             plot.StartDay();
 		}
 	}
+
+    public void NeighborStart(bool initializeDay) {
+        foreach (Neighbor neighbor in neighbors)
+        {
+            neighbor.StartDay(day, initializeDay);
+        }
+    }
 
     public void SetDay(int d)
     {
