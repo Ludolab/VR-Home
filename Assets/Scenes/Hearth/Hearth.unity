@@ -330,7 +330,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: 9b7a849bef9b27443878958d15713a7a, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: 9b7a849bef9b27443878958d15713a7a, type: 3}
       propertyPath: m_LocalScale.x
@@ -1094,7 +1094,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aafd3ab34e474cf43b712ad96f865e23, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0109999925
+      value: 0.026
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: aafd3ab34e474cf43b712ad96f865e23, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1135,6 +1135,56 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 888ce82c0af2ab0499d39c93fb0f4ce4, type: 2}
   m_PrefabInternal: {fileID: 1015591714}
+--- !u!1001 &121045236
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 674179582}
+    m_Modifications:
+    - target: {fileID: 4487777912979146, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487777912979146, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.255
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487777912979146, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487777912979146, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487777912979146, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487777912979146, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487777912979146, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487777912979146, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487777912979146, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487777912979146, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8c5563ad02d0ec949934f6fef0b7144f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &140734093 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 888ce82c0af2ab0499d39c93fb0f4ce4, type: 2}
@@ -3922,7 +3972,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 946424456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.185, z: 2.0624}
+  m_LocalPosition: {x: 0, y: 0.313, z: 2.0624}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 104849723}
@@ -5538,6 +5588,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -0.255
       objectReference: {fileID: 0}
+    - target: {fileID: 1813671870085202, guid: d672f95a328d6ea488a726ce50b96173, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d672f95a328d6ea488a726ce50b96173, type: 2}
   m_IsPrefabParent: 0
@@ -6441,7 +6495,7 @@ GameObject:
   - component: {fileID: 1396466857}
   - component: {fileID: 1396466856}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Ambient Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
