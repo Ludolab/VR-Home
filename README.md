@@ -36,6 +36,7 @@
 - Electrical Outlet Model by apocalypse_67: https://free3d.com/3d-model/electrical-outlet-98260.html
 - Light Switch Model by apocalypse_67: https://free3d.com/3d-model/light-switch-22023.html
 - Nonla Design Lamps Models by Lukas Filip: https://flyingarchitecture.com/models/nonla-design-lamps
+- Salt Lamp Model by greentrex: https://www.turbosquid.com/FullPreview/Index.cfm/ID/1012254
 
 ### Shaders
 - Outline shader by Luke Kabat: https://github.com/Shrimpey/Outlined-Diffuse-Shader-Fixed
