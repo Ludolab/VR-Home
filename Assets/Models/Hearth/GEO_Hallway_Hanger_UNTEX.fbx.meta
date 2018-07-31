@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: GEO_Entryway_WallHanger
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert20
+    second: {fileID: 2100000, guid: c2a33d11aebe7c04a9ac84e9fcff5853, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
