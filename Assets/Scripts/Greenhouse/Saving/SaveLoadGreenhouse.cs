@@ -114,6 +114,9 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 giftObjectSave.xPosition = currGift.transform.position.x;
                 giftObjectSave.yPosition = currGift.transform.position.y;
                 giftObjectSave.zPosition = currGift.transform.position.z;
+                giftObjectSave.xRotation = currGift.transform.localEulerAngles.x;
+                giftObjectSave.yRotation = currGift.transform.localEulerAngles.y;
+                giftObjectSave.zRotation = currGift.transform.localEulerAngles.z;
                 giftObjectSave.xScale = currGift.transform.localScale.x;
                 giftObjectSave.yScale = currGift.transform.localScale.y;
                 giftObjectSave.zScale = currGift.transform.localScale.z;
@@ -300,8 +303,9 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             if(savedData != null && savedData.givenGifts != null) {
                 foreach(SaveGift given in savedData.givenGifts) {
                     GameObject gift = (GameObject)Instantiate(Resources.Load("Prefabs/Fruit/" + given.gift));
-                    gift.transform.position = new Vector3(given.giftObject.xPosition, given.giftObject.yPosition, given.giftObject.zPosition);
                     gift.transform.localScale = new Vector3(given.giftObject.xScale, given.giftObject.yScale, given.giftObject.zScale);
+                    gift.transform.position = new Vector3(given.giftObject.xPosition, given.giftObject.yPosition, given.giftObject.zPosition);
+                    gift.transform.localEulerAngles = new Vector3(given.giftObject.xRotation, given.giftObject.yRotation, given.giftObject.zRotation);
                     ConfigurableJoint joint = gift.GetComponent<ConfigurableJoint>();
                     HarvestFruit harvest = gift.GetComponent<HarvestFruit>();
                     if (joint != null) Destroy(joint);
