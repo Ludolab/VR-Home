@@ -35,7 +35,7 @@ public class HarvestFruit : MonoBehaviour
             col.isTrigger = false;
             TimeManager.instance.AddGarbage(gameObject);
 
-            Debug.Log("Removing plant from plot");
+            Debug.Log("Removing plant from plot.");
             plotIn.SquishBeetles();
             plotIn.RemovePlant();
         }

@@ -182,11 +182,12 @@ public class SaveLoadGreenhouse : MonoBehaviour {
 
             //Load in data for plant in plot.
             if(savedData.plant != null && savedData.plant != "") {
-                Debug.Log("Found plant to load");
 
                 GameObject loadPlant = (GameObject)Instantiate(Resources.Load(pathToPlantPrefabs + savedData.plant));
                 Plant plant = loadPlant.GetComponent<Plant>();
                 if(plant != null) {
+                    Debug.Log("Found plant to load");
+
                     plot.SetPlant(plant, savedData.plantStage);
                     plant.SetDayBorn(savedData.plantDayBorn);
 

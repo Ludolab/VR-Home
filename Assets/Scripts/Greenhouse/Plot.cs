@@ -202,6 +202,8 @@ public class Plot : MonoBehaviour {
     //Following are all data modification functions to be used by saving/loading (primarily).
     public void SetPlant(Plant p, int stage)
     {
+        Debug.Log("Setting plant in plot");
+
         plant = p;
         plant.transform.position = gameObject.transform.position;
         plant.transform.eulerAngles = new Vector3(0, 0, 0);
