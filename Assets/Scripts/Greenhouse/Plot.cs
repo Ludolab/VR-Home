@@ -37,7 +37,6 @@ public class Plot : MonoBehaviour {
         Destroy(plant);
         plant = null;
         myDirt.makeFlat(true);
-        Debug.Log("Removing plant");
     }
 
 	/* EVERYTHING BELOW WAS REPLACED BY "absorbPlant". I am commenting it in case we need any of it later.
@@ -108,11 +107,9 @@ public class Plot : MonoBehaviour {
     }
 
     public void SetHarvest() {
-        Debug.Log("Trying to make plant harvestable");
         HarvestFruit harvestable = plant.GetModel().GetComponent<HarvestFruit>();
         if (harvestable != null)
         {
-            Debug.Log("Making plant harvestable");
             harvestable.SetPlot(this);
         }
     }
@@ -208,8 +205,6 @@ public class Plot : MonoBehaviour {
     //Following are all data modification functions to be used by saving/loading (primarily).
     public void SetPlant(Plant p, int stage)
     {
-        Debug.Log("Setting plant in plot");
-
         plant = p;
         plant.transform.position = gameObject.transform.position;
         plant.transform.eulerAngles = new Vector3(0, 0, 0);

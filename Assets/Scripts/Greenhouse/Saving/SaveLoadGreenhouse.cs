@@ -61,7 +61,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             plotSave.plotID = plotID;
 
             if(curr.GetPlant() != null) {
-                Debug.Log("Found plant to save");
                 plotSave.plant = curr.GetPlant().plant;
                 plotSave.plantDayBorn = curr.GetPlant().GetDayBorn();
                 plotSave.plantStage = curr.GetPlant().GetStage();
@@ -162,11 +161,12 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 //After restoring the state of the previous play session, advance to the next day.
                 if(!doNotGoToNextDay) {
                     TimeManager.instance.NextDay();
-                    foreach(Plot plot in TimeManager.instance.plots) {
-                        if(plot.plant != null) plot.SetHarvest();
-                    }
                 } else {
                     TimeManager.instance.NeighborStart(false);
+                    foreach (Plot plot in TimeManager.instance.plots)
+                    {
+                        if (plot.plant != null) plot.SetHarvest();
+                    }
                 }
             } else {
                 TimeManager.instance.ProcessDay();
@@ -189,8 +189,6 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 GameObject loadPlant = (GameObject)Instantiate(Resources.Load(pathToPlantPrefabs + savedData.plant));
                 Plant plant = loadPlant.GetComponent<Plant>();
                 if(plant != null) {
-                    Debug.Log("Found plant to load");
-
                     plot.SetPlant(plant, savedData.plantStage);
                     plant.SetDayBorn(savedData.plantDayBorn);
 
