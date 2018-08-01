@@ -102,7 +102,20 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             SaveOutbox outboxSave = new SaveOutbox();
 
             outboxSave.neighbor = curr.GetLabel();
-            outboxSave.givenGifts = curr.GetGiftNames();
+
+            GameObject[] giftsToSave = curr.GetGifts();
+            SaveGift[] gifts = new SaveGift[giftsToSave.Length];
+            for (int j = 0; j < gifts.Length; j++) {
+                GameObject currGift = giftsToSave[i];
+                SaveGift giftSave = new SaveGift();
+                giftSave.gift = currGift.GetComponent<Giftable>().giftName;
+                giftSave.xScale = currGift.transform.localScale.x;
+                giftSave.yScale = currGift.transform.localScale.y;
+                giftSave.zScale = currGift.transform.localScale.z;
+
+                gifts[i] = giftSave;
+            }
+            outboxSave.givenGifts = gifts;
 
             outboxes[i] = outboxSave;
         }
@@ -279,11 +292,13 @@ public class SaveLoadGreenhouse : MonoBehaviour {
 
             // Set previously given gifts for each outbox
             if(savedData != null && savedData.givenGifts != null) {
-                foreach(string given in savedData.givenGifts) {
-                    GameObject gift = (GameObject)Instantiate(Resources.Load("Prefabs/Fruit/" + given), outbox.transform);
-                    gift.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                foreach(SaveGift given in savedData.givenGifts) {
+                    GameObject gift = (GameObject)Instantiate(Resources.Load("Prefabs/Fruit/" + given.gift), outbox.transform);
+                    gift.transform.localScale = new Vector3(given.xScale, given.yScale, given.zScale);
                     ConfigurableJoint joint = gift.GetComponent<ConfigurableJoint>();
+                    HarvestFruit harvest = gift.GetComponent<HarvestFruit>();
                     if (joint != null) Destroy(joint);
+                    if (harvest != null) harvest.PullUp();
                     TimeManager.instance.AddGarbage(gift);
                 }
             }

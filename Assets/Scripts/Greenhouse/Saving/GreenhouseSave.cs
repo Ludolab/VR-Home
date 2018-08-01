@@ -28,8 +28,7 @@ public class SavePlot
 public class SaveOutbox
 {
     [SerializeField] public string neighbor;
-    [SerializeField] public string[] givenGifts; //What the player has put into the box.
-    [SerializeField] public string[] received; //What the player has received and not yet taken out of the box.
+    [SerializeField] public SaveGift[] givenGifts; //What the player has put into the box.
 }
 
 [System.Serializable]
@@ -39,4 +38,14 @@ public class SaveStarter
     [SerializeField] public float xPos;
     [SerializeField] public float yPos;
     [SerializeField] public float zPos;
+}
+
+
+[System.Serializable]
+public class SaveGift
+{
+    [SerializeField] public string gift;
+    [SerializeField] public float xScale;
+    [SerializeField] public float yScale;
+    [SerializeField] public float zScale;
 }

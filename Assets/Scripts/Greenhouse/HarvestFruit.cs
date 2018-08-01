@@ -31,14 +31,18 @@ public class HarvestFruit : MonoBehaviour
         if(plotIn != null
            && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>())
         {
-            pulledUp = true;
-            col.isTrigger = false;
-            TimeManager.instance.AddGarbage(gameObject);
+            PullUp();
 
             plotIn.SquishBeetles();
             plotIn.RemovePlant();
         }
 	}
+
+    public void PullUp() {
+        pulledUp = true;
+        col.isTrigger = false;
+        TimeManager.instance.AddGarbage(gameObject);
+    }
 
 	[ContextMenu("Pick")]
     public void Pick() {

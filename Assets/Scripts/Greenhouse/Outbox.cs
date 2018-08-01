@@ -60,10 +60,10 @@ public class Outbox : MonoBehaviour
 		return giftNames.ToArray();
 	}
 
-    public string[] GetGiftNames() {
-        List<string> g = new List<string>();
+    public GameObject[] GetGifts() {
+        List<GameObject> g = new List<GameObject>();
         foreach(Giftable gift in gifts) {
-            g.Add(gift.giftName);
+            g.Add(gift.gameObject);
         }
         return g.ToArray();
     }
