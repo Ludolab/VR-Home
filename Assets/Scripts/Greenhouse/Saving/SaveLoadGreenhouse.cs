@@ -113,7 +113,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 giftSave.yScale = currGift.transform.localScale.y;
                 giftSave.zScale = currGift.transform.localScale.z;
 
-                gifts[i] = giftSave;
+                gifts[j] = giftSave;
             }
             outboxSave.givenGifts = gifts;
 
