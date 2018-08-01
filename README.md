@@ -39,6 +39,10 @@
 - Salt Lamp Model by greentrex: https://www.turbosquid.com/FullPreview/Index.cfm/ID/1012254
 - 3D Bowls + Magazine by winzmuc: https://www.turbosquid.com/FullPreview/Index.cfm/ID/1159065
 - Army boots low-poly by Vinrax: https://www.turbosquid.com/FullPreview/Index.cfm/ID/718654
+- Agent Hat by animalz: https://www.cgtrader.com/free-3d-models/character/clothing/agent
+- Woman Shoe by eyk_yardim: https://3dsky.org/3dmodels/show/woman_shoe
+- Gloves by visualize3d: https://3dsky.org/3dmodels/show/gloves
+- Curtains no001 by krikarik: https://3dsky.org/3dmodels/show/curtains_001_1
 
 ### Shaders
 - Outline shader by Luke Kabat: https://github.com/Shrimpey/Outlined-Diffuse-Shader-Fixed
