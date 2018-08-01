@@ -10,6 +10,8 @@ public class CandleFlicker : MonoBehaviour {
     public float minRange;
     public float maxRange;
     public float maxMovement;
+    public float maxShadowStrength;
+    public float minShadowStrength;
     public float transitionTime;
     public Light flameLight;
 
@@ -30,6 +32,7 @@ public class CandleFlicker : MonoBehaviour {
         if (liklihood < flickerProbability && !isFlickering){
             StartCoroutine(IntensityShift(Random.Range(minIntensity, maxIntensity)));
             StartCoroutine(RangeShift(Random.Range(minRange, maxRange)));
+            StartCoroutine(ShadowShift(Random.Range(minShadowStrength, maxShadowStrength)));
             StartCoroutine(PositionShift());
             isFlickering = true;
         }
@@ -37,10 +40,10 @@ public class CandleFlicker : MonoBehaviour {
 
     private IEnumerator IntensityShift(float newIntensity)
     {
-        float oldValue = flameLight.intensity;
+        float oldInstensity = flameLight.intensity;
         for (float t = 0; t < transitionTime; t += Time.deltaTime)
         {
-            flameLight.intensity = Mathf.Lerp(oldValue, newIntensity, t / transitionTime);
+            flameLight.intensity = Mathf.Lerp(oldInstensity, newIntensity, t / transitionTime);
             yield return new WaitForEndOfFrame();
         }
         isFlickering = false;
@@ -52,6 +55,16 @@ public class CandleFlicker : MonoBehaviour {
         for (float t = 0; t < transitionTime; t+= Time.deltaTime)
         {
             flameLight.range = Mathf.Lerp(oldValue, newRange, t / transitionTime);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private IEnumerator ShadowShift(float newStrength)
+    {
+        float oldValue = flameLight.shadowStrength;
+        for (float t = 0; t < transitionTime; t += Time.deltaTime)
+        {
+            flameLight.shadowStrength = Mathf.Lerp(oldValue, newStrength, t / transitionTime);
             yield return new WaitForEndOfFrame();
         }
     }
