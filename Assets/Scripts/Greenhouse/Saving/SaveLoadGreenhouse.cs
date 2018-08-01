@@ -293,7 +293,8 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             // Set previously given gifts for each outbox
             if(savedData != null && savedData.givenGifts != null) {
                 foreach(SaveGift given in savedData.givenGifts) {
-                    GameObject gift = (GameObject)Instantiate(Resources.Load("Prefabs/Fruit/" + given.gift), outbox.transform);
+                    GameObject gift = (GameObject)Instantiate(Resources.Load("Prefabs/Fruit/" + given.gift));
+                    gift.transform.position = outbox.transform.position + new Vector3(0.1f, 0f, 0f);
                     gift.transform.localScale = new Vector3(given.xScale, given.yScale, given.zScale);
                     ConfigurableJoint joint = gift.GetComponent<ConfigurableJoint>();
                     HarvestFruit harvest = gift.GetComponent<HarvestFruit>();
