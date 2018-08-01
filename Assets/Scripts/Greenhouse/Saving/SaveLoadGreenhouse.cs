@@ -109,9 +109,15 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 GameObject currGift = giftsToSave[j];
                 SaveGift giftSave = new SaveGift();
                 giftSave.gift = currGift.GetComponent<Giftable>().giftName;
-                giftSave.xScale = currGift.transform.localScale.x;
-                giftSave.yScale = currGift.transform.localScale.y;
-                giftSave.zScale = currGift.transform.localScale.z;
+
+                SaveObject giftObjectSave = new SaveObject();
+                giftObjectSave.xPosition = currGift.transform.position.x;
+                giftObjectSave.yPosition = currGift.transform.position.y;
+                giftObjectSave.zPosition = currGift.transform.position.z;
+                giftObjectSave.xScale = currGift.transform.localScale.x;
+                giftObjectSave.yScale = currGift.transform.localScale.y;
+                giftObjectSave.zScale = currGift.transform.localScale.z;
+                giftSave.giftObject = giftObjectSave;
 
                 gifts[j] = giftSave;
             }
@@ -294,8 +300,8 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             if(savedData != null && savedData.givenGifts != null) {
                 foreach(SaveGift given in savedData.givenGifts) {
                     GameObject gift = (GameObject)Instantiate(Resources.Load("Prefabs/Fruit/" + given.gift));
-                    gift.transform.position = outbox.transform.position + new Vector3(0.1f, 0f, 0f);
-                    gift.transform.localScale = new Vector3(given.xScale, given.yScale, given.zScale);
+                    gift.transform.position = new Vector3(given.giftObject.xPosition, given.giftObject.yPosition, given.giftObject.zPosition);
+                    gift.transform.localScale = new Vector3(given.giftObject.xScale, given.giftObject.yScale, given.giftObject.zScale);
                     ConfigurableJoint joint = gift.GetComponent<ConfigurableJoint>();
                     HarvestFruit harvest = gift.GetComponent<HarvestFruit>();
                     if (joint != null) Destroy(joint);
