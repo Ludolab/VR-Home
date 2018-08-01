@@ -162,6 +162,9 @@ public class SaveLoadGreenhouse : MonoBehaviour {
                 //After restoring the state of the previous play session, advance to the next day.
                 if(!doNotGoToNextDay) {
                     TimeManager.instance.NextDay();
+                    foreach(Plot plot in TimeManager.instance.plots) {
+                        if(plot.plant != null) plot.SetHarvest();
+                    }
                 } else {
                     TimeManager.instance.NeighborStart(false);
                 }

@@ -77,11 +77,7 @@ public class Plot : MonoBehaviour {
                 }
                 else
                 {
-                    HarvestFruit harvestable = plant.GetModel().GetComponent<HarvestFruit>();
-                    if (harvestable != null)
-                    {
-                        harvestable.SetPlot(this);
-                    }
+                    SetHarvest();
                 }
             }
 
@@ -109,6 +105,14 @@ public class Plot : MonoBehaviour {
 
         // Reset watering.
         myDirt.setWetness(0f);
+    }
+
+    public void SetHarvest() {
+        HarvestFruit harvestable = plant.GetModel().GetComponent<HarvestFruit>();
+        if (harvestable != null)
+        {
+            harvestable.SetPlot(this);
+        }
     }
 
 
