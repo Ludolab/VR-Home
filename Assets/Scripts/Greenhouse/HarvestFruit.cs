@@ -11,7 +11,6 @@ public class HarvestFruit : MonoBehaviour
     private Rigidbody rb;
     private Collider col;
     private bool pulledUp = false;
-    private bool removedFromPlot = false;
 
     private void Awake()
     {
@@ -29,31 +28,22 @@ public class HarvestFruit : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-        if(!pulledUp && plotIn != null
-           && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>()) {
+        if(plotIn != null
+           && other == plotIn.myDirt.SurfaceCollider.GetComponent<Collider>())
+        {
             pulledUp = true;
+            col.isTrigger = false;
+            TimeManager.instance.AddGarbage(gameObject);
+
+            Debug.Log("Removing plant from plot");
+            plotIn.SquishBeetles();
+            plotIn.RemovePlant();
         }
 	}
 
 	[ContextMenu("Pick")]
     public void Pick() {
-        if (pulledUp && !removedFromPlot) {
-            rb.useGravity = true;
-            rb.isKinematic = false;
-            col.isTrigger = false;
-            removedFromPlot = true;
-            if(plotIn != null) {
-                plotIn.SquishBeetles();
-                plotIn.RemovePlant();
-            }
-
-            TimeManager.instance.AddGarbage(gameObject);
-        }
-    }
-
-    [ContextMenu("Drop")]
-    public void Drop() {
-        if(removedFromPlot) {
+        if (pulledUp) {
             rb.useGravity = true;
             rb.isKinematic = false;
         }

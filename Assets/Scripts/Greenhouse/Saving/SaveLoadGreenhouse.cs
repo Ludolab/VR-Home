@@ -61,6 +61,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             plotSave.plotID = plotID;
 
             if(curr.GetPlant() != null) {
+                Debug.Log("Found plant to save");
                 plotSave.plant = curr.GetPlant().plant;
                 plotSave.plantDayBorn = curr.GetPlant().GetDayBorn();
                 plotSave.plantStage = curr.GetPlant().GetStage();
@@ -181,6 +182,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
 
             //Load in data for plant in plot.
             if(savedData.plant != null && savedData.plant != "") {
+                Debug.Log("Found plant to load");
 
                 GameObject loadPlant = (GameObject)Instantiate(Resources.Load(pathToPlantPrefabs + savedData.plant));
                 Plant plant = loadPlant.GetComponent<Plant>();
