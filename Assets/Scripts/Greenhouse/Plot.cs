@@ -108,9 +108,11 @@ public class Plot : MonoBehaviour {
     }
 
     public void SetHarvest() {
+        Debug.Log("Trying to make plant harvestable");
         HarvestFruit harvestable = plant.GetModel().GetComponent<HarvestFruit>();
         if (harvestable != null)
         {
+            Debug.Log("Making plant harvestable");
             harvestable.SetPlot(this);
         }
     }
