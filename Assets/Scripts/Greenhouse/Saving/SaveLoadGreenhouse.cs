@@ -106,7 +106,7 @@ public class SaveLoadGreenhouse : MonoBehaviour {
             GameObject[] giftsToSave = curr.GetGifts();
             SaveGift[] gifts = new SaveGift[giftsToSave.Length];
             for (int j = 0; j < gifts.Length; j++) {
-                GameObject currGift = giftsToSave[i];
+                GameObject currGift = giftsToSave[j];
                 SaveGift giftSave = new SaveGift();
                 giftSave.gift = currGift.GetComponent<Giftable>().giftName;
                 giftSave.xScale = currGift.transform.localScale.x;
