@@ -45,7 +45,5 @@ public class SaveStarter
 public class SaveGift
 {
     [SerializeField] public string gift;
-    [SerializeField] public float xScale;
-    [SerializeField] public float yScale;
-    [SerializeField] public float zScale;
+    [SerializeField] public SaveObject giftObject;
 }
