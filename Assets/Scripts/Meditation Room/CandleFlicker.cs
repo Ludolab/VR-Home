@@ -7,12 +7,19 @@ public class CandleFlicker : MonoBehaviour {
     public float flickerProbability;
     public float minIntensity;
     public float maxIntensity;
-    float transitionTime = 0.35f;
+    public float minRange;
+    public float maxRange;
+    public float maxMovement;
+    public float transitionTime;
     public Light flameLight;
+
+    private Vector3 originalPosition;
+    private bool isFlickering;
 
 	// Use this for initialization
 	void Start () {
         flameLight.intensity = minIntensity;
+        originalPosition = flameLight.gameObject.transform.position;
 	}
 	
 	// Update is called once per fram
@@ -20,17 +27,51 @@ public class CandleFlicker : MonoBehaviour {
     void Update()
     {
         float liklihood = Random.Range(1, 100);
-        if (liklihood < flickerProbability){
-            StartCoroutine(LightShift(Random.Range(minIntensity, maxIntensity)));
+        if (liklihood < flickerProbability && !isFlickering){
+            StartCoroutine(IntensityShift(Random.Range(minIntensity, maxIntensity)));
+            StartCoroutine(RangeShift(Random.Range(minRange, maxRange)));
+            StartCoroutine(PositionShift());
+            isFlickering = true;
         }
     }
 
-    private IEnumerator LightShift(float newValue)
+    private IEnumerator IntensityShift(float newIntensity)
     {
         float oldValue = flameLight.intensity;
         for (float t = 0; t < transitionTime; t += Time.deltaTime)
         {
-            flameLight.intensity = Mathf.Lerp(oldValue, newValue, t / transitionTime);
+            flameLight.intensity = Mathf.Lerp(oldValue, newIntensity, t / transitionTime);
+            yield return new WaitForEndOfFrame();
+        }
+        isFlickering = false;
+    }
+
+    private IEnumerator RangeShift(float newRange)
+    {
+        float oldValue = flameLight.range;
+        for (float t = 0; t < transitionTime; t+= Time.deltaTime)
+        {
+            flameLight.range = Mathf.Lerp(oldValue, newRange, t / transitionTime);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private IEnumerator PositionShift()
+    {
+        float oldX = flameLight.gameObject.transform.position.x;
+        float oldY = flameLight.gameObject.transform.position.y;
+        float oldZ = flameLight.gameObject.transform.position.z;
+
+        float newX = Random.Range(-1 * maxMovement, maxMovement) + originalPosition.x;
+        float newY = Random.Range(-1 * maxMovement, maxMovement) + originalPosition.y;
+        float newZ = Random.Range(-1 * maxMovement, maxMovement) + originalPosition.z;
+
+        for (float t = 0; t < transitionTime; t += Time.deltaTime)
+        {
+            float changeX = Mathf.Lerp(oldX, newX, t / transitionTime);
+            float changeY = Mathf.Lerp(oldY, newY, t / transitionTime);
+            float changeZ = Mathf.Lerp(oldZ, newZ, t / transitionTime);
+            flameLight.gameObject.transform.position = new Vector3(changeX, changeY, changeZ);
             yield return new WaitForEndOfFrame();
         }
     }
