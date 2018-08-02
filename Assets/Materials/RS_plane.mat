@@ -66,12 +66,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _PrevDepthTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _RSPlane:
         m_Texture: {fileID: 8400000, guid: 09f81a6c0bb9538448a9b1059ba9a50b, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BackgroundSub: 0.9
+    - _BackgroundSub: 0.18
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DepthScale: 20
@@ -82,7 +86,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _ModAmount: 20
+    - _ModAmount: 30.09
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
