@@ -6,9 +6,11 @@ Shader "Custom/RSShader"
 		_MainTex ("Base (RGB), Alpha (A)", 2D) = "white" {}
 		_DepthTex ("Vertex Modify", 2D) = "white" {}
 		_PrevDepthTex ("Prev Vertex Modify", 2D) = "black" {}
-		_ModAmount ("Modulation Amount", float) = 1.0
+		_WindowDistance ("Window Distance", float) = -7
+		_WindowSize ("Window size", float) = 2.5
 		_BackgroundSub("Background Point", float) = 0.5
-		_DepthScale("Depth Scale", float) = 100
+		_DepthScale("Depth Scale", float) = 1000
+		_Clip("toggle window mask 1 for on 0 for off", float) = 1
 		
 	}
 	SubShader {
@@ -35,9 +37,11 @@ Shader "Custom/RSShader"
 		sampler2D _DepthTex;
 		sampler2D _PrevDepthTex;
 		sampler2D _BackgroundTex;
-		float _ModAmount;
+		float _WindowDistance;
+		float _WindowSize;
 		float _BackgroundSub;
 		float _DepthScale;
+		float _Clip;
 
 		struct Input {
 			float2 uv_MainTex;
@@ -107,15 +111,18 @@ Shader "Custom/RSShader"
 			half4 b = tex2D (_DepthTex, IN.uv_MainTex);
 			
 			o.Albedo = c.rgb;
-
+			o.Alpha = 1;
+			if (_Clip == 0){
+				return;
+			}
 			float d = b.r * _DepthScale;
 			float3 correctedPos = float3(IN.modelPos.x,IN.modelPos.y,IN.modelPos.z);
-			float distFromCenter = distance(correctedPos, float3(0,_ModAmount,0));
+			float distFromCenter = distance(correctedPos, float3(0,_WindowDistance,0));
 
-			o.Alpha = 1;
+			
 			if (distFromCenter > 2.5){
 				//o.Alpha = 1;
-				o.Alpha = clamp(1-(distFromCenter - 2.5)*2,0,1.);
+				o.Alpha = clamp(1-(distFromCenter - _WindowSize)*2,0,1.);
 			}
 
 			if(IN.getRidOfThisPoint == 1 ){

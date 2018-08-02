@@ -1,0 +1,31 @@
+Everything is under the parent "RealSense" whose parent is the Hmd's Camera(eye)
+
+StreamsTextures gameObject:
+- for each stream, it has a gameobject with a "Bind to Shader" script which is where we grab frames from the realsense and bind it to the RS_plane material which has the shader which moves and colors vertices. (more on that later on)
+- the parameters: "Source Stream type" and "Texture format" are copied from the intel unity game scene, I tried other formats, this is the only one that works. 
+"Material to Bind" should be the material that is on RS_Plane. It is also named RS_Plane. This material also should be shaded with RSShader.shader
+"Tex To Bind" this should be exactly the name of the Sampler2D in the shader you want the frame to be bound to.
+"Bind Prev" this is to help fill holes in the depth stream. It should only be true for depth, not Color.
+"Fetch Frames from Device" This is copied from intel's unity scene.
+	
+RealSense Device:
+- device configuration, this is basically how its set up in the example projects that come in the realsense unity wrapper scene
+
+RS_Plane:
+This should be facing the camera taking up all the camera's view. This has the material RS_Plane with the shader RSShader. Here you can change the parameters of how the realsense stream looks in the scene
+
+Shader notes:
+Window Distance - this will be a negative number ranging from -2 onward. This specifies the center point of the bubble which clips the realsense stream.
+Window Size - this specifies the radius of the bubble which clips the realsesnse stream.
+Background point - clipping point for background cut off, with no fade
+Depth scale- this scales the depth of the realsense scene. needed because it is hard to fit in the harth scene.
+toggle window mask - 0 if you want to just see the realsense scene with no clipping or ray removal, 1 otherwise.
+
+my hot take values that bearly work:
+Window Distance - -6.5
+Window Size - 4.4
+Background point - 31
+Depth scale- 188
+
+thoughts for the future:
+perspective can be fixed by computing vector from camera position to the vertex and then projecting back along that line.
