@@ -17,29 +17,21 @@ public class CandleFlicker : MonoBehaviour {
     public bool returnToMedian;
 
     private bool isFlickering;
-    private float medianIntensity;
-    private float medianRange;
     private Vector3 originalPosition;
-    private float medianShadowStrength;
 
 	// Use this for initialization
 	void Start () {
-        medianIntensity = (minIntensity + maxIntensity) / 2;
-        medianRange = (minRange + maxRange) / 2;
         originalPosition = flameLight.gameObject.transform.position;
-        medianShadowStrength = (minShadowStrength + maxShadowStrength) / 2;
 
-        flameLight.intensity = medianIntensity;
-        flameLight.range = medianRange;
-        flameLight.shadowStrength = medianShadowStrength;
+        flameLight.intensity = (minIntensity + maxIntensity) / 2;
+        flameLight.range = (minRange + maxRange) / 2;
+        flameLight.shadowStrength = (minShadowStrength + maxShadowStrength) / 2;
 	}
-	
-	// Update is called once per fram
  
     void Update()
     {
-        float liklihood = Random.Range(1, 100);
-        if (liklihood < flickerProbability && !isFlickering){
+        float likelihood = Random.Range(1, 100);
+        if (likelihood < flickerProbability && !isFlickering){
             StartCoroutine(IntensityShift(Random.Range(minIntensity, maxIntensity)));
             StartCoroutine(RangeShift(Random.Range(minRange, maxRange)));
             StartCoroutine(ShadowShift(Random.Range(minShadowStrength, maxShadowStrength)));
@@ -61,7 +53,7 @@ public class CandleFlicker : MonoBehaviour {
         {
             for (float i = 0; i < transitionTime; i += Time.deltaTime)
             {
-                flameLight.intensity = Mathf.Lerp(newIntensity, medianIntensity, i / transitionTime);
+                flameLight.intensity = Mathf.Lerp(newIntensity, oldValue, i / transitionTime);
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -81,7 +73,7 @@ public class CandleFlicker : MonoBehaviour {
         {
             for (float i = 0; i < transitionTime; i += Time.deltaTime)
             {
-                flameLight.intensity = Mathf.Lerp(newRange, medianRange, i / transitionTime);
+                flameLight.range = Mathf.Lerp(newRange, oldValue, i / transitionTime);
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -100,7 +92,7 @@ public class CandleFlicker : MonoBehaviour {
         {
             for (float i = 0; i < transitionTime; i += Time.deltaTime)
             {
-                flameLight.intensity = Mathf.Lerp(newStrength, medianShadowStrength, i / transitionTime);
+                flameLight.shadowStrength = Mathf.Lerp(newStrength, oldValue, i / transitionTime);
                 yield return new WaitForEndOfFrame();
             }
         }
