@@ -43,6 +43,7 @@
 - Woman Shoe by eyk_yardim: https://3dsky.org/3dmodels/show/woman_shoe
 - Gloves by visualize3d: https://3dsky.org/3dmodels/show/gloves
 - Curtains no001 by krikarik: https://3dsky.org/3dmodels/show/curtains_001_1
+- 3D Hanging Shirt by Camille Kleinman: https://www.cgtrader.com/free-3d-models/character/clothing/3d-hanging-shirt-by-camille-kleinman
 
 ### Shaders
 - Outline shader by Luke Kabat: https://github.com/Shrimpey/Outlined-Diffuse-Shader-Fixed
