@@ -55,7 +55,7 @@ Shader "Custom/RSShader"
 			//v.vertex.y -= smoothstep(0,1,tex.r * _ModAmount);
 			float d = tex.r;
 			o.getRidOfThisPoint = 0;
-			
+			float3 projectionVec = normalize(v.vertex.xyz - float3(0,3,0));
 
 			if (d == 0){
 				//v.vertex.z = _DepthScale;
@@ -101,7 +101,7 @@ Shader "Custom/RSShader"
 
 			}
 			d *= _DepthScale;
-			v.vertex.y -= (d);
+			v.vertex.xyz += (((d)) * projectionVec);
 			o.modelPos = v.vertex.xyz;
 			
 		}
@@ -117,7 +117,7 @@ Shader "Custom/RSShader"
 			}
 			float d = b.r * _DepthScale;
 			float3 correctedPos = float3(IN.modelPos.x,IN.modelPos.y,IN.modelPos.z);
-			float distFromCenter = distance(correctedPos, float3(0,_WindowDistance,0));
+			float distFromCenter = distance(correctedPos, float3(0,IN.modelPos.y,0));
 
 			
 			if (distFromCenter > 2.5){
